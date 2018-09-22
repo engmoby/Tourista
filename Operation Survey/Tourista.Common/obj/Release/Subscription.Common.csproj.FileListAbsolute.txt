@@ -1,0 +1,5 @@
+E:\Projects\Subscribtion Module\Project\Subscription\Subscription.Common\bin\Release\Subscription.Common.dll
+E:\Projects\Subscribtion Module\Project\Subscription\Subscription.Common\bin\Release\Subscription.Common.pdb
+E:\Projects\Subscribtion Module\Project\Subscription\Subscription.Common\obj\Release\Subscription.Common.csprojResolveAssemblyReference.cache
+E:\Projects\Subscribtion Module\Project\Subscription\Subscription.Common\obj\Release\Subscription.Common.dll
+E:\Projects\Subscribtion Module\Project\Subscription\Subscription.Common\obj\Release\Subscription.Common.pdb

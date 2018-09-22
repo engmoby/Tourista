@@ -1,0 +1,41 @@
+<div>
+    <!-- <div style="margin-bottom:10px">
+        <button ng-click="$state.go('addClient');" ng-disabled="ClientCtrl.ClientConsumed.consumedClients >= ClientCtrl.ClientConsumed.maxNumClients" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{'AddClientBtn' | translate}}</button>
+ 
+    </div> -->
+    <div ng-if="ClientCtrl.ClientList.results.length == 0">
+        <span>{{'NoClientAvailable' | translate}}</span>
+    </div>
+
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="ClientList.length >0">
+
+        <div class="table-responsive">
+            <table class="table pmd-table table-hover">
+                <thead>
+                    <tr>
+                        <th>{{'ClientName' | translate}}</th> 
+                        <th>{{'EmailLbl' | translate}}</th> 
+                        <th>{{'Phone1Lbl' | translate}}</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="Client in ClientList">
+                        <td data-title="Name" width="20%">{{Client.fullName}}</td> 
+                        <td  data-title="email" width="20%">{{Client.email}}  </td> 
+                        <td  data-title="phone">{{Client.phone}}</td>  
+                       
+                        <td  width="15%">  
+                            <!-- <i class="cursorPointer" ng-click="$state.go('editClient', {ClientId: Client.ClientId});">{{'Edit' | translate}} </i> -->
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>
+

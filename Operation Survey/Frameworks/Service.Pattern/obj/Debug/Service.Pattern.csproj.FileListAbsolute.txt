@@ -1,0 +1,56 @@
+C:\Users\Sherif\Documents\Visual Studio 2015\Projects\ECatalog\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.dll
+C:\Users\Sherif\Documents\Visual Studio 2015\Projects\ECatalog\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.pdb
+C:\Users\Sherif\Documents\Visual Studio 2015\Projects\ECatalog\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.dll
+C:\Users\Sherif\Documents\Visual Studio 2015\Projects\ECatalog\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.pdb
+C:\Users\Sherif\Documents\Visual Studio 2015\Projects\ECatalog\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.csprojResolveAssemblyReference.cache
+C:\Users\Sherif\Documents\Visual Studio 2015\Projects\ECatalog\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.dll
+C:\Users\Sherif\Documents\Visual Studio 2015\Projects\ECatalog\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.pdb
+E:\Projects\E-Menu\E-Catalog\API\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.dll
+E:\Projects\E-Menu\E-Catalog\API\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.pdb
+E:\Projects\E-Menu\E-Catalog\API\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.dll
+E:\Projects\E-Menu\E-Catalog\API\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.pdb
+E:\Projects\E-Menu\E-Catalog\API\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.csprojResolveAssemblyReference.cache
+E:\Projects\E-Menu\E-Catalog\API\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.dll
+E:\Projects\E-Menu\E-Catalog\API\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.pdb
+C:\Users\Sherif\Desktop\Projects\E-Catalog\API\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.dll
+C:\Users\Sherif\Desktop\Projects\E-Catalog\API\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.pdb
+C:\Users\Sherif\Desktop\Projects\E-Catalog\API\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.dll
+C:\Users\Sherif\Desktop\Projects\E-Catalog\API\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.pdb
+C:\Users\Sherif\Desktop\Projects\E-Catalog\API\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.csprojResolveAssemblyReference.cache
+C:\Users\Sherif\Desktop\Projects\E-Catalog\API\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.dll
+C:\Users\Sherif\Desktop\Projects\E-Catalog\API\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.pdb
+E:\Projects\Subscribtion Module\Project\Subscription\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.dll
+E:\Projects\Subscribtion Module\Project\Subscription\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.pdb
+E:\Projects\Subscribtion Module\Project\Subscription\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.dll
+E:\Projects\Subscribtion Module\Project\Subscription\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.pdb
+E:\Projects\Subscribtion Module\Project\Subscription\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.csprojResolveAssemblyReference.cache
+E:\Projects\Subscribtion Module\Project\Subscription\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.dll
+E:\Projects\Subscribtion Module\Project\Subscription\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.pdb
+E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.dll
+E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.pdb
+E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.dll
+E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.pdb
+E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.csprojResolveAssemblyReference.cache
+E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.dll
+E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.pdb
+E:\Projects\SurveyV2\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.dll
+E:\Projects\SurveyV2\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.pdb
+E:\Projects\SurveyV2\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.dll
+E:\Projects\SurveyV2\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.pdb
+E:\Projects\SurveyV2\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.csprojResolveAssemblyReference.cache
+E:\Projects\SurveyV2\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.dll
+E:\Projects\SurveyV2\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.pdb
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.dll
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.pdb
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.dll
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.pdb
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.csprojResolveAssemblyReference.cache
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.dll
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Service.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Debug\Repository.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.csprojResolveAssemblyReference.cache
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Debug\Service.Pattern.pdb

@@ -1,0 +1,95 @@
+<div class="modal-content">
+    <div class="modal-header bordered">
+        <h2 class="pmd-card-title-text">{{'NewNews' | translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="newNewsForm"> 
+            <div> 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in newNewsCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">
+                            {{lang.value | translate}}
+                        </a>
+                    </li> 
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in newNewsCtrl.language" id="{{lang.value}}-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label for="first-name"> {{ lang.value+'Name' | translate}} </label>
+                                    <input required News="text" class="mat-input form-control" name="titleDictionary{{lang.value+'Name'}}" ng-model="newNewsCtrl.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">
+                                    <div ng-messages="newNewsForm.titleDictionary{{lang.value+'Name'}}.$error" >
+										
+                                        <div ng-show="newNewsForm.titleDictionary{{lang.value+'Name'}}.$error.required && !newNewsForm.titleDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                        <div ng-show="(newNewsForm.titleDictionary{{lang.value+'Name'}}.$error.minlength || newNewsForm.titleDictionary{{lang.value+'Name'}}.$error.maxlength) && !newNewsForm.titleDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div> 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in newNewsCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-desc-form" aria-controls="home" role="tab" data-toggle="tab">
+                            {{lang.value | translate}}
+                        </a>
+                    </li> 
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in newNewsCtrl.language" id="{{lang.value}}-desc-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label for="first-name"> {{ lang.value+'Description' | translate}} </label>
+                                    <textarea required News="text" class="mat-input form-control"
+                                     name="descriptionDictionary{{lang.value+'Name'}}" 
+                                     ng-model="newNewsCtrl.descriptionDictionary[lang.key]" ng-minlength="3" ng-maxlength="255"></textarea>
+                                    <div ng-messages="newNewsForm.descriptionDictionary{{lang.value+'Name'}}.$error" >
+										
+                                        <div ng-show="newNewsForm.descriptionDictionary{{lang.value+'Name'}}.$error.required && !newNewsForm.descriptionDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                        <div ng-show="(newNewsForm.descriptionDictionary{{lang.value+'Name'}}.$error.minlength || newNewsForm.descriptionDictionary{{lang.value+'Name'}}.$error.maxlength) && !newNewsForm.descriptionDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+       
+            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+
+                    <input id="file" name="file" style="display: none;" onchange="angular.element(this).scope().AddFile(this.files)"   type="file">
+                    <button class="btn btn-primary editable-table-button btn-xs btn-with-icon" ng-click="newNewsCtrl.LoadUploadImages()">{{'AddImageBtn' |translate}}</button>
+            
+                    <br>
+                    <div>
+                        <table>
+                            <tbody>
+                                <tr ng-repeat="file in newNewsCtrl.files">
+                                    <td>
+                                        {{file.name}}
+                                    </td>
+                                    <td>
+                                        <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="newNewsCtrl.removeFile($index)">delete</i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                    </div>
+                </div>
+
+        </form>
+    </div>
+    <div class="pmd-modal-action text-right">
+        <button ng-disabled="newNewsForm.$invalid|| newNewsCtrl.files.length == 0 " class="btn pmd-ripple-effect btn-primary" News="button" ng-click="newNewsCtrl.AddNewNews()">{{'saveChangesBtn' | translate}}</button>
+        <button class="btn pmd-ripple-effect btn-default" News="button" ng-click="$state.go('News');">{{'DiscardBtn' | translate}}</button>
+    </div>
+</div>

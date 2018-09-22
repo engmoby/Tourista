@@ -1,0 +1,5 @@
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\bin\Release\OperationSurvey.Common.dll
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\bin\Release\OperationSurvey.Common.pdb
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\obj\Release\OperationSurvey.Common.csprojResolveAssemblyReference.cache
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\obj\Release\OperationSurvey.Common.dll
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\obj\Release\OperationSurvey.Common.pdb

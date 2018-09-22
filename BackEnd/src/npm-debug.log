@@ -1,0 +1,142 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'angular-nvd3@1.8.4' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.2
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData angular-nvd3@1.8.4
+8 silly fetchNamedPackageData angular-nvd3
+9 silly mapToRegistry name angular-nvd3
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'angular-nvd3',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'angular-nvd3',
+12 silly mapToRegistry   name: 'angular-nvd3',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/angular-nvd3
+14 verbose request uri https://registry.npmjs.org/angular-nvd3
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 3:06:58 PM
+17 verbose request id 339780434e97af47
+18 verbose etag W/"907dc09033ad023ee4b027be16eb4b5d"
+19 verbose lastModified Sat, 26 May 2018 16:45:26 GMT
+20 http request GET https://registry.npmjs.org/angular-nvd3
+21 http 304 https://registry.npmjs.org/angular-nvd3
+22 verbose headers { date: 'Tue, 14 Aug 2018 13:06:58 GMT',
+22 verbose headers   connection: 'keep-alive',
+22 verbose headers   'set-cookie': [ '__cfduid=d28a9c8279211644b42fd33b1d4a7e2581534252018; expires=Wed, 14-Aug-19 13:06:58 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+22 verbose headers   'cache-control': 'max-age=300',
+22 verbose headers   'cf-cache-status': 'HIT',
+22 verbose headers   'cf-ray': '44a3a44accf54155-CAI',
+22 verbose headers   etag: '"907dc09033ad023ee4b027be16eb4b5d"',
+22 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 verbose headers   'last-modified': 'Sat, 26 May 2018 16:45:26 GMT',
+22 verbose headers   vary: 'accept-encoding, accept',
+22 verbose headers   server: 'cloudflare' }
+23 silly get cb [ 304,
+23 silly get   { date: 'Tue, 14 Aug 2018 13:06:58 GMT',
+23 silly get     connection: 'keep-alive',
+23 silly get     'set-cookie': [ '__cfduid=d28a9c8279211644b42fd33b1d4a7e2581534252018; expires=Wed, 14-Aug-19 13:06:58 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+23 silly get     'cache-control': 'max-age=300',
+23 silly get     'cf-cache-status': 'HIT',
+23 silly get     'cf-ray': '44a3a44accf54155-CAI',
+23 silly get     etag: '"907dc09033ad023ee4b027be16eb4b5d"',
+23 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+23 silly get     'last-modified': 'Sat, 26 May 2018 16:45:26 GMT',
+23 silly get     vary: 'accept-encoding, accept',
+23 silly get     server: 'cloudflare' } ]
+24 verbose etag https://registry.npmjs.org/angular-nvd3 from cache
+25 verbose get saving angular-nvd3 to C:\Users\Sherif\AppData\Roaming\npm-cache\registry.npmjs.org\angular-nvd3\.cache.json
+26 verbose correctMkdir C:\Users\Sherif\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+27 silly fetchNamedPackageData No valid target from cache, forcing network
+28 verbose request uri https://registry.npmjs.org/angular-nvd3
+29 verbose request no auth needed
+30 info attempt registry request try #1 at 3:06:58 PM
+31 http request GET https://registry.npmjs.org/angular-nvd3
+32 http 200 https://registry.npmjs.org/angular-nvd3
+33 verbose headers { date: 'Tue, 14 Aug 2018 13:06:58 GMT',
+33 verbose headers   'content-type': 'application/json; charset=UTF-8',
+33 verbose headers   'transfer-encoding': 'chunked',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'set-cookie': [ '__cfduid=d28a9c8279211644b42fd33b1d4a7e2581534252018; expires=Wed, 14-Aug-19 13:06:58 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'cf-cache-status': 'HIT',
+33 verbose headers   'cf-ray': '44a3a44b2d414155-CAI',
+33 verbose headers   etag: 'W/"907dc09033ad023ee4b027be16eb4b5d"',
+33 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+33 verbose headers   'last-modified': 'Sat, 26 May 2018 16:45:26 GMT',
+33 verbose headers   vary: 'accept-encoding, accept',
+33 verbose headers   server: 'cloudflare',
+33 verbose headers   'content-encoding': 'gzip' }
+34 silly get cb [ 200,
+34 silly get   { date: 'Tue, 14 Aug 2018 13:06:58 GMT',
+34 silly get     'content-type': 'application/json; charset=UTF-8',
+34 silly get     'transfer-encoding': 'chunked',
+34 silly get     connection: 'keep-alive',
+34 silly get     'set-cookie': [ '__cfduid=d28a9c8279211644b42fd33b1d4a7e2581534252018; expires=Wed, 14-Aug-19 13:06:58 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+34 silly get     'cache-control': 'max-age=300',
+34 silly get     'cf-cache-status': 'HIT',
+34 silly get     'cf-ray': '44a3a44b2d414155-CAI',
+34 silly get     etag: 'W/"907dc09033ad023ee4b027be16eb4b5d"',
+34 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+34 silly get     'last-modified': 'Sat, 26 May 2018 16:45:26 GMT',
+34 silly get     vary: 'accept-encoding, accept',
+34 silly get     server: 'cloudflare',
+34 silly get     'content-encoding': 'gzip' } ]
+35 verbose get saving angular-nvd3 to C:\Users\Sherif\AppData\Roaming\npm-cache\registry.npmjs.org\angular-nvd3\.cache.json
+36 verbose correctMkdir C:\Users\Sherif\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+37 silly fetchPackageMetaData Error: No compatible version found: angular-nvd3@1.8.4
+37 silly fetchPackageMetaData Valid install targets:
+37 silly fetchPackageMetaData 1.0.9, 1.0.8, 1.0.7, 1.0.6, 1.0.5, 1.0.4, 1.0.3, 1.0.2, 1.0.2-dev, 1.0.1, 1.0.0-beta
+37 silly fetchPackageMetaData
+37 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (C:\Program Files\nodejs\node_modules\npm\lib\fetch-package-metadata.js:178:16)
+37 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\iferr\index.js:13:50
+37 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\lib\utils\pulse-till-done.js:20:8
+37 silly fetchPackageMetaData     at saved (C:\Program Files\nodejs\node_modules\npm\lib\cache\caching-client.js:174:7)
+37 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:241:18
+37 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:123:15)
+37 silly fetchPackageMetaData  error for angular-nvd3@1.8.4 { Error: No compatible version found: angular-nvd3@1.8.4
+37 silly fetchPackageMetaData Valid install targets:
+37 silly fetchPackageMetaData 1.0.9, 1.0.8, 1.0.7, 1.0.6, 1.0.5, 1.0.4, 1.0.3, 1.0.2, 1.0.2-dev, 1.0.1, 1.0.0-beta
+37 silly fetchPackageMetaData
+37 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (C:\Program Files\nodejs\node_modules\npm\lib\fetch-package-metadata.js:178:16)
+37 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\iferr\index.js:13:50
+37 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\lib\utils\pulse-till-done.js:20:8
+37 silly fetchPackageMetaData     at saved (C:\Program Files\nodejs\node_modules\npm\lib\cache\caching-client.js:174:7)
+37 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:241:18
+37 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:123:15) code: 'ETARGET' }
+38 silly rollbackFailedOptional Starting
+39 silly rollbackFailedOptional Finishing
+40 silly runTopLevelLifecycles Finishing
+41 silly install printInstalled
+42 verbose stack Error: No compatible version found: angular-nvd3@1.8.4
+42 verbose stack Valid install targets:
+42 verbose stack 1.0.9, 1.0.8, 1.0.7, 1.0.6, 1.0.5, 1.0.4, 1.0.3, 1.0.2, 1.0.2-dev, 1.0.1, 1.0.0-beta
+42 verbose stack
+42 verbose stack     at pickVersionFromRegistryDocument (C:\Program Files\nodejs\node_modules\npm\lib\fetch-package-metadata.js:178:16)
+42 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\iferr\index.js:13:50
+42 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\utils\pulse-till-done.js:20:8
+42 verbose stack     at saved (C:\Program Files\nodejs\node_modules\npm\lib\cache\caching-client.js:174:7)
+42 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:241:18
+42 verbose stack     at FSReqWrap.oncomplete (fs.js:123:15)
+43 verbose cwd C:\Users\Sherif\Desktop\Projects\operationSurvey\Survey_Version2\BackEnd\src
+44 error Windows_NT 10.0.16299
+45 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "angular-nvd3@1.8.4"
+46 error node v6.11.2
+47 error npm  v3.10.10
+48 error code ETARGET
+49 error notarget No compatible version found: angular-nvd3@1.8.4
+49 error notarget Valid install targets:
+49 error notarget 1.0.9, 1.0.8, 1.0.7, 1.0.6, 1.0.5, 1.0.4, 1.0.3, 1.0.2, 1.0.2-dev, 1.0.1, 1.0.0-beta
+50 error notarget This is most likely not a problem with npm itself.
+50 error notarget In most cases you or one of your dependencies are requesting
+50 error notarget a package version that doesn't exist.
+51 verbose exit [ 1, true ]

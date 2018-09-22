@@ -1,0 +1,160 @@
+<div class="modal-content">
+    <div class="modal-header bordered">
+        <h2 class="pmd-card-title-text">{{'HotelReservation' | translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="editHotelReservationForm">
+
+            <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                <label for="first-name">{{'Tickect No' | translate}}</label>
+                <input readonly="readonly" type="text" class="mat-input form-control"
+                       ng-model="editHotelReservationCtrl.HotelReservation.tickectNo">
+                    </div>
+
+                <div>
+                    <br>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in editHotelReservationCtrl.language">
+                            <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">
+                                {{lang.value | translate}}
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="pmd-card">
+                        <div class="pmd-card-body">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in editHotelReservationCtrl.language" id="{{lang.value}}-form">
+                                    <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                                        <label for="first-name"> {{ lang.value+'Name' | translate}} </label>
+                                        <input readonly="readonly" required type="text" class="mat-input form-control"
+                                                  name="titleDictionary{{lang.value+'Name'}}"
+                                                  ng-model="editHotelReservationCtrl.HotelReservation.hotel.titleDictionary[lang.key]"
+                                               />  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> 
+                <div class="row">
+                        <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'checkIn' | translate}}</label>
+                        <input  id="checkin"  type="text" class="mat-input form-control"
+                               ng-model="editHotelReservationCtrl.HotelReservation.checkIn">
+                    </div>
+
+                    <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'checkOut' | translate}}</label>
+                        <input  id="checkout"  type="text"  required class="mat-input form-control"
+                               ng-model="editHotelReservationCtrl.HotelReservation.checkOut">
+                               <!-- <input type="text" id="startdate" class="form-control" required /> -->
+                             </div>
+
+
+                </div>
+             
+                <div class="row">
+                        <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'Child' | translate}}</label>
+                        <input   type="text" class="mat-input form-control" numbers-only name="child"  ng-minlength="1" ng-maxlength="3"
+                               ng-model="editHotelReservationCtrl.HotelReservation.child">
+                               <span class="error" ng-show="editHotelReservationForm.child.$error.pattern">{{'Not Child Number' | translate}} </span>
+                               <div ng-messages="editHotelReservationForm.child.$error">
+                                   <div ng-if="editHotelReservationForm.child.$error.required && !editHotelReservationForm.child.$pristine">{{'Child required' | translate}}</div>
+                                   <div ng-if="(editHotelReservationForm.child.$error.minlength || editHotelReservationForm.child.$error.maxlength)">{{'PhoneLengthError' | translate}}</div>
+                               </div>
+                            
+                            </div>
+
+                    <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'Adult' | translate}}</label>
+                        <input  type="text" class="mat-input form-control" numbers-only name="adult"  ng-minlength="1" ng-maxlength="3"
+                               ng-model="editHotelReservationCtrl.HotelReservation.adult">
+                               <span class="error" ng-show="editHotelReservationForm.adult.$error.pattern">{{'Not Adult Number' | translate}} </span>
+                               <div ng-messages="editHotelReservationForm.adult.$error">
+                                   <div ng-if="editHotelReservationForm.adult.$error.required && !editHotelReservationForm.adult.$pristine">{{'Adult required' | translate}}</div>
+                                   <div ng-if="(editHotelReservationForm.adult.$error.minlength || editHotelReservationForm.adult.$error.maxlength)">{{'PhoneLengthError' | translate}}</div>
+                               </div>
+                            
+                      </div>
+                      <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                            <label for="first-name">{{'roomCount' | translate}}</label>
+                            <input  type="text" class="mat-input form-control" numbers-only name="roomCount"  ng-minlength="1" ng-maxlength="3"
+                                   ng-model="editHotelReservationCtrl.HotelReservation.roomCount">
+                                   <span class="error" ng-show="editHotelReservationForm.roomCount.$error.pattern">{{'Not roomCount Number' | translate}} </span>
+                                   <div ng-messages="editHotelReservationForm.roomCount.$error">
+                                       <div ng-if="editHotelReservationForm.roomCount.$error.required && !editHotelReservationForm.roomCount.$pristine">{{'roomCount required' | translate}}</div>
+                                       <div ng-if="(editHotelReservationForm.roomCount.$error.minlength || editHotelReservationForm.roomCount.$error.maxlength)">{{'PhoneLengthError' | translate}}</div>
+                                   </div>
+                                
+                          </div>
+
+                </div>
+                <div class="row"> 
+                        <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'UserName' | translate}}</label>
+                        <input readonly="readonly" type="text" class="mat-input form-control"
+                               ng-model="editHotelReservationCtrl.HotelReservation.user.fullName">
+                    </div>
+                    <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'Email' | translate}}</label>
+                        <input readonly="readonly" type="text" class="mat-input form-control"
+                               ng-model="editHotelReservationCtrl.HotelReservation.user.email">
+                    </div>
+                    <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'phone' | translate}}</label>
+                        <input readonly="readonly" type="text" class="mat-input form-control"
+                               ng-model="editHotelReservationCtrl.HotelReservation.user.phone">
+                    </div>
+                </div>
+                
+                <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'Status' | translate}}</label>
+                        <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags" 
+                            ng-model="selectedStatus" ng-options="group as group.text for group in StatusList">
+                
+                        </select> 
+                        {{selectedStatus.id}}
+                    </div> 
+                    
+        </form>
+    </div>
+    <div class="pmd-modal-action text-right">
+        <button ng-disabled="editHotelReservationForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editHotelReservationCtrl.UpdateHotelReservation()">{{'saveChangesBtn' | translate}}</button>
+        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editHotelReservationCtrl.Close()">{{'DiscardBtn' | translate}}</button>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () { 
+        $(".select-tags").select2({
+            tags: false,
+            theme: "bootstrap",
+        })
+
+        $(".select-with-search").select2({
+            theme: "bootstrap"
+        });
+    });
+
+     $(function () {
+        $('#checkin').datetimepicker(
+            {
+                //   viewMode: 'years',
+                //  format: 'DD/MM/YYYY',
+                minDate: new Date()
+            }
+    );
+    $('#checkout').datetimepicker(
+            {
+                //   viewMode: 'years',
+                //  format: 'DD/MM/YYYY',
+                minDate: new Date()
+            }
+    );
+    });
+</script>

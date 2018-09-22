@@ -1,0 +1,58 @@
+
+<div> 
+    <div ng-if="CareerFormList.results.length == 0">
+        <span>{{'NoCareerFormsAvailable' | translate}}</span>
+    </div>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="CareerFormList.results.length > 0">
+        <div class="table-responsive"></div>
+        <table class="table pmd-table table-hover">
+            <thead>
+                <tr>
+                        <th>{{'userName' | translate}}</th> 
+                        <th>{{'EmailLbl' | translate}}</th> 
+                        <th>{{'Phone1Lbl' | translate}}</th>  
+                        <th>{{'Career' | translate}}</th>  
+                        <th>{{'Date' | translate}}</th>  
+                    <th>Message</th>
+                    <th>download</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="CareerForm in CareerFormList.results">
+                    <td data-title="name">{{CareerForm.fullName}}</td>
+                    <td data-title="email">{{CareerForm.email}}</td>
+                     
+                    <td data-title="phoneNo">{{CareerForm.phoneNo}}</td>
+                   
+                    <td data-title="career">{{CareerForm.career.title}}</td>
+                    <td data-title="date">{{CareerForm.creationTime || Date}}</td>
+                    <td data-title="message"> <button ng-click="toggleModal(CareerForm)" class="btn btn-default">Message</button></td>
+                    <td >
+                        <a class="btn btn-primary editable-table-button btn-xs btn-with-icon" style="width: 94px;" 
+                        target="_top" href="{{FrontServer}}/Images/{{CareerForm.file}}" download="{{CareerForm.File}}">
+                        <i class="fa fa-cloud-download" aria-hidden="true"></i> Download CV</a>
+                        
+                        <!-- <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editCareerForm',{CareerFormId: CareerForm.CareerFormId});">Download CV</i> -->
+                    </td>
+                    <td data-title="name"><div class="buttons" ng-show="!CareerForm.Seen">
+                            <button class="center-block btn btn-default  restore-button btn-xs btn-with-icon"
+                             ng-click="Seen(CareerForm)"><i class="fa fa-undo" aria-hidden="true"></i> Seen</button>
+                        </div>
+                        <div class="buttons" ng-show="CareerForm.Seen">
+                            {{CareerForm.SeenBy}}
+                        </div>
+                    </td>   </tr>
+                 
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>
+<modal title="Display message" visible="showModal">
+ 
+  {{showmessage}} 
+    
+  </modal>

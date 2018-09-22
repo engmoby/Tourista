@@ -1,0 +1,14 @@
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\bin\Debug\OperationSurvey.Common.dll
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\bin\Debug\OperationSurvey.Common.pdb
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\obj\Debug\OperationSurvey.Common.dll
+E:\Projects\Operation Survey\Project\Operation Survey\OperationSurvey.Common\obj\Debug\OperationSurvey.Common.pdb
+E:\Projects\SurveyV2\Operation Survey\OperationSurvey.Common\bin\Debug\OperationSurvey.Common.dll
+E:\Projects\SurveyV2\Operation Survey\OperationSurvey.Common\bin\Debug\OperationSurvey.Common.pdb
+E:\Projects\SurveyV2\Operation Survey\OperationSurvey.Common\obj\Debug\OperationSurvey.Common.csprojResolveAssemblyReference.cache
+E:\Projects\SurveyV2\Operation Survey\OperationSurvey.Common\obj\Debug\OperationSurvey.Common.dll
+E:\Projects\SurveyV2\Operation Survey\OperationSurvey.Common\obj\Debug\OperationSurvey.Common.pdb
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\OperationSurvey.Common\bin\Debug\OperationSurvey.Common.dll
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\OperationSurvey.Common\bin\Debug\OperationSurvey.Common.pdb
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\OperationSurvey.Common\obj\Debug\OperationSurvey.Common.csprojResolveAssemblyReference.cache
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\OperationSurvey.Common\obj\Debug\OperationSurvey.Common.dll
+E:\Projects\Operation Survey\Project\Survey_Version2\Operation Survey\OperationSurvey.Common\obj\Debug\OperationSurvey.Common.pdb

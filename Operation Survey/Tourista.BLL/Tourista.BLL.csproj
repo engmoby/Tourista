@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EBC7B380-15AD-4C27-A194-5D965F554076}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tourista.BLL</RootNamespace>
+    <AssemblyName>Tourista.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MSharp.Framework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b8f6365a003d114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSharp.Framework.2.1.0.726\lib\net45\MSharp.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="sdk, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\API.SDK.Profit365.1.3.8\lib\net40\sdk.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Windows, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MyTestPackage-WinMD.1.0.0\lib\Windows.winmd</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataServices\ContactService .cs" />
+    <Compile Include="DataServices\ContactTranslationService.cs" />
+    <Compile Include="DataServices\CareerFormService.cs" />
+    <Compile Include="DataServices\AboutTranslationService.cs" />
+    <Compile Include="DataServices\AboutService.cs" />
+    <Compile Include="DataServices\HotelFeatureService.cs" />
+    <Compile Include="DataServices\CareerService.cs" />
+    <Compile Include="DataServices\HotelService.cs" />
+    <Compile Include="DataServices\HotelTranslationService.cs" />
+    <Compile Include="DataServices\FeatureService.cs" />
+    <Compile Include="DataServices\FeatureTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\IContactService.cs" />
+    <Compile Include="DataServices\Interfaces\IContactTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\ICareerFormService.cs" />
+    <Compile Include="DataServices\Interfaces\IAboutTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\IAboutService.cs" />
+    <Compile Include="DataServices\Interfaces\IHotelFeatureService.cs" />
+    <Compile Include="DataServices\Interfaces\ICareerService.cs" />
+    <Compile Include="DataServices\Interfaces\IHotelService.cs" />
+    <Compile Include="DataServices\Interfaces\IHotelTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\IFeatureService.cs" />
+    <Compile Include="DataServices\Interfaces\IFeatureTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\IHotelReservationService.cs" />
+    <Compile Include="DataServices\Interfaces\IOwnerService.cs" />
+    <Compile Include="DataServices\Interfaces\IOwnerTranslationService.cs" />
+    <Compile Include="DataServices\HotelReservationService.cs" />
+    <Compile Include="DataServices\OwnerService.cs" />
+    <Compile Include="DataServices\OwnerTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\INewsService.cs" />
+    <Compile Include="DataServices\Interfaces\INewsTranslationService.cs" />
+    <Compile Include="DataServices\NewsService.cs" />
+    <Compile Include="DataServices\NewsTranslationService.cs" />
+    <Compile Include="DataServices\CurrencyService.cs" />
+    <Compile Include="DataServices\CurrencyTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\ICurrencyService.cs" />
+    <Compile Include="DataServices\Interfaces\ICountryService.cs" />
+    <Compile Include="DataServices\Interfaces\ICurrencyTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\ICountryTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\ICityService.cs" />
+    <Compile Include="DataServices\Interfaces\ICityTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\IRefreshTokenService.cs" />
+    <Compile Include="DataServices\Interfaces\IUserService.cs" />
+    <Compile Include="DataServices\CountryService.cs" />
+    <Compile Include="DataServices\CountryTranslationService.cs" />
+    <Compile Include="DataServices\CityService.cs" />
+    <Compile Include="DataServices\CityTranslationService.cs" />
+    <Compile Include="DataServices\RefreshTokenService.cs" />
+    <Compile Include="DataServices\UserService.cs" />
+    <Compile Include="DTOs\ContactDto.cs" />
+    <Compile Include="DTOs\AdminDto.cs" />
+    <Compile Include="DTOs\CareerFromDto.cs" />
+    <Compile Include="DTOs\CareerDto.cs" />
+    <Compile Include="DTOs\HotelDto.cs" />
+    <Compile Include="DTOs\CurrencyDto.cs" />
+    <Compile Include="DTOs\OwnerDto.cs" />
+    <Compile Include="DTOs\FeatureDto.cs" />
+    <Compile Include="DTOs\NewsDto.cs" />
+    <Compile Include="DTOs\PagedResultsDto.cs" />
+    <Compile Include="DTOs\RefreshTokenDto.cs" />
+    <Compile Include="DTOs\PermissionDto.cs" />
+    <Compile Include="DTOs\CountryDto.cs" />
+    <Compile Include="DTOs\CityDto.cs" />
+    <Compile Include="DTOs\HotelFeatureDto.cs" />
+    <Compile Include="DTOs\HotelReservationDto.cs" />
+    <Compile Include="DTOs\AboutDto.cs" />
+    <Compile Include="DTOs\UserDto.cs" />
+    <Compile Include="Services\ContactFacade.cs" />
+    <Compile Include="Services\BaseFacade.cs" />
+    <Compile Include="Services\CareerFormFacade.cs" />
+    <Compile Include="Services\CareerFacade.cs" />
+    <Compile Include="Services\AboutFacade.cs" />
+    <Compile Include="Services\HotelFacade.cs" />
+    <Compile Include="Services\Interfaces\IContactFacade.cs" />
+    <Compile Include="Services\Interfaces\ICareerFormFacade.cs" />
+    <Compile Include="Services\Interfaces\ICareerFacade.cs" />
+    <Compile Include="Services\Interfaces\IHotelFacade.cs" />
+    <Compile Include="Services\Interfaces\IFeatureFacade.cs" />
+    <Compile Include="Services\Interfaces\IHotelReservationFacade.cs" />
+    <Compile Include="Services\Interfaces\IOwnerFacade.cs" />
+    <Compile Include="Services\HotelReservationFacade.cs" />
+    <Compile Include="Services\Interfaces\IAboutFacade.cs" />
+    <Compile Include="Services\OwnerFacade.cs" />
+    <Compile Include="Services\FeatureFacade.cs" />
+    <Compile Include="Services\Interfaces\INewsFacade.cs" />
+    <Compile Include="Services\NewsFacade.cs" />
+    <Compile Include="Services\CurrencyFacade.cs" />
+    <Compile Include="Services\Interfaces\ICurrencyFacade.cs" />
+    <Compile Include="Services\Interfaces\IRefreshTokenFacade.cs" />
+    <Compile Include="Services\Interfaces\ICountryFacade.cs" />
+    <Compile Include="Services\Interfaces\ICityFacade.cs" />
+    <Compile Include="Services\Interfaces\IUserFacade.cs" />
+    <Compile Include="Services\FormToMail\FormToMail.cs" />
+    <Compile Include="Services\FormToMail\IFormToMail.cs" />
+    <Compile Include="Services\ManageStorage\IManageStorage.cs" />
+    <Compile Include="Services\ManageStorage\ManageStorage.cs" />
+    <Compile Include="Services\RefreshTokenFacade.cs" />
+    <Compile Include="Services\CountryFacade.cs" />
+    <Compile Include="Services\CityFacade.cs" />
+    <Compile Include="Services\UserFacade.cs" />
+    <Compile Include="TouristaBLLConfig.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Frameworks\Repository.Pattern.Ef6\Repository.Pattern.Ef6.csproj">
+      <Project>{f68a1d19-93fb-47c1-a22b-42bea3e4fd8c}</Project>
+      <Name>Repository.Pattern.Ef6</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Frameworks\Repository.Pattern\Repository.Pattern.csproj">
+      <Project>{6e682a14-c872-4813-b620-76e108dea683}</Project>
+      <Name>Repository.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Frameworks\Service.Pattern\Service.Pattern.csproj">
+      <Project>{3fa0c7b6-3a40-40a7-bdd7-dd72426f6f19}</Project>
+      <Name>Service.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tourista.Common\Tourista.Common.csproj">
+      <Project>{626dde3c-77da-48d5-8e74-f2606a506174}</Project>
+      <Name>Tourista.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tourista.DAL\Tourista.DAL.csproj">
+      <Project>{a61ca74c-49dc-438d-821b-7c6ed6f59d49}</Project>
+      <Name>Tourista.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MailTemplate.html" />
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

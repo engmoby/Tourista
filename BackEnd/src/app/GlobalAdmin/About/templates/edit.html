@@ -1,0 +1,57 @@
+<div class="modal-content">
+	<div class="modal-header bordered">
+		<h2 class="pmd-card-title-text">{{'About' | translate}}</h2>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" name="editAboutForm"> 
+                <div> 
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in editAboutCtrl.language">
+                            <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">
+                                {{lang.value | translate}}
+                            </a>
+                        </li> 
+                    </ul>
+                    <div class="pmd-card">
+                        <div class="pmd-card-body">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in editAboutCtrl.language" id="{{lang.value}}-form">
+                                    <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                                        <label for="first-name"> {{ lang.value+'Description' | translate}} </label>
+                                        <textarea required type="text" class="mat-input form-control" 
+                                        name="descriptionDictionary{{lang.value+'Name'}}"
+                                         ng-model="editAboutCtrl.About.descriptionDictionary[lang.key]"
+                                          ng-minlength="3" ng-maxlength="255"></textarea>
+                                        <div ng-messages="editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$error" >
+                                            
+                                            <div ng-show="editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$error.required && !editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                            <div ng-show="(editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$error.minlength || editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$error.maxlength) && !editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+
+                   
+                    </div>
+                </div> 
+                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'VideoUrl' | translate}}</label>
+      
+                    <input required type="text" class="mat-input form-control" name="videoUrl" ng-model="editAboutCtrl.About.videoUrl" ng-minlength="3" ng-maxlength="50">
+                    <div ng-messages="editAboutForm.videoUrl.$error">
+                        <div ng-if="editAboutForm.videoUrl.$error.required && !editAboutForm.videoUrl.$pristine">{{'VideoUrl Is required' | translate}}</div>
+                        <div ng-if="(editAboutForm.videoUrl.$error.minlength || editAboutForm.videoUrl.$error.maxlength) && !editAboutForm.videoUrl.$error.required">{{'VideoUrl must more that 3 characters' | translate}}</div>
+                    </div>
+                </div>
+		</form>
+	</div>
+	<div class="pmd-modal-action text-right">
+		<button ng-disabled="editAboutForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editAboutCtrl.UpdateAbout()">{{'saveChangesBtn' | translate}}</button>
+		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editAboutCtrl.Close()">{{'DiscardBtn' | translate}}</button>
+	</div>
+</div>
+
+	

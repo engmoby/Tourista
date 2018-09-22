@@ -1,0 +1,5 @@
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\bin\Debug\Tourista.Common.dll
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\bin\Debug\Tourista.Common.pdb
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.dll
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.pdb
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.csprojResolveAssemblyReference.cache

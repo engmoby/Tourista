@@ -1,0 +1,39 @@
+
+<div>
+    <div style="margin-bottom:10px">
+        <button ng-click="$state.go('newCurrency');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{'AddNew' | translate}}</button>
+
+    </div> 
+    <div ng-if="CurrencyList.results.length == 0">
+        <span>{{'NoCurrencysAvailable' | translate}}</span>
+    </div>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="CurrencyList.results.length > 0">
+        <div class="table-responsive"></div>
+        <table class="table pmd-table table-hover">
+            <thead>
+                <tr>
+                    <th>{{'Name' | translate}}</th>
+                    <!-- <th>{{'status' | translate}}</th>  -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Currency in CurrencyList.results">
+                    <td data-title="Name">{{Currency.titleDictionary[selectedLanguage]}}</td>
+                    
+                    <!-- <td>
+                        <p ng-show="Currency.isStatic"> Static</p>
+                    </td> --> 
+                   
+                    <td width="30%" ng-show="!Currency.isStatic">
+                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editCurrency',{currencyId: Currency.currencyId});">mode_edit</i>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>

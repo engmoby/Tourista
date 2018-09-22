@@ -1,0 +1,166 @@
+
+  <div class="modal-content">
+    <div class="modal-header bordered">
+        <h2 class="pmd-card-title-text">{{'NewHotel' | translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="newHotelForm"> 
+            <div> 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in newHotelCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">
+                            {{lang.value | translate}}
+                        </a>
+                    </li> 
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in newHotelCtrl.language" id="{{lang.value}}-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label for="first-name"> {{ lang.value+'Name' | translate}} </label>
+                                    <input required Hotel="text" class="mat-input form-control" name="titleDictionary{{lang.value+'Name'}}" ng-model="newHotelCtrl.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">
+                                    <div ng-messages="newHotelForm.titleDictionary{{lang.value+'Name'}}.$error" >
+										
+                                        <div ng-show="newHotelForm.titleDictionary{{lang.value+'Name'}}.$error.required && !newHotelForm.titleDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                        <div ng-show="(newHotelForm.titleDictionary{{lang.value+'Name'}}.$error.minlength || newHotelForm.titleDictionary{{lang.value+'Name'}}.$error.maxlength) && !newHotelForm.titleDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+           
+            <div> 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in newHotelCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-desc-form" aria-controls="home" role="tab" data-toggle="tab">
+                            {{lang.value | translate}}
+                        </a>
+                    </li> 
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in newHotelCtrl.language" id="{{lang.value}}-desc-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label for="first-name"> {{ lang.value+'Description' | translate}} </label>
+                                    <textarea required News="text" class="mat-input form-control"
+                                     name="descriptionDictionary{{lang.value+'Name'}}" 
+                                     ng-model="newHotelCtrl.descriptionDictionary[lang.key]" ng-minlength="3" ng-maxlength="255"></textarea>
+                                    <div ng-messages="newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$error" >
+										
+                                        <div ng-show="newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$error.required && !newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                        <div ng-show="(newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$error.minlength || newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$error.maxlength) && !newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'Country' | translate}}</label>
+            
+                        <select required style="width:50% !important" class="form-control select-with-search pmd-select2-tags" ng-change="CountryChange()"
+                            ng-model="selectedCountry" ng-options="a as a.titleDictionary[selectedLanguage] for a in CountryList"></select>
+                    </div>
+            
+                    <div class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label for="first-name">{{'City' | translate}}</label>
+            
+                        <select required style="width:50% !important" class="form-control select-with-search pmd-select2-tags" ng-change="CityChange()"
+                            ng-model="selectedCity" ng-options="a as a.titleDictionary[selectedLanguage] for a in CityList"></select>
+                    </div>
+            
+            
+                    <div style="margin-right: 50px; width: 150px;"  class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                        <label>{{'Star' | translate}}</label>
+                        <input required type="text" class="mat-input form-control" name="star"
+                         numbers-only ng-model="newHotelCtrl.star" ng-minlength="1" ng-maxlength="1">
+        
+        <div ng-messages="newHotelForm.phone.$error">
+            <div ng-if="newHotelForm.phone.$error.required && !newHotelForm.phone.$pristine">{{'Star Required' | translate}}</div>
+            <div ng-if="(newHotelForm.phone.$error.minlength || newHotelForm.phone.$error.maxlength)">{{'Max 1 number' | translate}}</div>
+        </div>
+
+                    </div>
+                    <div class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                            <label>{{'Location' | translate}}</label>
+                            <input type="text" class="mat-input form-control" gm-places-autocomplete ng-model="autocomplete" style="width: 300px;"/>
+                            <input type="text"  name="late" required hidden="hidden"  ng-model="newHotelCtrl.latitude" />
+                            <div ng-messages="newHotelForm.late.$error">
+                                    <div ng-if="newHotelForm.late.$error.required && !newHotelForm.late.$pristine">{{'Location Required' | translate}}</div>
+                             </div>
+                     </div>
+                        
+                        
+                   
+                </div>
+
+
+    <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+            <label> {{ 'Features' | translate}} </label>
+            <select required style="width:100% !important" class="form-control select-with-search pmd-select2-tags" multiple 
+            ng-model="newHotelCtrl.selectedfeatures"
+                ng-options="feature as feature.titleDictionary[selectedLanguage] for feature in FeatureList"></select>
+    
+        </div>
+
+
+            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+
+                <input id="file" name="file" style="display: none;" onchange="angular.element(this).scope().AddFile(this.files)"   type="file">
+                <button class="btn btn-primary editable-table-button btn-xs btn-with-icon" ng-click="newHotelCtrl.LoadUploadImages()">{{'AddImageBtn' |translate}}</button>
+        
+                <br>
+                <div>
+                    <table>
+                        <tbody>
+                            <tr ng-repeat="file in newHotelCtrl.files">
+                                <td>
+                                    {{file.name}}
+                                </td>
+                                <td>
+                                    <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="newHotelCtrl.removeFile($index)">delete</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="pmd-modal-action text-right">
+        <button ng-disabled="newHotelForm.$invalid || newHotelCtrl.files.length == 0 || newHotelCtrl.latitude  == ''" class="btn pmd-ripple-effect btn-primary" Hotel="button" ng-click="newHotelCtrl.AddNewHotel()">{{'saveChangesBtn' | translate}}</button>
+        <button class="btn pmd-ripple-effect btn-default" Hotel="button" ng-click="$state.go('Hotel');">{{'DiscardBtn' | translate}}</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // $(".select-add-tags").select2({
+        //     tags: true,
+        //     theme: "bootstrap",
+        //     insertTag: function (data, tag) { 
+        //         data.push(tag); 
+        //     }
+        // });
+        $(".select-tags").select2({
+            tags: false,
+            theme: "bootstrap",
+        })
+
+        $(".select-with-search").select2({
+            theme: "bootstrap"
+        });
+    });
+</script>
