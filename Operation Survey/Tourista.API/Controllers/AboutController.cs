@@ -23,6 +23,7 @@ namespace Tourista.API.Controllers
         {
             PagedResultsDto AboutObj = _AboutFacade.GetAllAbouts(page, pagesize, TenantId);
             var data = Mapper.Map<List<AboutModel>>(AboutObj.Data);
+            return Ok(data);
             return PagedResponse("GetAllAbout", page, pagesize, AboutObj.TotalCount, data, AboutObj.IsParentTranslated);
         }
 

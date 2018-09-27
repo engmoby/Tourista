@@ -109,6 +109,10 @@ namespace Tourista.BLL.Services
         {
             return _newsService.GetAllNewss(page, pageSize, tenantId);
         }
+        public PagedResultsDto GetAllOnlineNewss(int page, int pageSize, int tenantId)
+        {
+            return _newsService.GetAllOnlineNewss(page, pageSize, tenantId);
+        }
 
 
         private void ValidateNews(NewsDto NewsDto, long tenantId)

@@ -8,5 +8,6 @@ namespace Tourista.BLL.Services.Interfaces
         OwnerDto CreateOwner(OwnerDto userDto, int userId, int tenantId); 
         OwnerDto EditOwner(OwnerDto userDto, int userId, int tenantId);
         PagedResultsDto GetAllOwners(int page, int pageSize, int tenantId); 
+        PagedResultsDto GetAllOnlineOwners(int page, int pageSize, int tenantId);
     }
 }

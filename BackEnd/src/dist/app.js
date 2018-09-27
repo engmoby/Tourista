@@ -1,43 +1,4 @@
-(function() {
-    'use strict';
-
-      angular
-      .module('home')
-      .config(config)
-      .run(runBlock);
-
-      config.$inject = ['ngProgressLiteProvider'];
-    runBlock.$inject = ['$rootScope', 'ngProgressLite' ];
-
-      function config(ngProgressLiteProvider) {
-      ngProgressLiteProvider.settings.speed = 1000;
-
-      }
-
-      function runBlock($rootScope, ngProgressLite ) {
-
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-          startProgress();
-      });
-      var routingDoneEvents = ['$stateChangeSuccess', '$stateChangeError', '$stateNotFound'];
-
-        angular.forEach(routingDoneEvents, function(event) {
-        $rootScope.$on(event, function(event, toState, toParams, fromState, fromParams) {
-          endProgress();
-        });
-      });
-
-        function startProgress() {
-        ngProgressLite.start();
-      }
-
-        function endProgress() {
-        ngProgressLite.done();
-      }
-
-      }
-  })();
-  (function () {
+(function () {
     'use strict';
 
     angular
@@ -856,6 +817,157 @@ function HotelByIdPrepService(HotelResource, $stateParams) {
         return dashboardResource.getTicketsDashboard().$promise;
     }
 }());
+(function() {
+    'use strict';
+
+      angular
+      .module('home')
+      .config(config)
+      .run(runBlock);
+
+      config.$inject = ['ngProgressLiteProvider'];
+    runBlock.$inject = ['$rootScope', 'ngProgressLite' ];
+
+      function config(ngProgressLiteProvider) {
+      ngProgressLiteProvider.settings.speed = 1000;
+
+      }
+
+      function runBlock($rootScope, ngProgressLite ) {
+
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+          startProgress();
+      });
+      var routingDoneEvents = ['$stateChangeSuccess', '$stateChangeError', '$stateNotFound'];
+
+        angular.forEach(routingDoneEvents, function(event) {
+        $rootScope.$on(event, function(event, toState, toParams, fromState, fromParams) {
+          endProgress();
+        });
+      });
+
+        function startProgress() {
+        ngProgressLite.start();
+      }
+
+        function endProgress() {
+        ngProgressLite.done();
+      }
+
+      }
+  })();
+  (function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('AboutController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'AboutResource', 'AboutPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', AboutController]);
+
+
+    function AboutController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, AboutResource, AboutPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.totalCount = AboutPrepService.totalCount;
+        $scope.AboutList = AboutPrepService; 
+      console.log( $scope.AboutList);
+        function refreshAbouts() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = AboutResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.AboutList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshAbouts();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('AboutResource', ['$resource', 'appCONSTANTS', AboutResource]) 
+
+    function AboutResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'About/', {}, {
+            GetAllAbout: { method: 'GET', url: appCONSTANTS.API_URL + 'About/GetAllAbout', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'About/EditAbout', useToken: true },
+            getAbout: { method: 'GET', url: appCONSTANTS.API_URL + 'About/GetAboutById/:AboutId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editAboutDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'AboutResource', 'ToastService',
+            'AboutByIdPrepService', editAboutDialogController])
+
+    function editAboutDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, AboutResource, ToastService, AboutByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.About = AboutByIdPrepService; 
+      console.log( vm.About);
+        vm.Close = function () {
+            $state.go('About');
+        }
+        vm.UpdateAbout = function () { 
+            blockUI.start("Loading..."); 
+            debugger;
+            var updateObj = new AboutResource();
+            updateObj.aboutId = vm.About.aboutId;
+            updateObj.descriptionDictionary = vm.About.descriptionDictionary; 
+            updateObj.videoUrl = vm.About.videoUrl; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('About');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
 (function () {
     'use strict';
 
@@ -1017,240 +1129,6 @@ function HotelByIdPrepService(HotelResource, $stateParams) {
         blockUI.stop();
 
         	}	
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('AboutController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'AboutResource', 'AboutPrepService',  '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', AboutController]);
-
-
-    function AboutController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, AboutResource, AboutPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
-
-        blockUI.start("Loading..."); 
-
-                    var vm = this;
-        $scope.totalCount = AboutPrepService.totalCount;
-        $scope.AboutList = AboutPrepService; 
-      console.log( $scope.AboutList);
-        function refreshAbouts() {
-
-            blockUI.start("Loading..."); 
-
-                        var k = AboutResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.AboutList = results  
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshAbouts();
-        }
-        blockUI.stop();
-
-            }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('AboutResource', ['$resource', 'appCONSTANTS', AboutResource]) 
-
-    function AboutResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'About/', {}, {
-            GetAllAbout: { method: 'GET', url: appCONSTANTS.API_URL + 'About/GetAllAbout', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'About/EditAbout', useToken: true },
-            getAbout: { method: 'GET', url: appCONSTANTS.API_URL + 'About/GetAboutById/:AboutId', useToken: true }
-        })
-    } 
-
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editAboutDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'AboutResource', 'ToastService',
-            'AboutByIdPrepService', editAboutDialogController])
-
-    function editAboutDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, AboutResource, ToastService, AboutByIdPrepService) {
-        blockUI.start("Loading..."); 
-
-                var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.About = AboutByIdPrepService; 
-      console.log( vm.About);
-        vm.Close = function () {
-            $state.go('About');
-        }
-        vm.UpdateAbout = function () { 
-            blockUI.start("Loading..."); 
-            debugger;
-            var updateObj = new AboutResource();
-            updateObj.aboutId = vm.About.aboutId;
-            updateObj.descriptionDictionary = vm.About.descriptionDictionary; 
-            updateObj.videoUrl = vm.About.videoUrl; 
-		    updateObj.$update().then(
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
-
-                     $state.go('About');
-
-                },
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-        blockUI.stop();
-
-        	}	
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('CityController', ['$rootScope', '$scope', '$filter', '$translate',
-            '$state', 'CityResource',   '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', CityController]);
-
-
-    function CityController($rootScope, $scope, $filter, $translate,
-        $state, CityResource,  $localStorage, authorizationService,
-        appCONSTANTS, ToastService) {
-
-        blockUI.start("Loading..."); 
-
-                    refreshCitys();
-
-        function refreshCitys() {
-           blockUI.start("Loading..."); 
-
-                        var k = CityResource.getAllCitys().$promise.then(function (results) {
-                $scope.CityList = results;
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-
-    }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('CityResource', ['$resource', 'appCONSTANTS', CityResource]) 
-
-    function CityResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'Cities/', {}, {
-            getAllCities: { method: 'GET', url: appCONSTANTS.API_URL + 'Cities/GetAllCities', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Cities/EditCity', useToken: true },
-            getCity: { method: 'GET', url: appCONSTANTS.API_URL + 'Cities/GetCityById/:CityId', useToken: true }
-        })
-    } 
-
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('createCityDialogController', ['$scope', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CityResource', 'ToastService', '$rootScope', 'CountryByIdPrepService', createCityDialogController])
-
-    function createCityDialogController($scope, $http, $state, appCONSTANTS, $translate, CityResource,
-        ToastService, $rootScope, CountryByIdPrepService) {
-		var vm = this;
-		vm.Country = CountryByIdPrepService;
-		vm.language = appCONSTANTS.supportedLanguage;
-		vm.close = function(){
-		    $state.go('Country');
-		} 
-
-		 		vm.AddNewCity = function () {
-            var newObj = new CityResource();
-		    newObj.countryId = vm.Country.countryId;
-            newObj.titleDictionary = vm.titleDictionary;
-            newObj.IsDeleted = false;  
-            newObj.$create().then(
-                function (data, status) {
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
-                    $state.go('Country');
-
-                },
-                function (data, status) {
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-
-  	}	
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editCityDialogController', ['$scope', '$http', '$state', 'appCONSTANTS', '$translate', 'CityResource', 'ToastService',
-            'CityByIdPrepService', editCityDialogController])
-
-    function editCityDialogController($scope, $http, $state, appCONSTANTS, $translate, CityResource, ToastService, CityByIdPrepService) {
-		var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.City = CityByIdPrepService; 
-        vm.close = function () {
-            $state.go('Country');
-        }
-        vm.UpdateCity = function () { 
-            var updateObj = new CityResource();
-            updateObj.cityId = vm.City.cityId;
-            updateObj.titleDictionary = vm.City.titleDictionary;
-		    updateObj.IsDeleted = false; 
-		    updateObj.$update().then(
-                function (data, status) {
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
-
-                     $state.go('Country');
-
-                },
-                function (data, status) {
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-	}	
 }());
 (function () {
     'use strict';
@@ -1462,6 +1340,128 @@ $scope.FrontServer=appCONSTANTS.FrontServer_URL;
         blockUI.stop();
 
         	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('CityController', ['$rootScope', '$scope', '$filter', '$translate',
+            '$state', 'CityResource',   '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', CityController]);
+
+
+    function CityController($rootScope, $scope, $filter, $translate,
+        $state, CityResource,  $localStorage, authorizationService,
+        appCONSTANTS, ToastService) {
+
+        blockUI.start("Loading..."); 
+
+                    refreshCitys();
+
+        function refreshCitys() {
+           blockUI.start("Loading..."); 
+
+                        var k = CityResource.getAllCitys().$promise.then(function (results) {
+                $scope.CityList = results;
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+
+    }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('CityResource', ['$resource', 'appCONSTANTS', CityResource]) 
+
+    function CityResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Cities/', {}, {
+            getAllCities: { method: 'GET', url: appCONSTANTS.API_URL + 'Cities/GetAllCities', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Cities/EditCity', useToken: true },
+            getCity: { method: 'GET', url: appCONSTANTS.API_URL + 'Cities/GetCityById/:CityId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('createCityDialogController', ['$scope', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CityResource', 'ToastService', '$rootScope', 'CountryByIdPrepService', createCityDialogController])
+
+    function createCityDialogController($scope, $http, $state, appCONSTANTS, $translate, CityResource,
+        ToastService, $rootScope, CountryByIdPrepService) {
+		var vm = this;
+		vm.Country = CountryByIdPrepService;
+		vm.language = appCONSTANTS.supportedLanguage;
+		vm.close = function(){
+		    $state.go('Country');
+		} 
+
+		 		vm.AddNewCity = function () {
+            var newObj = new CityResource();
+		    newObj.countryId = vm.Country.countryId;
+            newObj.titleDictionary = vm.titleDictionary;
+            newObj.IsDeleted = false;  
+            newObj.$create().then(
+                function (data, status) {
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
+                    $state.go('Country');
+
+                },
+                function (data, status) {
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+
+  	}	
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editCityDialogController', ['$scope', '$http', '$state', 'appCONSTANTS', '$translate', 'CityResource', 'ToastService',
+            'CityByIdPrepService', editCityDialogController])
+
+    function editCityDialogController($scope, $http, $state, appCONSTANTS, $translate, CityResource, ToastService, CityByIdPrepService) {
+		var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.City = CityByIdPrepService; 
+        vm.close = function () {
+            $state.go('Country');
+        }
+        vm.UpdateCity = function () { 
+            var updateObj = new CityResource();
+            updateObj.cityId = vm.City.cityId;
+            updateObj.titleDictionary = vm.City.titleDictionary;
+		    updateObj.IsDeleted = false; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('Country');
+
+                },
+                function (data, status) {
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+	}	
 }());
 (function () {
     'use strict';

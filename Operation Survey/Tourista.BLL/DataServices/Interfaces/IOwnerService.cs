@@ -7,5 +7,6 @@ namespace Tourista.BLL.DataServices.Interfaces
     public interface IOwnerService : IService<Owner>
     {
          PagedResultsDto GetAllOwners(int page, int pageSize, int tenantId);
+         PagedResultsDto GetAllOnlineOwners(int page, int pageSize, int tenantId);
     }
 }

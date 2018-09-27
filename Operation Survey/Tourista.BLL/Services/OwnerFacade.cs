@@ -102,7 +102,11 @@ namespace Tourista.BLL.Services
             return _OwnerService.GetAllOwners(page, pageSize, tenantId);
         }
 
-     
+        public PagedResultsDto GetAllOnlineOwners(int page, int pageSize, int tenantId)
+        {
+            return _OwnerService.GetAllOnlineOwners(page, pageSize, tenantId);
+        }
+
         private void ValidateOwner(OwnerDto ownerDto, long tenantId)
         {
             foreach (var name in ownerDto.TitleDictionary)

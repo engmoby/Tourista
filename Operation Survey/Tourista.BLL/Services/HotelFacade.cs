@@ -142,8 +142,11 @@ namespace Tourista.BLL.Services
         {
             return _hotelService.GetAllHotels(page, pageSize, tenantId);
         }
+        public PagedResultsDto GetAllOnlineHotels(int page, int pageSize, int tenantId)
+        {
+            return _hotelService.GetAllOnlineHotels(page, pageSize, tenantId);
+        }
 
-     
         private void ValidateHotel(HotelDto HotelDto, long tenantId)
         {
             foreach (var name in HotelDto.TitleDictionary)

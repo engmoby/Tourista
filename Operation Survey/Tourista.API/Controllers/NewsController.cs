@@ -21,17 +21,17 @@ namespace Tourista.API.Controllers
 {
     public class NewsController : BaseApiController
     {
-        private readonly INewsFacade _NewsFacade;
+        private readonly INewsFacade _newsFacade;
         public NewsController(INewsFacade NewsFacade)
         {
-            _NewsFacade = NewsFacade;
+            _newsFacade = NewsFacade;
         }
 
         [Route("api/News/GetAllNews", Name = "GetAllNews")]
         [HttpGet]
         public IHttpActionResult GetAllNews(int page = Page, int pagesize = PageSize)
         {
-            PagedResultsDto NewsObj = _NewsFacade.GetAllNewss(page, pagesize, TenantId);
+            PagedResultsDto NewsObj = _newsFacade.GetAllNewss(page, pagesize, TenantId);
             var data = Mapper.Map<List<NewsModel>>(NewsObj.Data);
 
             foreach (var news in data)
@@ -41,6 +41,21 @@ namespace Tourista.API.Controllers
 
             return PagedResponse("GetAllNews", page, pagesize, NewsObj.TotalCount, data, NewsObj.IsParentTranslated);
         }
+        [Route("api/News/GetAllOnlineNews", Name = "GetAllOnlineNews")]
+        [HttpGet]
+        public IHttpActionResult GetAllOnlineNews(int page = Page, int pagesize = PageSize)
+        {
+            PagedResultsDto NewsObj = _newsFacade.GetAllOnlineNewss(page, pagesize, TenantId);
+            var data = Mapper.Map<List<NewsModel>>(NewsObj.Data);
+
+            foreach (var news in data)
+            {
+                news.Image = Url.Link("NewsImage", new { NewsId = news.NewsId, imageId = news.NewsId });
+            }
+
+            return PagedResponse("GetAllOnlineNews", page, pagesize, NewsObj.TotalCount, data, NewsObj.IsParentTranslated);
+        }
+
         [Route("api/News/{NewsId:long}/Image/{imageId:int}", Name = "NewsImage")]
         public HttpResponseMessage GetNewsImage(long newsId, int imageId, string type = "orignal")
         {
@@ -87,7 +102,7 @@ namespace Tourista.API.Controllers
                 new JavaScriptSerializer().Deserialize<NewsModel>(HttpContext.Current.Request.Form.Get(0));
             string path = HostingEnvironment.MapPath("~/Images/") + "\\" + "News-" + newsModel.NewsId;
 
-            var reurnNews = _NewsFacade.CreateNews(Mapper.Map<NewsDto>(newsModel), UserId, TenantId, files[0],
+            var reurnNews = _newsFacade.CreateNews(Mapper.Map<NewsDto>(newsModel), UserId, TenantId, files[0],
                 HostingEnvironment.MapPath("~/Images/"));
 
             return Ok(reurnNews);
@@ -121,7 +136,7 @@ namespace Tourista.API.Controllers
             var imageCounter = Directory.Exists(path) ? Directory
                 .GetFiles(path)
                 .Count(x => !Path.GetFileName(x).Contains("thumb")) : -1;
-            var reurnnews = _NewsFacade.EditNews(Mapper.Map<NewsDto>(newsModel), UserId, TenantId, (files.Count != 0) ? files[0] : null,
+            var reurnnews = _newsFacade.EditNews(Mapper.Map<NewsDto>(newsModel), UserId, TenantId, (files.Count != 0) ? files[0] : null,
                 HostingEnvironment.MapPath("~/Images/"));
 
             return Ok(reurnnews);
@@ -132,7 +147,7 @@ namespace Tourista.API.Controllers
         [HttpGet]
         public IHttpActionResult GetNewsById(long newsId)
         { 
-            var reurnNews = _NewsFacade.GetNews(newsId, TenantId);
+            var reurnNews = _newsFacade.GetNews(newsId, TenantId);
             reurnNews.Image = String.Empty;
           
             string path = HostingEnvironment.MapPath("~/Images/") + "\\" + "News-" + reurnNews.NewsId;

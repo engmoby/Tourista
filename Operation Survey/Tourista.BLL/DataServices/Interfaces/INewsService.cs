@@ -7,5 +7,6 @@ namespace Tourista.BLL.DataServices.Interfaces
     public interface INewsService : IService<News>
     {
          PagedResultsDto GetAllNewss(int page, int pageSize, int tenantId);
+         PagedResultsDto GetAllOnlineNewss(int page, int pageSize, int tenantId);
     }
 }

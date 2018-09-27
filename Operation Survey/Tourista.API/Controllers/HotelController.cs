@@ -51,6 +51,37 @@ namespace Tourista.API.Controllers
 
             return PagedResponse("GetAllHotels", page, pagesize, hotelObj.TotalCount, data, hotelObj.IsParentTranslated);
         }
+
+
+
+        [Route("api/Hotels/GetAllOnlineHotels", Name = "GetAllOnlineHotels")]
+        [HttpGet]
+        public IHttpActionResult GetAllOnlineHotels(int page = Page, int pagesize = PageSize)
+        {
+            PagedResultsDto hotelObj = _hotelFacade.GetAllOnlineHotels(page, pagesize, TenantId);
+            var data = Mapper.Map<List<HotelModel>>(hotelObj.Data);
+            if (data != null)
+                foreach (var item in data)
+                {
+                    item.ImagesURL = new List<string>();
+                    string path = HostingEnvironment.MapPath("~/Images/") + "\\" + "Hotel-" + item.HotelId;
+                    var imageCounter = Directory.Exists(path) ? Directory
+                        .GetFiles(path)
+                        .Count(x => !Path.GetFileName(x).Contains("thumb")) : -1;
+                    int id = 1;
+                    while (id < imageCounter + 1)
+                    {
+                        item.ImagesURL.Add(Url.Link("HotelImage", new { hotelId = item.HotelId, imageId = id }));
+                        id++;
+                    }
+
+                }
+
+            return PagedResponse("GetAllOnlineHotels", page, pagesize, hotelObj.TotalCount, data, hotelObj.IsParentTranslated);
+        }
+
+
+
         [Route("api/Hotels/{hotelId:long}/Image/{imageId:int}", Name = "HotelImage")]
         public HttpResponseMessage GetHotelImage(long hotelId, int imageId, string type = "orignal")
         {

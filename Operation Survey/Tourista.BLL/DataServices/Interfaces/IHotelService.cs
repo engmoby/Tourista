@@ -7,5 +7,6 @@ namespace Tourista.BLL.DataServices.Interfaces
     public interface IHotelService : IService<Hotel>
     {
          PagedResultsDto GetAllHotels(int page, int pageSize, int tenantId);
+         PagedResultsDto GetAllOnlineHotels(int page, int pageSize, int tenantId);
     }
 }

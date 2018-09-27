@@ -26,6 +26,14 @@ namespace Tourista.BLL.DataServices
             results.Data = Mapper.Map<List<Hotel>, List<HotelDto>>(modelReturn); 
             return results;
         }
-
+        public PagedResultsDto GetAllOnlineHotels(int page, int pageSize, int tenantId)
+        {
+            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId).OrderBy(x => x.HotelId);
+            PagedResultsDto results = new PagedResultsDto();
+            results.TotalCount = query.Select(x => x).Count();
+            var modelReturn = query.OrderBy(x => x.HotelId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            results.Data = Mapper.Map<List<Hotel>, List<HotelDto>>(modelReturn);
+            return results;
+        }
     }
 }
