@@ -64,7 +64,6 @@ E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Micro
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Microsoft.Owin.Security.Google.xml
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\TouristaFrontEnd.csprojResolveAssemblyReference.cache
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\TouristaFrontEnd.dll
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\TouristaFrontEnd.pdb
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\System.Net.Http.Formatting.dll
@@ -73,3 +72,4 @@ E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Syste
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\System.Net.Http.Formatting.xml
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\System.Web.Http.xml
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\System.Web.Http.WebHost.xml
+E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\TouristaFrontEnd.csprojResolveAssemblyReference.cache

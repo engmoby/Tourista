@@ -41,6 +41,8 @@ namespace Tourista.API.Controllers
 
             return PagedResponse("GetAllNews", page, pagesize, NewsObj.TotalCount, data, NewsObj.IsParentTranslated);
         }
+
+
         [Route("api/News/GetAllOnlineNews", Name = "GetAllOnlineNews")]
         [HttpGet]
         public IHttpActionResult GetAllOnlineNews(int page = Page, int pagesize = PageSize)
@@ -52,8 +54,38 @@ namespace Tourista.API.Controllers
             {
                 news.Image = Url.Link("NewsImage", new { NewsId = news.NewsId, imageId = news.NewsId });
             }
-
+            return Ok(data);
             return PagedResponse("GetAllOnlineNews", page, pagesize, NewsObj.TotalCount, data, NewsObj.IsParentTranslated);
+        }
+
+
+        [Route("api/News/GetAllOnlineRandomRelatedNews", Name = "GetAllOnlineRandomRelatedNews")]
+        [HttpGet]
+        public IHttpActionResult GetAllOnlineRandomRelatedNews(int page = Page, int pagesize = PageSize)
+        {
+            PagedResultsDto NewsObj = _newsFacade.GetAllOnlineRandomRelatedNews(page, pagesize, TenantId);
+            var data = Mapper.Map<List<NewsModel>>(NewsObj.Data);
+
+            foreach (var news in data)
+            {
+                news.Image = Url.Link("NewsImage", new { NewsId = news.NewsId, imageId = news.NewsId });
+            }
+            return Ok(data); 
+        }
+
+
+        [Route("api/News/GetAllOnlineRelatedNewsById", Name = "GetAllOnlineRelatedNewsById")]
+        [HttpGet]
+        public IHttpActionResult GetAllOnlineRelatedNewsById(long newsId,int page = Page, int pagesize = PageSize)
+        {
+            PagedResultsDto NewsObj = _newsFacade.GetAllOnlineRelatedNewsById(newsId,page, pagesize, TenantId);
+            var data = Mapper.Map<List<NewsModel>>(NewsObj.Data);
+
+            foreach (var news in data)
+            {
+                news.Image = Url.Link("NewsImage", new { NewsId = news.NewsId, imageId = news.NewsId });
+            }
+            return Ok(data); 
         }
 
         [Route("api/News/{NewsId:long}/Image/{imageId:int}", Name = "NewsImage")]

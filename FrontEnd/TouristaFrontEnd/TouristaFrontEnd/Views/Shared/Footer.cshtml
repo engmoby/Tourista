@@ -1,0 +1,252 @@
+﻿
+@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+
+<footer>
+    <div class="subscribe-email">
+        <div class="container">
+            <div class="subscribe-email-wrapper">
+                <div class="subscribe-email-left">
+                    <p class="subscribe-email-title">Subscribe <span class="logo-text">TOURISTA</span>&nbsp;to get latest offers and deals to day</p>
+                    <p class="subscribe-email-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                </div>
+                <div class="subscribe-email-right">
+
+                    <form id="myForm">
+                        <div class="input-group form-subscribe-email">
+
+                            <input type="email" placeholder="Write your mail" class="form-control form-input"
+                                   id="Email" data-validation="email" data-validation-error-msg="Pleae enter correct email format">
+
+                            @*<input type="email" class="form-control"
+                                data-validation-error-msg="Pleae enter correct email format"
+                                placeholder="Write your email heeeer"
+                                id="Mail" data-validation="email">*@
+                            <span class="input-group-btn">
+                                <button class="btn-email">&#8594;</button>
+                            </span>
+
+                        </div>
+                        <span id="MSG" style="color: white">
+
+                        </span>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-main padding-top padding-bottom">
+        <div class="container">
+            <div class="footer-main-wrapper">
+                <a href="/Home/Index" class="logo-footer"><img src="/Content/images/logo/logo.png" alt="" class="img-responsive" /></a>
+
+                <div class="row">
+                    <div class="col-2">
+                        <div class="col-md-3 col-xs-5">
+                            <div class="About-us-widget widget">
+                                <div class="title-widget">About us</div>
+                                <div class="content-widget">
+                                    <div class="info-list">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                @Common.GeneralModel.About[0].DescriptionDictionary[Common.CurrentLang]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="col-md-3 col-xs-6">
+                            <div class="destination-widget widget">
+                                <div class="title-widget">Destination</div>
+                                <div class="content-widget">
+                                    <ul class="list-unstyled list-inline">
+                                        @if (Common.GeneralModel.Owner != null)
+                                        {
+                                            foreach (HotelModel ownerObj in Common.GeneralModel.Hotel)
+                                            {
+                                                foreach (var imgObj in ownerObj.ImagesURL)
+                                                {
+
+                                                    <li> <img src="@imgObj" alt="" class="img-responsive" /> </li>
+
+                                                }
+                                                @*<li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-02.jpg" alt="" class="img-responsive" /></a></li>
+                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-03.jpg" alt="" class="img-responsive" /></a></li>
+                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-04.jpg" alt="" class="img-responsive" /></a></li>
+                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-05.jpg" alt="" class="img-responsive" /></a></li>
+                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-06.jpg" alt="" class="img-responsive" /></a></li>*@
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-3">
+                            <div class="booking-widget widget text-center">
+                                <div class="title-widget">book now</div>
+                                <div class="content-widget">
+                                    <ul class="list-unstyled">
+                                        <li><a href="/Hotel/Index" class="link">Hotels</a></li>
+                                        <li><a href="/Tour/Index" class="link">Tours</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3 col-xs-5">
+                        <div class="contact-us-widget widget">
+                            <div class="title-widget">contact us</div>
+                            <div class="content-widget">
+                                <div class="info-list">
+                                    <ul class="list-unstyled">
+                                        <li><i class="icons fa fa-map-marker"></i> @Common.GeneralModel.Contact[0].AddressDictionary[Common.CurrentLang] </li>
+                                        <li><i class="icons fa fa-phone"></i>@Common.GeneralModel.Contact[0].Phone</li>
+                                        <li><i class="icons fa fa-phone"></i>@Common.GeneralModel.Contact[0].Fax</li>
+                                        <li><i class="icons fa fa-envelope-o"></i> @Common.GeneralModel.Contact[0].Mail </li>
+                                    </ul>
+                                </div>
+                                @*<div class="form-email">
+                                        <p class="text">Sign up for our mailing list to get latest updates and offers.</p>
+                                        <form id="myForm2">
+                                            <div class="input-group">
+
+                                                <input type="email" class="form-control form-email-widget" placeholder="Email address" id="Mail2" >
+                                                <span class="input-group-btn">
+                                                    <button type="submit" id="btnSave2" onclick="sendnewsletter2()" class="btn-email">&#8594;</button>
+                                                </span>
+
+                                            </div>
+                                            <span id="MSG2" style="color: white">
+
+                                            </span>
+                                        </form>
+
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    $.validate({
+        form: '#myForm',
+        modules: 'security',
+        onError: function ($form) {
+            debugger
+            alert('Validation of form ' + $form.attr('id') + ' failed!');
+        },
+        onSuccess: function ($form) {
+            debugger
+            //sendnewsletter();
+            return false;
+        }
+
+    });
+</script>
+<script type="text/javascript">
+    function validateEmail(email) {
+        debugger;
+        var pattern = new RegExp("[-0-9a-zA-Z.+_]+@@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}");
+        return pattern.test(email);
+    }
+
+    $(document).ready(function () {
+
+        $('#btnSave').attr('disabled', true);
+        $('#Mail').keyup(function () {
+            if ($(this).val().length != 0) {
+                $('#btnSave').attr('disabled', false);
+            } else {
+                $('#btnSave').attr('disabled', true);
+            }
+        });
+
+        $('#btnSave2').attr('disabled', true);
+        $('#Mail2').keyup(function () {
+            if ($(this).val().length != 0) {
+                $('#btnSave2').attr('disabled', false);
+            } else {
+                $('#btnSave2').attr('disabled', true);
+            }
+        });
+
+    });
+
+    function sendnewsletter() {
+        debugger;
+        var newsletter = {
+            Mail: $("#Mail").val()
+        }
+
+        if (!validateEmail(newsletter.Mail)) {
+            $("#MSG").text(" NewsletterError");
+            $("#MSG").css("color", "red");
+
+        } else {
+            $('#btnSave').attr('disabled', true);
+            $('#MSG').html(' NewsletterSending');
+            //   var apiUrl = document.querySelector('#HServicesURL').value;
+            $.ajax({
+                url: "http://localhost:32569/API/Newsletters",
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.OperationStatus === "Succeded") {
+                        $('#MSG').html(" NewsletterSubmitMsg");
+                        $('#btnSave').attr('disabled', false);
+                    } else {
+                        $('#MSG').html(" AlreadyExist");
+                    }
+
+                },
+                data: newsletter
+            });
+        }
+        //Validate Email Input
+
+    }
+
+    function sendnewsletter2() {
+        debugger;
+        var newsletter = {
+            Mail: $("#Mail2").val()
+        }
+
+        if (!validateEmail(newsletter.Mail)) {
+            $("#MSG2").text(" NewsletterError");
+            $("#MSG2").css("color", "red");
+
+        } else {
+            $('#btnSave2').attr('disabled', true);
+            $('#MSG2').html(' NewsletterSending');
+            //   var apiUrl = document.querySelector('#HServicesURL').value;
+            $.ajax({
+                url: "http://localhost:32569/API/Newsletters",
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.OperationStatus === "Succeded") {
+                        $('#MSG2').html(" NewsletterSubmitMsg");
+                        $('#btnSave2').attr('disabled', false);
+                    } else {
+                        $('#MSG2').html(" AlreadyExist");
+                    }
+
+                },
+                data: newsletter
+            });
+        }
+        //Validate Email Input
+
+    }
+</script>

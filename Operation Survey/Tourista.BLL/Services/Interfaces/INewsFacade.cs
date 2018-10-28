@@ -11,5 +11,7 @@ namespace Tourista.BLL.Services.Interfaces
         NewsDto EditNews(NewsDto userDto, int userId, int tenantId, MemoryStream file, string path);
         PagedResultsDto GetAllNewss(int page, int pageSize, int tenantId); 
         PagedResultsDto GetAllOnlineNewss(int page, int pageSize, int tenantId);
+        PagedResultsDto GetAllOnlineRandomRelatedNews(int page, int pageSize, int tenantId);
+        PagedResultsDto GetAllOnlineRelatedNewsById(long newsId,int page, int pageSize, int tenantId);
     }
 }

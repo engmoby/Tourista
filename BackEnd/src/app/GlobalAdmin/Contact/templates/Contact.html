@@ -2,8 +2,8 @@
 <div> 
     <div ng-if="ContactList.results.length == 0">
         <span>{{'NoContactsAvailable' | translate}}</span>
-    </div>
-    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="ContactList.results.length > 0">
+    </div> 
+     <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="ContactList.length > 0">
         <div class="table-responsive"></div>
         <table class="table pmd-table table-hover">
             <thead>
@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="Contact in ContactList.results">
+                <tr ng-repeat="Contact in ContactList">
                     <td data-title="Name">{{Contact.addressDictionary[selectedLanguage]}}</td>
                   
                     <td width="30%" ng-show="!Contact.isStatic">

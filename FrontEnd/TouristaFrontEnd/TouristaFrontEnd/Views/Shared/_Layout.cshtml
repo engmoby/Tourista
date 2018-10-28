@@ -1,29 +1,29 @@
-﻿<!DOCTYPE html>
+﻿@using TouristaFrontEnd.Helper
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Tourista</title>
     @Styles.Render("~/Content/css")
- @*   @Scripts.Render("~/bundles/modernizr")*@
+    @*   @Scripts.Render("~/bundles/modernizr")*@
 
     <!-- FONT CSS-->
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,900">
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700">
-    @*<link type="text/css" rel="stylesheet" href="/Content/font/font-icon/font-awesome/css/font-awesome.css">
-    <link type="text/css" rel="stylesheet" href="/Content/font/font-icon/font-flaticon/flaticon.css">
-    <!-- LIBRARY CSS-->
-    <link type="text/css" rel="stylesheet" href="/Scripts/libs/bootstrap/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="/Scripts/libs/animate/animate.css">
-    <link type="text/css" rel="stylesheet" href="/Scripts/libs/slick-slider/slick.css">
-    <link type="text/css" rel="stylesheet" href="/Scripts/libs/slick-slider/slick-theme.css">
-    <link type="text/css" rel="stylesheet" href="/Scripts/libs/selectbox/css/jquery.selectbox.css">
-    <link type="text/css" rel="stylesheet" href="/Scripts/libs/please-wait/please-wait.css">
-    <!-- STYLE CSS-->
-    <link type="text/css" rel="stylesheet" href="/Content/layout.css">
-    <link type="text/css" rel="stylesheet" href="/Content/components.css">
-    <link type="text/css" rel="stylesheet" href="/Content/responsive.css">
-    <link type="text/css" rel="stylesheet" href="/Scripts/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">*@
+    @* <link type="text/css" rel="stylesheet" href="/Content/font/font-icon/font-awesome/css/font-awesome.css">
+        <link type="text/css" rel="stylesheet" href="/Content/font/font-icon/font-flaticon/flaticon.css">
+            <!-- LIBRARY CSS-->
+            <link type="text/css" rel="stylesheet" href="/Scripts/libs/bootstrap/css/bootstrap.min.css">
+            <link type="text/css" rel="stylesheet" href="/Scripts/libs/animate/animate.css">
+            <link type="text/css" rel="stylesheet" href="/Scripts/libs/slick-slider/slick.css">
+            <link type="text/css" rel="stylesheet" href="/Scripts/libs/slick-slider/slick-theme.css">
+            <link type="text/css" rel="stylesheet" href="/Scripts/libs/selectbox/css/jquery.selectbox.css">
+            <link type="text/css" rel="stylesheet" href="/Scripts/libs/please-wait/please-wait.css">
+            <!-- STYLE CSS-->
+            <link type="text/css" rel="stylesheet" href="/Content/layout.css">
+            <link type="text/css" rel="stylesheet" href="/Content/components.css">
+            <link type="text/css" rel="stylesheet" href="/Content/responsive.css">
+            <link type="text/css" rel="stylesheet" href="/Scripts/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">*@
 
 </head>
 <body>
@@ -42,9 +42,14 @@
                 <div class="menu-mobile">
                     <ul class="nav-links nav navbar-nav">
                         <li class="dropdown">
-                            <a href="index.html" class="main-menu"><span class="text">Home</span></a>
+                            @Html.ListItemAction("Home", "Index", "Home")
+                            @*<a href="index.html" class="main-menu"><span class="text">Home</span></a>*@
                         </li>
-                        <li><a href="about-us.html" class="main-menu"><span class="text">about</span></a></li>
+                        <li>
+                            @Html.ListItemAction("About", "Index", "About")
+
+                            @*<a href="about-us.html" class="main-menu"><span class="text">about</span></a>*@
+                        </li>
                         <li class="dropdown">
                             <a href="tour-result.html" class="main-menu"><span class="text">Tour</span></a><span class="icons-dropdown"><i class="fa fa-angle-down"></i></span>
                             <ul class="dropdown-menu dropdown-menu-1">
@@ -62,10 +67,11 @@
 
                             </ul>
                         </li>
-                        <ul class="dropdown-menu dropdown-menu-1">
-                            <li><a href="blog.html" class="link-page">blog list</a></li>
-                            <li><a href="blog-detail.html" class="link-page">blog detail</a></li>
-                        </ul>
+                        <li class="dropdown">
+                            <ul class="dropdown-menu dropdown-menu-1">
+                                <li><a href="blog.html" class="link-page">blog list</a></li>
+                                <li><a href="blog-detail.html" class="link-page">blog detail</a></li>
+                            </ul>
                         </li>
 
                         <li><a href="contact.html" class="main-menu"><span class="text">contact</span></a></li>
@@ -109,9 +115,17 @@
                                 </div>
                                 <nav class="navigation">
                                     <ul class="nav-links nav navbar-nav active">
-                                        <li><a href="index.html" class="main-menu"><span class="text">Home</span></a></li>
+                                        <li>
+                                            @Html.ListItemAction("Home", "Index", "")
+                                            <span class="text">Home</span>    @*<a href="index.html" class="main-menu">
+                                                <span class="text">Home</span>
+                                                </a>*@
+                                        </li>
 
-                                        <li><a href="about-us.html" class="main-menu"><span class="text">about</span></a></li>
+                                        <li>
+                                            @Html.ListItemAction("About", "Index", "About")
+                                            @*<a href="about-us.html" class="main-menu"><span class="text">about</span></a>*@
+                                        </li>
                                         <li class="dropdown">
                                             <a href="javascript:void(0)" class="main-menu"><span class="text">Tours</span><span class="icons-dropdown"><i class="fa fa-angle-down"></i></span></a>
                                             <ul class="dropdown-menu dropdown-menu-1">
@@ -122,31 +136,7 @@
                                                 <li><a href="Tour-result.html" class="link-page">Safari</a></li>
                                             </ul>
                                         </li>
-                                        <!--  <li class="dropdown"><a href="javascript:void(0)" class="main-menu"><span class="text">Hotels</span><span class="icons-dropdown"><i class="fa fa-angle-down"></i></span></a>
-                                            <ul class="dropdown-menu dropdown-menu-1">
-                                                <li><a href="tour-result.html" class="link-page">tour result</a></li>
-                                                <li><a href="tour-view.html" class="link-page">tour view</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="javascript:void(0)" class="main-menu"><span class="text">Car Rent</span><span class="icons-dropdown"><i class="fa fa-angle-down"></i></span></a>
-                                            <ul class="dropdown-menu dropdown-menu-1">
-                                                <li><a href="hotel-result.html" class="link-page">hotel result</a></li>
-                                                <li><a href="hotel-view.html" class="link-page">hotel view</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="javascript:void(0)" class="main-menu"><span class="text">Cruises</span><span class="icons-dropdown"><i class="fa fa-angle-down"></i></span></a>
-                                            <ul class="dropdown-menu dropdown-menu-1">
-                                                <li><a href="blog.html" class="link-page">blog list</a></li>
-                                                <li><a href="blog-detail.html" class="link-page">blog detail</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="javascript:void(0)" class="main-menu"><span class="text">page</span><span class="icons-dropdown"><i class="fa fa-angle-down"></i></span></a>
-                                            <ul class="dropdown-menu dropdown-menu-1">
-                                                <li><a href="car-rent-result.html" class="link-page">car rent result</a></li>
-                                                <li><a href="cruises-result.html" class="link-page">cruises result</a></li>
-                                                <li><a href="404.html" class="link-page">page 404</a></li>
-                                            </ul>
-                                        </li>-->
+
                                         <li><a href="hotel-result.html" class="main-menu"><span class="text">Hotels</span></a></li>
                                         <li><a href="contact.html" class="main-menu"><span class="text">Contact us</span></a></li>
                                         <li class="button-search"><p class="main-menu"><i class="fa fa-search"></i></p></li>
@@ -167,165 +157,30 @@
             <!-- WRAPPER-->
             <div id="wrapper-content">
                 <!-- MAIN CONTENT-->
-            
+
                 @RenderBody()
-            
-                
+
+
                 <!-- BUTTON BACK TO TOP-->
                 <div id="back-top"><a href="#top" class="link"><i class="fa fa-angle-double-up"></i></a></div>
             </div>
             <!-- FOOTER-->
-            <footer>
-                <div class="subscribe-email">
-                    <div class="container">
-                        <div class="subscribe-email-wrapper">
-                            <div class="subscribe-email-left">
-                                <p class="subscribe-email-title">Subscribe <span class="logo-text">TOURISTA</span>&nbsp;to get latest offers and deals to day</p>
-                                <p class="subscribe-email-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            </div>
-                            <div class="subscribe-email-right">
-                                <form action="index.html">
-                                    <div class="input-group form-subscribe-email"><input type="text" placeholder="Write your email" class="form-control" /><span class="input-group-btn"><button type="submit" class="btn-email">&#8594;</button></span></div>
-                                </form>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-main padding-top padding-bottom">
-                    <div class="container">
-                        <div class="footer-main-wrapper">
-                            <a href="index.html" class="logo-footer"><img src="/Content/images/logo/logo.png" alt="" class="img-responsive" /></a>
+            @*@Html.Partial("Footer")*@
+            @*@{
+                    Html.RenderPartial("Footer");
+                }*@
+            @{ Html.RenderAction("Footer", "Home"); }
 
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="col-md-3 col-xs-5">
-                                        <div class="About-us-widget widget">
-                                            <div class="title-widget">About us</div>
-                                            <div class="content-widget">
-                                                <div class="info-list">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            Lorem ipsum, sed do eiusmod tempor incididunt ut labore et dolore ma
-                                                    gna aliqua. Ut eim ad minim veniam, quis nostrud exercitation ullamco la
-                                                    boris nisi ut aliquip ex commodo consequat uisas aute irure dolor ullamc
-                                                        o laboris nisi in reprehenderit.
-                                                            </i>
-                                                        </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="col-md-3 col-xs-6">
-                                        <div class="destination-widget widget">
-                                            <div class="title-widget">Destination</div>
-                                            <div class="content-widget">
-                                                <ul class="list-unstyled list-inline">
-                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-01.jpg" alt="" class="img-responsive" /></a></li>
-                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-02.jpg" alt="" class="img-responsive" /></a></li>
-                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-03.jpg" alt="" class="img-responsive" /></a></li>
-                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-04.jpg" alt="" class="img-responsive" /></a></li>
-                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-05.jpg" alt="" class="img-responsive" /></a></li>
-                                                    <li><a href="#" class="thumb"><img src="/Content/images/footer/gallery-06.jpg" alt="" class="img-responsive" /></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-xs-3">
-                                        <div class="booking-widget widget text-center">
-                                            <div class="title-widget">book now</div>
-                                            <div class="content-widget">
-                                                <ul class="list-unstyled">
-                                                    <li><a href="#" class="link">Hotels</a></li>
-                                                    <li><a href="#" class="link">Tours</a></li>
 
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--<div class="col-md-2 col-xs-4">
-                                <div class="explore-widget widget">
-                                    <div class="title-widget">explore</div>
-                                    <div class="content-widget">
-                                        <ul class="list-unstyled">
-                                            <li><a href="#" class="link">Tour Singapore City</a></li>
-                                            <li><a href="#" class="link">Tour Manila City</a></li>
-                                            <li><a href="#" class="link">Tour New York City</a></li>
-                                            <li><a href="#" class="link">Tour Sanghai City</a></li>
-                                            <li><a href="#" class="link">Tour Hongkong City</a></li>
-                                            <li><a href="#" class="link">Tour Tokyo City</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col-2">
-                            <div class="col-md-2 col-xs-6">
-                            <div class="top-deals-widget widget">
-                                <div class="title-widget">top deals</div>
-                                <div class="content-widget">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#" class="link">Tour Packages Singapore</a></li>
-                                        <li><a href="#" class="link">Tour Packages Manila</a></li>
-                                        <li><a href="#" class="link">Tour Packages New York</a></li>
-                                        <li><a href="#" class="link">Tour Packages Sanghai</a></li>
-                                        <li><a href="#" class="link">Tour Packages Hongkong</a></li>
-                                        <li><a href="#" class="link">Tour Packages Tokyo</a></li>
-                                    </ul>
-                                </div>
-                            </div>-->
-                                </div>
-                                <div class="col-md-3 col-xs-5">
-                                    <div class="contact-us-widget widget">
-                                        <div class="title-widget">contact us</div>
-                                        <div class="content-widget">
-                                            <div class="info-list">
-                                                <ul class="list-unstyled">
-                                                    <li><i class="icons fa fa-map-marker"></i><a href="#" class="link">132, maadi, cairo,Egypt</a></li>
-                                                    <li><i class="icons fa fa-phone"></i><a href="#" class="link">270 - 188 - 6026</a></li>
-                                                    <li><i class="icons fa fa-envelope-o"></i><a href="#" class="link">info@touristaegy.com</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="form-email">
-                                                <p class="text">Sign up for our mailing list to get latest updates and offers.</p>
-
-                                                <form action="index.html">
-                                                    <div class="input-group"><input type="text" placeholder="Email address" class="form-control form-email-widget" /><span class="input-group-btn"><button type="submit" class="btn-email">&#10004;</button></span></div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-          </div>
+        </div>
         <div class="hyperlink">
             <div class="container">
-                <!--    <div class="slide-logo-wrapper">
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-01.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-02.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-03.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-04.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-05.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-06.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-01.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-02.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-03.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-04.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-05.png" alt="" class="img-responsive"/></a></div>
-                    <div class="logo-item"><a href="#" class="link"><img src="/Content/images/footer/logo-06.png" alt="" class="img-responsive"/></a></div>
-                </div> -->
                 <div class="social-footer">
                     <ul class="list-inline list-unstyled">
-                        <li><a href="#" class="link facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="link twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="link pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-                        <li><a href="#" class="link google"><i class="fa fa-google"></i></a></li>
+                        <li><a href="@Common.GeneralModel.Contact[0].Facebook" target="_blank" class="link facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="@Common.GeneralModel.Contact[0].LinkedIn" target="_blank" class="link facebook"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="@Common.GeneralModel.Contact[0].Twitter" class="link twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="@Common.GeneralModel.Contact[0].Instgram" class="link facebook"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
                 <div class="name-company">&copy; Designed by Quad Tech.</div>
@@ -336,30 +191,33 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @*@Scripts.Render("~/bundles/bootstrap")*@
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false) 
+        @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.form-validator.min.js"></script>*@
 
-    <!-- LIBRARY JS-->
-
-    @*<script src="~/Scripts/libs/jquery/jquery-2.2.3.min.js"></script> 
-    <script src="/Scripts/libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/Scripts/libs/detect-browser/browser.js"></script>
-    <script src="/Scripts/libs/smooth-scroll/jquery-smoothscroll.js"></script>
-    <script src="/Scripts/libs/wow-js/wow.min.js"></script>
-    <script src="/Scripts/libs/slick-slider/slick.min.js"></script>
-    <script src="/Scripts/libs/selectbox/js/jquery.selectbox-0.2.js"></script>
-    <script src="/Scripts/libs/please-wait/please-wait.min.js"></script>*@
-    <!--script(src="/Scripts/libs/parallax/jquery.data-parallax.min.js")--><!-- MAIN JS-->
-    @*<script src="/Scripts/js/main.js"></script>*@
-    <!-- LOADING JS FOR PAGE-->
-    @*<script src="/Scripts/js/pages/home-page.js"></script>
-    <script src="/Scripts/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>*@
     <script>
         function test() {
             alert('vgb');
             $('.text-input').hide();
         }
     </script>
-    <script src="~/Scripts/site.js"></script>
+    <script>
+        $('#hotel').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            fade: true,
+            asNavFor: '#hotel_nav'
+        });
+        $('#hotel_nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '#hotel',
+            dots: true,
+            centerMode: true,
+            focusOnSelect: true
+        });
+    </script>
 </body>
 </html>

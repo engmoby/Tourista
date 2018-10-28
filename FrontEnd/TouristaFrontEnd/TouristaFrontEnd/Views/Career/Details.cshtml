@@ -1,0 +1,94 @@
+﻿@model GMG_Portal.API.Models.SystemParameters.CareerForm.CareerForm
+
+@{
+    ViewBag.Title = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="mg-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mg-booking-form">
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="select-room">
+                            <div class="mg-saerch-room">
+                                <div class="mg-book-now mt80">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h2 class="mg-bn-title">
+                                                @Front.Resources.Global.Career_Details_Title <span class="mg-bn-big">@Front.Resources.Global.Career_Details_Description</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mg-available-rooms">
+                                <h2 class="mg-sec-left-title">  Postion Details </h2>
+                                <div class="mg-avl-rooms">
+                                    <div class="mg-avl-room">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                            </div>
+
+                                            <div class="col-md-9">
+                                                <h3 class="mg-avl-room-title"> @Model.CareerTitle </h3>
+                                            </div>
+
+                                            @using (Html.BeginForm("Details", "Career", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.ValidationSummary(true)
+
+                                                <fieldset>
+                                                    <legend>Create Support Request</legend>
+
+                                                    <div class="editor-label">
+                                                        @Html.LabelFor(model => model.FirstName)
+                                                    </div>
+                                                    <div class="editor-field">
+                                                        @Html.EditorFor(model => model.LastName)
+                                                        @Html.ValidationMessageFor(model => model.LastName)
+                                                    </div>
+
+                                                    <div class="editor-label">
+                                                        @Html.LabelFor(model => model.Email)
+                                                    </div>
+                                                    <div class="editor-field">
+                                                        @Html.TextAreaFor(model => model.PhoneNo)
+                                                        @Html.ValidationMessageFor(model => model.PhoneNo)
+                                                    </div>
+                                                    <div class="editor-field">
+                                                        @Html.TextAreaFor(model => model.Message)
+                                                        @Html.ValidationMessageFor(model => model.PhoneNo)
+                                                    </div>
+                                                    <div class="editor-label">
+                                                        <label>Files:</label>
+                                                    </div>
+                                                    <div class="editor-field">
+                                                        <input type="file" name="file" multiple="multiple" />
+                                                    </div>
+                                                    <p>
+                                                        <input type="submit" value="Create" />
+                                                    </p>
+                                                </fieldset>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

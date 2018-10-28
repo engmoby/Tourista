@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic; 
-
 namespace Tourista.API.Models
 {
     public class ContactModel

@@ -20,8 +20,8 @@ namespace TouristaFrontEnd
                 "~/Scripts/libs/please-wait/please-wait.min.js",
                  "~/Scripts/js/main.js",
                 "~/Scripts/js/pages/home-page.js",
-                "~/Scripts/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
-                ));
+                "~/Scripts/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js",
+            "~/Scripts/jquery.validate*"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));

@@ -23,6 +23,7 @@ namespace Tourista.API.Controllers
         {
             PagedResultsDto ContactObj = _ContactFacade.GetAllContacts(page, pagesize, TenantId);
             var data = Mapper.Map<List<ContactModel>>(ContactObj.Data);
+            return Ok(data);
             return PagedResponse("GetAllContact", page, pagesize, ContactObj.TotalCount, data, ContactObj.IsParentTranslated);
         }
 

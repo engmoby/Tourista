@@ -5,7 +5,7 @@
 
     function ContactResource($resource, appCONSTANTS) {
         return $resource(appCONSTANTS.API_URL + 'Contact/', {}, {
-            GetAllContact: { method: 'GET', url: appCONSTANTS.API_URL + 'Contact/GetAllContact', useToken: true,  params: { lang: '@lang' } },
+            GetAllContact: { method: 'GET', url: appCONSTANTS.API_URL + 'Contact/GetAllContact',isArray:true, useToken: true,  params: { lang: '@lang' } },
             create: { method: 'POST', useToken: true },
             update: { method: 'POST', url: appCONSTANTS.API_URL + 'Contact/EditContact', useToken: true },
             getContact: { method: 'GET', url: appCONSTANTS.API_URL + 'Contact/GetContactById/:ContactId', useToken: true }

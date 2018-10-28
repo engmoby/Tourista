@@ -1,4 +1,4 @@
-﻿@using Tourista.API.Models
+﻿ 
 @using TouristaFrontEnd.Helper
 
 @{
@@ -11,8 +11,10 @@
             <div class="page-title-wrapper">
                 <div class="page-title-content">
                     <ol class="breadcrumb">
-                        <li><a href="index.html" class="link home">Home</a></li>
-                        <li class="active"><a href="#" class="link">about us</a></li>
+                        <li>
+                            @Html.ListItemAction("Home", "Index", "Home")
+                         </li>
+                        <li class="active"> about us</li>
                     </ol>
                     <div class="clearfix"></div>
                     <h2 class="captions">about us</h2>
@@ -20,7 +22,7 @@
             </div>
         </div>
     </section>
-    <section class="videos layout-1">
+    @*<section class="videos layout-1">
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
@@ -31,15 +33,7 @@
                             @MyHTMLHelpers.PreserveNewLines(Html, @Model.DescriptionDictionary[@Common.CurrentLang])
 
                         </div>
-                    </div>
-                    @*<div class="col-md-7">
-                            <div class="video-thumbnail">
-                                <div class="video-bg"><img src="/Content/images/homepage/video-bg.jpg" alt="" class="img-responsive"></div>
-                                <div class="video-button-play"><i class="icons fa fa-play"></i></div>
-                                <div class="video-button-close"></div>
-                                   <iframe src="@Model.VideoUrl" allowfullscreen="allowfullscreen" class="video-embed"></iframe>
-                            </div>
-                        </div>*@
+                    </div> 
                     <div class="col-md-7">
                         <div class="video-thumbnail">
                             <div class="video-bg"><img src="/Content/images/homepage/video-bg.jpg" alt="" class="img-responsive"></div>
@@ -52,7 +46,31 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>*@
+    <section class="videos layout-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="video-wrapper padding-top padding-bottom"><h5 class="sub-title">it’s a <strong>big world</strong> out there</h5>
 
+                        <h2 class="title">aBOUt tourista</h2>
+
+                        <div class="text">
+                            
+                            @MyHTMLHelpers.PreserveNewLines(Html, @Model.DescriptionDictionary[@Common.CurrentLang])
+                        </div>
+                        <!--<a href="tour-result.html" class="btn btn-maincolor">read more</a>--></div>
+                </div>
+                <div class="col-md-7">
+                    <div class="video-thumbnail">
+                        <div class="video-bg"><img src="/Content/images/homepage/video-bg.jpg" alt="" class="img-responsive"></div>
+                        <div class="video-button-play"><i class="icons fa fa-play"></i></div>
+                        <div class="video-button-close"></div>
+                        <iframe src="@Model.VideoUrl?rel=0" allowfullscreen="allowfullscreen" class="video-embed"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div id="back-top"><a href="#top" class="link"><i class="fa fa-angle-double-up"></i></a></div>
 </div>

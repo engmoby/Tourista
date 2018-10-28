@@ -8,5 +8,6 @@ namespace Tourista.BLL.DataServices.Interfaces
     {
          PagedResultsDto GetAllHotels(int page, int pageSize, int tenantId);
          PagedResultsDto GetAllOnlineHotels(int page, int pageSize, int tenantId);
+        PagedResultsDto GetAllOnlineRelatedHotelsById(long hotelId, int page, int pageSize, int tenantId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using TouristaFrontEnd.Helper;
 
 namespace Tourista.API.Models
 {
@@ -18,8 +19,7 @@ namespace Tourista.API.Models
         public DateTime CheckOut { get; set; }
 
         public int Adult { get; set; }
-        public int Child { get; set; }
-       // public Enums.Status Status { get; set; }
+        public int Child { get; set; }    
         public int RoomCount { get; set; }
 
         public string TickectNo { get; set; }

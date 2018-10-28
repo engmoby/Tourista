@@ -32,6 +32,7 @@ namespace Tourista.API.Controllers
         {
             PagedResultsDto ownerObj = _OwnerFacade.GetAllOnlineOwners(page, pagesize, TenantId);
             var data = Mapper.Map<List<OwnerModel>>(ownerObj.Data);
+            return Ok(data);
             return PagedResponse("GetAllOnlineOwners", page, pagesize, ownerObj.TotalCount, data, ownerObj.IsParentTranslated);
         }
 

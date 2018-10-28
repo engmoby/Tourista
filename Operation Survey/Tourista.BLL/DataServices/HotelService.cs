@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Tourista.BLL.DataServices.Interfaces;
@@ -28,7 +29,16 @@ namespace Tourista.BLL.DataServices
         }
         public PagedResultsDto GetAllOnlineHotels(int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId).OrderBy(x => x.HotelId);
+            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId).OrderByDescending(x => x.HotelId);
+            PagedResultsDto results = new PagedResultsDto();
+            results.TotalCount = query.Select(x => x).Count();
+            var modelReturn = query.OrderByDescending(x => x.HotelId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            results.Data = Mapper.Map<List<Hotel>, List<HotelDto>>(modelReturn);
+            return results;
+        }
+        public PagedResultsDto GetAllOnlineRelatedHotelsById(long hotelId,int page, int pageSize, int tenantId)
+        {
+            var query = Queryable().Where(x => !x.IsDeleted && x.HotelId != hotelId && (x.TenantId == tenantId)).OrderByDescending(x => Guid.NewGuid()).Take(10);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             var modelReturn = query.OrderBy(x => x.HotelId).Skip((page - 1) * pageSize).Take(pageSize).ToList();

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using Tourista.API.Models;
+using TouristaFrontEnd.Models;
 
 namespace TouristaFrontEnd.Controllers
 {

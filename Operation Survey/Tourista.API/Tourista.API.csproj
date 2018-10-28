@@ -267,6 +267,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ContactFormController.cs" />
+    <Compile Include="Controllers\NewsletterController.cs" />
+    <Compile Include="Controllers\GeneralController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CareerFormController.cs" />
     <Compile Include="Controllers\CityController.cs" />
@@ -286,6 +289,9 @@
     <Compile Include="Infrastructure\Filters\CustomExceptionFilter.cs" />
     <Compile Include="Infrastructure\ImageConvert.cs" />
     <Compile Include="Infrastructure\LanguageMessageHandler.cs" />
+    <Compile Include="Models\NewsLetterModel.cs" />
+    <Compile Include="Models\ContactFormModel.cs" />
+    <Compile Include="Models\GeneralModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\CareerFormModel.cs" />

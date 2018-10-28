@@ -1,0 +1,249 @@
+﻿
+@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+
+@{
+    ViewBag.Title = @Model.TitleDictionary[@Common.CurrentLang];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .mg-map {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+<div id="wrapper-content">
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <section class="page-banner hotel-view">
+            <div class="container">
+                <div class="page-title-wrapper">
+                    <div class="page-title-content">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html" class="link home">Home</a></li>
+                            <li><a href="hotel-result.html" class="link">Hotel</a></li>
+                            <li class="active">
+                                <a href="#" class="link">
+                                    @if (@Model.TitleDictionary[@Common.CurrentLang].Length >= 20)
+                                    {
+
+                                        @Model.TitleDictionary[@Common.CurrentLang].Substring(0, 20)
+
+                                    }
+                                    else
+                                    {
+                                        @Model.TitleDictionary[@Common.CurrentLang]
+                                    }
+                                </a>
+                            </li>
+                        </ol>
+                        <div class="clearfix"></div>
+                        <h2 class="captions">
+                            @if (@Model.TitleDictionary[@Common.CurrentLang].Length >= 20)
+                            {
+
+                                @Model.TitleDictionary[@Common.CurrentLang].Substring(0, 20)
+
+                            }
+                            else
+                            {
+                                @Model.TitleDictionary[@Common.CurrentLang]
+                            }
+                        </h2>
+                        @*<div class="price"><span class="text">from</span><span class="number">30</span><sup class="unit">$</sup></div>*@
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="hotel-view-main padding-top ">
+                <div class="container">
+                    <div class="journey-block">
+                        <h3 class="title-style-2">
+
+                            <span> @Model.TitleDictionary[@Common.CurrentLang]</span>
+                        </h3>
+                        <div class="overview-block clearfix" style="padding-top: 0px">
+                            <h3 class="title-style-3">Hotel Overview</h3>
+                            <div style="width: 100%;margin: auto">
+                                <div class="gallery_slider" id="hotel">
+
+                                    @foreach (string img in Model.ImagesURL)
+                                    {
+                                    <div>
+                                        <img src="@img" class="img-responsive">
+                                    </div>
+                                    }
+                                </div>
+
+                                <div class="slider-nav" id="hotel_nav">
+
+                                    @foreach (string img in Model.ImagesURL)
+                                    {
+                                    <div>
+                                        <img src="@img" slide="slide_1" class="img-responsive">
+                                    </div>
+                                    }
+                                </div>
+
+                                <div class="car-rent-layout">
+                                    <div class="content-wrapper">
+                                        <h3 class="title-style-2 title">About the hotel </h3>
+                                        <div class="car-meta-info star-ratings">
+                                            <div class="guest-rating">Stars: @Model.Star</div>
+                                        </div>
+                                        <!-- content -->
+                                        <div class="entry-content description">
+                                            <div class="vc_row wpb_row vc_row-fluid">
+                                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                    <div class="vc_column-inner ">
+                                                        <div class="wpb_wrapper">
+                                                            <div class="wpb_text_column wpb_content_element ">
+                                                                <div class="wpb_wrapper">
+                                                                    <p>
+                                                                        @MyHTMLHelpers.PreserveNewLines(Html, @Model.DescriptionDictionary[@Common.CurrentLang])
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="vc_row wpb_row vc_row-fluid">
+
+                                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                    <div class="vc_column-inner ">
+                                                        <div class="wpb_wrapper">
+                                                            <div class="slz-shortcode sc_item_list item-list-style06 item-list-20898662095b51c0535e375 ">
+                                                                <div class="wrapper-car-result">
+                                                                    <ul class="car-wigdet list-inline list-unstyled">
+
+                                                                        @foreach (HotelFeatureModel feature in Model.HotelFeature)
+                                                                        {
+                                                                        <li class="wrapper-car-item"><i class="car-icon flaticon-fruit"></i><span>@feature.Feature.TitleDictionary[@Common.CurrentLang]</span></li>
+                                                                        }
+                                                                        @*<li class="wrapper-car-item"><i class="car-icon flaticon-people-1"></i><span>5 People</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-fruit"></i><span>Automatic</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-eye"></i><span>Air Conditioned</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-front"></i><span> 6 Package</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-direction"></i><span>Auto mobile</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-connection"></i><span>Unlimited Miles</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-transport-1"></i><span> At Airport</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-transport-1"></i><span>Football</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-food"></i><span>Phone</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-interface"></i><span>Television</span></li>
+                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-buildings"></i><span>Radio</span></li>*@
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="map-block">
+
+                                    <iframe height="300px" width="700px" src="https://maps.google.com/maps?q=@Model.Latitude,@Model.Longitude&hl=es;z=14&amp;output=embed" class="mg-map"></iframe>
+
+                                </div> 
+                                                            <div class="find-widget find-hotel-widget widget new-style"><h4 class="title-widgets">BOOK ROOM</h4>
+
+                                                                <form class="content-widget">
+                                                                    <div class="text-input small-margin-top">
+                                                                        <div class="input-daterange">
+                                                                            <div class="text-box-wrapper half"><label class="tb-label">Check in</label>
+
+                                                                                <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                                                            </div>
+                                                                            <div class="text-box-wrapper half"><label class="tb-label">Check out</label>
+
+                                                                                <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="count adult-count text-box-wrapper"><label class="tb-label">Adult</label>
+
+                                                                            <div class="select-wrapper"><!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                                                <option selected="selected">1</option>
+                                                                                <option>2</option>
+                                                                                <option>3</option>
+                                                                                <option>4</option>
+                                                                                <option>5</option>
+                                                                                <option>6</option>
+                                                                                <option>7</option>
+                                                                                <option>8</option>
+                                                                                <option>9</option>
+                                                                            </select></div>
+                                                                        </div>
+                                                                        <div class="count child-count text-box-wrapper"><label class="tb-label">Child</label>
+
+                                                                            <div class="select-wrapper"><!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                                                <option selected="selected">0</option>
+                                                                                <option>1</option>
+                                                                                <option>2</option>
+                                                                                <option>3</option>
+                                                                                <option>4</option>
+                                                                                <option>5</option>
+                                                                                <option>6</option>
+                                                                                <option>7</option>
+                                                                                <option>8</option>
+                                                                                <option>9</option>
+                                                                            </select></div>
+                                                                        </div>
+                                                                        <div class="first-name text-box-wrapper"><label class="tb-label">Your First Name</label>
+
+                                                                            <div class="input-group"><input type="text" placeholder="Write your first name" class="tb-input"></div>
+                                                                        </div>
+                                                                        <div class="last-name text-box-wrapper"><label class="tb-label">Your Last Name</label>
+
+                                                                            <div class="input-group"><input type="text" placeholder="Write your last name" class="tb-input"></div>
+                                                                        </div>
+                                                                        <div class="email text-box-wrapper"><label class="tb-label">Your Email</label>
+
+                                                                            <div class="input-group"><input type="email" placeholder="Write your email address" class="tb-input"></div>
+                                                                        </div>
+                                                                        <div class="phone text-box-wrapper"><label class="tb-label">Your Number Phone</label>
+
+                                                                            <div class="input-group"><input type="text" placeholder="Write your number phone" class="tb-input"></div>
+                                                                        </div>
+                                                                        <div class="place text-box-wrapper"><label class="tb-label">Where are your address?</label>
+
+                                                                            <div class="input-group"><input type="text" placeholder="Write your address" class="tb-input"></div>
+                                                                        </div>
+                                                                        <div class="note text-box-wrapper"><label class="tb-label">Note:</label>
+
+                                                                            <div class="input-group"><textarea type="textarea" placeholder="Write your note" rows="3" class="tb-input"></textarea></div>
+                                                                        </div>
+                                                                        <button type="submit" data-hover="SEND REQUEST" class="btn btn-slide"><span class="text">BOOK Now</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                         
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+
+                    @{ Html.RenderAction("RelatedHotels", "Hotel",
+         new { hotelId = @Model.HotelId, mvcController = "Hotel", mvcAction = "RelatedHotels" }); }
+
+                </div>
+            </div>
+        </section>
+    </div>
+    @*BUTTON BACK TO TOP*@
+    <div id="back-top"><a href="#top" class="link"><i class="fa fa-angle-double-up"></i></a></div>
+</div>
+
+<script src="/Scripts/js/pages/hotel-view.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js"></script>

@@ -1,0 +1,90 @@
+﻿@using Tourista.API.Models
+@using TouristaFrontEnd.Helper 
+ 
+
+<section class="contact style-1">
+    <div class="container">
+        <div class="row">
+            <div class="wrapper-contact-style">
+                <div data-wow-delay="0.5s" class="contact-wrapper-images wow fadeInLeft"><img src="/Content/images/homepage/contact-people.png" alt="" class="img-responsive"></div>
+                <div class="col-lg-6 col-sm-7 col-lg-offset-4 col-sm-offset-5">
+                    <div data-wow-delay="0.4s" class="contact-wrapper padding-top padding-bottom wow fadeInRight">
+                        <div class="contact-box">
+                            <h5 class="title">contact us</h5>
+
+                            <p class="text">Just pack and go! Let leave your travel plan to travel experts!</p>
+
+                            <form class="contact-form"  id="myForm">
+                                @*<input type="text" placeholder="Your Name" class="form-control form-input">*@
+                                <input type="text" class="form-control form-input" placeholder="Your Name" id="FirstName"
+                                       data-validation-length="min4" data-validation="required"
+                                         data-validation-error-msg="ContactUs_Firstname_Val">
+                               
+                                <input type="email"  placeholder="Your Email" class="form-control form-input" id="Email" data-validation="email" 
+                                       data-validation-error-msg="ContactUs_Email_Val">
+                                <!--label.control-label.form-label.warning-label(for="") Warning for the above !-->
+                                @*<input type="email" placeholder="Your Email" class="form-control form-input">*@
+                                <!--label.control-label.form-label.warning-label(for="") Warning for the above !-->
+                                @*<textarea placeholder="Your Message" class="form-control form-input"></textarea>*@
+                                <textarea class="form-control form-input"  placeholder="Your Message"  id="Message"
+                                           rows="5" data-validation="required"
+                                           data-validation-error-msg="ContactUs_Message_Val"></textarea>
+                                <div id="MSGCONTACT" style="color: red;"> </div>
+
+                                <div class="contact-submit">
+                                    <button id="sendBtn"  data-hover="SEND NOW" class="btn btn-slide">
+                                        <span class="text">send message</span><span class="icons fa fa-long-arrow-right"></span></button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+    $.validate({
+        form: '#myForm',
+        modules: 'security',
+        onError: function ($form) {
+            debugger
+            alert('Validation of form ' + $form.attr('id') + ' failed!');
+        },
+        onSuccess: function ($form) {
+            debugger
+            sendContact();
+            return false;
+        }
+
+    });
+</script>
+
+<script type="text/javascript">
+
+    function sendContact() {
+        debugger
+
+        var contact = {
+            UserName: $("#FirstName").val(),
+            Email: $("#Email").val(),
+            Message: $("#Message").val()
+
+        }
+
+        $('#MSGCONTACT').html('ContactUs_JS_1');
+        debugger
+        $.ajax({
+            url: "http://localhost:32569/API/ContactForms",
+           type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                $('#MSGCONTACT').html("sucess ContactUs_JS_2 !");
+            },
+            data: contact
+        });
+    }
+</script>

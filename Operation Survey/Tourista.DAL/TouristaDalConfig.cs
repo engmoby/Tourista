@@ -50,7 +50,10 @@ namespace Tourista.DAL
 
                  .RegisterType<IRepositoryAsync<ContactUs>, Repository<ContactUs>>(new PerResolveLifetimeManager())
                 .RegisterType<IRepositoryAsync<ContactUsTranslation>, Repository<ContactUsTranslation>>(new PerResolveLifetimeManager())
-                
+
+                .RegisterType<IRepositoryAsync<Inquery>, Repository<Inquery>>(new PerResolveLifetimeManager())
+                .RegisterType<IRepositoryAsync<NewsLetter>, Repository<NewsLetter>>(new PerResolveLifetimeManager())
+
                 //.RegisterType<IRepositoryAsync<TourReservation>, Repository<tour>>(new PerResolveLifetimeManager())
 
                 ;

@@ -47,7 +47,7 @@ namespace Tourista.BLL.Services
         {
             if (GetHotel(hotelDto.HotelId, tenantId) != null)
             {
-                return EditHotel(hotelDto, userId, tenantId, files,path,1);
+                return EditHotel(hotelDto, userId, tenantId, files, path, 1);
             }
             ValidateHotel(hotelDto, tenantId);
             var hotelObj = Mapper.Map<Hotel>(hotelDto);
@@ -57,7 +57,7 @@ namespace Tourista.BLL.Services
                 {
                     Title = hotelName.Value,
                     Description = hotelDto.DescriptionDictionary[hotelName.Key],
-                    Language = hotelName.Key, 
+                    Language = hotelName.Key,
                 });
             }
 
@@ -72,12 +72,11 @@ namespace Tourista.BLL.Services
 
             foreach (var roleper in hotelDto.HotelFeature)
             {
-
                 hotelObj.HotelFeature.Add(new HotelFeature
                 {
-                   FeatureId = roleper.FeatureId
+                    FeatureId = roleper.FeatureId
                 });
-           }
+            }
             _hotelFeatureService.InsertRange(hotelObj.HotelFeature);
 
             _hotelTranslationService.InsertRange(hotelObj.HotelTranslations);
@@ -93,14 +92,14 @@ namespace Tourista.BLL.Services
             return hotelDto;
         }
 
-        public HotelDto EditHotel(HotelDto hotelDto, int userId, int tenantId, List<MemoryStream> files, string path,int imageCounter)
-        { 
+        public HotelDto EditHotel(HotelDto hotelDto, int userId, int tenantId, List<MemoryStream> files, string path, int imageCounter)
+        {
             var hotelObj = _hotelService.Query(x => x.HotelId == hotelDto.HotelId && x.TenantId == tenantId).Select().FirstOrDefault();
             if (hotelObj == null) throw new NotFoundException(ErrorCodes.ProductNotFound);
-          //  ValidateHotel(hotelDto, tenantId);
+            //  ValidateHotel(hotelDto, tenantId);
             foreach (var hotelName in hotelDto.TitleDictionary)
             {
-                var hotelTranslation = hotelObj.HotelTranslations.FirstOrDefault(x => x.Language.ToLower() == hotelName.Key.ToLower() 
+                var hotelTranslation = hotelObj.HotelTranslations.FirstOrDefault(x => x.Language.ToLower() == hotelName.Key.ToLower()
                 && x.HotelId == hotelDto.HotelId);
                 if (hotelTranslation == null)
                 {
@@ -125,10 +124,23 @@ namespace Tourista.BLL.Services
             hotelObj.Star = hotelDto.Star;
             hotelObj.LastModificationTime = Strings.CurrentDateTime;
             hotelObj.LastModifierUserId = userId;
-            hotelObj.IsDeleted = hotelDto.IsDeleted; 
+            hotelObj.IsDeleted = hotelDto.IsDeleted;
+
+            foreach (var roleper in hotelDto.HotelFeature)
+            {
+                if (hotelObj.HotelFeature.All(x => x.FeatureId != roleper.FeatureId))
+                {
+                    hotelObj.HotelFeature.Add(new HotelFeature
+                    {
+                        FeatureId = roleper.FeatureId
+                    });
+                }
+            }
+            _hotelFeatureService.InsertRange(hotelObj.HotelFeature);
+
             _hotelService.Update(hotelObj);
             SaveChanges();
-            var imageId = imageCounter+1;
+            var imageId = imageCounter + 1;
             foreach (var memoryStream in files)
             {
                 _manageStorage.UploadImage(path + "\\" + "Hotel-" + hotelObj.HotelId, memoryStream, imageId.ToString());
@@ -146,7 +158,10 @@ namespace Tourista.BLL.Services
         {
             return _hotelService.GetAllOnlineHotels(page, pageSize, tenantId);
         }
-
+        public PagedResultsDto GetAllOnlineRelatedHotelsById(long hotelId, int page, int pageSize, int tenantId)
+        {
+            return _hotelService.GetAllOnlineRelatedHotelsById(hotelId, page, pageSize, tenantId);
+        }
         private void ValidateHotel(HotelDto HotelDto, long tenantId)
         {
             foreach (var name in HotelDto.TitleDictionary)

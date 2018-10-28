@@ -52,7 +52,7 @@
                                     <label for="first-name"> {{ lang.value+'Description' | translate}} </label>
                                     <textarea required News="text" class="mat-input form-control"
                                      name="descriptionDictionary{{lang.value+'Name'}}" 
-                                     ng-model="newHotelCtrl.descriptionDictionary[lang.key]" ng-minlength="3" ng-maxlength="255"></textarea>
+                                     ng-model="newHotelCtrl.descriptionDictionary[lang.key]" ng-minlength="3" ng-maxlength="5255"></textarea>
                                     <div ng-messages="newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$error" >
 										
                                         <div ng-show="newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$error.required && !newHotelForm.descriptionDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>

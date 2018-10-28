@@ -1,0 +1,71 @@
+﻿
+@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+
+<section class="news padding-top padding-bottom">
+    <div class="container">
+        <div class="news-wrapper">
+            <div class="group-title">
+                <!--<div class="sub-title"><p class="text">EXPLORATIONAL STORIES</p><i class="icons flaticon-people"></i></div>-->
+                <h2 class="main-title">news </h2>
+            </div>
+            <div class="news-content margin-top100">
+                <div class="news-list">
+
+                    @if (Model.News != null)
+                    {
+                        foreach (NewsModel newsObj in Model.News)
+                        {
+                            <div class="new-layout">
+                                <div class="image-wrapper">
+                                    @if (newsObj.Image != null)
+                                    {
+                                        @*<a href="#" class="link">
+                                                <img src="@newsObj.Image" alt="" class="img-responsive">
+                                            </a>*@
+
+                                        <a href="/News/Details/@newsObj.NewsId" class="link">
+                                            <img style="width: 650px; height: 350px;" src="@newsObj.Image" alt="" class="img-responsive">
+                                        </a>
+                                    }
+
+                                    <div class="description">
+                                        @newsObj.TitleDictionary[Common.CurrentLang]
+                                    </div>
+                                </div>
+                                <div class="content-wrapper">
+                                    <a href="/News/Details/@newsObj.NewsId" class="title">@newsObj.TitleDictionary[Common.CurrentLang]</a>
+                                    <ul class="info list-inline list-unstyled">
+                                        <li>
+                                            @if (newsObj.CreationTime != null)
+                                            {
+                                                @newsObj.CreationTime.Value.ToString("D")
+                                            }
+                                        </li>
+                                    </ul>
+                                    <p class="text">
+                                        @if (@newsObj.DescriptionDictionary[@Common.CurrentLang].Length >= 150)
+                                        {
+
+                                            @MyHTMLHelpers.PreserveNewLines(Html, @newsObj.DescriptionDictionary[@Common.CurrentLang].Substring(0, 150))
+
+                                        }
+                                        else
+                                        {
+                                            @MyHTMLHelpers.PreserveNewLines(Html, @newsObj.DescriptionDictionary[@Common.CurrentLang])
+                                        }
+                                    </p>
+
+
+                                    <a href="/News/Details/@newsObj.NewsId" class="btn btn-maincolor">read know</a>
+
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

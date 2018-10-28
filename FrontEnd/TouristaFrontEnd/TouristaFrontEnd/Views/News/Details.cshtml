@@ -1,0 +1,96 @@
+﻿@using TouristaFrontEnd.Helper
+
+@{
+    ViewBag.Title = @Model.TitleDictionary[@Common.CurrentLang];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="wrapper-content">
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <section class="page-banner blog-detail">
+            <div class="container">
+                <div class="page-title-wrapper">
+                    <div class="page-title-content">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html" class="link home">Home</a></li>
+                            <li class="active"><a href="news.html" class="link home">News</a></li>
+                        </ol>
+                        <div class="clearfix"></div>
+                        <h2 class="captions">
+                            @if (@Model.TitleDictionary[@Common.CurrentLang].Length >= 10)
+                            {
+
+                                @Model.TitleDictionary[@Common.CurrentLang].Substring(0, 10)
+
+                            }
+                            else
+                            {
+                                @Model.TitleDictionary[@Common.CurrentLang]
+                            }
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page-main padding-top padding-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 main-left">
+                        <div class="item-blog-detail">
+                            <div class="blog-post blog-text">
+                                <div class="blog-image">
+                                    @if (Model.Image != null)
+                                    {
+                                        <a href="javascript:void(0)" class="link">
+                                            <img src="@Model.Image" alt="" class="img-responsive">
+                                        </a>
+                                    }
+
+                                </div>
+                                <div class="blog-content margin-bottom70">
+                                    <div class="row">
+                                        <div class="col-xs-1">
+                                            <div class="date">
+
+                                                @if (Model.CreationTime != null)
+                                                {
+                                                    <h1 class="day"> @Model.CreationTime.Day</h1>
+
+                                                    <h1 class="month"> @Model.CreationTime.ToString("MMMM").Substring(0, 3)</h1>
+
+                                                    <h1 class="year"> @Model.CreationTime.Year</h1>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11 blog-text">
+                                            <a href="javascript:void(0)" class="heading">
+                                                @Model.TitleDictionary[@Common.CurrentLang]
+                                            </a>
+                                            <div class="blog-descritption">
+                                                <p class="text">
+                                                    @MyHTMLHelpers.PreserveNewLines(Html, @Model.DescriptionDictionary[@Common.CurrentLang])
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 sidebar-widget">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-2">
+                            @*@{ Html.RenderAction("RelatedNewsById"); }*@ 
+                        @{ Html.RenderAction("RelatedNewsById", "News",
+                                   new { newsId = @Model.NewsId, mvcController = "News", mvcAction = "RelatedNewsById" }); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div> 
+</div>

@@ -36,7 +36,7 @@ namespace Tourista.API.Infrastructure
             {
                 UserId = GetTokenValue<int>(Strings.userID);
                 UserName = GetTokenValue<string>(Strings.userName);
-                TenantId = GetTokenValue<int>(Strings.TenantId);
+                TenantId = 0;// GetTokenValue<int>(Strings.TenantId);
              //   UserCountry = GetTokenValue<string>(ClaimTypes.Country);
             }
         }

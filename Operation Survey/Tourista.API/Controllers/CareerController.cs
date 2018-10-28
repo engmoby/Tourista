@@ -42,10 +42,12 @@ namespace Tourista.API.Controllers
         {
             var getAllDataForCareer = _careerService.GetAllCareers(page, pagesize, TenantId);
             var careerList = Mapper.Map<List<CareerModel>>(getAllDataForCareer.Data); 
-            PagedResultsDto results = new PagedResultsDto();
-            results.TotalCount = getAllDataForCareer.TotalCount;
-            results.Data = Mapper.Map<List<CareerModel>, List<CareerDto>>(careerList); 
-            return PagedResponse("GetAllCareers", Page, PageSize, results.TotalCount, careerList, results.IsParentTranslated); 
+            //PagedResultsDto results = new PagedResultsDto();
+            //results.TotalCount = getAllDataForCareer.TotalCount;
+            //results.Data = Mapper.Map<List<CareerModel>, List<CareerDto>>(careerList); 
+            return Ok(careerList);
+
+          //  return PagedResponse("GetAllCareers", Page, PageSize, results.TotalCount, careerList, results.IsParentTranslated); 
         }
          
         [Route("api/Careers/GetCareerById", Name = "GetCareerById")]

@@ -95,6 +95,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataServices\Interfaces\IConatctFormService.cs" />
+    <Compile Include="DataServices\Interfaces\INewsletterService.cs" />
+    <Compile Include="DataServices\NewsletterService.cs" />
+    <Compile Include="DataServices\ConatctFormService.cs" />
     <Compile Include="DataServices\ContactService .cs" />
     <Compile Include="DataServices\ContactTranslationService.cs" />
     <Compile Include="DataServices\CareerFormService.cs" />
@@ -143,6 +147,8 @@
     <Compile Include="DataServices\CityTranslationService.cs" />
     <Compile Include="DataServices\RefreshTokenService.cs" />
     <Compile Include="DataServices\UserService.cs" />
+    <Compile Include="DTOs\NewsletterDto.cs" />
+    <Compile Include="DTOs\ContactFromDto.cs" />
     <Compile Include="DTOs\ContactDto.cs" />
     <Compile Include="DTOs\AdminDto.cs" />
     <Compile Include="DTOs\CareerFromDto.cs" />
@@ -161,6 +167,10 @@
     <Compile Include="DTOs\HotelReservationDto.cs" />
     <Compile Include="DTOs\AboutDto.cs" />
     <Compile Include="DTOs\UserDto.cs" />
+    <Compile Include="Services\Interfaces\IConatctFormFacade.cs" />
+    <Compile Include="Services\Interfaces\INewsletterFacade.cs" />
+    <Compile Include="Services\NewsletterFacade.cs" />
+    <Compile Include="Services\ContactFormFacade.cs" />
     <Compile Include="Services\ContactFacade.cs" />
     <Compile Include="Services\BaseFacade.cs" />
     <Compile Include="Services\CareerFormFacade.cs" />

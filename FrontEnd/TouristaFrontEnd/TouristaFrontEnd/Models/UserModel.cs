@@ -17,8 +17,7 @@ namespace Tourista.API.Models
         public Guid UserAccountId { get; set; }
 
         public bool IsDeleted { get; set; }
-        public bool IsActive { get; set; }
-       // public Enums.UserType UserType { get; set; }
+        public bool IsActive { get; set; }  
         public int TenantId { get; set; }
 
         public DateTime? LastModificationTime { get; set; }

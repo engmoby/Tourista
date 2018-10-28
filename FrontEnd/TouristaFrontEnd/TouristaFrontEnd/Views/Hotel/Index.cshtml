@@ -1,0 +1,244 @@
+﻿
+@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+@model List<Tourista.API.Models.HotelModel>
+@{
+    ViewBag.Title = "Hotels";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="wrapper-content">
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <section class="page-banner hotel-result">
+            <div class="container">
+                <div class="page-title-wrapper">
+                    <div class="page-title-content">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html" class="link home">Home</a></li>
+                            <li class="active"><a href="#" class="link">Hotel</a></li>
+                        </ol>
+                        <div class="clearfix"></div>
+                        <h2 class="captions">HOTEL</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="page-main">
+            <div class="clearfix"></div>
+            <div class="hotel-result-main padding-top padding-bottom">
+                <div class="container">
+                    <div class="result-meta">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <div class="result-count-wrapper">Results Found: <span class="result-count">@Model.Count</span></div>
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <div class="result-filter-wrapper">
+                                    <form>
+                                        <label class="result-filter-label">Sort by :</label>
+                                        <div class="selection-bar">
+                                            <div class="select-wrapper">
+                                                <select name="Recommended" class="custom-select selectbox">
+                                                    <option value="" disabled="disabled" selected="selected" hidden="hidden">Price</option>
+                                                    <option value="1">lower to higher </option>
+                                                    <option value="2">higher to lower</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-body">
+                        <div class="row">
+                            <div class="col-md-8 main-right">
+                                <div class="hotel-list">
+                                    <div class="row">
+
+                                        @if (Model != null)
+                                        {
+                                            foreach (HotelModel hotelObj in Model)
+                                            {
+                                                <div class="col-sm-12">
+                                                    <div class="hotels-layout">
+                                                        <div class="image-wrapper">
+                                                            <a href="/Hotel/Details/@hotelObj.HotelId" class="link"><img src="@hotelObj.ImagesURL[0]" alt="" class="img-responsive"></a>
+
+
+                                                            <div class="title-wrapper">
+                                                                <a href="/Hotel/Details/@hotelObj.HotelId" class="title">
+                                                                    @if (@hotelObj.TitleDictionary[@Common.CurrentLang].Length >= 50)
+                                                                    {
+
+                                                                        @hotelObj.TitleDictionary[@Common.CurrentLang].Substring(0, 50)
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @hotelObj.TitleDictionary[@Common.CurrentLang]
+                                                                    }
+                                                                </a>
+                                                                @{var star = @hotelObj.Star;}
+                                                                @switch (@hotelObj.Star)
+                                                                {
+                                                                    case 1:
+                                                                        star = 20;
+                                                                        break;
+                                                                    case 2:
+                                                                        star = 40;
+                                                                        break;
+                                                                    case 3:
+                                                                        star = 60;
+                                                                        break;
+                                                                    case 4:
+                                                                        star = 80;
+                                                                        break;
+                                                                    case 5:
+                                                                        star = 100;
+                                                                        break;
+
+                                                                }
+                                                                <div title="Rated 5.00 out of 5" class="star-rating"><span class="width-@star"><strong class="rating">@hotelObj.Star</strong> out of 5</span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="content-wrapper">
+                                                            <div class="content">
+                                                                <div class="title">
+                                                                </div>
+                                                                <p class="text">
+                                                                    @if (@hotelObj.DescriptionDictionary[@Common.CurrentLang].Length >= 90)
+                                                                    {
+
+                                                                        @MyHTMLHelpers.PreserveNewLines(Html, @hotelObj.DescriptionDictionary[@Common.CurrentLang].Substring(0, 90))
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @MyHTMLHelpers.PreserveNewLines(Html, @hotelObj.DescriptionDictionary[@Common.CurrentLang])
+                                                                    }
+                                                                </p>
+
+
+                                                                <div class="group-btn-tours"><a href="/Hotel/Details/@hotelObj.HotelId" class="left-btn">book now</a></div>
+                                                            </div>
+                                                            <ul class="list-info list-unstyled">
+                                                                <li>
+                                                                    <i class="icons hidden-icon fa fa-map-marker"></i><span class="number">@hotelObj.City.TitleDictionary[@Common.CurrentLang]</span>
+
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:void(0)" class="link"><i class="icons fa fa-share-alt"></i></a>
+                                                                    <ul class="share-social-list">
+                                                                        <li><a href="#" class="link-social"><i class="icons fa fa-facebook"></i></a></li>
+                                                                        <li><a href="#" class="link-social"><i class="icons fa fa-google-plus"></i></a></li>
+                                                                        <li><a href="#" class="link-social"><i class="icons fa fa-twitter"></i></a></li>
+                                                                    </ul>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                                        }
+                                                                    }
+                                    </div>
+                                </div>
+                                @*<nav class="pagination-list margin-top70">
+                                        <ul class="pagination">
+                                            <li><a href="#" aria-label="Previous" class="btn-pagination previous"><span aria-hidden="true" class="fa fa-angle-left"></span></a></li>
+                                            <li><a href="#" class="btn-pagination active">01</a></li>
+                                            <li><a href="#" class="btn-pagination">02</a></li>
+                                            <li><a href="#" class="btn-pagination">03</a></li>
+                                            <li><a href="#" class="btn-pagination">...</a></li>
+                                            <li><a href="#" aria-label="Next" class="btn-pagination next"><span aria-hidden="true" class="fa fa-angle-right"></span></a></li>
+                                        </ul>
+                                    </nav>*@
+                            </div>
+                            <div class="col-md-4 sidebar-widget">
+                                <div class="col-2">
+
+                                </div>
+                                <div class="col-2">
+                                    <div class="col-1">
+                                        <div class="price-widget widget">
+                                            <div class="title-widget">
+                                                <div class="title">price</div>
+                                            </div>
+                                            <div class="content-widget">
+                                                <div class="price-wrapper">
+                                                    <div data-range_min="0" data-range_max="3000" data-cur_min="450" data-cur_max="1800" class="nstSlider">
+                                                        <div class="leftGrip indicator">
+                                                            <div class="number"></div>
+                                                        </div>
+                                                        <div class="rightGrip indicator">
+                                                            <div class="number"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="leftLabel">0</div>
+                                                    <div class="rightLabel">3000</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="turkey-cities-widget widget">
+                                            <div class="title-widget">
+                                                <div class="title">rating</div>
+                                            </div>
+                                            <div class="content-widget">
+                                                <form class="radio-selection">
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="rating" value="1stars" id="1stars" class="radio-btn"><label for="1stars" class="radio-label stars stars5">1stars</label><span class="count">27</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="rating" value="2stars" id="2stars" class="radio-btn"><label for="2stars" class="radio-label stars stars4">2stars</label><span class="count">75</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="rating" value="3stars" id="3stars" class="radio-btn"><label for="3stars" class="radio-label stars stars3">3stars</label><span class="count">35</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="rating" value="4stars" id="4stars" class="radio-btn"><label for="4stars" class="radio-label stars stars2">4stars</label><span class="count">34</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="rating" value="5stars" id="5stars" class="radio-btn"><label for="5stars" class="radio-label stars stars1">5stars</label><span class="count">65</span></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="accommodation-widget widget">
+                                            <div class="title-widget">
+                                                <div class="title">accommodation</div>
+                                            </div>
+                                            <div class="content-widget">
+                                                <form class="radio-selection">
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="accommodation" value="Hotel" id="Hotel" class="radio-btn"><label for="Hotel" class="radio-label">Hotel</label><span class="count">27</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="accommodation" value="Hostel" id="Hostel" class="radio-btn"><label for="Hostel" class="radio-label">Hostel</label><span class="count">75</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="accommodation" value="Resort" id="Resort" class="radio-btn"><label for="Resort" class="radio-label">Resort</label><span class="count">35</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="accommodation" value="Villa" id="Villa" class="radio-btn"><label for="Villa" class="radio-label">Villa</label><span class="count">34</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="accommodation" value="Motel" id="Motel" class="radio-btn"><label for="Motel" class="radio-label">Motel</label><span class="count">65</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="accommodation" value="Bungalow" id="Bungalow" class="radio-btn"><label for="Bungalow" class="radio-label">Bungalow</label><span class="count">65</span></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="col-1">
+                                        <div class="stop-widget widget">
+                                            <div class="title-widget">
+                                                <div class="title">Location</div>
+                                            </div>
+                                            <div class="content-widget">
+                                                <form class="radio-selection">
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="facilities" value="Swimming-pool" id="Swimming-pool" class="radio-btn"><label for="Swimming-pool" class="radio-label">KSA</label><span class="count">27</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="facilities" value="Restaurant" id="Restaurant" class="radio-btn"><label for="Restaurant" class="radio-label">United States</label><span class="count">75</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="facilities" value="Airport" id="Airport" class="radio-btn"><label for="Airport" class="radio-label">Egypt</label><span class="count">35</span></div>
+                                                    <div class="radio-btn-wrapper"><input type="radio" name="facilities" value="Nightclub" id="Nightclub" class="radio-btn"><label for="Nightclub" class="radio-label">United Kingdom</label><span class="count">34</span></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BUTTON BACK TO TOP-->
+    <div id="back-top"><a href="#top" class="link"><i class="fa fa-angle-double-up"></i></a></div>
+</div>

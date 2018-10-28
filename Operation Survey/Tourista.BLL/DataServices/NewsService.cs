@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Tourista.BLL.DataServices.Interfaces;
@@ -32,13 +33,32 @@ namespace Tourista.BLL.DataServices
 
         public PagedResultsDto GetAllOnlineNewss(int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && (x.TenantId == tenantId)).OrderBy(x => x.NewsId);
+            var query = Queryable().Where(x => !x.IsDeleted && (x.TenantId == tenantId)).OrderByDescending(x => x.NewsId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
-            var modelReturn = query.OrderBy(x => x.NewsId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var modelReturn = query.OrderByDescending(x => x.NewsId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
             results.Data = Mapper.Map<List<News>, List<NewsDto>>(modelReturn);
             return results;
         }
 
+        public PagedResultsDto GetAllOnlineRandomRelatedNews(int page, int pageSize, int tenantId)
+        {
+            var query = Queryable().Where(x => !x.IsDeleted && (x.TenantId == tenantId)).OrderByDescending(r => Guid.NewGuid()).Take(5);
+            PagedResultsDto results = new PagedResultsDto();
+            results.TotalCount = query.Select(x => x).Count();
+            var modelReturn = query.OrderByDescending(x => x.NewsId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            results.Data = Mapper.Map<List<News>, List<NewsDto>>(modelReturn);
+            return results;
+        }
+
+        public PagedResultsDto GetAllOnlineRelatedNewsById(long newsId,int page, int pageSize, int tenantId)
+        {
+            var query = Queryable().Where(x => !x.IsDeleted && x.NewsId != newsId  && (x.TenantId == tenantId)).OrderByDescending(x => x.NewsId).Take(5);
+            PagedResultsDto results = new PagedResultsDto();
+            results.TotalCount = query.Select(x => x).Count();
+            var modelReturn = query.OrderByDescending(x => x.NewsId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            results.Data = Mapper.Map<List<News>, List<NewsDto>>(modelReturn);
+            return results;
+        }
     }
 }

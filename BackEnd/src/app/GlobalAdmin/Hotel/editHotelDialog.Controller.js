@@ -86,6 +86,7 @@
             updateObj.latitude =  vm.Hotel.latitude; 
             updateObj.longitude =  vm.Hotel.longitude; 
             updateObj.removeImages =  vm.RemoveImages; 
+            updateObj.hotelFeature = vm.selectedHotelFeatures;
         
             var model = new FormData();
             model.append('data', JSON.stringify(updateObj));

@@ -1,0 +1,60 @@
+﻿@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+
+<div class="col-1">
+    <div class="recent-post-widget widget">
+        <div class="title-widget">
+            <div class="title">Latest News</div>
+        </div>
+        <div class="content-widget">
+            <div class="recent-post-list">
+                @if (Model != null)
+            {
+                foreach (NewsModel newsObj in Model)
+                {
+                        <div class="single-widget-item">
+                            <div class="single-recent-post-widget">
+
+                                <a href="javascript:void(0)" class="thumb img-wrapper">
+                                    @if (newsObj.Image != null)
+                                    {
+
+                                        <img src="@newsObj.Image" alt="" class="img-responsive">
+
+                                    }
+                                </a>
+                                <div class="post-info">
+                                    <a href="/News/Details/@newsObj.NewsId">
+
+                                        <div class="meta-info">
+                                            <span>
+                                                @if (newsObj.CreationTime != null)
+                                                {
+                                                    @newsObj.CreationTime.Value.ToString("D")
+                                                }
+                                            </span>
+                                        </div>
+                                        <div class="single-rp-preview">
+                                            @if (@newsObj.TitleDictionary[@Common.CurrentLang].Length >= 50)
+                                            {
+
+                                                @newsObj.TitleDictionary[@Common.CurrentLang].Substring(0, 50)
+
+                                            }
+                                            else
+                                            {
+                                                @newsObj.TitleDictionary[@Common.CurrentLang]
+                                            }
+
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

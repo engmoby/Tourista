@@ -10,6 +10,7 @@ using Tourista.DAL;
 using Tourista.DAL.Entities.Model;
 using System.Linq;
 using System.Threading;
+using Windows.ApplicationModel.Contacts;
 using Tourista.BLL.Services.ManageStorage;
 
 namespace Tourista.BLL
@@ -91,7 +92,16 @@ namespace Tourista.BLL
                 .ForMember(dto => dto.AddressDictionary, m => m.MapFrom(src => src.ContactUsTranslations.ToDictionary(translation => translation.Language.ToLower(), translation => translation.Address)));
 
 
+            mapperConfiguration.CreateMap<ContactDto, ContactUs>();
+            mapperConfiguration.CreateMap<ContactUs, ContactDto>()
+                .ForMember(dto => dto.AddressDictionary, m => m.MapFrom(src => src.ContactUsTranslations.ToDictionary(translation => translation.Language.ToLower(), translation => translation.Address)));
 
+
+            mapperConfiguration.CreateMap<NewsLetterDto, NewsLetter>();
+            mapperConfiguration.CreateMap<NewsLetter, NewsLetterDto>();
+
+            mapperConfiguration.CreateMap<ContactFormDto, Inquery>();
+            mapperConfiguration.CreateMap<Inquery, ContactFormDto>();
             //mapperConfiguration.CreateMap<TourDto, Tour>();
             //mapperConfiguration.CreateMap<Tour, TourDto>()
             //    .ForMember(dto => dto.TitleDictionary, m => m.MapFrom(src => src.TourTranslations.ToDictionary(translation => translation.Language.ToLower(), translation => translation.Title)));
@@ -147,6 +157,8 @@ namespace Tourista.BLL
                 .RegisterType<IContactService, ContactService>(new PerResolveLifetimeManager())
                 .RegisterType<IContactTranslationService, ContactUsTranslationService>(new PerResolveLifetimeManager())
 
+                .RegisterType<INewsLetterService, NewsLetterService>(new PerResolveLifetimeManager())
+                .RegisterType<IConatctFormService, ConatctFormService>(new PerResolveLifetimeManager())
 
                 .RegisterType<IManageStorage, ManageStorage>(new PerResolveLifetimeManager())
                 .RegisterType<IFormToMail, FormToMail>(new PerResolveLifetimeManager());

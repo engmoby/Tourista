@@ -50,9 +50,11 @@ namespace Tourista.DAL.Entities
 
         public DbSet<Tour> Tours { get; set; }
         public DbSet<TourTranslation> TourTranslations { get; set; }
+        public DbSet<NewsLetter> NewsLetters { get; set; } 
+        public DbSet<Inquery> Inqueries { get; set; }
 
-       // public DbSet<TourFeature> TourFeatures { get; set; } 
-         
+        // public DbSet<TourFeature> TourFeatures { get; set; } 
+
 
         public TouristaContext() : base("name=TouristaDB")
         {

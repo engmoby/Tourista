@@ -1,0 +1,116 @@
+﻿@using System.ComponentModel
+@using System.Threading.Tasks
+@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+@model List<Tourista.API.Models.NewsModel>
+
+@{
+
+            ViewBag.Title = "Index";
+
+            Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="wrapper-content">
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <section class="page-banner blog">
+            <div class="container">
+                <div class="page-title-wrapper">
+                    <div class="page-title-content">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html" class="link home">Home</a></li>
+                            <li class="active"><a href="#" class="link">News</a></li>
+                        </ol>
+                        <div class="clearfix"></div>
+                        <h2 class="captions">News</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page-main padding-top padding-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 main-left blog-wrapper">
+                        @if (Model != null)
+                        {
+                            foreach (NewsModel newsObj in Model)
+                            {
+                                <div class="blog-post">
+                                    <div class="blog-image">
+
+                                        @if (newsObj.Image != null)
+                                        {
+                                            <a href="/News/Details/@newsObj.NewsId" class="link">
+                                                <img src="@newsObj.Image" alt="" class="img-responsive">
+                                            </a>
+                                        }
+
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="col-xs-2">
+                                            <div class="row">
+                                                <div class="date">
+
+                                                    @if (newsObj.CreationTime != null)
+                                                    {
+                                                        <h1 class="day"> @newsObj.CreationTime.Value.Day</h1>
+                                                        <h1 class="month"> @newsObj.CreationTime.Value.ToString("MMMM").Substring(0, 3)</h1>
+                                                        <h1 class="year"> @newsObj.CreationTime.Value.Year</h1>
+
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-10 content-wrapper">
+                                            <a href="/News/Details/@newsObj.NewsId" class="heading">
+                                                @if (@newsObj.TitleDictionary[@Common.CurrentLang].Length >= 50)
+                                                {
+
+                                                    @newsObj.TitleDictionary[@Common.CurrentLang].Substring(0, 50)
+
+                                                }
+                                                else
+                                                {
+                                                    @newsObj.TitleDictionary[@Common.CurrentLang]
+                                                }
+                                            </a>
+                                            <p class="preview">
+                                                @if (@newsObj.DescriptionDictionary[@Common.CurrentLang].Length >= 150)
+                                                {
+
+                                                    @MyHTMLHelpers.PreserveNewLines(Html, @newsObj.DescriptionDictionary[@Common.CurrentLang].Substring(0, 150))
+
+                                                }
+                                                else
+                                                {
+                                                    @MyHTMLHelpers.PreserveNewLines(Html, @newsObj.DescriptionDictionary[@Common.CurrentLang])
+                                                }
+                                            </p>
+                                            <a href="/News/Details/@newsObj.NewsId" class="btn btn-gray btn-fit btn-capitalize">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+
+                    </div>
+                    <div class="col-md-4 sidebar-widget">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-2">
+                           
+                                @{ Html.RenderAction("RandomRelated"); }
+                            
+                            @*@{ Html.RenderPartial("RandomRelated");  }*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>

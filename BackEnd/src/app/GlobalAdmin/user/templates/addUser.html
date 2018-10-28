@@ -1,10 +1,9 @@
 {{'BasicInfoLbl' | translate}}
 <form class="form-horizontal" name="newclientForm">
-
     <div class="form-group pmd-textfield pmd-textfield-floating-label">
         <label for="first-name">{{'Name' | translate}}</label>
         <input required type="text" class="mat-input form-control" name="fullName" ng-pattern="/^(\D)+$/" ng-model="fullName" ng-minlength="3"
-            ng-maxlength="255">
+               ng-maxlength="255">
         <div ng-messages="newclientForm.fullName.$error" class="error">
             <div ng-show="newclientForm.fullName.$error.pattern">{{'TextOnly' | translate}}</div>
             <div ng-if="newclientForm.fullName.$error.required && !newclientForm.fullName.$pristine">{{'fullNameLengthError' | translate}}</div>
@@ -14,7 +13,7 @@
     <div class="form-group pmd-textfield pmd-textfield-floating-label">
         <label for="first-name">{{'titleLbl' | translate}}</label>
         <input required type="text" class="mat-input form-control" name="title" ng-pattern="/^(\D)+$/" ng-model="title" ng-minlength="3"
-            ng-maxlength="255">
+               ng-maxlength="255">
         <div ng-messages="newclientForm.title.$error">
             <div ng-show="newclientForm.title.$error.pattern">{{'TextOnly' | translate}}</div>
             <div ng-if="newclientForm.title.$error.required && !newclientForm.title.$pristine">{{'title' | translate}}</div>
@@ -24,13 +23,12 @@
     <div class="form-group pmd-textfield pmd-textfield-floating-label">
         <label>{{'EmailLbl' | translate}}</label>
         <input required type="text" class="mat-input form-control" name="userEmail" ng-model="Email" ng-pattern="/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/">
-        <span class="error" ng-show="newclientForm.userEmail.$error.pattern">{{'WrongMail' | translate}} </span> 
+        <span class="error" ng-show="newclientForm.userEmail.$error.pattern">{{'WrongMail' | translate}} </span>
         <div ng-messages="newclientForm.email.$error">
             <div ng-if="newclientForm.userEmail.$error.required && !newclientForm.userEmail.$pristine">{{'EmailLengthError' | translate}}</div>
         </div>
     </div>
     <div class="form-group pmd-textfield pmd-textfield-floating-label">
-
 
         <label for="first-name">{{'phoneLbl' | translate}}</label>
         <input required type="text" class="mat-input form-control" name="phone" numbers-only ng-model="Phone" ng-minlength="10" ng-maxlength="50">
@@ -42,15 +40,13 @@
     </div>
     <div class="form-group pmd-textfield pmd-textfield-floating-label">
 
-
         <label for="first-name">{{'whatsApp' | translate}}</label>
         <input required type="text" class="mat-input form-control" name="whatsApp" numbers-only ng-model="whatsApp" ng-minlength="10" ng-maxlength="50">
-         <div ng-messages="newclientForm.whatsApp.$error">
+        <div ng-messages="newclientForm.whatsApp.$error">
             <div ng-if="newclientForm.whatsApp.$error.required && !newclientForm.whatsApp.$pristine">{{'whatsAppReqError' | translate}}</div>
             <div ng-if="(newclientForm.whatsApp.$error.minlength || newclientForm.whatsApp.$error.maxlength)">{{'whatsAppLengthError' | translate}}</div>
         </div>
     </div>
-
     <div class="form-group pmd-textfield pmd-textfield-floating-label">
         <label for="first-name">{{'UserPasswordLbl' | translate}}</label>
         <input required type="password" class="mat-input form-control" name="password" ng-model="Password" ng-minlength="8" ng-maxlength="25">
@@ -69,21 +65,20 @@
     </div>
     <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
         <label for="first-name">{{'UserType' | translate}}</label>
-        <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags" 
-            ng-model="selectedType" ng-options="group as group.text for group in userTypeList">
+        <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags"
+                ng-model="selectedType" ng-options="group as group.text for group in userTypeList"></select>
+    </div>
 
-        </select> 
-    </div> 
-    
 </form>
 <div class="pmd-modal-action text-right">
     <button ng-disabled="newclientForm.$invalid "
-     class="btn pmd-ripple-effect btn-primary" type="button" ng-click="AddNewclient()">{{'saveChangesBtn' | translate}}</button>
-		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="Close()">{{'DiscardBtn' | translate}}</button>
-
+            class="btn pmd-ripple-effect btn-primary" type="button" ng-click="AddNewclient()">
+        {{'saveChangesBtn' | translate}}
+    </button>
+    <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="Close()">{{'DiscardBtn' | translate}}</button>
 </div>
 <script type="text/javascript">
-    $(document).ready(function () { 
+    $(document).ready(function () {
         $(".select-tags").select2({
             tags: false,
             theme: "bootstrap",

@@ -1,0 +1,46 @@
+﻿@using Tourista.API.Models
+@using TouristaFrontEnd.Helper  
+
+<section class="travelers">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="traveler-wrapper padding-top padding-bottom">
+                    <div class="group-title white">
+                        <div class="sub-title">
+                            <p class="text">Our board member</p>
+                        </div>
+                        <h2 class="main-title">LEADERSHIP</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="traveler-list"> 
+                   @if (Model.Owner != null)
+                   {
+                        foreach (OwnerModel ownerObj in Model.Owner)
+                        {
+                            <div class="traveler">
+                                <div class="cover-image">
+                                    <img src="/Content/images/homepage/cover-image-2.jpg" alt="">
+                                </div>
+                                <div class="wrapper-content">
+                                    <div class="avatar">
+                                        <img src="/Content/images/homepage/avatar-2.jpg" alt="" class="img-responsive">
+                                    </div>
+                                    <p class="name">@ownerObj.TitleDictionary[Common.CurrentLang]</p>
+
+                                    <p class="address">@ownerObj.PostionDictionary[Common.CurrentLang]</p>
+                                    <p class="description"> @ownerObj.DescriptionDictionary[Common.CurrentLang]</p>
+
+@*150 charachter*@
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

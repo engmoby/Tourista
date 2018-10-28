@@ -65,6 +65,15 @@ namespace Tourista.API
             mapperConfiguration.CreateMap<ContactModel, ContactDto>();
             mapperConfiguration.CreateMap<ContactDto, ContactModel>();
 
+
+            mapperConfiguration.CreateMap<NewsLetterModel, NewsLetterDto>();
+            mapperConfiguration.CreateMap<NewsLetterDto, NewsLetterModel>();
+
+
+            mapperConfiguration.CreateMap<ContactFormModel, ContactFormDto>();
+            mapperConfiguration.CreateMap<ContactFormDto, ContactFormModel>();
+
+
             //mapperConfiguration.CreateMap<AdminModel, AdminDto>();
             //mapperConfiguration.CreateMap<UserConsumed, UserConsumedModel>();
 

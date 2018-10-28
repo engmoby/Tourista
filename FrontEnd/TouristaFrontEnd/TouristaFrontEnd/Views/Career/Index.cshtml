@@ -1,0 +1,73 @@
+﻿
+@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+@model List<CareerModel>
+@{
+    ViewBag.Title = "Career";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="wrapper-content">
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <section class="page-banner blog">
+            <div class="container">
+                <div class="page-title-wrapper">
+                    <div class="page-title-content">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html" class="link home">Home</a></li>
+                            <li class="active"><a href="#" class="link">Career</a></li>
+                        </ol>
+                        <div class="clearfix"></div>
+                        <h2 class="captions">Career</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @if (null != TempData["alertMessage"])
+        {
+            <script type="text/javascript">
+                alert("@TempData["alertMessage"]");
+            </script>
+        }
+
+        <section class="page-main padding-top padding-bottom">
+            <div class="container"> 
+                    <div class="row">
+                        <div class="panel-group mb80" id="accordion" role="tablist" aria-multiselectable="true">
+
+                            @foreach (CareerModel careerObj in Model)
+                            {
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="@careerObj.CareerId-A">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#@careerObj.CareerId" aria-expanded="false" aria-controls="@careerObj.CareerId" class="collapsed">
+                                                @careerObj.Title
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="@careerObj.CareerId" class="panel-collapse collapse" role="tabpanel" aria-labelledby="@careerObj.CareerId-A" aria-expanded="false" style="height: 0px;">
+                                        <div class="panel-body">
+                                            <p>
+                                                <b> Job_Desc :</b>
+
+                                                <div class="display-field">
+                                                    @Html.PreserveNewLines(@careerObj.Description)
+                                                </div>
+                                            </p>
+
+                                            <a href="/Career/Details/@careerObj.CareerId" class="main_apply" style="font-size: 16px;padding: 10px 35px; color: #FFF;background-color: #e7b315 ;border-color: #e7b315 ;"> Apply_Button</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                 
+            </div>
+        </section>
+
+    </div>
+</div>

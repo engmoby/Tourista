@@ -68,6 +68,10 @@ namespace Tourista.API
                 .RegisterType<IAboutFacade, AboutFacade>(new PerResolveLifetimeManager())
                 
                 .RegisterType<IContactFacade, ContactFacade>(new PerResolveLifetimeManager())
+
+                .RegisterType<INewsletterFacade, NewsletterFacade>(new PerResolveLifetimeManager()) 
+                .RegisterType<IConatctFormFacade, ConatctFormFacade>(new PerResolveLifetimeManager())
+
                 ;
 
             TouristaBllConfig.RegisterTypes(container);
