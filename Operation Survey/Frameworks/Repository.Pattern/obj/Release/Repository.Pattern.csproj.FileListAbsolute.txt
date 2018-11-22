@@ -28,3 +28,9 @@ E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Repository.Patt
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.csprojResolveAssemblyReference.cache
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.dll
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\bin\Release\Repository.Pattern.dll.config
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\bin\Release\Repository.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\bin\Release\Repository.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.csprojResolveAssemblyReference.cache
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.pdb

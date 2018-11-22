@@ -15,15 +15,18 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Tourista.BLL.DataServices.Interfaces;
 
 namespace Tourista.API.Controllers
 {
     public class HotelController : BaseApiController
     {
         private readonly IHotelFacade _hotelFacade;
-        public HotelController(IHotelFacade hotelFacade)
+        private readonly IHotelService _hotelService;
+        public HotelController(IHotelFacade hotelFacade, IHotelService hotelService)
         {
             _hotelFacade = hotelFacade;
+            _hotelService = hotelService;
         }
 
         [Route("api/Hotels/GetAllHotels", Name = "GetAllHotels")]
@@ -205,6 +208,15 @@ namespace Tourista.API.Controllers
 
 
             return Ok(reurnHotel);
+        }
+
+        [Route("api/Hotels/GetHotelByCityId", Name = "GetHotelByCityId")]
+        [HttpGet]
+        public IHttpActionResult GetHotelByCityId(long cityId)
+        {
+            var reurnHotel = _hotelService.GetHotelByCityId(cityId);
+             
+            return Ok(reurnHotel.Data);
         }
     }
 

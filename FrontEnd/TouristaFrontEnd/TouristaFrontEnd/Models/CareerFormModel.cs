@@ -22,6 +22,7 @@ namespace Tourista.API.Models
         public bool? Seen { get; set; }
 
         public string File { get; set; }
+        public string CareerTitle { get; set; } 
         public bool IsDeleted { get; set; } 
         public int TenantId { get; set; }
 

@@ -16,7 +16,16 @@ namespace Tourista.BLL.DataServices
         {
             _repository = repository;
         }
-        
+
+        public PagedResultsDto GetHotelByCityId(long cityId)
+        {
+            var query = Queryable().Where(x =>   x.CityId== cityId).OrderByDescending(x => x.HotelId);
+            PagedResultsDto results = new PagedResultsDto();
+            results.TotalCount = query.Select(x => x).Count();
+            var modelReturn = query.OrderByDescending(x => x.HotelId).ToList();
+            results.Data = Mapper.Map<List<Hotel>, List<HotelDto>>(modelReturn);
+            return results;
+        }
         public PagedResultsDto GetAllHotels(int page, int pageSize, int tenantId)
         { 
             var query = Queryable().Where(x => x.TenantId == tenantId  ).OrderBy(x => x.HotelId);

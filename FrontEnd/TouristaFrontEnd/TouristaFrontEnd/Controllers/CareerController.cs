@@ -46,87 +46,80 @@ namespace TouristaFrontEnd.Controllers
             return View(vmlist);
         }
 
-        //public async Task<ActionResult> Details(int id)
-        //{
-        //    string careerDetails = url + "Career/GetCareerDetails/" + id;
-        //    var careerModels = new CareerModel();
-        //    var careerForm = new CareerForm();
+        public async Task<ActionResult> Details(int id)
+        {
+            var CareerModel = new CareerModel();
+            var careerForm = new CareerFormModel();
+            var general = url + "Careers/GetCareerById?careerId=" + id;
+            var responseMessage = await _client.GetAsync(general);
+            if (!responseMessage.IsSuccessStatusCode) return View(CareerModel);
+            var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+            CareerModel = JsonConvert.DeserializeObject<CareerModel>(responseData);
+            careerForm.CareerId = CareerModel.CareerId;
+            ViewBag.Title = CareerModel.Title;
+            return RedirectToAction("Upload", careerForm);
 
-        //    if (careerDetails == null) throw new ArgumentNullException(nameof(careerDetails));
-        //    HttpResponseMessage responseMessageApi = await _client.GetAsync(careerDetails);
-        //    if (responseMessageApi.IsSuccessStatusCode)
-        //    {
-        //        var responseData = responseMessageApi.Content.ReadAsStringAsync().Result;
-        //        careerModels = JsonConvert.DeserializeObject<CareerModel>(responseData);
-        //        careerForm.CareerId = careerModels.Id;
-        //        careerForm.CareerTitle = careerModels.Title;
-        //    }
-        //    ViewBag.Title = careerModels.Title;
-        //    return RedirectToAction("Upload", careerForm);
+            //return View(careerForm);
+        }
 
-        //    //return View(careerForm);
-        //}
+        // [HandleError]
+        public ActionResult Upload(CareerFormModel careerForm)
+        {
+            return View(careerForm);
+        }
 
-        //// [HandleError]
-        //public ActionResult Upload(CareerForm careerForm)
-        //{
-        //    return View(careerForm);
-        //}
+        [HttpPost]
+        // [HandleError]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Upload(CareerFormModel careerForm, HttpPostedFileBase file)
+        {
+            string fileName = "";
+            var fileDetails = new List<FileDetail>();
 
-        //[HttpPost]
-        //// [HandleError]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Upload(CareerForm careerForm, HttpPostedFileBase file)
-        //{
-        //    string fileName = "";
-        //    var fileDetails = new List<FileDetail>();
+            if (file != null && file.ContentLength > 0)
+            {
+                fileName = Path.GetFileName(file.FileName);
+                FileDetail fileDetail = new FileDetail()
+                {
+                    FileName = fileName,
+                    Extension = Path.GetExtension(fileName),
+                    Id = Guid.NewGuid()
+                };
+                fileDetails.Add(fileDetail);
 
-        //    if (file != null && file.ContentLength > 0)
-        //    {
-        //        fileName = Path.GetFileName(file.FileName);
-        //        FileDetail fileDetail = new FileDetail()
-        //        {
-        //            FileName = fileName,
-        //            Extension = Path.GetExtension(fileName),
-        //            Id = Guid.NewGuid()
-        //        };
-        //        fileDetails.Add(fileDetail);
+                var path = Path.Combine(Server.MapPath("~/Uploads/"), fileDetail.Id + fileDetail.Extension);
+                file.SaveAs(path);
+                careerForm.File = fileDetails[0].Id.ToString() + fileDetails[0].Extension.ToString();
+            }
 
-        //        var path = Path.Combine(Server.MapPath("~/Uploads/"), fileDetail.Id + fileDetail.Extension);
-        //        file.SaveAs(path);
-        //        careerForm.Attach = fileDetails[0].Id.ToString() + fileDetails[0].Extension.ToString();
-        //    }
+            careerForm.CareerId = careerForm.CareerId;
 
-        //    careerForm.CareerId = careerForm.CareerId;
+            if (string.IsNullOrEmpty(careerForm.FullName))
+                ModelState.AddModelError("FirstName", "Last_Name_Required"); 
+            if (string.IsNullOrEmpty(careerForm.Email))
+                ModelState.AddModelError("Email", "Email_Required");
+            if (string.IsNullOrEmpty(careerForm.PhoneNo))
+                ModelState.AddModelError("PhoneNo", "PhoneNo_Required");
+            if (string.IsNullOrEmpty(careerForm.File))
+                ModelState.AddModelError("Attach", "Attach_file_Required");
+            var general = url + "CareerForms";
 
-        //    if (string.IsNullOrEmpty(careerForm.FirstName))
-        //        ModelState.AddModelError("FirstName", Global.Last_Name_Required);
-        //    if (string.IsNullOrEmpty(careerForm.LastName))
-        //        ModelState.AddModelError("LastName", Global.Last_Name_Required);
-        //    if (string.IsNullOrEmpty(careerForm.Email))
-        //        ModelState.AddModelError("Email", Global.Email_Required);
-        //    if (string.IsNullOrEmpty(careerForm.PhoneNo))
-        //        ModelState.AddModelError("PhoneNo", Global.PhoneNo_Required);
-        //    if (string.IsNullOrEmpty(careerForm.Attach))
-        //        ModelState.AddModelError("Attach", Global.Attach_file_Required);
+            if (ModelState.IsValid)
+            {
+                HttpResponseMessage responseMessageApi = await _client.PostAsJsonAsync(general, careerForm);
+                if (responseMessageApi.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessageApi.Content.ReadAsStringAsync().Result; 
+                    if (responseData != null)
+                    {
+                        TempData["alertMessage"] = "Thanks, Kindly our team will contact with you shortly";
+                    }
+                }
+                return RedirectToAction("Index");
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        HttpResponseMessage responseMessageApi = await _client.PostAsJsonAsync("CareerForm/Save/", careerForm);
-        //        if (responseMessageApi.IsSuccessStatusCode)
-        //        {
-        //            var responseData = responseMessageApi.Content.ReadAsStringAsync().Result;
-        //            //  careerForm = JsonConvert.DeserializeObject<CareerForm>(responseData);
-        //            if (responseData != null)
-        //            {
-        //                TempData["alertMessage"] = "Thanks, Kindly our team will contact with you shortly";
-        //            }
-        //        }
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(careerForm);
-        //}
+            return View(careerForm);
+        }
 
     }
 }

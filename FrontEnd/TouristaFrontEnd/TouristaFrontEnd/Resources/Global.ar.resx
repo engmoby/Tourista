@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutText" xml:space="preserve">
+    <value>هناك العديد من الاختلافات في الممرات ، لكن الغالبية عانت من تغيير في شكل ما ، أو عن طريق الحقن ، أو الكلمات العشوائية التي لا تبدو.</value>
+  </data>
+  <data name="About_CoreValuesTitle" xml:space="preserve">
+    <value>قيمنا الجوهريه</value>
+  </data>
+  <data name="About_Description" xml:space="preserve">
+    <value>للتجاره و الاستثمار العقارى</value>
+  </data>
+  <data name="About_Title" xml:space="preserve">
+    <value>شركات توريستا العالميه</value>
+  </data>
+  <data name="Attach_file_Required" xml:space="preserve">
+    <value>يجب ارفاق الملف</value>
+  </data>
+  <data name="AWESOMETOURS" xml:space="preserve">
+    <value>جولات رائعة</value>
+  </data>
+  <data name="bigworld" xml:space="preserve">
+    <value>العالم الكبير</value>
+  </data>
+  <data name="Booking_Adults" xml:space="preserve">
+    <value>بالغون</value>
+  </data>
+  <data name="Booking_CheckIn" xml:space="preserve">
+    <value>تاريخ الوصول</value>
+  </data>
+  <data name="Booking_Checkout" xml:space="preserve">
+    <value>تاريخ المغادره</value>
+  </data>
+  <data name="Booking_Child" xml:space="preserve">
+    <value>اطفال</value>
+  </data>
+  <data name="Booking_ConfirmMsg" xml:space="preserve">
+    <value>شكرا لأختيارك فنادق توريستا! ,تم تسجيل طلبك و سيقوم احد مسئولى خدمه العملاء بالتواصل معك فى اقرب وقت</value>
+  </data>
+  <data name="Booking_Create" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+  <data name="Booking_Details" xml:space="preserve">
+    <value>تفاصيل الحجز</value>
+  </data>
+  <data name="Booking_Email" xml:space="preserve">
+    <value>البريد الالكترونى</value>
+  </data>
+  <data name="Booking_FirstName" xml:space="preserve">
+    <value>الاسم الاول</value>
+  </data>
+  <data name="Booking_HotelName" xml:space="preserve">
+    <value>الفندق</value>
+  </data>
+  <data name="Booking_JS1" xml:space="preserve">
+    <value>يجب اختيار موعد الوصول</value>
+  </data>
+  <data name="Booking_JS2" xml:space="preserve">
+    <value>يجب اختيار موعد المغادره</value>
+  </data>
+  <data name="Booking_JS3" xml:space="preserve">
+    <value>يجب اختيار عدد الاشخاص البالغون</value>
+  </data>
+  <data name="Booking_JS4" xml:space="preserve">
+    <value>يجب اختيار الاطفال المرافقون</value>
+  </data>
+  <data name="Booking_LastName" xml:space="preserve">
+    <value>اسم العائله</value>
+  </data>
+  <data name="Booking_Mobile" xml:space="preserve">
+    <value>الجوال</value>
+  </data>
+  <data name="Booking_PageTitle" xml:space="preserve">
+    <value>الحجز الالكترونى</value>
+  </data>
+  <data name="Booking_Personalinfo" xml:space="preserve">
+    <value>المعلومات الشخصيه</value>
+  </data>
+  <data name="Booking_ReservationID" xml:space="preserve">
+    <value>الرقم المرجعى للحجز</value>
+  </data>
+  <data name="Booking_ThankYou" xml:space="preserve">
+    <value>! شكرا لك </value>
+  </data>
+  <data name="BookNow" xml:space="preserve">
+    <value>احجز الآن</value>
+  </data>
+  <data name="Career_Details_Attach" xml:space="preserve">
+    <value>ارفاق السيره الذاتيه</value>
+  </data>
+  <data name="Career_Details_Create" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="Career_Details_Description" xml:space="preserve">
+    <value>الضيافه و الاداره</value>
+  </data>
+  <data name="Career_Details_Email" xml:space="preserve">
+    <value>البريد الالكترونى</value>
+  </data>
+  <data name="Career_Details_Firstname" xml:space="preserve">
+    <value>الاسم الاول</value>
+  </data>
+  <data name="Career_Details_JS_Alert" xml:space="preserve">
+    <value>من فضلك ارفق ملف PDF</value>
+  </data>
+  <data name="Career_Details_LastName" xml:space="preserve">
+    <value>الاسم الاخير</value>
+  </data>
+  <data name="Career_Details_Message" xml:space="preserve">
+    <value>الرساله</value>
+  </data>
+  <data name="Career_Details_PhoneNo" xml:space="preserve">
+    <value>رقم التليفون</value>
+  </data>
+  <data name="Career_Details_PositionTitle" xml:space="preserve">
+    <value>بيانات الوظيفه</value>
+  </data>
+  <data name="Career_Details_Title" xml:space="preserve">
+    <value>وظائف</value>
+  </data>
+  <data name="Career_Index_Apply_Button" xml:space="preserve">
+    <value>سجل لهذه الوظيفه</value>
+  </data>
+  <data name="Career_Index_Desc" xml:space="preserve">
+    <value>الضيافه و الاعمال الاداريه</value>
+  </data>
+  <data name="Career_Index_Job_Desc" xml:space="preserve">
+    <value>شرح الوظيفه</value>
+  </data>
+  <data name="Career_Index_Job_Education" xml:space="preserve">
+    <value>مستوى التعليم</value>
+  </data>
+  <data name="Career_Index_Job_Exp" xml:space="preserve">
+    <value>الخبره</value>
+  </data>
+  <data name="Career_Index_Job_Level" xml:space="preserve">
+    <value>مستوى التدرج</value>
+  </data>
+  <data name="Career_Index_Job_Requirements" xml:space="preserve">
+    <value>المتطلبات</value>
+  </data>
+  <data name="Career_Index_Job_Type" xml:space="preserve">
+    <value>نوع الوظيفه</value>
+  </data>
+  <data name="Career_Index_Job_Vacancies" xml:space="preserve">
+    <value>الفرص المتاحه</value>
+  </data>
+  <data name="Career_Index_Title" xml:space="preserve">
+    <value>الوظائف المطلوبه</value>
+  </data>
+  <data name="CheckIn" xml:space="preserve">
+    <value>دخول</value>
+  </data>
+  <data name="CheckOut" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="clickherer" xml:space="preserve">
+    <value>اضغط هنا</value>
+  </data>
+  <data name="ContactUs_Email" xml:space="preserve">
+    <value>البريد الالكترونى</value>
+  </data>
+  <data name="ContactUs_Email_Val" xml:space="preserve">
+    <value>من فضلك افحص البريد الالكترونى</value>
+  </data>
+  <data name="ContactUs_Firstname_Val" xml:space="preserve">
+    <value>من فضلك ادخل الاسم الاول</value>
+  </data>
+  <data name="ContactUs_FullName" xml:space="preserve">
+    <value>الاسم بالكامل</value>
+  </data>
+  <data name="ContactUs_JS_1" xml:space="preserve">
+    <value>..جارى الارسال</value>
+  </data>
+  <data name="ContactUs_JS_2" xml:space="preserve">
+    <value>تم الارسال ,شكرا لك !</value>
+  </data>
+  <data name="ContactUs_Message" xml:space="preserve">
+    <value>الرساله</value>
+  </data>
+  <data name="ContactUs_Message_Val" xml:space="preserve">
+    <value>من فضلك تأكد من محتوى الرساله</value>
+  </data>
+  <data name="ContactUs_Phone" xml:space="preserve">
+    <value>التليفون</value>
+  </data>
+  <data name="ContactUs_Phone_Val" xml:space="preserve">
+    <value>من فضلك افحص رقم الهاتف</value>
+  </data>
+  <data name="ContactUs_SendButton" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="ContactUs_SendInquiry" xml:space="preserve">
+    <value>ارسال استفسار</value>
+  </data>
+  <data name="Contactus_Text" xml:space="preserve">
+    <value>مجرد حزمة وتذهب! اسمحوا ترك خطة السفر الخاصة بك لخبراء السفر!</value>
+  </data>
+  <data name="ContactUs_Title" xml:space="preserve">
+    <value>اتصل بنا</value>
+  </data>
+  <data name="CotactUs_OfficeAddress" xml:space="preserve">
+    <value>عناوين</value>
+  </data>
+  <data name="Destination" xml:space="preserve">
+    <value>الاماكن</value>
+  </data>
+  <data name="discover" xml:space="preserve">
+    <value>اكتشف</value>
+  </data>
+  <data name="discovertext" xml:space="preserve">
+    <value>العالم الذي لم تره من قبل</value>
+  </data>
+  <data name="Email_Required" xml:space="preserve">
+    <value>البريد الاكترونى مطلوب</value>
+  </data>
+  <data name="ErrorPage_Desc" xml:space="preserve">
+    <value>نواجه بعض المشاكل حاليا ,برجاء التجربه لاحقا</value>
+  </data>
+  <data name="ErrorPage_Title" xml:space="preserve">
+    <value>عذرا ,الصفحه المطلوبه غير موجوده</value>
+  </data>
+  <data name="FEATUREDHOTELS" xml:space="preserve">
+    <value>فنادق مميزة</value>
+  </data>
+  <data name="FINDHOTEL" xml:space="preserve">
+    <value>البحث عن فندق</value>
+  </data>
+  <data name="First_Name_Required" xml:space="preserve">
+    <value>الاسم الاول مطلوب</value>
+  </data>
+  <data name="FLIGHT" xml:space="preserve">
+    <value>طيران</value>
+  </data>
+  <data name="Footer_ContactUs" xml:space="preserve">
+    <value>اتصل بنا</value>
+  </data>
+  <data name="Footer_CopyRights" xml:space="preserve">
+    <value>2017 جميع الحقوق محفوظه -شركه جى ام جى لتكنولوجيا المعلومات</value>
+  </data>
+  <data name="Footer_Mailbox" xml:space="preserve">
+    <value>ص.ب </value>
+  </data>
+  <data name="Footer_Newsletter" xml:space="preserve">
+    <value>بريد توريستا</value>
+  </data>
+  <data name="Footer_NewsletterAlreadyExist" xml:space="preserve">
+    <value>بريدك الإلكتروني موجود بالفعل</value>
+  </data>
+  <data name="Footer_NewsletterBoxEmail" xml:space="preserve">
+    <value>بريدك الالكترونى</value>
+  </data>
+  <data name="Footer_NewsletterButton" xml:space="preserve">
+    <value>اشترك الان</value>
+  </data>
+  <data name="Footer_NewsletterDesc" xml:space="preserve">
+    <value>اشترك لمتابعه الاخبار و احدث العروض</value>
+  </data>
+  <data name="Footer_NewsletterError" xml:space="preserve">
+    <value>الرجاء إدخال تنسيق البريد الإلكتروني الصحيح</value>
+  </data>
+  <data name="Footer_NewsletterSending" xml:space="preserve">
+    <value>جاري الارسال</value>
+  </data>
+  <data name="Footer_NewsletterSubmitMsg" xml:space="preserve">
+    <value>تم تسجيل البريد الالكترونى , شكرا لك </value>
+  </data>
+  <data name="Footer_PostalCode" xml:space="preserve">
+    <value>الرقم البريدى</value>
+  </data>
+  <data name="Footer_SocialMedia" xml:space="preserve">
+    <value>التواصل الاجتماعى</value>
+  </data>
+  <data name="Footer_Twitter" xml:space="preserve">
+    <value>تويتر</value>
+  </data>
+  <data name="GOEXPLORE" xml:space="preserve">
+    <value>اكتشف GO</value>
+  </data>
+  <data name="Header_About" xml:space="preserve">
+    <value>عن توريستا</value>
+  </data>
+  <data name="Header_Careers" xml:space="preserve">
+    <value>الوظائف</value>
+  </data>
+  <data name="Header_Contact" xml:space="preserve">
+    <value>اتصل بنا</value>
+  </data>
+  <data name="Header_Home" xml:space="preserve">
+    <value>الرئيسيه</value>
+  </data>
+  <data name="Header_Hotels" xml:space="preserve">
+    <value>الفنادق</value>
+  </data>
+  <data name="Header_Languages" xml:space="preserve">
+    <value>اللغه</value>
+  </data>
+  <data name="Header_News" xml:space="preserve">
+    <value>الاخبار</value>
+  </data>
+  <data name="Header_Offers" xml:space="preserve">
+    <value>العروض</value>
+  </data>
+  <data name="Header_Owners" xml:space="preserve">
+    <value>فريق القياده</value>
+  </data>
+  <data name="Home_HotelFacilitiesDesc" xml:space="preserve">
+    <value>تمتع بأنترنت مجانى ,صاله جيمانزيوم و مسبح ساخن </value>
+  </data>
+  <data name="Home_HotelFacilitiesTitle" xml:space="preserve">
+    <value>مزايا الفنادق</value>
+  </data>
+  <data name="Home_OurGallery" xml:space="preserve">
+    <value>معرض الصور</value>
+  </data>
+  <data name="Home_OurHotelsDesc" xml:space="preserve">
+    <value>فنادقنا فى مكه المكرمه و جده</value>
+  </data>
+  <data name="Home_OurHotelsTitle" xml:space="preserve">
+    <value>فنادق توريستا</value>
+  </data>
+  <data name="Home_OwnersDesc" xml:space="preserve">
+    <value>العقول المنيره خلف نجاح المجموعه</value>
+  </data>
+  <data name="Home_OwnersTitle" xml:space="preserve">
+    <value>فريق القياده</value>
+  </data>
+  <data name="Home_RecentNews" xml:space="preserve">
+    <value>احدث الاخبار</value>
+  </data>
+  <data name="Home_SearchRoomsAdult" xml:space="preserve">
+    <value>بالغ</value>
+  </data>
+  <data name="Home_SearchRoomsButton" xml:space="preserve">
+    <value>احجز الان</value>
+  </data>
+  <data name="Home_SearchRoomsCheckin" xml:space="preserve">
+    <value>تاريخ الاقامه</value>
+  </data>
+  <data name="Home_SearchRoomsCheckout" xml:space="preserve">
+    <value>تاريخ المغادره</value>
+  </data>
+  <data name="Home_SearchRoomsChild" xml:space="preserve">
+    <value>طفل</value>
+  </data>
+  <data name="Home_SearchRoomsDesc" xml:space="preserve">
+    <value>افضل الاسعار و اجود خدمه فندقيه</value>
+  </data>
+  <data name="Home_SearchRoomsTitle" xml:space="preserve">
+    <value>ابحث عن اقامتك</value>
+  </data>
+  <data name="Hotel_Details_CheckIn" xml:space="preserve">
+    <value>تسجيل الوصول</value>
+  </data>
+  <data name="Hotel_Details_Checkout" xml:space="preserve">
+    <value>تسجيل المغادره</value>
+  </data>
+  <data name="Hotel_Details_Description" xml:space="preserve">
+    <value>معلومات</value>
+  </data>
+  <data name="Hotel_Details_Facilities" xml:space="preserve">
+    <value>مزايا الفندق</value>
+  </data>
+  <data name="Hotel_Index_Button_Details" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="Hotel_Index_Desc" xml:space="preserve">
+    <value>فخامه و رقى</value>
+  </data>
+  <data name="Hotel_Index_Title" xml:space="preserve">
+    <value>فنادقنا</value>
+  </data>
+  <data name="Hotel_Night" xml:space="preserve">
+    <value>ليله</value>
+  </data>
+  <data name="its" xml:space="preserve">
+    <value>انه</value>
+  </data>
+  <data name="Last_Name_Required" xml:space="preserve">
+    <value>الاسم الاخير مطلوب</value>
+  </data>
+  <data name="MoreHotel" xml:space="preserve">
+    <value>فنادق اكثر</value>
+  </data>
+  <data name="moretours" xml:space="preserve">
+    <value>المزيد من الجولات</value>
+  </data>
+  <data name="News_Category" xml:space="preserve">
+    <value>تصنيف</value>
+  </data>
+  <data name="News_Index_Desc" xml:space="preserve">
+    <value>احدث الاخبار</value>
+  </data>
+  <data name="News_Index_Details" xml:space="preserve">
+    <value>استكمل القراءه</value>
+  </data>
+  <data name="News_Index_Title" xml:space="preserve">
+    <value>جميع الاخبار</value>
+  </data>
+  <data name="News_RecentNews" xml:space="preserve">
+    <value>احدث الاخبار</value>
+  </data>
+  <data name="NumberOfRoom_Required" xml:space="preserve">
+    <value>عدد الغرف  مطلوب</value>
+  </data>
+  <data name="Offers_Error" xml:space="preserve">
+    <value>لا يوجد عروض متاحه حاليه</value>
+  </data>
+  <data name="Offers_Index_Desc" xml:space="preserve">
+    <value>احدث العروض</value>
+  </data>
+  <data name="Offers_Index_Details" xml:space="preserve">
+    <value>عرض التفاصل</value>
+  </data>
+  <data name="Offers_Index_Title" xml:space="preserve">
+    <value>العروض</value>
+  </data>
+  <data name="outthere" xml:space="preserve">
+    <value>في الخارج</value>
+  </data>
+  <data name="Owners_Desc" xml:space="preserve">
+    <value>العقول المنيره خلف نجاح المجموعه</value>
+  </data>
+  <data name="Owners_SuccessTeam" xml:space="preserve">
+    <value>فريق العمل</value>
+  </data>
+  <data name="Owners_Title" xml:space="preserve">
+    <value>القياده</value>
+  </data>
+  <data name="PACK" xml:space="preserve">
+    <value>الحزمة والذهاب</value>
+  </data>
+  <data name="PhoneNo_Required" xml:space="preserve">
+    <value>رقم التليفون مطلوب</value>
+  </data>
+  <data name="Search_Box" xml:space="preserve">
+    <value>....كلمه البحث</value>
+  </data>
+  <data name="Search_Desc" xml:space="preserve">
+    <value>جميع نتائج البحث</value>
+  </data>
+  <data name="Search_Label" xml:space="preserve">
+    <value>نتائج البحث</value>
+  </data>
+  <data name="SeeMore" xml:space="preserve">
+    <value> المزيد</value>
+  </data>
+  <data name="StyleUrl" xml:space="preserve">
+    <value>/Content/layout-ar.css</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>الاشتراك</value>
+  </data>
+  <data name="Tours" xml:space="preserve">
+    <value>رحلات</value>
+  </data>
+  <data name="viewtours" xml:space="preserve">
+    <value>مشاهده رحلات</value>
+  </data>
+  <data name="Aboutthehotel" xml:space="preserve">
+    <value>عن الفندق</value>
+  </data>
+  <data name="HotelOverview" xml:space="preserve">
+    <value>نظرة عامة على الفندق</value>
+  </data>
+  <data name="LatestNews" xml:space="preserve">
+    <value>أحدث الأخبار</value>
+  </data>
+  <data name="Ourorganization" xml:space="preserve">
+    <value>مؤسساتنا</value>
+  </data>
+  <data name="Related" xml:space="preserve">
+    <value>ذات صلة</value>
+  </data>
+  <data name="Stars" xml:space="preserve">
+    <value>نجوم</value>
+  </data>
+  <data name="StyleUrl2" xml:space="preserve">
+    <value>/Content/components-ar.css</value>
+  </data>
+</root>

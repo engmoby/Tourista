@@ -1,0 +1,5 @@
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\bin\Release\Tourista.Common.dll
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\bin\Release\Tourista.Common.pdb
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\obj\Release\Tourista.Common.csprojResolveAssemblyReference.cache
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\obj\Release\Tourista.Common.dll
+E:\Private\Toursita\Project\Operation Survey\Tourista.Common\obj\Release\Tourista.Common.pdb

@@ -1,9 +1,9 @@
 
 <div> 
-    <div ng-if="AboutList.results.length == 0">
+    <div ng-if="AboutList.length == 0">
         <span>{{'NoAboutsAvailable' | translate}}</span>
     </div>
-    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="AboutList.results.length > 0">
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="AboutList.length > 0">
         <div class="table-responsive"></div>
         <table class="table pmd-table table-hover">
             <thead>
@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="About in AboutList.results">
+                <tr ng-repeat="About in AboutList">
                     <td data-title="Name">{{About.descriptionDictionary[selectedLanguage]}}</td>
                   
                     <td width="30%" ng-show="!About.isStatic">

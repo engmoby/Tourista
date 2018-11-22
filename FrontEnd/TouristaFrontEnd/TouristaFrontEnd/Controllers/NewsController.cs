@@ -60,7 +60,7 @@ namespace TouristaFrontEnd.Controllers
             if (!responseMessage.IsSuccessStatusCode) return View(newsModel);
             var responseData = responseMessage.Content.ReadAsStringAsync().Result;
             newsModel = JsonConvert.DeserializeObject<List<NewsModel>>(responseData);
-            return View(newsModel);
+            return PartialView(newsModel);
         }
 
         // GET: News/RelatedNewsById/5
@@ -72,7 +72,7 @@ namespace TouristaFrontEnd.Controllers
             if (!responseMessage.IsSuccessStatusCode) return View(newsModel);
             var responseData = responseMessage.Content.ReadAsStringAsync().Result;
             newsModel = JsonConvert.DeserializeObject<List<NewsModel>>(responseData);
-            return View(newsModel);
+            return PartialView(newsModel);
         }
     }
 }

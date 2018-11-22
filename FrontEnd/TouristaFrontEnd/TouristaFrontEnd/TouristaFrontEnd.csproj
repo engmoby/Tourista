@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TouristaFrontEnd</RootNamespace>
     <AssemblyName>TouristaFrontEnd</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -60,8 +62,7 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
@@ -70,9 +71,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -114,6 +113,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -182,16 +182,19 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CareerController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Common.cs" />
+    <Compile Include="Helper\CultureHelper.cs" />
     <Compile Include="Helper\MenuItem.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -204,6 +207,7 @@
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\CurrencyModel.cs" />
     <Compile Include="Models\FeatureModel.cs" />
+    <Compile Include="Models\FileDetail.cs" />
     <Compile Include="Models\GeneralModel.cs" />
     <Compile Include="Models\HotelFeatureModel.cs" />
     <Compile Include="Models\HotelModel.cs" />
@@ -216,11 +220,22 @@
     <Compile Include="Models\UserConsumedModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Global.ar.Designer.cs">
+      <DependentUpon>Global.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Global.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.resx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\components-ar.css" />
     <Content Include="Content\components-huy.css" />
     <Content Include="Content\components-quoc.css" />
     <Content Include="Content\components-tuan.css" />
@@ -232,6 +247,7 @@
     <Content Include="Content\font\font-icon\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Content\font\font-icon\font-flaticon\flaticon.css" />
     <Content Include="Content\font\font-icon\font-flaticon\flaticon.svg" />
+    <Content Include="Content\images\ar.png" />
     <Content Include="Content\images\avatar\avatar-01.png" />
     <Content Include="Content\images\avatar\avatar-02.png" />
     <Content Include="Content\images\avatar\avatar-03.png" />
@@ -283,6 +299,7 @@
     <Content Include="Content\images\blog\recent-blog-post\post-5.jpg" />
     <Content Include="Content\images\blog\recent-blog-post\recent-blog-post.html" />
     <Content Include="Content\images\blur.svg" />
+    <Content Include="Content\images\en.png" />
     <Content Include="Content\images\flight\airplanes-logo.jpg" />
     <Content Include="Content\images\flight\flight.html" />
     <Content Include="Content\images\footer\footer.html" />
@@ -427,6 +444,7 @@
     <Content Include="Content\images\tours\tour-5.jpg" />
     <Content Include="Content\images\tours\tour-6.jpg" />
     <Content Include="Content\images\tours\tours.html" />
+    <Content Include="Content\layout-ar.css" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\library.css" />
     <Content Include="Content\responsive-huy.css" />
@@ -483,6 +501,8 @@
     <Content Include="Content\images\homepage\.DS_Store" />
     <Content Include="Content\images\hotels\.DS_Store" />
     <Content Include="Content\images\hotels\view\.DS_Store" />
+    <None Include="Properties\PublishProfiles\TouristaFront.pubxml" />
+    <None Include="Resources\_Layout.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -607,7 +627,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -672,9 +694,13 @@
     <Content Include="Views\Career\Details.cshtml" />
     <Content Include="Views\Career\Index - Copy.cshtml" />
     <Content Include="Views\Career\Upload.cshtml" />
+    <Content Include="Views\Home\Index - Copy.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -683,6 +709,18 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Global.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.ar.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Global.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

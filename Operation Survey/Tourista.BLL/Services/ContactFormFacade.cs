@@ -32,10 +32,10 @@ namespace Tourista.BLL.Services
 
         public ContactFormDto CreateConatctForm(ContactFormDto contactFormDto, int userId, int tenantId)
         {
-            if (GetContactForm(contactFormDto.InqueryId, tenantId) != null)
-            {
-                return EditContactForm(contactFormDto, userId, tenantId);
-            }
+            //if (GetContactForm(contactFormDto.InqueryId, tenantId) != null)
+            //{
+            //    return EditContactForm(contactFormDto, userId, tenantId);
+            //}
             var conatctFormObj = Mapper.Map<Inquery>(contactFormDto);
             conatctFormObj.UserName = contactFormDto.UserName;
             conatctFormObj.Email = contactFormDto.Email;

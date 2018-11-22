@@ -72,4 +72,9 @@ E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Syste
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\System.Net.Http.Formatting.xml
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\System.Web.Http.xml
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\System.Web.Http.WebHost.xml
+E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\TouristaFrontEnd.csproj.GenerateResource.Cache
+E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\TouristaFrontEnd.Resources.Global.resources
+E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\ar\TouristaFrontEnd.resources.dll
+E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\TouristaFrontEnd.Resources.Global.ar.resources
+E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\ar\TouristaFrontEnd.resources.dll
 E:\Private\Toursita\Project\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Debug\TouristaFrontEnd.csprojResolveAssemblyReference.cache

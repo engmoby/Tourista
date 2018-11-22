@@ -26,8 +26,7 @@ namespace TouristaFrontEnd.Controllers
         }
         public async Task<ActionResult> Index()
         {
-            var vmlist = await GeneralModel();
-
+            var vmlist = await GeneralModel(); 
             return View(vmlist);
         }
 
@@ -72,11 +71,11 @@ namespace TouristaFrontEnd.Controllers
             {
                 var vmlist = new GeneralModel();
                 string general = url + "General/GetAllGeneral";
-                HttpResponseMessage responseMessage =   _client.GetAsync(general).Result;
+                HttpResponseMessage responseMessage = _client.GetAsync(general).Result;
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;
-                    vmlist = JsonConvert.DeserializeObject<GeneralModel>(responseData); 
+                    vmlist = JsonConvert.DeserializeObject<GeneralModel>(responseData);
                     Common.GeneralModel = vmlist;
                 }
             }

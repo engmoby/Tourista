@@ -1,0 +1,9 @@
+﻿@using Tourista.API.Models
+@using TouristaFrontEnd.Helper 
+@if (Model.About != null)
+{ 
+    foreach (AboutModel ownerObj in Model.About)
+   {
+       @MyHTMLHelpers.PreserveNewLines(Html, @ownerObj.DescriptionDictionary[@Common.CurrentLang])
+   }
+}

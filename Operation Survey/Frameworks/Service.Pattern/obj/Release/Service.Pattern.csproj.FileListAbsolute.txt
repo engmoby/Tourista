@@ -19,3 +19,10 @@ E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.csprojResolveAssemblyReference.cache
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.dll
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Release\Service.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Release\Service.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Release\Repository.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Release\Repository.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.csprojResolveAssemblyReference.cache
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.pdb

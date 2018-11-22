@@ -78,3 +78,19 @@ E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Repository.Patt
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Release\Repository.Pattern.Ef6.csprojResolveAssemblyReference.cache
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Release\Repository.Pattern.Ef6.dll
 E:\Projects\Operation Survey\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Release\Repository.Pattern.Ef6.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\Repository.Pattern.Ef6.dll.config
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\Repository.Pattern.Ef6.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\Repository.Pattern.Ef6.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\EntityFramework.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\EntityFramework.SqlServer.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\LinqKit.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\Repository.Pattern.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\System.Net.Http.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\Repository.Pattern.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\EntityFramework.xml
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\EntityFramework.SqlServer.xml
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\LinqKit.pdb
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Release\LinqKit.xml
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Release\Repository.Pattern.Ef6.csprojResolveAssemblyReference.cache
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Release\Repository.Pattern.Ef6.dll
+E:\Private\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Release\Repository.Pattern.Ef6.pdb

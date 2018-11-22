@@ -1,7 +1,6 @@
-E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.csprojResolveAssemblyReference.cache
+E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.BLL.pdb
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.BLL.dll.config
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.BLL.dll
-E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.BLL.pdb
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\AutoMapper.dll
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
@@ -38,5 +37,6 @@ E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Newtonsoft.J
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\EntityFramework.xml
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\LinqKit.pdb
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\LinqKit.xml
+E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.csprojResolveAssemblyReference.cache
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.dll
 E:\Private\Toursita\Project\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.pdb

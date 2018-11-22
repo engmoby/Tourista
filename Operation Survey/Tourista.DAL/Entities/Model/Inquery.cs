@@ -10,7 +10,7 @@ namespace Tourista.DAL.Entities.Model
         public string UserName { get; set; }
         public string Message { get; set; }
         public string Email { get; set; }
-        [ForeignKey("SeenUser")]
+         [ForeignKey("SeenUser")]
         public long? SeenUserId { get; set; }
         public virtual User SeenUser { get; set; }
         public DateTime? LastModificationTime { get; set; }

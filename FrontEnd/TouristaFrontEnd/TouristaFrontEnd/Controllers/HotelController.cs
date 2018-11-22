@@ -61,7 +61,7 @@ namespace TouristaFrontEnd.Controllers
             if (!responseMessage.IsSuccessStatusCode) return View(hotelModel);
             var responseData = responseMessage.Content.ReadAsStringAsync().Result;
             hotelModel = JsonConvert.DeserializeObject<List<HotelModel>>(responseData);
-            return View(hotelModel);
+            return PartialView(hotelModel);
         }
     }
 }
