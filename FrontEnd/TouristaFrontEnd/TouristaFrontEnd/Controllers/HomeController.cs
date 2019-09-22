@@ -25,6 +25,7 @@ namespace TouristaFrontEnd.Controllers
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         public async Task<ActionResult> Index()
+
         {
             var vmlist = await GeneralModel(); 
             return View(vmlist);

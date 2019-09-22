@@ -148,6 +148,8 @@
     <Compile Include="DataServices\CityTranslationService.cs" />
     <Compile Include="DataServices\RefreshTokenService.cs" />
     <Compile Include="DataServices\UserService.cs" />
+    <Compile Include="DTOs\BackageDto.cs" />
+    <Compile Include="DTOs\TypeDto.cs" />
     <Compile Include="DTOs\NewsletterDto.cs" />
     <Compile Include="DTOs\ContactFromDto.cs" />
     <Compile Include="DTOs\ContactDto.cs" />

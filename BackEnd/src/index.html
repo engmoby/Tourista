@@ -11,51 +11,17 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-	<link rel="stylesheet" ng-href="bundle-en.css?v=#{VERSION_REPlACE}#" />
-	<!-- <link rel="stylesheet" ng-href="bundle-{{selectedLanguage}}.css?v=#{VERSION_REPlACE}#" /> -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css"/>
-	
-	<style>
-		.red-text {
-			background-color: #f33434 !important
-		}
-		.green-text {
-			background-color:#21e421 !important
-		}
-		.error {
-			color: red;
-		}
-
-		.loading-pane {
-			position: absolute;
-			background: url("http://oi62.tinypic.com/2pqsuc0.jpg");
-		}
-
-		.loading-pane .spinner-image {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			background: url("http://oi58.tinypic.com/2emfu9w.jpg") center center no-repeat;
-		}
-
-		[ng\:cloak],
-		[ng-cloak],
-		[data-ng-cloak],
-		[x-ng-cloak],
-		.ng-cloak,
-		.x-ng-cloak {
-			display: none !important;
-		}
-	</style>
-
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" /> 
+	<link rel="stylesheet" ng-href="bundle-{{selectedLanguage}}.css?v=#{VERSION_REPlACE}#" />
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css" /> -->
+ 
 </head>
 
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth" ng-if="isLoggedIn()">
 
 		<div class="container-fluid">
-			<div class="pmd-navbar-right-icon pull-right navigation">
+			<div class="pull-right navigation">
 				<!-- Notifications -->
 				<div class="dropdown notification icons pmd-dropdown">
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="width: 100%;padding-top:10px;">
@@ -72,11 +38,12 @@
 
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a href="javascript:void(0);" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle">
+				<a href="javascript:void(0);"
+					class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle">
 					<i class="material-icons">menu</i>
 				</a>
 				<a href="index.html" class="navbar-brand">
-					<img src="/assets/img/logo-os-white.png" style="    width: 77px;" />
+					<img src="/assets/img/logo-os-white.png"  style="width: 90px;" />
 				</a>
 
 			</div>
@@ -84,19 +51,19 @@
 
 	</nav>
 	<!--End Nav bar -->
-	<!-- Header Ends -->
-
+	<!-- Header Ends --> 
 	<!-- Sidebar Starts -->
-	<div class="pmd-sidebar-overlay"></div>
-
+	<div class="pmd-sidebar-overlay"></div> 
 	<!-- Left sidebar -->
-	<aside ng-if="isLoggedIn()" ng-cloak ng-init="logoutFlag=false" class="pmd-sidebar sidebar-default pmd-sidebar-slide-push pmd-sidebar-left pmd-sidebar-open bg-fill-darkblue sidebar-with-icons"
-	 role="navigation">
+	<aside ng-if="isLoggedIn()" ng-cloak ng-init="logoutFlag=false"
+		class="pmd-sidebar sidebar-default pmd-sidebar-slide-push pmd-sidebar-left pmd-sidebar-open bg-fill-darkblue sidebar-with-icons"
+		role="navigation">
 		<ul class="nav pmd-sidebar-nav">
 
 			<!-- User info -->
 			<li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
-				<a ng-click="logoutFlag=!logoutFlag" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true" aria-expandedhref="javascript:void(0);">
+				<a ng-click="logoutFlag=!logoutFlag" data-toggle="dropdown" class="btn-user dropdown-toggle media"
+					data-sidebar="true" aria-expandedhref="javascript:void(0);">
 					<div class="media-left">
 						<img src="/assets/img/user-icon.png" alt="New User">
 						<!-- <span>{{logoutFlag}}</span> -->
@@ -104,7 +71,7 @@
 					<div class="media-body media-middle" ng-cloak>{{user.name}}
 						<div style="font-size: 12px">
 							<span ng-if="user.userType == 2">{{'employee' | translate}}</span>
-							<span ng-if="user.userType == 1">{{'deptManager' | translate}}</span> 
+							<span ng-if="user.userType == 1">{{'deptManager' | translate}}</span>
 						</div>
 					</div>
 					<div class="media-right media-middle">
@@ -118,13 +85,14 @@
 				</ul>
 			</li>
 			<!-- End user info -->
- 
+
 
 			<li ng-show="user.PermissionId.indexOf('1') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Hotel');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -133,13 +101,14 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Hotel' | translate}}</span>
 				</a>
-			</li> 
-			
+			</li>
+
 			<li ng-show="user.PermissionId.indexOf('10') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('HotelReservation');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -148,12 +117,13 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Hotel Reservation' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 			<li ng-show="user.PermissionId.indexOf('1') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Country');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -162,14 +132,15 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Country' | translate}}</span>
 				</a>
-			</li> 
-			
+			</li>
+
 
 			<li ng-show="user.PermissionId.indexOf('3') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Career');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -178,15 +149,16 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Career' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 
-			
+
 
 			<li ng-show="user.PermissionId.indexOf('3') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('CareerForm');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -195,13 +167,14 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'CareerForm' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 
 			<li ng-show="user.PermissionId.indexOf('4') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Currency');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -210,14 +183,15 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Currency' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 
-			
+
 			<li ng-show="user.PermissionId.indexOf('5') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Feature');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -226,13 +200,14 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Feature' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 
 			<li ng-show="user.PermissionId.indexOf('6') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('News');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -241,13 +216,14 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'News' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 
 			<li ng-show="user.PermissionId.indexOf('7') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Owner');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -256,13 +232,14 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Owner' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 
 			<li ng-show="user.PermissionId.indexOf('2') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('users');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -271,12 +248,13 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'User' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 			<li ng-show="user.PermissionId.indexOf('2') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Client');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -285,12 +263,13 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Client' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 			<li ng-show="user.PermissionId.indexOf('8') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('About');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -299,12 +278,13 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'About' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 			<li ng-show="user.PermissionId.indexOf('9') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Contact');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -313,13 +293,14 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'Contact Us' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 
 			<li ng-show="user.PermissionId.indexOf('3') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Dashboard');">
 					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-						 xml:space="preserve">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
 							<g>
 								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
 						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
@@ -332,19 +313,17 @@
 		</ul>
 	</aside>
 	<!-- End Left sidebar -->
-	<!-- Sidebar Ends -->
-
+	<!-- Sidebar Ends --> 
 	<div ui-view layout="column" class="pmd-content content-Country dashboard" flex></div>
 
 	<!-- scripts Country -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-
-
-	<script src="libs.js?v=#{VERSION_REPlACE}#"></script>
-
+ 
+	<!-- 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.js"></script>
-    <script src="https://rawgit.com/krispo/angular-nvd3/v1.0.5/dist/angular-nvd3.js"></script>
+    <script src="https://rawgit.com/krispo/angular-nvd3/v1.0.5/dist/angular-nvd3.js"></script> -->
+	<script src="libs.js?v=#{VERSION_REPlACE}#"></script>
 	<script src="core.js?v=#{VERSION_REPlACE}#"></script>
 	<script src="app.js?v=#{VERSION_REPlACE}#"></script>
 	<script src="templates.js?v=#{VERSION_REPlACE}#"></script>
@@ -352,11 +331,29 @@
 	<script src="https://rawgithub.com/McNull/angular-block-ui/bower/angular-block-ui.min.js"></script>
 	<link rel="stylesheet" href="https://rawgithub.com/McNull/angular-block-ui/bower/angular-block-ui.min.css">
 	<script src="https://cdn.rawgit.com/BioPhoton/angular1-star-rating/v1.2.4/dist/index.js"></script>
-	
-	<script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
-	<script src="http://jvandemo.github.io/angularjs-google-maps/dist/angularjs-google-maps.js"></script>
-	
 
+	<!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+	<script src="http://jvandemo.github.io/angularjs-google-maps/dist/angularjs-google-maps.js"></script>
+	 -->
+	 <script type="text/javascript">
+		$(document).ready(function () {
+			// $(".select-add-tags").select2({
+			//     tags: true,
+			//     theme: "bootstrap",
+			//     insertTag: function (data, tag) { 
+			//         data.push(tag); 
+			//     }
+			// });
+			$(".select-tags").select2({
+				tags: false,
+				theme: "bootstrap",
+			})
+	
+			$(".select-with-search").select2({
+				theme: "bootstrap"
+			});
+		});
+	</script>
 </body>
 
 </html>

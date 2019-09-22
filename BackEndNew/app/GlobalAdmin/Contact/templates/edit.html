@@ -1,0 +1,116 @@
+<div class="modal-content">
+	<div class="modal-header bordered">
+		<h2 class="pmd-card-title-text">{{'Contact' | translate}}</h2>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" name="editContactForm"> 
+                <div> 
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in editContactCtrl.language">
+                            <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">
+                                {{lang.value | translate}}
+                            </a>
+                        </li> 
+                    </ul>
+                    <div class="pmd-card">
+                        <div class="pmd-card-body">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in editContactCtrl.language" id="{{lang.value}}-form">
+                                    <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                                        <label for="first-name"> {{ lang.value+'Address' | translate}} </label>
+                                        <textarea required type="text" class="mat-input form-control" name="addressDictionary{{lang.value+'Name'}}"
+                                         ng-model="editContactCtrl.Contact.addressDictionary[lang.key]" ng-minlength="3" ng-maxlength="255"></textarea>
+                                        <div ng-messages="editContactForm.addressDictionary{{lang.value+'Name'}}.$error" >
+                                            
+                                            <div ng-show="editContactForm.addressDictionary{{lang.value+'Name'}}.$error.required && !editContactForm.addressDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                            <div ng-show="(editContactForm.addressDictionary{{lang.value+'Name'}}.$error.minlength || editContactForm.addressDictionary{{lang.value+'Name'}}.$error.maxlength) && !editContactForm.addressDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+
+                   
+                    </div>
+                </div> 
+              
+                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'EmailLbl' | translate}}</label>
+            
+                    <input required type="text" class="mat-input form-control" name="email" ng-model="editContactCtrl.Contact.mail" ng-minlength="3" ng-maxlength="50">
+                    <div ng-messages="editContactForm.email.$error">
+                        <div ng-if="editContactForm.email.$error.required && !editContactForm.email.$pristine">{{'email is required' | translate}}</div>
+                        <div ng-if="(editContactForm.email.$error.minlength || editContactForm.email.$error.maxlength) && !editContactForm.email.$error.required">{{'LastNameLengthError' | translate}}</div>
+                    </div>
+                </div>
+                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'phoneLbl' | translate}}</label>
+            
+                    <input required type="text" class="mat-input form-control" numbers-only name="phone" ng-model="editContactCtrl.Contact.phone" ng-pattern="phoneNumbr"
+                        ng-minlength="10" ng-maxlength="50">
+                    <span class="error" ng-show="editContactForm.phone.$error.pattern">{{'NotPhoneNumber' | translate}} </span>
+                    <div ng-messages="editContactForm.phone.$error">
+                        <div ng-if="editContactForm.phone.$error.required && !editContactForm.phone.$pristine">{{'PhoneReqError' | translate}}</div>
+                        <div ng-if="(editContactForm.phone.$error.minlength || editContactForm.phone.$error.maxlength)">{{'PhoneLengthError' | translate}}</div>
+                    </div>
+                </div>
+                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'faxLbl' | translate}}</label>
+            
+                    <input required type="text" class="mat-input form-control" numbers-only name="fax" ng-model="editContactCtrl.Contact.fax" ng-pattern="faxNumbr"
+                        ng-minlength="10" ng-maxlength="50">
+                    <span class="error" ng-show="editContactForm.fax.$error.pattern">{{'NotfaxNumber' | translate}} </span>
+                    <div ng-messages="editContactForm.fax.$error">
+                        <div ng-if="editContactForm.fax.$error.required && !editContactForm.fax.$pristine">{{'faxReqError' | translate}}</div>
+                        <div ng-if="(editContactForm.fax.$error.minlength || editContactForm.fax.$error.maxlength)">{{'faxLengthError' | translate}}</div>
+                    </div>
+                </div>
+                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'Facebook' | translate}}</label>
+            
+                    <input required type="text" class="mat-input form-control" name="Facebook" ng-model="editContactCtrl.Contact.facebook" ng-minlength="3" ng-maxlength="50">
+                    <div ng-messages="editContactForm.Facebook.$error">
+                        <div ng-if="editContactForm.Facebook.$error.required && !editContactForm.Facebook.$pristine">{{'Facebook Is Required' | translate}}</div>
+                        <div ng-if="(editContactForm.Facebook.$error.minlength || editContactForm.Facebook.$error.maxlength) && !editContactForm.Facebook.$error.required">{{'Facebook charachter must be  3' | translate}}</div>
+                    </div>
+                </div>
+
+                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'instgram' | translate}}</label>
+            
+                    <input required type="text" class="mat-input form-control" name="instgram" ng-model="editContactCtrl.Contact.instgram" ng-minlength="3" ng-maxlength="50">
+                    <div ng-messages="editContactForm.instgram.$error">
+                        <div ng-if="editContactForm.instgram.$error.required && !editContactForm.instgram.$pristine">{{'instgram Is Required' | translate}}</div>
+                        <div ng-if="(editContactForm.instgram.$error.minlength || editContactForm.instgram.$error.maxlength) && !editContactForm.instgram.$error.required">{{'instgram charachter must be  3' | translate}}</div>
+                    </div>
+                </div>
+
+                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'twitter' | translate}}</label>
+            
+                    <input required type="text" class="mat-input form-control" name="twitter" ng-model="editContactCtrl.Contact.twitter" ng-minlength="3" ng-maxlength="50">
+                    <div ng-messages="editContactForm.twitter.$error">
+                        <div ng-if="editContactForm.twitter.$error.required && !editContactForm.twitter.$pristine">{{'twitter Is Required' | translate}}</div>
+                        <div ng-if="(editContactForm.twitter.$error.minlength || editContactForm.twitter.$error.maxlength) && !editContactForm.twitter.$error.required">{{'twitter charachter must be  3' | translate}}</div>
+                    </div>
+                </div>
+                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'linkedIn' | translate}}</label>
+            
+                    <input required type="text" class="mat-input form-control" name="linkedIn" ng-model="editContactCtrl.Contact.linkedIn" ng-minlength="3" ng-maxlength="50">
+                    <div ng-messages="editContactForm.linkedIn.$error">
+                        <div ng-if="editContactForm.linkedIn.$error.required && !editContactForm.linkedIn.$pristine">{{'linkedIn Is Required' | translate}}</div>
+                        <div ng-if="(editContactForm.linkedIn.$error.minlength || editContactForm.linkedIn.$error.maxlength) && !editContactForm.linkedIn.$error.required">{{'linkedIn charachter must be  3' | translate}}</div>
+                    </div>
+                </div>
+		</form>
+	</div>
+	<div class="pmd-modal-action text-right">
+		<button ng-disabled="editContactForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editContactCtrl.UpdateContact()">{{'saveChangesBtn' | translate}}</button>
+		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editContactCtrl.Close()">{{'DiscardBtn' | translate}}</button>
+	</div>
+</div>
+
+	

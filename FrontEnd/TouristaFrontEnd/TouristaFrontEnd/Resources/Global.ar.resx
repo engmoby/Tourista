@@ -442,7 +442,7 @@
     <value>فريق القياده</value>
   </data>
   <data name="Home_RecentNews" xml:space="preserve">
-    <value>احدث الاخبار</value>
+    <value>احدث المعالم السياحيه</value>
   </data>
   <data name="Home_SearchRoomsAdult" xml:space="preserve">
     <value>بالغ</value>
@@ -505,16 +505,16 @@
     <value>تصنيف</value>
   </data>
   <data name="News_Index_Desc" xml:space="preserve">
-    <value>احدث الاخبار</value>
+    <value>احدث المعالم السياحيه</value>
   </data>
   <data name="News_Index_Details" xml:space="preserve">
     <value>استكمل القراءه</value>
   </data>
   <data name="News_Index_Title" xml:space="preserve">
-    <value>جميع الاخبار</value>
+    <value>جميع المعالم السياحيه</value>
   </data>
   <data name="News_RecentNews" xml:space="preserve">
-    <value>احدث الاخبار</value>
+    <value>احدث المعالم السياحيه</value>
   </data>
   <data name="NumberOfRoom_Required" xml:space="preserve">
     <value>عدد الغرف  مطلوب</value>
@@ -580,7 +580,7 @@
     <value>نظرة عامة على الفندق</value>
   </data>
   <data name="LatestNews" xml:space="preserve">
-    <value>أحدث الأخبار</value>
+    <value>أحدث المعالم السياحيه</value>
   </data>
   <data name="Ourorganization" xml:space="preserve">
     <value>مؤسساتنا</value>

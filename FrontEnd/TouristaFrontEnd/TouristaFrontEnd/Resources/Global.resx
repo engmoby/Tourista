@@ -412,7 +412,7 @@
     <value>Languages</value>
   </data>
   <data name="Header_News" xml:space="preserve">
-    <value>News</value>
+    <value>Tourist Attractions</value>
   </data>
   <data name="Header_Offers" xml:space="preserve">
     <value>Offers</value>
@@ -508,16 +508,16 @@
     <value>Category</value>
   </data>
   <data name="News_Index_Desc" xml:space="preserve">
-    <value>Latest News</value>
+    <value>Latest Tourist Attractions</value>
   </data>
   <data name="News_Index_Details" xml:space="preserve">
     <value>Continue Reading</value>
   </data>
   <data name="News_Index_Title" xml:space="preserve">
-    <value>All News</value>
+    <value>All Tourist Attractions</value>
   </data>
   <data name="News_RecentNews" xml:space="preserve">
-    <value>Recent News</value>
+    <value>Recent Tourist Attractions</value>
   </data>
   <data name="NumberOfRoom_Required" xml:space="preserve">
     <value>NumberOfRoom Required</value>
@@ -583,7 +583,7 @@
     <value>Hotel Overview</value>
   </data>
   <data name="LatestNews" xml:space="preserve">
-    <value>Latest News</value>
+    <value>Latest Tourist Attractions</value>
   </data>
   <data name="Ourorganization" xml:space="preserve">
     <value>Our organization</value>

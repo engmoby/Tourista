@@ -1,0 +1,45 @@
+<div>
+    <div style="margin-bottom:10px">
+        <button ng-click="$state.go('addUser');" ng-disabled="userCtrl.userConsumed.consumedUsers >= userCtrl.userConsumed.maxNumUsers" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{'AddUserBtn' | translate}}</button>
+ 
+    </div>
+    <div ng-if="userCtrl.userList.results.length == 0">
+        <span>{{'NouserAvailable' | translate}}</span>
+    </div>
+
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="userList.length >0">
+
+        <div class="table-responsive">
+            <table class="table pmd-table table-hover">
+                <thead>
+                    <tr>
+                        <th>{{'userName' | translate}}</th>
+                        <th>{{'Title' | translate}}</th> 
+                        <th>{{'EmailLbl' | translate}}</th> 
+                        <th>{{'Phone1Lbl' | translate}}</th> 
+                        <th>{{'Type' | translate}}</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in userList">
+                        <td data-title="Name" width="20%">{{user.fullName}}</td>
+                        <td  data-title="title">{{user.title}}</td> 
+                        <td  data-title="email" width="20%">{{user.email}}  </td> 
+                        <td  data-title="phone">{{user.phone}}</td> 
+                        <td  data-title="type"> {{(userTypeList  |filter: {id: key})[user.userType].text}}</td> 
+                       
+                        <td  width="15%">  
+                            <i class="cursorPointer" ng-click="$state.go('editUser', {userId: user.userId});">{{'Edit' | translate}} </i>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>
+

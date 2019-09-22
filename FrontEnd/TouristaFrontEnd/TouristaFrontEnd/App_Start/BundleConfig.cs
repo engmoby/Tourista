@@ -13,7 +13,7 @@ namespace TouristaFrontEnd
                 "~/Scripts/libs/jquery/jquery-2.2.3.min.js",
                 "~/Scripts/libs/bootstrap/js/bootstrap.min.js",
                 "~/Scripts/libs/detect-browser/browser.js",
-                "~/Scripts/libs/smooth-scroll/jquery-smoothscroll.js",
+                //"~/Scripts/libs/smooth-scroll/jquery-smoothscroll.js",
                 "~/Scripts/libs/wow-js/wow.min.js",
                 "~/Scripts/libs/slick-slider/slick.min.js",
                 "~/Scripts/libs/selectbox/js/jquery.selectbox-0.2.js",
@@ -51,8 +51,8 @@ namespace TouristaFrontEnd
                 "~/Scripts/libs/slick-slider/slick-theme.css",
                 "~/Scripts/libs/selectbox/css/jquery.selectbox.css",
                 "~/Scripts/libs/please-wait/please-wait.css",
-                //"~/Content/layout.css",
-               // "~/Content/components.css",
+                "~/Content/layout.css",
+                "~/Content/components.css",
                 "~/Content/responsive.css",
                 "~/Scripts/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css"
                 ));

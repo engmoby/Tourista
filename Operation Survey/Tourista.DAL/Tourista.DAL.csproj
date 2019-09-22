@@ -75,10 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Model\CareerForm.cs" />
+    <Compile Include="Entities\Model\Backage.cs" />
+    <Compile Include="Entities\Model\BackageTranslation.cs" />
     <Compile Include="Entities\Model\Inquery.cs" />
     <Compile Include="Entities\Model\NewsLetter.cs" />
     <Compile Include="Entities\Model\HotelReservation.cs" />
     <Compile Include="Entities\Model\HotelFeatures.cs" />
+    <Compile Include="Entities\Model\Type.cs" />
+    <Compile Include="Entities\Model\TypeTranslation.cs" />
     <Compile Include="Entities\Model\TourFeatures.cs" />
     <Compile Include="Entities\Model\TourDay.cs" />
     <Compile Include="Entities\Model\Tour.cs" />

@@ -14,12 +14,12 @@
       'ngProgressLite',
     'ui.bootstrap',
     'pascalprecht.translate',
-    'ADM-treeView',
+    // 'ADM-treeView',
     'blockUI',
     'ui.carousel',
-    'nvd3',
+    // 'nvd3',
     'jkAngularRatingStars','angular.filter',
-    'gm'
+    // 'gm'
     ]);
 }());
 ;(function() {
@@ -59,8 +59,8 @@
 	angular
 		.module('core')
 		.constant('appCONSTANTS', {
-			// 'API_URL': 'http://localhost:32569/api/', 
-			'API_URL': 'http://touristaegy.com/api/',
+			 'API_URL': 'http://localhost:32569/api/', 
+			//'API_URL': 'http://touristaegy.com/api/',
 			'defaultLanguage': 'en',
 			'supportedLanguage': {
 				'en': { 'key': 'en', 'value': 'english' },

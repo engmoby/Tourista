@@ -20,104 +20,289 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="tab-search tab-search-long tab-search-default">
-            <div class="container">
-                <div class="row" style="padding-left: 270px">
-                    <div class="col-xs-12">
-                        <ul role="tablist" class="nav nav-tabs">
-                            <li role="presentation" class="tab-btn-wrapper active"><a href="#flight" aria-controls="flight" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-transport-1"></i><span class="text">@TouristaFrontEnd.Resources.Global.FLIGHT</span><span class="xs">Request Flight Ticket</span></a></li>
-                            <!--  <li role="presentation" class="tab-btn-wrapper"><a href="#transfer" aria-controls="transfer" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-transport-3"></i><span class="text">TRANSFER</span><span class="xs">FIND TRANSFER</span></a></li> -->
-                            <li role="presentation" class="tab-btn-wrapper"><a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-three"></i><span class="text">@TouristaFrontEnd.Resources.Global.Hotel_Index_Title</span><span class="xs">@TouristaFrontEnd.Resources.Global.FINDHOTEL</span></a></li>
-                            <!-- <li role="presentation" class="tab-btn-wrapper"><a href="#tours" aria-controls="tours" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-people"></i><span class="text">TOURS</span><span class="xs">FIND TOURS</span></a></li>
-                            <!--<li role="presentation" class="tab-btn-wrapper"><a href="#car-rent" aria-controls="car-rent" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-transport-7"></i><span class="text">CAR RENT</span><span class="xs">FIND CAR RENT</span></a></li> -->
-                            <!-- <li role="presentation" class="tab-btn-wrapper"><a href="#cruises" aria-controls="cruises" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-transport-4"></i><span class="text">CRUISES</span><span class="xs">FIND CRUISES</span></a></li>-->
-                        </ul>
-                    </div>
+
+
+    <div class="tab-search tab-search-long tab-search-default">
+        <div class="container">
+            <div class="row" style="padding-left: 270px">
+                <div class="col-xs-12">
+                    <ul role="tablist" class="nav nav-tabs">
+                        <li role="presentation" class="tab-btn-wrapper active"><a href="#flight" aria-controls="flight" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-transport-1"></i><span class="text">FLIGHT</span><span class="xs">Request Flight Ticket</span></a></li>
+                        <!--  <li role="presentation" class="tab-btn-wrapper"><a href="#transfer" aria-controls="transfer" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-transport-3"></i><span class="text">TRANSFER</span><span class="xs">FIND TRANSFER</span></a></li> -->
+                        <li role="presentation" class="tab-btn-wrapper"><a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-three"></i><span class="text">HOTEL</span><span class="xs">FIND HOTEL</span></a></li>
+                        <!-- <li role="presentation" class="tab-btn-wrapper"><a href="#tours" aria-controls="tours" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-people"></i><span class="text">TOURS</span><span class="xs">FIND TOURS</span></a></li>
+                        <!--<li role="presentation" class="tab-btn-wrapper"><a href="#car-rent" aria-controls="car-rent" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-transport-7"></i><span class="text">CAR RENT</span><span class="xs">FIND CAR RENT</span></a></li> -->
+                        <!-- <li role="presentation" class="tab-btn-wrapper"><a href="#cruises" aria-controls="cruises" role="tab" data-toggle="tab" class="tab-btn"><i class="flaticon-transport-4"></i><span class="text">CRUISES</span><span class="xs">FIND CRUISES</span></a></li>-->
+                    </ul>
                 </div>
             </div>
-            <div class="tab-content-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="tab-content">
-                                <div role="tabpanel" id="flight" class="tab-pane fade in active">
-                                    <div class="find-widget find-flight-widget widget">
-                                        <h4 class="title-widgets">Request a flight ticket</h4>
+        </div>
+        <div class="tab-content-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="tab-content">
+                            <div role="tabpanel" id="flight" class="tab-pane fade in active">
+                                <div class="find-widget find-flight-widget widget">
+                                    <h4 class="title-widgets">Request a flight ticket</h4>
 
-                                        <form class="content-widget">
+                                    <form class="content-widget">
 
-                                            <ul role="tablist" class="nav nav-tabs multi_tabs">
-                                                <li role="presentation" class="tab-btn-wrapper active">
-                                                    <a href="#oneway" aria-controls="oneway" role="tab" data-toggle="tab"
-                                                       class="tab-btn">
-                                                        <span class="text">One Way</span>
-                                                        <span class="xs">One Way</span>
-                                                    </a>
-                                                </li>
-                                                <li role="presentation" class="tab-btn-wrapper">
-                                                    <a href="#round_trip" aria-controls="round_trip" role="tab" data-toggle="tab" class="tab-btn">
-                                                        <span class="text">Round Trip</span>
-                                                        <span class="xs">Round Trip</span>
-                                                    </a>
-                                                </li>
+                                        <ul role="tablist" class="nav nav-tabs multi_tabs">
+                                            <li role="presentation" class="tab-btn-wrapper active">
+                                                <a href="#oneway" aria-controls="oneway" role="tab" data-toggle="tab"
+                                                   class="tab-btn">
+                                                    <span class="text">One Way</span>
+                                                    <span class="xs">One Way</span>
+                                                </a>
+                                            </li>
+                                            <li role="presentation" class="tab-btn-wrapper">
+                                                <a href="#round_trip" aria-controls="round_trip" role="tab" data-toggle="tab" class="tab-btn">
+                                                    <span class="text">Round Trip</span>
+                                                    <span class="xs">Round Trip</span>
+                                                </a>
+                                            </li>
 
-                                                <li role="presentation" class="tab-btn-wrapper">
-                                                    <a href="#multi_dest" aria-controls="multi_dest" role="tab" data-toggle="tab" class="tab-btn">
-                                                        <span class="text">Multiple Destination</span>
-                                                        <span class="xs">Multiple Destination</span>
-                                                    </a>
-                                                </li>
+                                            <li role="presentation" class="tab-btn-wrapper">
+                                                <a href="#multi_dest" aria-controls="multi_dest" role="tab" data-toggle="tab" class="tab-btn">
+                                                    <span class="text">Multiple Destination</span>
+                                                    <span class="xs">Multiple Destination</span>
+                                                </a>
+                                            </li>
 
-                                            </ul>
+                                        </ul>
 
-                                            <div class="tab-content">
-                                                <div role="tabpanel" id="oneway" class="tab-pane fade in active">
-                                                    <div class="find-widget find-flight-widget widget">
+                                        <div class="tab-content">
+                                            <div role="tabpanel" id="oneway" class="tab-pane fade in active">
+                                                <div class="find-widget find-flight-widget widget">
+                                                    <div class="text-input small-margin-top">
+                                                        <div class="place text-box-wrapper">
+                                                            <label class="tb-label">Where do you want to go?</label>
+
+
+                                                            <div class="input-group">
+                                                                <div class="select-wrapper">
+                                                                    <select name="Recommended" class="custom-select selectbox">
+                                                                        <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
+                                                                        <option value="1">Airport 1</option>
+                                                                        <option value="2">Airport 2</option>
+                                                                        <option value="3">Airport 3</option>
+                                                                        <option value="4">Airport 4</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="place text-box-wrapper">
+                                                            <label class="tb-label">TO</label>
+
+                                                            <div class="input-group">
+                                                                <div class="select-wrapper">
+                                                                    <select name="Recommended" class="custom-select selectbox">
+                                                                        <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
+                                                                        <option value="1">Airport 1</option>
+                                                                        <option value="2">Airport 2</option>
+                                                                        <option value="3">Airport 3</option>
+                                                                        <option value="4">Airport 4</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-daterange">
+                                                            <div class="text-box-wrapper half">
+                                                                <label class="tb-label">Departure Date</label>
+
+                                                                <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                                            </div>
+                                                            <div class="text-box-wrapper half">
+                                                                <label class="tb-label">Arrival Date</label>
+
+                                                                <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="count adult-count text-box-wrapper">
+                                                            <label class="tb-label">Adult</label>
+
+                                                            <div class="select-wrapper">
+                                                                <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                                    <option selected="selected">1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                    <option>9</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="count child-count text-box-wrapper">
+                                                            <label class="tb-label">Child</label>
+
+                                                            <div class="select-wrapper">
+                                                                <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                                    <option selected="selected">0</option>
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                    <option>9</option>
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <button type="submit" data-hover="Request NOW" class="btn btn-slide"><span class="text">Ready?</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" id="round_trip" class="tab-pane fade">
+                                                <div class="find-widget find-flight-widget widget">
+                                                    <div class="text-input small-margin-top">
+                                                        <div class="place text-box-wrapper">
+                                                            <label class="tb-label">Where do you want to go?</label>
+
+
+                                                            <div class="input-group">
+                                                                <div class="select-wrapper">
+                                                                    <select name="Recommended" class="custom-select selectbox">
+                                                                        <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
+                                                                        <option value="1">Airport 1</option>
+                                                                        <option value="2">Airport 2</option>
+                                                                        <option value="3">Airport 3</option>
+                                                                        <option value="4">Airport 4</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="place text-box-wrapper">
+                                                            <label class="tb-label">TO</label>
+
+                                                            <div class="input-group">
+                                                                <div class="select-wrapper">
+                                                                    <select name="Recommended" class="custom-select selectbox">
+                                                                        <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
+                                                                        <option value="1">Airport 1</option>
+                                                                        <option value="2">Airport 2</option>
+                                                                        <option value="3">Airport 3</option>
+                                                                        <option value="4">Airport 4</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-daterange">
+                                                            <div class="text-box-wrapper half">
+                                                                <label class="tb-label">Departure Date</label>
+
+                                                                <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                                            </div>
+                                                            <div class="text-box-wrapper half">
+                                                                <label class="tb-label">Arrival Date</label>
+
+                                                                <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="count adult-count text-box-wrapper">
+                                                            <label class="tb-label">Adult</label>
+
+                                                            <div class="select-wrapper">
+                                                                <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                                    <option selected="selected">1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                    <option>9</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="count child-count text-box-wrapper">
+                                                            <label class="tb-label">Child</label>
+
+                                                            <div class="select-wrapper">
+                                                                <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                                    <option selected="selected">0</option>
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                    <option>9</option>
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <button type="submit" data-hover="Request NOW" class="btn btn-slide"><span class="text">Ready?</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" id="multi_dest" class="tab-pane fade">
+                                                <div class="find-widget find-hotel-widget widget">
+                                                    <div class="">
                                                         <div class="text-input small-margin-top">
-                                                            <div class="place text-box-wrapper">
-                                                                <label class="tb-label">Where do you want to go?</label>
+
+                                                            <div class="multi_rapper">
+                                                                <div class="clearfix"></div>
+                                                                <div class="place text-box-wrapper">
+                                                                    <label class="tb-label">Where do you want to go?</label>
 
 
-                                                                <div class="input-group">
-                                                                    <div class="select-wrapper">
-                                                                        <select name="Recommended" class="custom-select selectbox">
-                                                                            <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
-                                                                            <option value="1">Airport 1</option>
-                                                                            <option value="2">Airport 2</option>
-                                                                            <option value="3">Airport 3</option>
-                                                                            <option value="4">Airport 4</option>
-                                                                        </select>
+                                                                    <div class="input-group">
+                                                                        <div class="select-wrapper">
+                                                                            <select name="Recommended" class="custom-select selectbox">
+                                                                                <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
+                                                                                <option value="1">Airport 1</option>
+                                                                                <option value="2">Airport 2</option>
+                                                                                <option value="3">Airport 3</option>
+                                                                                <option value="4">Airport 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="place text-box-wrapper">
+                                                                    <label class="tb-label">TO</label>
+
+                                                                    <div class="input-group">
+                                                                        <div class="select-wrapper">
+                                                                            <select name="Recommended" class="custom-select selectbox">
+                                                                                <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
+                                                                                <option value="1">Airport 1</option>
+                                                                                <option value="2">Airport 2</option>
+                                                                                <option value="3">Airport 3</option>
+                                                                                <option value="4">Airport 4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="input-daterange">
+                                                                    <div class="text-box-wrapper half">
+                                                                        <label class="tb-label">Departure Date</label>
+
+                                                                        <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                                                    </div>
+                                                                    <div class="text-box-wrapper half">
+                                                                        <label class="tb-label">Arrival Date</label>
+
+                                                                        <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="place text-box-wrapper">
-                                                                <label class="tb-label">TO</label>
 
-                                                                <div class="input-group">
-                                                                    <div class="select-wrapper">
-                                                                        <select name="Recommended" class="custom-select selectbox">
-                                                                            <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
-                                                                            <option value="1">Airport 1</option>
-                                                                            <option value="2">Airport 2</option>
-                                                                            <option value="3">Airport 3</option>
-                                                                            <option value="4">Airport 4</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="input-daterange">
-                                                                <div class="text-box-wrapper half">
-                                                                    <label class="tb-label">Departure Date</label>
 
-                                                                    <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                                </div>
-                                                                <div class="text-box-wrapper half">
-                                                                    <label class="tb-label">Arrival Date</label>
 
-                                                                    <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                                </div>
-                                                            </div>
                                                             <div class="count adult-count text-box-wrapper">
                                                                 <label class="tb-label">Adult</label>
 
@@ -157,534 +342,354 @@
 
                                                             <button type="submit" data-hover="Request NOW" class="btn btn-slide"><span class="text">Ready?</span><span class="icons fa fa-long-arrow-right"></span></button>
                                                         </div>
-
                                                     </div>
-                                                </div>
-                                                <div role="tabpanel" id="round_trip" class="tab-pane fade">
-                                                    <div class="find-widget find-flight-widget widget">
-                                                        <div class="text-input small-margin-top">
-                                                            <div class="place text-box-wrapper">
-                                                                <label class="tb-label">Where do you want to go?</label>
 
-
-                                                                <div class="input-group">
-                                                                    <div class="select-wrapper">
-                                                                        <select name="Recommended" class="custom-select selectbox">
-                                                                            <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
-                                                                            <option value="1">Airport 1</option>
-                                                                            <option value="2">Airport 2</option>
-                                                                            <option value="3">Airport 3</option>
-                                                                            <option value="4">Airport 4</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="place text-box-wrapper">
-                                                                <label class="tb-label">TO</label>
-
-                                                                <div class="input-group">
-                                                                    <div class="select-wrapper">
-                                                                        <select name="Recommended" class="custom-select selectbox">
-                                                                            <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
-                                                                            <option value="1">Airport 1</option>
-                                                                            <option value="2">Airport 2</option>
-                                                                            <option value="3">Airport 3</option>
-                                                                            <option value="4">Airport 4</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="input-daterange">
-                                                                <div class="text-box-wrapper half">
-                                                                    <label class="tb-label">Departure Date</label>
-
-                                                                    <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                                </div>
-                                                                <div class="text-box-wrapper half">
-                                                                    <label class="tb-label">Arrival Date</label>
-
-                                                                    <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="count adult-count text-box-wrapper">
-                                                                <label class="tb-label">Adult</label>
-
-                                                                <div class="select-wrapper">
-                                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                                        <option selected="selected">1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                        <option>6</option>
-                                                                        <option>7</option>
-                                                                        <option>8</option>
-                                                                        <option>9</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="count child-count text-box-wrapper">
-                                                                <label class="tb-label">Child</label>
-
-                                                                <div class="select-wrapper">
-                                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                                        <option selected="selected">0</option>
-                                                                        <option>1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                        <option>6</option>
-                                                                        <option>7</option>
-                                                                        <option>8</option>
-                                                                        <option>9</option>
-                                                                    </select>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <button type="submit" data-hover="Request NOW" class="btn btn-slide"><span class="text">Ready?</span><span class="icons fa fa-long-arrow-right"></span></button>
-                                                        </div>
-
+                                                    <div>
+                                                        <a class="add">
+                                                            Add More Flights Options
+                                                        </a>
                                                     </div>
-                                                </div>
-                                                <div role="tabpanel" id="multi_dest" class="tab-pane fade">
-                                                    <div class="find-widget find-hotel-widget widget">
-                                                        <div class="">
-                                                            <div class="text-input small-margin-top">
 
-                                                                <div class="multi_rapper">
-                                                                    <div class="clearfix"></div>
-                                                                    <div class="place text-box-wrapper">
-                                                                        <label class="tb-label">Where do you want to go?</label>
-
-
-                                                                        <div class="input-group">
-                                                                            <div class="select-wrapper">
-                                                                                <select name="Recommended" class="custom-select selectbox">
-                                                                                    <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
-                                                                                    <option value="1">Airport 1</option>
-                                                                                    <option value="2">Airport 2</option>
-                                                                                    <option value="3">Airport 3</option>
-                                                                                    <option value="4">Airport 4</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="place text-box-wrapper">
-                                                                        <label class="tb-label">TO</label>
-
-                                                                        <div class="input-group">
-                                                                            <div class="select-wrapper">
-                                                                                <select name="Recommended" class="custom-select selectbox">
-                                                                                    <option value="" disabled="disabled" selected="selected" hidden="hidden">Airport 1</option>
-                                                                                    <option value="1">Airport 1</option>
-                                                                                    <option value="2">Airport 2</option>
-                                                                                    <option value="3">Airport 3</option>
-                                                                                    <option value="4">Airport 4</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="input-daterange">
-                                                                        <div class="text-box-wrapper half">
-                                                                            <label class="tb-label">Departure Date</label>
-
-                                                                            <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                                        </div>
-                                                                        <div class="text-box-wrapper half">
-                                                                            <label class="tb-label">Arrival Date</label>
-
-                                                                            <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                                <div class="count adult-count text-box-wrapper">
-                                                                    <label class="tb-label">Adult</label>
-
-                                                                    <div class="select-wrapper">
-                                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                                            <option selected="selected">1</option>
-                                                                            <option>2</option>
-                                                                            <option>3</option>
-                                                                            <option>4</option>
-                                                                            <option>5</option>
-                                                                            <option>6</option>
-                                                                            <option>7</option>
-                                                                            <option>8</option>
-                                                                            <option>9</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="count child-count text-box-wrapper">
-                                                                    <label class="tb-label">Child</label>
-
-                                                                    <div class="select-wrapper">
-                                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                                            <option selected="selected">0</option>
-                                                                            <option>1</option>
-                                                                            <option>2</option>
-                                                                            <option>3</option>
-                                                                            <option>4</option>
-                                                                            <option>5</option>
-                                                                            <option>6</option>
-                                                                            <option>7</option>
-                                                                            <option>8</option>
-                                                                            <option>9</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <button type="submit" data-hover="Request NOW" class="btn btn-slide"><span class="text">Ready?</span><span class="icons fa fa-long-arrow-right"></span></button>
-                                                            </div>
-                                                        </div>
-
-                                                        <div>
-                                                            <a class="add">
-                                                                Add More Flights Options
-                                                            </a>
-                                                        </div>
-
-                                                    </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                        </form>
-                                    </div>
+                                    </form>
                                 </div>
+                            </div>
 
 
 
-                                <div role="tabpanel" id="transfer" class="tab-pane fade">
-                                    <div class="find-widget find-transfer-widget widget">
-                                        <h4 class="title-widgets">FIND TRANSFER</h4>
 
-                                        <form class="content-widget">
-                                            <div class="ffw-radio-selection">
-                                                <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="one way" id="transfer-type-1" checked="checked" class="ffw-radio-btn"><label for="transfer-type-1" class="ffw-radio-label">One Way</label></span> <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="round trip" id="transfer-type-2" class="ffw-radio-btn"><label for="transfer-type-2" class="ffw-radio-label">Round Trip</label></span> <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="multiple cities" id="transfer-type-3" class="ffw-radio-btn"><label for="transfer-type-3" class="ffw-radio-label">Multiple Places</label></span>
 
-                                                <div class="stretch">&nbsp;</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div role="tabpanel" id="transfer" class="tab-pane fade">
+                                <div class="find-widget find-transfer-widget widget">
+                                    <h4 class="title-widgets">FIND TRANSFER</h4>
+
+                                    <form class="content-widget">
+                                        <div class="ffw-radio-selection">
+                                            <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="one way" id="transfer-type-1" checked="checked" class="ffw-radio-btn"><label for="transfer-type-1" class="ffw-radio-label">One Way</label></span> <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="round trip" id="transfer-type-2" class="ffw-radio-btn"><label for="transfer-type-2" class="ffw-radio-label">Round Trip</label></span> <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="multiple cities" id="transfer-type-3" class="ffw-radio-btn"><label for="transfer-type-3" class="ffw-radio-label">Multiple Places</label></span>
+
+                                            <div class="stretch">&nbsp;</div>
+                                        </div>
+                                        <div class="text-input small-margin-top">
+                                            <div class="place text-box-wrapper">
+                                                <label class="tb-label">Where do you want to go?</label>
+
+                                                <div class="input-group"><input type="text" placeholder="Write the place" class="tb-input"></div>
                                             </div>
-                                            <div class="text-input small-margin-top">
-                                                <div class="place text-box-wrapper">
-                                                    <label class="tb-label">Where do you want to go?</label>
+                                            <div class="date text-box-wrapper">
+                                                <label class="tb-label">When do you want to go?</label>
 
-                                                    <div class="input-group"><input type="text" placeholder="Write the place" class="tb-input"></div>
+                                                <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                            </div>
+                                            <div class="count adult-count text-box-wrapper">
+                                                <label class="tb-label">Adult</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
                                                 </div>
-                                                <div class="date text-box-wrapper">
-                                                    <label class="tb-label">When do you want to go?</label>
+                                            </div>
+                                            <div class="count child-count text-box-wrapper">
+                                                <label class="tb-label">Child</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="submit" data-hover="SEARCH NOW" class="btn btn-slide"><span class="text">SEARCH NOW</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="hotel" class="tab-pane fade">
+                                <div class="find-widget find-hotel-widget widget">
+                                    <h4 class="title-widgets">BOOK HOTEL</h4>
+
+                                    <form class="content-widget">
+                                        <div class="text-input small-margin-top">
+                                            <div class="place text-box-wrapper">
+                                                <label class="tb-label">Choose Hotel</label>
+
+                                                <div class="input-group">
+                                                    <div class="select-wrapper">
+                                                        <select name="Recommended" class="custom-select selectbox">
+                                                            <option value="" disabled="disabled" selected="selected" hidden="hidden">Tourista Hotel</option>
+                                                            <option value="1"> Tourista Hotel 1</option>
+                                                            <option value="2">Tourista Hotel 2</option>
+                                                            <option value="3">Hotel 3</option>
+                                                            <option value="4">Hotel 4</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-daterange">
+                                                <div class="text-box-wrapper half">
+                                                    <label class="tb-label">Check in</label>
 
                                                     <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
                                                 </div>
-                                                <div class="count adult-count text-box-wrapper">
-                                                    <label class="tb-label">Adult</label>
-
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="count child-count text-box-wrapper">
-                                                    <label class="tb-label">Child</label>
-
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">0</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" data-hover="SEARCH NOW" class="btn btn-slide"><span class="text">SEARCH NOW</span><span class="icons fa fa-long-arrow-right"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" id="hotel" class="tab-pane fade">
-                                    <div class="find-widget find-hotel-widget widget">
-                                        <h4 class="title-widgets">BOOK HOTEL</h4>
-
-                                        <form class="content-widget">
-                                            <div class="text-input small-margin-top">
-                                                <div class="place text-box-wrapper">
-                                                    <label class="tb-label">  Country</label>
-                                                    <select name="Recommended" id="Countryid" class="tb-input" style="background-color: #ffffff !important;">
-                                                        <option value="0"> Choose Country</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="place text-box-wrapper">
-                                                    <label class="tb-label">  City</label>
-                                                    <select name="Recommended" id="Cityid" class="tb-input" style="background-color: #ffffff !important;">
-                                                        <option value="0"> Choose City</option>
-                                                    </select>
-
-                                                </div>
-
-                                                <div class="place text-box-wrapper">
-                                                    <label class="tb-label">  Hotel</label>
-
-                                                    <select name="Recommended" id="Hotelid" class="tb-input" style="background-color: #ffffff !important;">
-                                                        <option value="0"> Choose Hotel</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-daterange">
-                                                    <div class="text-box-wrapper half">
-                                                        <label class="tb-label">Check in</label>
-
-                                                        <div class="input-group">
-                                                            <input type="text" placeholder="MM/DD/YY" class="tb-input">
-                                                            @*<input type="text" class="tb-input" id="checkin" placeholder="@TouristaFrontEnd.Resources.Global.Home_SearchRoomsCheckin">
-                                                            <input type="hidden" id="checkindate" />*@
-                                                               <i class="tb-icon fa fa-calendar input-group-addon"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-box-wrapper half">
-                                                        <label class="tb-label">Check out</label>
-
-                                                        <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
-                                                <div class="count adult-count text-box-wrapper">
-                                                    <label class="tb-label">Adult</label>
-
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="count child-count text-box-wrapper">
-                                                    <label class="tb-label">Child</label>
-
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">0</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <button type="button" data-hover="BOOK NOW" class="btn btn-slide"><a href="hotel-view.html" class="button"><span class="text">READY ?</span><span class="icons fa fa-long-arrow-right"></span></button></a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" id="tours" class="tab-pane fade">
-                                    <div class="find-widget find-tours-widget widget">
-                                        <h4 class="title-widgets">FIND TOURS</h4>
-
-                                        <form class="content-widget">
-                                            <div class="text-input small-margin-top">
-                                                <div class="place text-box-wrapper">
-                                                    <label class="tb-label">Where do you want to go?</label>
-
-                                                    <div class="input-group">
-                                                        <div class="select-wrapper">
-                                                            <select name="Recommended" class="custom-select selectbox">
-                                                                <option value="" disabled="disabled" selected="selected" hidden="hidden">Global Tour</option>
-                                                                <option value="1">Local Tours</option>
-                                                                <option value="2">1 day tour</option>
-                                                                <option value="3">Safari</option>
-                                                                <option value="4">Hajj & Umrah</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="date text-box-wrapper">
-                                                    <label class="tb-label">When do you want to go?</label>
+                                                <div class="text-box-wrapper half">
+                                                    <label class="tb-label">Check out</label>
 
                                                     <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
                                                 </div>
-                                                <div class="count adult-count text-box-wrapper">
-                                                    <label class="tb-label">Adult</label>
-
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="count child-count text-box-wrapper">
-                                                    <label class="tb-label">Child</label>
-
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">0</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" data-hover="SEARCH NOW" class="btn btn-slide"><span class="text">SEARCH NOW</span><span class="icons fa fa-long-arrow-right"></span></button>
                                             </div>
-                                        </form>
-                                    </div>
+                                            <div class="count adult-count text-box-wrapper">
+                                                <label class="tb-label">Adult</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="count child-count text-box-wrapper">
+                                                <label class="tb-label">Child</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="button" data-hover="BOOK NOW" class="btn btn-slide"><a href="hotel-view.html" class="button"><span class="text">READY ?</span><span class="icons fa fa-long-arrow-right"></span></button></a>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div role="tabpanel" id="car-rent" class="tab-pane fade">
-                                    <div class="find-widget find-car-widget widget">
-                                        <h4 class="title-widgets">FIND CAR</h4>
+                            </div>
+                            <div role="tabpanel" id="tours" class="tab-pane fade">
+                                <div class="find-widget find-tours-widget widget">
+                                    <h4 class="title-widgets">FIND TOURS</h4>
 
-                                        <form class="content-widget">
-                                            <div class="text-input small-margin-top">
-                                                <div class="place text-box-wrapper">
-                                                    <label class="tb-label">Where do you want to go?</label>
+                                    <form class="content-widget">
+                                        <div class="text-input small-margin-top">
+                                            <div class="place text-box-wrapper">
+                                                <label class="tb-label">Where do you want to go?</label>
 
-                                                    <div class="input-group"><input type="text" placeholder="Write the place" class="tb-input"></div>
-                                                </div>
-                                                <div class="input-daterange">
-                                                    <div class="text-box-wrapper half">
-                                                        <label class="tb-label">Start date</label>
-
-                                                        <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                    </div>
-                                                    <div class="text-box-wrapper half">
-                                                        <label class="tb-label">Return date</label>
-
-                                                        <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
-                                                <div class="count car-count text-box-wrapper">
-                                                    <label class="tb-label">No. of Car</label>
-
+                                                <div class="input-group">
                                                     <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
+                                                        <select name="Recommended" class="custom-select selectbox">
+                                                            <option value="" disabled="disabled" selected="selected" hidden="hidden">Global Tour</option>
+                                                            <option value="1">Local Tours</option>
+                                                            <option value="2">1 day tour</option>
+                                                            <option value="3">Safari</option>
+                                                            <option value="4">Hajj & Umrah</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <button type="submit" data-hover="SEARCH NOW" class="btn btn-slide"><span class="text">SEARCH NOW</span><span class="icons fa fa-long-arrow-right"></span></button>
                                             </div>
-                                        </form>
-                                    </div>
+                                            <div class="date text-box-wrapper">
+                                                <label class="tb-label">When do you want to go?</label>
+
+                                                <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
+                                            </div>
+                                            <div class="count adult-count text-box-wrapper">
+                                                <label class="tb-label">Adult</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="count child-count text-box-wrapper">
+                                                <label class="tb-label">Child</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="submit" data-hover="SEARCH NOW" class="btn btn-slide"><span class="text">SEARCH NOW</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div role="tabpanel" id="cruises" class="tab-pane fade">
-                                    <div class="find-widget find-cruises-widget widget">
-                                        <h4 class="title-widgets">FIND CRUISES</h4>
+                            </div>
+                            <div role="tabpanel" id="car-rent" class="tab-pane fade">
+                                <div class="find-widget find-car-widget widget">
+                                    <h4 class="title-widgets">FIND CAR</h4>
 
-                                        <form class="content-widget">
-                                            <div class="ffw-radio-selection">
-                                                <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="one way" id="cruises-type-1" checked="checked" class="ffw-radio-btn"><label for="cruises-type-1" class="ffw-radio-label">One Way</label></span> <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="round trip" id="cruises-type-2" class="ffw-radio-btn"><label for="cruises-type-2" class="ffw-radio-label">Round Trip</label></span> <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="multiple cities" id="cruises-type-3" class="ffw-radio-btn"><label for="cruises-type-3" class="ffw-radio-label">Multiple Places</label></span>
+                                    <form class="content-widget">
+                                        <div class="text-input small-margin-top">
+                                            <div class="place text-box-wrapper">
+                                                <label class="tb-label">Where do you want to go?</label>
 
-                                                <div class="stretch">&nbsp;</div>
+                                                <div class="input-group"><input type="text" placeholder="Write the place" class="tb-input"></div>
                                             </div>
-                                            <div class="text-input small-margin-top">
-                                                <div class="place text-box-wrapper">
-                                                    <label class="tb-label">Where do you want to go?</label>
+                                            <div class="input-daterange">
+                                                <div class="text-box-wrapper half">
+                                                    <label class="tb-label">Start date</label>
 
-                                                    <div class="input-group"><input type="text" placeholder="Write the place" class="tb-input"></div>
+                                                    <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
                                                 </div>
-                                                <div class="count time-count text-box-wrapper">
-                                                    <label class="tb-label">Time</label>
+                                                <div class="text-box-wrapper half">
+                                                    <label class="tb-label">Return date</label>
 
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">08:00</option>
-                                                            <option>10:00</option>
-                                                            <option>12:00</option>
-                                                            <option>14:00</option>
-                                                            <option>16:00</option>
-                                                            <option>18:00</option>
-                                                        </select>
-                                                    </div>
+                                                    <div class="input-group"><input type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
                                                 </div>
-                                                <div class="count adult-count text-box-wrapper">
-                                                    <label class="tb-label">Adult</label>
-
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="count child-count text-box-wrapper">
-                                                    <label class="tb-label">Child</label>
-
-                                                    <div class="select-wrapper">
-                                                        <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
-                                                            <option selected="selected">0</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" data-hover="SEARCH NOW" class="btn btn-slide"><span class="text">SEARCH NOW</span><span class="icons fa fa-long-arrow-right"></span></button>
                                             </div>
-                                        </form>
-                                    </div>
+                                            <div class="count car-count text-box-wrapper">
+                                                <label class="tb-label">No. of Car</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="submit" data-hover="SEARCH NOW" class="btn btn-slide"><span class="text">SEARCH NOW</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="cruises" class="tab-pane fade">
+                                <div class="find-widget find-cruises-widget widget">
+                                    <h4 class="title-widgets">FIND CRUISES</h4>
+
+                                    <form class="content-widget">
+                                        <div class="ffw-radio-selection">
+                                            <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="one way" id="cruises-type-1" checked="checked" class="ffw-radio-btn"><label for="cruises-type-1" class="ffw-radio-label">One Way</label></span> <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="round trip" id="cruises-type-2" class="ffw-radio-btn"><label for="cruises-type-2" class="ffw-radio-label">Round Trip</label></span> <span class="ffw-radio-btn-wrapper"><input type="radio" name="flight type" value="multiple cities" id="cruises-type-3" class="ffw-radio-btn"><label for="cruises-type-3" class="ffw-radio-label">Multiple Places</label></span>
+
+                                            <div class="stretch">&nbsp;</div>
+                                        </div>
+                                        <div class="text-input small-margin-top">
+                                            <div class="place text-box-wrapper">
+                                                <label class="tb-label">Where do you want to go?</label>
+
+                                                <div class="input-group"><input type="text" placeholder="Write the place" class="tb-input"></div>
+                                            </div>
+                                            <div class="count time-count text-box-wrapper">
+                                                <label class="tb-label">Time</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">08:00</option>
+                                                        <option>10:00</option>
+                                                        <option>12:00</option>
+                                                        <option>14:00</option>
+                                                        <option>16:00</option>
+                                                        <option>18:00</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="count adult-count text-box-wrapper">
+                                                <label class="tb-label">Adult</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="count child-count text-box-wrapper">
+                                                <label class="tb-label">Child</label>
+
+                                                <div class="select-wrapper">
+                                                    <!--i.fa.fa-chevron-down--><select class="form-control custom-select selectbox">
+                                                        <option selected="selected">0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="submit" data-hover="SEARCH NOW" class="btn btn-slide"><span class="text">SEARCH NOW</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -692,7 +697,8 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
     <section class="about-us layout-1 padding-top padding-bottom">
         <div class="container">
             <div class="row">
@@ -714,10 +720,10 @@
 
                         </p>
 
-                        <div class="group-button">
-                            @*@Html.ActionLink("read more", "Index", "About", new { @class = "btn" })*@
-                            <a href="/About/Index" class="btn">@TouristaFrontEnd.Resources.Global.SeeMore</a>
-                        </div>
+                        @* <div class="group-button">
+                            @Html.ActionLink("read more", "Index", "About", new { @class = "btn" })
+                                                <a href="/About/Index" class="btn">@TouristaFrontEnd.Resources.Global.SeeMore</a>
+                                            </div>*@
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -726,78 +732,80 @@
             </div>
         </div>
     </section>
-    <section class="tours padding-top padding-bottom">
-        <div class="container">
-            <div class="tours-wrapper">
-                <div class="group-title">
-                    <div class="sub-title"><p class="text">@TouristaFrontEnd.Resources.Global.PACK</p></div>
-                    <h2 class="main-title">@TouristaFrontEnd.Resources.Global.AWESOMETOURS</h2>
-                </div>
-                <div class="tours-content margin-top70" style="height: 491px;">
-                    <div class="tours-list">
-                        <div class="tours-layout">
-                            <div class="image-wrapper">
-                                <a href="tour-view.html" class="link"><img src="/Content/images/tours/tour-1.jpg" alt="" class="img-responsive"></a>
 
-                                <div class="title-wrapper"><a href="tour-view.html" class="title">Newyork city</a></div>
-
-                            </div>
-                            <div class="content-wrapper">
-
-                                <div class="content">
-                                    <div class="title">
-                                        <div class="price"><sup>$</sup><span class="number">350</span></div>
-                                        <p class="for-price">3 days 2 nights</p>
-                                    </div>
-                                    <p class="text">Lorem ipsum dolor sit amet, consectetur elit. Nulla rhoncus ultrices purus, volutpat.</p>
-
-
-                                    <div class="group-btn-tours"><a href="tour-view.html" class="left-btn">book now</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tours-layout">
-                            <div class="image-wrapper">
-                                <a href="tour-view.html" class="link"><img src="/Content/images/tours/tour-2.jpg" alt="" class="img-responsive"></a>
-
-                                <div class="title-wrapper"><a href="tour-view.html" class="title">paris city</a></div>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <div class="title">
-                                        <div class="price"><sup>$</sup><span class="number">250</span></div>
-                                        <p class="for-price">3 days 2 nights</p>
-                                    </div>
-                                    <p class="text">Lorem ipsum dolor sit amet, consectetur elit. Nulla rhoncus ultrices purus, volutpat.</p>
-
-                                    <div class="group-btn-tours"><a href="tour-view.html" class="left-btn">book now</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tours-layout">
-                            <div class="image-wrapper">
-                                <a href="tour-view.html" class="link"><img src="/Content/images/tours/tour-3.jpg" alt="" class="img-responsive"></a>
-
-                                <div class="title-wrapper"><a href="tour-view.html" class="title">tokyo city</a></div>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <div class="title">
-                                        <div class="price"><sup>$</sup><span class="number">375</span></div>
-                                        <p class="for-price">3 days 2 nights</p>
-                                    </div>
-                                    <p class="text">Lorem ipsum dolor sit amet, consectetur elit. Nulla rhoncus ultrices purus, volutpat.</p>
-
-                                    <div class="group-btn-tours"><a href="tour-view.html" class="left-btn">@TouristaFrontEnd.Resources.Global.BookNow</a></div>
-                                </div>
-                            </div>
-                        </div>
+    @* <section class="tours padding-top padding-bottom">
+            <div class="container">
+                <div class="tours-wrapper">
+                    <div class="group-title">
+                        <div class="sub-title"><p class="text">@TouristaFrontEnd.Resources.Global.PACK</p></div>
+                        <h2 class="main-title">@TouristaFrontEnd.Resources.Global.AWESOMETOURS</h2>
                     </div>
-                    <a href="about-us.html" class="btn btn-transparent margin-top70">@TouristaFrontEnd.Resources.Global.moretours</a>
+                    <div class="tours-content margin-top70" style="height: 491px;">
+                        <div class="tours-list">
+                            <div class="tours-layout">
+                                <div class="image-wrapper">
+                                    <a href="tour-view.html" class="link"><img src="/Content/images/tours/tour-1.jpg" alt="" class="img-responsive"></a>
+
+                                    <div class="title-wrapper"><a href="tour-view.html" class="title">Newyork city</a></div>
+
+                                </div>
+                                <div class="content-wrapper">
+
+                                    <div class="content">
+                                        <div class="title">
+                                            <div class="price"><sup>$</sup><span class="number">350</span></div>
+                                            <p class="for-price">3 days 2 nights</p>
+                                        </div>
+                                        <p class="text">Lorem ipsum dolor sit amet, consectetur elit. Nulla rhoncus ultrices purus, volutpat.</p>
+
+
+                                        <div class="group-btn-tours"><a href="tour-view.html" class="left-btn">book now</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tours-layout">
+                                <div class="image-wrapper">
+                                    <a href="tour-view.html" class="link"><img src="/Content/images/tours/tour-2.jpg" alt="" class="img-responsive"></a>
+
+                                    <div class="title-wrapper"><a href="tour-view.html" class="title">paris city</a></div>
+                                </div>
+                                <div class="content-wrapper">
+                                    <div class="content">
+                                        <div class="title">
+                                            <div class="price"><sup>$</sup><span class="number">250</span></div>
+                                            <p class="for-price">3 days 2 nights</p>
+                                        </div>
+                                        <p class="text">Lorem ipsum dolor sit amet, consectetur elit. Nulla rhoncus ultrices purus, volutpat.</p>
+
+                                        <div class="group-btn-tours"><a href="tour-view.html" class="left-btn">book now</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tours-layout">
+                                <div class="image-wrapper">
+                                    <a href="tour-view.html" class="link"><img src="/Content/images/tours/tour-3.jpg" alt="" class="img-responsive"></a>
+
+                                    <div class="title-wrapper"><a href="tour-view.html" class="title">tokyo city</a></div>
+                                </div>
+                                <div class="content-wrapper">
+                                    <div class="content">
+                                        <div class="title">
+                                            <div class="price"><sup>$</sup><span class="number">375</span></div>
+                                            <p class="for-price">3 days 2 nights</p>
+                                        </div>
+                                        <p class="text">Lorem ipsum dolor sit amet, consectetur elit. Nulla rhoncus ultrices purus, volutpat.</p>
+
+                                        <div class="group-btn-tours"><a href="tour-view.html" class="left-btn">@TouristaFrontEnd.Resources.Global.BookNow</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="about-us.html" class="btn btn-transparent margin-top70">@TouristaFrontEnd.Resources.Global.moretours</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    *@
     <section class="videos layout-1">
         <div class="container">
             <div class="row">
@@ -808,7 +816,7 @@
                         <h2 class="title">@TouristaFrontEnd.Resources.Global.GOEXPLORE</h2>
 
                         <div class="text"> @TouristaFrontEnd.Resources.Global.AboutText</div>
-                        <a href="tour-result.html" class="btn btn-maincolor">@TouristaFrontEnd.Resources.Global.SeeMore</a>
+                        @*<a href="tour-result.html" class="btn btn-maincolor">@TouristaFrontEnd.Resources.Global.SeeMore</a>*@
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -816,8 +824,8 @@
                         <div class="video-bg"><img src="/Content/images/homepage/video-bg.jpg" alt="" class="img-responsive"></div>
                         <div class="video-button-play"><i class="icons fa fa-play"></i></div>
                         <div class="video-button-close"></div>
-                        <iframe src="@Common.VideoUrl" allowfullscreen="allowfullscreen" class="video-embed"></iframe>
-                        @*<iframe src="https://www.youtube.com/embed/moOosWuoDyA?rel=0" allowfullscreen="allowfullscreen" class="video-embed"></iframe>*@
+                        @*<iframe src="@Common.VideoUrl" allowfullscreen="allowfullscreen" class="video-embed"></iframe>*@
+                        <iframe src="https://www.youtube.com/embed/moOosWuoDyA?rel=0" allowfullscreen="allowfullscreen" class="video-embed"></iframe>
                     </div>
                 </div>
             </div>
@@ -828,7 +836,7 @@
 
 
 
-    @Html.Partial("OwnerHome")
+    @*@Html.Partial("OwnerHome")*@
 
     @Html.Partial("NewsHome")
     @Html.Partial("ContactUsHome")

@@ -1,0 +1,91 @@
+{{'BasicInfoLbl' | translate}}
+<form class="form-horizontal" name="newclientForm">
+    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+        <label for="first-name">{{'Name' | translate}}</label>
+        <input required type="text" class="mat-input form-control" name="fullName" ng-pattern="/^(\D)+$/" ng-model="fullName" ng-minlength="3"
+               ng-maxlength="255">
+        <div ng-messages="newclientForm.fullName.$error" class="error">
+            <div ng-show="newclientForm.fullName.$error.pattern">{{'TextOnly' | translate}}</div>
+            <div ng-if="newclientForm.fullName.$error.required && !newclientForm.fullName.$pristine">{{'fullNameLengthError' | translate}}</div>
+            <div ng-if="(newclientForm.fullName.$error.minlength || newclientForm.fullName.$error.maxlength) ">{{'NameLengthError255' | translate}}</div>
+        </div>
+    </div>
+    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+        <label for="first-name">{{'titleLbl' | translate}}</label>
+        <input required type="text" class="mat-input form-control" name="title" ng-pattern="/^(\D)+$/" ng-model="title" ng-minlength="3"
+               ng-maxlength="255">
+        <div ng-messages="newclientForm.title.$error">
+            <div ng-show="newclientForm.title.$error.pattern">{{'TextOnly' | translate}}</div>
+            <div ng-if="newclientForm.title.$error.required && !newclientForm.title.$pristine">{{'title' | translate}}</div>
+            <div ng-if="(newclientForm.title.$error.minlength || newclientForm.title.$error.maxlength)">{{'NameLengthError255' | translate}}</div>
+        </div>
+    </div>
+    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+        <label>{{'EmailLbl' | translate}}</label>
+        <input required type="text" class="mat-input form-control" name="userEmail" ng-model="Email" ng-pattern="/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/">
+        <span class="error" ng-show="newclientForm.userEmail.$error.pattern">{{'WrongMail' | translate}} </span>
+        <div ng-messages="newclientForm.email.$error">
+            <div ng-if="newclientForm.userEmail.$error.required && !newclientForm.userEmail.$pristine">{{'EmailLengthError' | translate}}</div>
+        </div>
+    </div>
+    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+
+        <label for="first-name">{{'phoneLbl' | translate}}</label>
+        <input required type="text" class="mat-input form-control" name="phone" numbers-only ng-model="Phone" ng-minlength="10" ng-maxlength="50">
+        <!-- <span class="error" ng-show="newclientForm.phone.$error.pattern">{{'NotPhoneNumber' | translate}}   </span> -->
+        <div ng-messages="newclientForm.phone.$error">
+            <div ng-if="newclientForm.phone.$error.required && !newclientForm.phone.$pristine">{{'PhoneReqError' | translate}}</div>
+            <div ng-if="(newclientForm.phone.$error.minlength || newclientForm.phone.$error.maxlength)">{{'PhoneLengthError' | translate}}</div>
+        </div>
+    </div>
+    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+
+        <label for="first-name">{{'whatsApp' | translate}}</label>
+        <input required type="text" class="mat-input form-control" name="whatsApp" numbers-only ng-model="whatsApp" ng-minlength="10" ng-maxlength="50">
+        <div ng-messages="newclientForm.whatsApp.$error">
+            <div ng-if="newclientForm.whatsApp.$error.required && !newclientForm.whatsApp.$pristine">{{'whatsAppReqError' | translate}}</div>
+            <div ng-if="(newclientForm.whatsApp.$error.minlength || newclientForm.whatsApp.$error.maxlength)">{{'whatsAppLengthError' | translate}}</div>
+        </div>
+    </div>
+    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+        <label for="first-name">{{'UserPasswordLbl' | translate}}</label>
+        <input required type="password" class="mat-input form-control" name="password" ng-model="Password" ng-minlength="8" ng-maxlength="25">
+        <div ng-messages="newclientForm.password.$error">
+            <div ng-if="newclientForm.password.$error.required && !newclientForm.password.$pristine">{{'requiredErr' | translate}}</div>
+            <div ng-if="(newclientForm.password.$error.minlength || newclientForm.password.$error.maxlength) && !newclientForm.password.newPassword.$error.required">Password length must be 8-25 char.</div>
+        </div>
+    </div>
+    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+        <label for="first-name">{{'ConfirmPasswordLbl' | translate}}</label>
+        <input required type="password" class="mat-input form-control" name="confirmPassword" ng-model="confirmPassword" equalto="newclientForm.password">
+        <div ng-messages="newclientForm.confirmPassword.$error">
+            <div ng-if="newclientForm.confirmPassword.$error.required && !newclientForm.confirmPassword.$pristine">{{'requiredErr' | translate}}</div>
+            <div ng-if="newclientForm.confirmPassword.$error.equalto && !newclientForm.confirmPassword.$error.required">{{'passworddontmatch' | translate}}</div>
+        </div>
+    </div>
+    <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+        <label for="first-name">{{'UserType' | translate}}</label>
+        <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags"
+                ng-model="selectedType" ng-options="group as group.text for group in userTypeList"></select>
+    </div>
+
+</form>
+<div class="pmd-modal-action text-right">
+    <button ng-disabled="newclientForm.$invalid "
+            class="btn pmd-ripple-effect btn-primary" type="button" ng-click="AddNewclient()">
+        {{'saveChangesBtn' | translate}}
+    </button>
+    <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="Close()">{{'DiscardBtn' | translate}}</button>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".select-tags").select2({
+            tags: false,
+            theme: "bootstrap",
+        })
+
+        $(".select-with-search").select2({
+            theme: "bootstrap"
+        });
+    });
+</script>

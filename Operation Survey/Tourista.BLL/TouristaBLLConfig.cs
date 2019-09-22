@@ -79,7 +79,14 @@ namespace Tourista.BLL
             mapperConfiguration.CreateMap<HotelReservationDto, HotelReservation>();
             mapperConfiguration.CreateMap<HotelReservation, HotelReservationDto>();
 
-
+            mapperConfiguration.CreateMap<BackageDto, Backage>();
+            mapperConfiguration.CreateMap<Backage, BackageDto>()
+                .ForMember(dto => dto.TitleDictionary,
+                    m => m.MapFrom(src => src.BackageTranslations.ToDictionary(
+                        translation => translation.Language.ToLower(), translation => translation.Title)))
+                .ForMember(dto => dto.DescriptionDictionary,
+                    m => m.MapFrom(src => src.BackageTranslations.ToDictionary(
+                        translation => translation.Language.ToLower(), translation => translation.Description)));
 
             mapperConfiguration.CreateMap<AboutDto, About>();
             mapperConfiguration.CreateMap<About, AboutDto>()

@@ -323,78 +323,78 @@ a:hover {
 }
 .page-banner.homepage-default {
   height: 100vh;
-  background-image: url('images/background/homepage-default-banner.jpg');
+ background-image: url('/Content/images/background/homepage-default-banner.jpg');
 }
 .page-banner.homepage-04 {
-  background-image: url('images/background/homepage-04-banner.jpg');
+ background-image: url('/Content/images/background/homepage-04-banner.jpg');
   height: 100vh;
 }
 .page-banner.hotel-view {
-  background-image: url('images/background/hotel-view-banner.jpg');
+ background-image: url('/Content/images/background/hotel-view-banner.jpg');
 }
 .page-banner-2.homepage-02 {
-  background-image: url('images/background/homepage-02-banner.jpg');
+ background-image: url('/Content/images/background/homepage-02-banner.jpg');
 }
 .page-banner-2.homepage-03 {
-  background-image: url('images/background/homepage-03-banner.jpg');
+ background-image: url('/Content/images/background/homepage-03-banner.jpg');
   vertical-align: bottom;
 }
 .tours {
-  background-image: url('images/background/bg-section-tour.jpg');
+ background-image: url('/Content/images/background/bg-section-tour.jpg');
 }
 .videos {
-  background-image: url('images/background/bg-section-videos.jpg');
+ background-image: url('/Content/images/background/bg-section-videos.jpg');
 }
 .hotels {
-  background-image: url('images/background/bg-section-hotel.jpg');
+ background-image: url('/Content/images/background/bg-section-hotel.jpg');
 }
 .travelers {
-  background-image: url('images/background/bg-section-traveler.jpg');
+ background-image: url('/Content/images/background/bg-section-traveler.jpg');
 }
 .banner-sale-1 {
-  background-image: url('images/background/bg-section-banner-1.jpg');
+ background-image: url('/Content/images/background/bg-section-banner-1.jpg');
 }
 .contact {
-  background-image: url('images/background/bg-section-contact.jpg');
+ background-image: url('/Content/images/background/bg-section-contact.jpg');
 }
 .contact.style-2 {
-  background-image: url('images/background/bg-section-contact-2.jpg');
+ background-image: url('/Content/images/background/bg-section-contact-2.jpg');
 }
 .tour-result {
-  background-image: url('images/background/tour-result.jpg');
+ background-image: url('/Content/images/background/tour-result.jpg');
 }
 .tour-result-hajj {
-  background-image: url('images/background/hajj.jpg');
+ background-image: url('/Content/images/background/hajj.jpg');
 	
 }.tour-result-safari {
-  background-image: url('images/background/safari.jpg');
+ background-image: url('/Content/images/background/safari.jpg');
 }
 .flight-result {
-  background-image: url('images/background/flight-result.jpg');
+ background-image: url('/Content/images/background/flight-result.jpg');
 }
 .hotel-result {
-  background-image: url('images/background/hotel-result.jpg');
+ background-image: url('/Content/images/background/hotel-result.jpg');
 }
 .cruises-result {
-  background-image: url('images/background/cruises-result.jpg');
+ background-image: url('/Content/images/background/cruises-result.jpg');
 }
 .car-rent-result {
-  background-image: url('images/background/car-rent-result.jpg');
+ background-image: url('/Content/images/background/car-rent-result.jpg');
 }
 .tour-view {
-  background-image: url('images/background/tour-view.jpg');
+ background-image: url('/Content/images/background/tour-view.jpg');
 }
 .blog {
-  background-image: url('images/background/blog.jpg');
+ background-image: url('/Content/images/background/blog.jpg');
 }
 .blog-detail {
-  background-image: url('images/background/blog-detail.jpg');
+ background-image: url('/Content/images/background/blog-detail.jpg');
 }
 .contact-page {
-  background-image: url('images/background/contact.jpg');
+ background-image: url('/Content/images/background/contact.jpg');
 }
 .about-us-page {
-  background-image: url('images/background/about-us.jpg');
+ background-image: url('/Content/images/background/about-us.jpg');
 }
 /*=============================
  =====  END GLOBAL STYLE  =====
@@ -2696,7 +2696,7 @@ a:hover {
 .bg-blue-gradient {
   position: relative;
   background: #fff;
-  background-image: url('images/background/bg-footer-2.png');
+ background-image: url('/Content/images/background/bg-footer-2.png');
   background-repeat: repeat;
   background-position: top;
   background-size: cover;
@@ -2730,7 +2730,7 @@ a:hover {
   background-size: cover;
   -webkit-background-size: cover;
   text-align: center;
-  background-image: url('images/background/bg-footer.jpg');
+ background-image: url('/Content/images/background/bg-footer.jpg');
 }
 .footer-main.bg-transparent {
   background-image: none;

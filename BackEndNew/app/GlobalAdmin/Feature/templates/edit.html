@@ -1,0 +1,75 @@
+<div class="modal-content">
+    <div class="modal-header bordered">
+        <h2 class="pmd-card-title-text">{{'Feature' | translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="UpdateFeatureForm">
+            <div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in editFeatureCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">
+                            {{lang.value | translate}}
+                        </a>
+                    </li>
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in editFeatureCtrl.language" id="{{lang.value}}-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                                    <label for="first-name"> {{ lang.value+'Name' | translate}} </label>
+                                    <input required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+'Name'}}" ng-model="editFeatureCtrl.Feature.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">
+                                    <div ng-messages="UpdateFeatureForm.titleDictionary{{lang.value+'Name'}}.$error">
+
+                                        <div ng-show="UpdateFeatureForm.titleDictionary{{lang.value+'Name'}}.$error.required && !UpdateFeatureForm.titleDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                        <div ng-show="(UpdateFeatureForm.titleDictionary{{lang.value+'Name'}}.$error.minlength || UpdateFeatureForm.titleDictionary{{lang.value+'Name'}}.$error.maxlength) && !UpdateFeatureForm.titleDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+
+                <input id="file" name="file" style="display: none;" onchange="angular.element(this).scope().AddFile(this.files)" type="file">
+                <button class="btn btn-primary editable-table-button btn-xs btn-with-icon" ng-click="editFeatureCtrl.LoadUploadImages()">{{'AddImageBtn' |translate}}</button>
+
+                <br>
+                <div> 
+                    <img ng-src="{{editFeatureCtrl.Feature.icon}}" style="max-height: 286px;max-width: 286px;">
+
+                    <!-- <td>
+                        <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="editFeatureCtrl.removeFeatureFile($index)">delete</i>
+                    </td> -->
+
+
+                </div>
+                <br> 
+                 <div >
+                    <table>
+                        <tbody>
+                            <tr ng-repeat="file in editFeatureCtrl.files">
+                                <td>
+                                    {{file.name}}
+                                </td>
+                                <td>
+                                    <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="editFeatureCtrl.removeFile($index)">delete</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="pmd-modal-action text-right">
+        <button ng-disabled="UpdateFeatureForm.$invalid || editFeatureCtrl.CheckImages.length == 0" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editFeatureCtrl.UpdateFeature()">{{'saveChangesBtn' | translate}}</button>
+        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editFeatureCtrl.Close()">{{'DiscardBtn' | translate}}</button>
+    </div>
+</div>
+

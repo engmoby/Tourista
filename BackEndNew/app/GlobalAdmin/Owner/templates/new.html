@@ -1,0 +1,104 @@
+<div class="modal-content">
+    <div class="modal-header bordered">
+        <h2 class="pmd-card-title-text">{{'NewOwner' | translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="newOwnerForm"> 
+            <div> 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in newOwnerCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">
+                            {{lang.value | translate}}
+                        </a>
+                    </li> 
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in newOwnerCtrl.language" id="{{lang.value}}-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label for="first-name"> {{ lang.value+'Name' | translate}} </label>
+                                    <input required Owner="text" class="mat-input form-control" name="titleDictionary{{lang.value+'Name'}}" ng-model="newOwnerCtrl.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">
+                                    <div ng-messages="newOwnerForm.titleDictionary{{lang.value+'Name'}}.$error" >
+										
+                                        <div ng-show="newOwnerForm.titleDictionary{{lang.value+'Name'}}.$error.required && !newOwnerForm.titleDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                        <div ng-show="(newOwnerForm.titleDictionary{{lang.value+'Name'}}.$error.minlength || newOwnerForm.titleDictionary{{lang.value+'Name'}}.$error.maxlength) && !newOwnerForm.titleDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <div> 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in newOwnerCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-postion-form" aria-controls="home" role="tab" data-toggle="tab">
+                            {{lang.value | translate}}
+                        </a>
+                    </li> 
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in newOwnerCtrl.language" id="{{lang.value}}-postion-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label for="first-name"> {{ lang.value+' Postion' | translate}} </label>
+                                    <input required Owner="text" class="mat-input form-control" name="postionDictionary{{lang.value+'Name'}}" ng-model="newOwnerCtrl.postionDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">
+                                    <div ng-messages="newOwnerForm.postionDictionary{{lang.value+'Name'}}.$error" >
+										
+                                        <div ng-show="newOwnerForm.postionDictionary{{lang.value+'Name'}}.$error.required && !newOwnerForm.postionDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                        <div ng-show="(newOwnerForm.postionDictionary{{lang.value+'Name'}}.$error.minlength || newOwnerForm.postionDictionary{{lang.value+'Name'}}.$error.maxlength) && !newOwnerForm.postionDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+
+            
+            <div> 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in newOwnerCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-desc-form" aria-controls="home" role="tab" data-toggle="tab">
+                            {{lang.value | translate}}
+                        </a>
+                    </li>       
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in newOwnerCtrl.language" id="{{lang.value}}-desc-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label for="first-name"> {{ lang.value+' Desctiprtion' | translate}} </label>
+                                    <textarea required Owner="text" class="mat-input form-control" name="+{{lang.value+'Name'}}"
+                                     ng-model="newOwnerCtrl.descriptionDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">
+                                     </textarea>
+                                    <div ng-messages="newOwnerForm.descriptionDictionary{{lang.value+'Name'}}.$error" >
+										
+                                        <div ng-show="newOwnerForm.descriptionDictionary{{lang.value+'Name'}}.$error.required && !newOwnerForm.descriptionDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>
+                                        <div ng-show="(newOwnerForm.descriptionDictionary{{lang.value+'Name'}}.$error.minlength || newOwnerForm.descriptionDictionary{{lang.value+'Name'}}.$error.maxlength) && !newOwnerForm.descriptionDictionary{{lang.value+'Name'}}.$error.required">{{'NameLengthError255' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+        </form>
+    </div>
+    <div class="pmd-modal-action text-right">
+        <button ng-disabled="newOwnerForm.$invalid" class="btn pmd-ripple-effect btn-primary" Owner="button" ng-click="newOwnerCtrl.AddNewOwner()">{{'saveChangesBtn' | translate}}</button>
+        <button class="btn pmd-ripple-effect btn-default" Owner="button" ng-click="$state.go('Owner');">{{'DiscardBtn' | translate}}</button>
+    </div>
+</div>

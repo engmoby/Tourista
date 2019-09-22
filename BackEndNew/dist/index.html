@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="home" ng-cloak ng-controller="homeCtrl">
+
+<head>
+	<title>Toursita Control Panel</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <link rel="icon" href="./assets/img/newlogo.png" sizes="32x32">
+	<link rel="icon" href="./assets/img/newlogo.png" sizes="192x192"> -->
+	<link rel="icon" type="image/gif" href="./assets/img/animated_favicon1.gif">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<link rel="stylesheet" ng-href="bundle-{{selectedLanguage}}.css?v=07422e26cd3a7ebe13aca1d9111a7bed" />
+	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+	<!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+	<link href="/assets/styles.css" />
+	<!-- <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet"> -->
+	<style>
+		/* fallback */
+		@font-face {
+			font-family: 'Material Icons';
+			font-style: normal;
+			font-weight: 400;
+			src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+		}
+
+		.material-icons {
+			font-family: 'Material Icons';
+			font-weight: normal;
+			font-style: normal;
+			font-size: 24px;
+			line-height: 1;
+			letter-spacing: normal;
+			text-transform: none;
+			display: inline-block;
+			white-space: nowrap;
+			word-wrap: normal;
+			direction: ltr;
+			-webkit-font-feature-settings: 'liga';
+			-webkit-font-smoothing: antialiased;
+		}
+
+
+		/* arabic */
+		@font-face {
+			font-family: 'Cairo';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v6/SLXGc1nY6HkvalIkTpu0xg.woff2) format('woff2');
+			unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
+		}
+
+		/* latin-ext */
+		@font-face {
+			font-family: 'Cairo';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v6/SLXGc1nY6HkvalIvTpu0xg.woff2) format('woff2');
+			unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+		}
+
+		/* latin */
+		@font-face {
+			font-family: 'Cairo';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v6/SLXGc1nY6HkvalIhTps.woff2) format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+		}
+
+
+		.error {
+			color: red;
+		}
+
+		.btn-switch {
+			position: relative;
+			display: block;
+			width: 50px;
+			height: 25px;
+			cursor: pointer;
+			background-color: #F27878;
+			border: 2px solid #F27878;
+			border-radius: 40px;
+		}
+
+		.btn-switch-circle {
+			position: absolute;
+			top: -1px;
+			left: 0px;
+			display: block;
+			height: 23px;
+			width: 24px;
+			background-color: #fff;
+			border-radius: 40px;
+		}
+
+		.btn-switch--on {
+			background-color: #80CDBE;
+			border: 2px solid #80CDBE;
+		}
+
+		.btn-switch-circle--on {
+			left: auto;
+			right: -1px;
+		}
+
+		.loader {
+			position: fixed;
+			z-index: 1090;
+			height: 100vh;
+			width: 100vw;
+			background-color: #f2f3f8;
+		}
+
+		.loader-content {
+			height: 200px;
+			width: 200px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%) scale(0.8);
+			background: white;
+			animation: bg 0.5s linear infinite;
+			/* border-bottom:3px solid #404143; */
+			border-radius: 100%;
+			overflow: hidden;
+			box-shadow: inset 0px 0px 10px 4px rgba(0, 0, 0, 0.3), inset 0px 0px 5px 0px #202232;
+		}
+
+		td.ng-binding {
+			width: 18%;
+		}
+
+		.loader-content:after {
+			content: 'iOrderat';
+			font-size: 20px;
+			position: absolute;
+			bottom: 0px;
+			text-align: center;
+			width: 100%;
+			border-top: 1px solid #202232;
+			background: rgba(0, 0, 0, 0.3);
+			background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.3) 0%, #494b74 100%);
+			background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.3) 0%, #494b74 100%);
+			background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, #494b74 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1efcc8', endColorstr='#1dd3d6', GradientType=1);
+			color: white;
+			padding-top: 8px;
+			padding-bottom: 18px;
+			animation: bg 3s linear infinite;
+		}
+
+		.truck {
+			height: 110px;
+			width: 150px;
+			position: absolute;
+
+			bottom: 48px;
+			left: calc(50% + 10px);
+			transform: translateX(-50%);
+
+		}
+
+
+		.truck>.truck-container {
+			background: rgb(175, 189, 195);
+			background: -moz-linear-gradient(-45deg, rgba(175, 189, 195, 1) 0%, rgba(175, 189, 195, 1) 50%, rgba(143, 163, 173, 1) 51%, rgba(143, 163, 173, 1) 100%);
+			background: -webkit-linear-gradient(-45deg, rgba(175, 189, 195, 1) 0%, rgba(175, 189, 195, 1) 50%, rgba(143, 163, 173, 1) 51%, rgba(143, 163, 173, 1) 100%);
+			background: linear-gradient(135deg, rgba(175, 189, 195, 1) 0%, rgba(175, 189, 195, 1) 50%, rgba(143, 163, 173, 1) 51%, rgba(143, 163, 173, 1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#afbdc3', endColorstr='#8fa3ad', GradientType=1);
+			height: 50px;
+			width: 80px;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			animation: container 0.4s linear infinite;
+		}
+
+		.truck>.glases {
+			background: #202232;
+			background: -moz-linear-gradient(-45deg, #202232, #202232, #494b74 52%, #494b74 100%);
+			background: -webkit-linear-gradient(-45deg, #202232, #202232, #494b74 52%, #494b74 100%);
+			background: linear-gradient(135deg, #202232, #202232, #494b74 52%, #494b74 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#28b5f5', endColorstr='#0299e3', GradientType=1);
+			position: absolute;
+			height: 25px;
+			width: 25px;
+			border: 4px solid #494b74;
+			border-bottom: none;
+			top: 35px;
+			left: 95px;
+			border-top-right-radius: 6px;
+			animation: updown-half 0.4s linear infinite;
+		}
+
+		.truck>.glases:after {
+			content: '';
+			display: block;
+			background-color: #494b74;
+			height: 13px;
+			width: 10px;
+			position: absolute;
+			right: -10px;
+			bottom: 0px;
+			border-radius: 10px / 15px;
+			border-bottom-right-radius: 0px;
+			border-bottom-left-radius: 0px;
+			border-top-left-radius: 0px;
+
+		}
+
+		.truck>.glases:before {
+			content: '';
+			display: block;
+			background-color: #494b74;
+			height: 12px;
+			width: 16px;
+			position: absolute;
+			left: 0px;
+			bottom: 0px;
+			border-top-right-radius: 4px;
+		}
+
+		.truck>.bonet {
+			background-color: #494b74;
+			position: absolute;
+			width: 124px;
+			height: 15px;
+			top: 64px;
+			left: 10px;
+			z-index: -1;
+			animation: updown 0.4s linear infinite;
+		}
+
+		.truck>.bonet:after {
+			content: '';
+			display: block;
+			background: rgb(255, 255, 255);
+			background: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 50%, rgba(225, 225, 225, 1) 51%, rgba(246, 246, 246, 1) 100%);
+			background: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 50%, rgba(225, 225, 225, 1) 51%, rgba(246, 246, 246, 1) 100%);
+			background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 50%, rgba(225, 225, 225, 1) 51%, rgba(246, 246, 246, 1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=1);
+			height: 10px;
+			width: 6px;
+			position: absolute;
+			right: 0px;
+			bottom: 2px;
+			border-top-left-radius: 4px;
+
+		}
+
+		.truck>.base {
+			position: absolute;
+			background-color: #445A64;
+			width: 106px;
+			height: 15px;
+			border-top-right-radius: 10px;
+			top: 70px;
+			left: 14px;
+			animation: updown 0.4s linear infinite;
+		}
+
+		.truck>.base:before {
+			content: '';
+			display: block;
+			background-color: #E54A18;
+			height: 12px;
+			width: 5px;
+			position: absolute;
+			left: -4px;
+			bottom: 0px;
+			border-bottom-left-radius: 4px;
+		}
+
+		.truck>.base:after {
+			content: '';
+			display: block;
+			background-color: RGB(84, 110, 122);
+			height: 10px;
+			width: 20px;
+			position: absolute;
+			right: -16px;
+			bottom: 0px;
+			border-bottom-right-radius: 4px;
+			z-index: -1;
+		}
+
+		.truck>.base-aux {
+			width: 82px;
+			height: 8px;
+			background-color: #494b74;
+			position: absolute;
+			top: 65px;
+			left: 14px;
+			border-bottom-right-radius: 4px;
+			animation: updown 0.4s linear infinite;
+		}
+
+		.truck>.wheel-back {
+			left: 20px
+		}
+
+		.truck>.wheel-front {
+			left: 95px;
+		}
+
+		.truck>.wheel-back,
+		.truck>.wheel-front {
+
+			border-radius: 100%;
+			position: absolute;
+			background: rgb(84, 110, 122);
+			background: -moz-linear-gradient(-45deg, rgba(84, 110, 122, 1) 0%, rgba(84, 110, 122, 1) 49%, rgba(68, 90, 100, 1) 52%, rgba(68, 90, 100, 1) 100%);
+			background: -webkit-linear-gradient(-45deg, rgba(84, 110, 122, 1) 0%, rgba(84, 110, 122, 1) 49%, rgba(68, 90, 100, 1) 52%, rgba(68, 90, 100, 1) 100%);
+			background: linear-gradient(135deg, rgba(84, 110, 122, 1) 0%, rgba(84, 110, 122, 1) 49%, rgba(68, 90, 100, 1) 52%, rgba(68, 90, 100, 1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#546e7a', endColorstr='#445a64', GradientType=1);
+			top: 80px;
+			height: 22px;
+			width: 22px;
+			animation: spin 0.6s linear infinite;
+		}
+
+		.truck>.wheel-back:before,
+		.truck>.wheel-front:before {
+			content: '';
+			border-radius: 100%;
+			left: 5px;
+			top: 5px;
+			position: absolute;
+			background: rgb(175, 189, 195);
+			background: -moz-linear-gradient(-45deg, rgba(175, 189, 195, 1) 0%, rgba(175, 189, 195, 1) 50%, rgba(143, 163, 173, 1) 51%, rgba(143, 163, 173, 1) 100%);
+			background: -webkit-linear-gradient(-45deg, rgba(175, 189, 195, 1) 0%, rgba(175, 189, 195, 1) 50%, rgba(143, 163, 173, 1) 51%, rgba(143, 163, 173, 1) 100%);
+			background: linear-gradient(135deg, rgba(175, 189, 195, 1) 0%, rgba(175, 189, 195, 1) 50%, rgba(143, 163, 173, 1) 51%, rgba(143, 163, 173, 1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#afbdc3', endColorstr='#8fa3ad', GradientType=1);
+			height: 12px;
+			width: 12px;
+		}
+
+		@keyframes spin {
+			50% {
+				top: 81px;
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes container {
+
+			30% {
+				transform: rotate(1deg);
+			}
+
+			50% {
+				top: 11px;
+			}
+
+			70% {
+				top: 10px;
+				transform: rotate(-1deg);
+			}
+		}
+
+		.truck>.smoke {
+			position: absolute;
+			background-color: #AFBDC3;
+			border-radius: 100%;
+			width: 8px;
+			height: 8px;
+			top: 90px;
+			left: 6px;
+			animation: fade 0.4s linear infinite;
+			opacity: 0;
+		}
+
+		.truck>.smoke:after {
+			content: '';
+			position: absolute;
+			background-color: RGB(143, 163, 173);
+			border-radius: 100%;
+			width: 6px;
+			height: 6px;
+			top: -4px;
+			left: 4px;
+		}
+
+		.truck>.smoke:before {
+			content: '';
+			position: absolute;
+			background-color: RGB(143, 163, 173);
+			border-radius: 100%;
+			width: 4px;
+			height: 4px;
+			top: -2px;
+			left: 0px;
+		}
+
+		@keyframes fade {
+
+			30% {
+				opacity: 0.3;
+				left: 7px;
+			}
+
+			50% {
+				opacity: 0.5;
+				left: 6px;
+			}
+
+			70% {
+				opacity: 0.1;
+				left: 4px;
+			}
+
+			90% {
+				opacity: 0.4;
+				left: 2px;
+			}
+		}
+
+		@keyframes bg {
+			from {
+				background-position-x: 0px;
+			}
+
+			to {
+				background-position-x: -400px;
+			}
+		}
+
+		@keyframes updown {
+			50% {
+				transform: translateY(-20%);
+			}
+
+			70% {
+				transform: translateY(-10%);
+			}
+		}
+
+		@keyframes updown-half {
+			50% {
+				transform: translateY(-10%);
+			}
+
+			70% {
+				transform: translateY(-5%);
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+ 
+	<nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth" ng-show="isLoggedIn()">
+
+		<div class="container-fluid">
+			<div class="pull-right navigation">
+				<a href="javascript:void(0);"
+					class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle">
+					<!-- <i class="material-icons">menu</i> -->
+					<i class="material-icons md-light">menu</i>
+				</a>
+				<a href="index.html" class="navbar-brand">
+					<img src="./assets/img/logo-os-white.png" alt="Toursita" id="logo" style="width: 72px;" />
+				</a>
+
+
+			</div>
+
+		</div>
+
+	</nav>
+	<!--End Nav bar -->
+	<!-- Header Ends -->
+
+	<!-- Sidebar Starts -->
+	<div class="pmd-sidebar-overlay"></div>
+
+	<!-- Left sidebar -->
+	<aside ng-show="isLoggedIn()" ng-cloak ng-init="logoutFlag=false" class="pmd-sidebar sidebar-default pmd-sidebar-slide-push
+		 pmd-sidebar-left pmd-sidebar-open bg-fill-white sidebar-with-icons" role="navigation">
+
+		<ul class="nav pmd-sidebar-nav">
+
+			<!-- User info -->
+			<li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
+				<a>
+					<div class="media-left">
+						<img src="/assets/img/img_avatar.png" style="    width: 50px;">
+
+					</div>
+					<div class="media-body media-middle" ng-cloak style="color: #494b74;">
+						{{user.name}}
+						<div style="font-size: 12px">
+							<!-- {{selectedManufacture.name}} -->
+							<!-- <span ng-if="user.userTypeId == 1">{{'employee' | translate}}</span>
+								<span ng-if="user.userTypeId == 2">{{'deptManager' | translate}}</span>
+								<span ng-if="user.userTypeId == 3">{{'branchManager' | translate}}</span>
+								<span ng-if="user.userTypeId == 4">{{'Tech' | translate}}</span> -->
+						</div>
+					</div>
+					<div class="media-right media-middle" title="logout">
+						<span style="color: #494b74;" ng-click="logout()" class="btn-user dropdown-toggle media"
+							data-sidebar="true" aria-expandedhref="javascript:void(0);">
+							{{'logout' | translate}}
+						</span>
+						<!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+							height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect id="bound" x="0" y="0" width="24" height="24"/>
+								<path d="M14.0069431,7.00607258 C13.4546584,7.00607258 13.0069431,6.55855153 13.0069431,6.00650634 C13.0069431,5.45446114 13.4546584,5.00694009 14.0069431,5.00694009 L15.0069431,5.00694009 C17.2160821,5.00694009 19.0069431,6.7970243 19.0069431,9.00520507 L19.0069431,15.001735 C19.0069431,17.2099158 17.2160821,19 15.0069431,19 L3.00694311,19 C0.797804106,19 -0.993056895,17.2099158 -0.993056895,15.001735 L-0.993056895,8.99826498 C-0.993056895,6.7900842 0.797804106,5 3.00694311,5 L4.00694793,5 C4.55923268,5 5.00694793,5.44752105 5.00694793,5.99956624 C5.00694793,6.55161144 4.55923268,6.99913249 4.00694793,6.99913249 L3.00694311,6.99913249 C1.90237361,6.99913249 1.00694311,7.89417459 1.00694311,8.99826498 L1.00694311,15.001735 C1.00694311,16.1058254 1.90237361,17.0008675 3.00694311,17.0008675 L15.0069431,17.0008675 C16.1115126,17.0008675 17.0069431,16.1058254 17.0069431,15.001735 L17.0069431,9.00520507 C17.0069431,7.90111468 16.1115126,7.00607258 15.0069431,7.00607258 L14.0069431,7.00607258 Z" id="Path-103" fill="#a139fc" fill-rule="nonzero" opacity="0.3" transform="translate(9.006943, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-9.006943, -12.000000) "/>
+								<rect id="Rectangle" fill="white" opacity="0.3" transform="translate(14.000000, 12.000000) rotate(-270.000000) translate(-14.000000, -12.000000) " x="13" y="6" width="2" height="12" rx="1"/>
+								<path d="M21.7928932,9.79289322 C22.1834175,9.40236893 22.8165825,9.40236893 23.2071068,9.79289322 C23.5976311,10.1834175 23.5976311,10.8165825 23.2071068,11.2071068 L20.2071068,14.2071068 C19.8165825,14.5976311 19.1834175,14.5976311 18.7928932,14.2071068 L15.7928932,11.2071068 C15.4023689,10.8165825 15.4023689,10.1834175 15.7928932,9.79289322 C16.1834175,9.40236893 16.8165825,9.40236893 17.2071068,9.79289322 L19.5,12.0857864 L21.7928932,9.79289322 Z" id="Path-104" fill="#a139fc" fill-rule="nonzero" transform="translate(19.500000, 12.000000) rotate(-90.000000) translate(-19.500000, -12.000000) "/>
+							</g>
+						</svg> -->
+					</div>
+				</a>
+			</li>
+			<!-- End user info -->
+
+			<li ng-show="user.PermissionId.indexOf('1') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Hotel');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Hotel' | translate}}</span>
+				</a>
+			</li>
+
+			<li ng-show="user.PermissionId.indexOf('10') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('HotelReservation');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Hotel Reservation' | translate}}</span>
+				</a>
+			</li>
+			<li ng-show="user.PermissionId.indexOf('1') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Country');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Country' | translate}}</span>
+				</a>
+			</li>
+
+
+			<li ng-show="user.PermissionId.indexOf('3') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Career');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Career' | translate}}</span>
+				</a>
+			</li>
+
+
+
+			<li ng-show="user.PermissionId.indexOf('3') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('CareerForm');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'CareerForm' | translate}}</span>
+				</a>
+			</li>
+
+			<li ng-show="user.PermissionId.indexOf('4') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Currency');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Currency' | translate}}</span>
+				</a>
+			</li>
+
+
+			<li ng-show="user.PermissionId.indexOf('5') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Feature');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Feature' | translate}}</span>
+				</a>
+			</li>
+
+			<li ng-show="user.PermissionId.indexOf('6') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('News');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Tourist Attractions' | translate}}</span>
+				</a>
+			</li>
+
+			<!-- <li ng-show="user.PermissionId.indexOf('7') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Owner');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Owner' | translate}}</span>
+				</a>
+			</li>
+
+			<li ng-show="user.PermissionId.indexOf('2') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('users');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'User' | translate}}</span>
+				</a>
+			</li> -->
+			<!-- <li ng-show="user.PermissionId.indexOf('2') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Client');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Client' | translate}}</span>
+				</a>
+			</li> -->
+			<li ng-show="user.PermissionId.indexOf('8') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('About');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'About' | translate}}</span>
+				</a>
+			</li>
+			<li ng-show="user.PermissionId.indexOf('9') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Contact');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Contact Us' | translate}}</span>
+				</a>
+			</li>
+			<!-- 
+			<li ng-show="user.PermissionId.indexOf('3') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Dashboard');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'DashboardLbl' | translate}}</span>
+				</a>
+			</li> -->
+
+		</ul>
+	</aside>
+	<!-- End Left sidebar -->
+	<!-- Sidebar Ends -->
+
+	<div ui-view layout="column" class="pmd-content content-area dashboard" flex></div>
+
+	<!-- scripts area -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script> -->
+	<script src="libs.js?v=07422e26cd3a7ebe13aca1d9111a7bed"></script>
+	<script src="core.js?v=07422e26cd3a7ebe13aca1d9111a7bed"></script>
+	<script src="app.js?v=07422e26cd3a7ebe13aca1d9111a7bed"></script>
+	<script src="templates.js?v=07422e26cd3a7ebe13aca1d9111a7bed"></script>
+	<!-- <script src="https://rawgithub.com/McNull/angular-block-ui/bower/angular-block-ui.min.js"></script> -->
+	<!-- <link rel="stylesheet" href="https://rawgithub.com/McNull/angular-block-ui/bower/angular-block-ui.min.css"> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-base64/2.0.5/angular-base64.js"></script> -->
+	<script type="text/javascript">
+
+		window.onload = function () {
+			// setTimeout(function () {
+			// 	var loader = document.getElementsByClassName("loader")[0];
+			// 	//loader.className = "loader fadeout";
+			// 	setTimeout(function () { loader.style.display = "none" })
+			// 	// setTimeout(function () { loader.style.display = "none" }, 1000)
+
+			// }, 1000)
+		}
+		// $(document).on("click", function (event) {
+		// 	var $trigger = $(".dropdown");
+		// 	if ($trigger !== event.target && !$trigger.has(event.target).length) {
+		// 		$(".dropdown-menu").slideUp("fast");
+		// 	}
+		// });
+		$(document).on("click", function (event) {
+			var $trigger = $("#collapsse");
+			if ($trigger !== event.target && !$trigger.has(event.target).length) {
+				$("#collapse-menu").slideUp("fast");
+			}
+		});
+		$("li.dropdown").click(function () {
+			$("#notification").toggleClass('bounceIn');
+		})
+
+
+		$(document).ready(function () {
+			$(".select-with-search").select2({
+				theme: "bootstrap"
+			});
+		});
+		$(".select-tags").select2({
+			tags: false,
+			theme: "bootstrap",
+		});
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1GFqRw-hwzD2x-j_o68tcS_uEI4tX-ak&callback=initMap">
+		</script>
+
+</body>
+
+</html>

@@ -34,13 +34,18 @@ namespace Tourista.DAL.Entities
 
         public DbSet<HotelFeature> HotelFeatureses { get; set; } 
 
-        public DbSet<HotelReservation> HotelReservations { get; set; } 
+        public DbSet<HotelReservation> HotelReservations { get; set; }
+        public DbSet<Backage> Backages { get; set; }
+        public DbSet<BackageTranslation> BackageTranslations { get; set; }
 
         public DbSet<News> Newses { get; set; }
         public DbSet<NewsTranslation> NewsTranslations { get; set; }
 
         public DbSet<Owner> Owners { get; set; }
         public DbSet<OwnerTranslation> OwnerTranslations { get; set; }
+
+        public DbSet<Type> Types { get; set; }
+        public DbSet<TypeTranslation> TypeTranslations { get; set; }
 
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<RoomTypeTranslation> RoomTypeTranslations { get; set; }

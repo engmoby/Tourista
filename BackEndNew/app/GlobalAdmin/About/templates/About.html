@@ -1,0 +1,29 @@
+
+<div> 
+    <div ng-if="AboutList.length == 0">
+        <span>{{'NoAboutsAvailable' | translate}}</span>
+    </div>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="AboutList.length > 0">
+        <div class="table-responsive"></div>
+        <table class="table pmd-table table-hover">
+            <thead>
+                <tr>
+                    <th>{{'Description' | translate}}</th>  
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="About in AboutList">
+                    <td data-title="Name">{{About.descriptionDictionary[selectedLanguage]}}</td>
+                  
+                    <td width="30%" ng-show="!About.isStatic">
+                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editAbout',{aboutId: About.aboutId});">mode_edit</i>
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>

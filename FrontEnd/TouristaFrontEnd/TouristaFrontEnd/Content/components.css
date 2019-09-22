@@ -2320,18 +2320,18 @@
   padding-left: 6px;
   cursor: pointer;
 }
-.video-thumbnail .video-button-close {
-  position: absolute;
-  z-index: 12;
-  top: 15px;
-  right: 15px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  background-image: url("../images/homepage/btn-closevideo.png");
-  opacity: 0;
-  visibility: hidden;
-}
+    .video-thumbnail .video-button-close {
+        position: absolute;
+        z-index: 12;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background-image: url("/Content/images/homepage/btn-closevideo.png");
+        opacity: 0;
+        visibility: hidden;
+    }
 .video-thumbnail .video-embed {
   position: absolute;
   left: 0;

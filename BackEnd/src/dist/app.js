@@ -971,6 +971,168 @@ function HotelByIdPrepService(HotelResource, $stateParams) {
 
     angular
         .module('home')
+        .controller('CareerController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'CareerResource', 'CareerPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', CareerController]);
+
+
+    function CareerController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, CareerResource, CareerPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[2].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.totalCount = CareerPrepService.totalCount;
+        $scope.CareerList = CareerPrepService;
+        console.log(  $scope.CareerList);
+        function refreshCareers() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = CareerResource.getAllCareers({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.CareerList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshCareers();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+
+    angular
+        .module('home')
+        .factory('CareerResource', ['$resource', 'appCONSTANTS', CareerResource])
+
+    function CareerResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Careers/', {}, {
+            getAllCareers: { method: 'GET', url: appCONSTANTS.API_URL + 'Careers/GetAllCareers', isArray: true, useToken: true, params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Careers/EditCareer', useToken: true },
+            getCareer: { method: 'GET', url: appCONSTANTS.API_URL + 'Careers/GetCareerById/:CareerId', useToken: true }
+        })
+    }
+
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('createCareerDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CareerResource', 'ToastService', '$rootScope', createCareerDialogController])
+
+    function createCareerDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CareerResource,
+        ToastService, $rootScope) {
+
+                blockUI.start("Loading..."); 
+
+            		var vm = this;
+		vm.language = appCONSTANTS.supportedLanguage;
+		vm.close = function(){
+			$state.go('Career');
+		} 
+
+		 		vm.AddNewCareer = function () {
+            blockUI.start("Loading..."); 
+            debugger;
+            var newObj = new CareerResource();
+
+                 newObj.title = vm.title; 
+            newObj.description= vm.description; 
+            newObj.IsDeleted = false;  
+            newObj.$create().then(
+                function (data, status) { 
+        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
+                    $state.go('Career');
+                     blockUI.stop();        
+
+
+                },
+                function (data, status) {
+               blockUI.stop();        
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+  	}	
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editCareerDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+         'CareerResource', 'ToastService',            'CareerByIdPrepService', editCareerDialogController])
+
+    function editCareerDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, 
+        CareerResource, ToastService, CareerByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.Career = CareerByIdPrepService; 
+        console.log( vm.Career)
+        vm.Close = function () {
+            $state.go('Career');
+        }
+        vm.UpdateCareer = function () { 
+            blockUI.start("Loading..."); 
+
+                        var updateObj = new CareerResource();
+
+                        updateObj.title = vm.Career.title; 
+            updateObj.description= vm.Career.description; 
+            updateObj.careerId = vm.Career.careerId; 
+		    updateObj.IsDeleted = false; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('Career');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
         .controller('CareerFormController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'CareerFormResource', 'CareerFormPrepService', '$localStorage',
             'authorizationService', 'appCONSTANTS',
@@ -1569,168 +1731,6 @@ console.log( $scope.ClientList);
                                         ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
 
                      $state.go('Contact');
-
-                },
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-        blockUI.stop();
-
-        	}	
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('CareerController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'CareerResource', 'CareerPrepService',  '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', CareerController]);
-
-
-    function CareerController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, CareerResource, CareerPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[2].children[0]).addClass("active")
-
-        blockUI.start("Loading..."); 
-
-                    var vm = this;
-        $scope.totalCount = CareerPrepService.totalCount;
-        $scope.CareerList = CareerPrepService;
-        console.log(  $scope.CareerList);
-        function refreshCareers() {
-
-            blockUI.start("Loading..."); 
-
-                        var k = CareerResource.getAllCareers({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.CareerList = results  
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshCareers();
-        }
-        blockUI.stop();
-
-            }
-
-})();
-(function () {
-
-    angular
-        .module('home')
-        .factory('CareerResource', ['$resource', 'appCONSTANTS', CareerResource])
-
-    function CareerResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'Careers/', {}, {
-            getAllCareers: { method: 'GET', url: appCONSTANTS.API_URL + 'Careers/GetAllCareers', isArray: true, useToken: true, params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Careers/EditCareer', useToken: true },
-            getCareer: { method: 'GET', url: appCONSTANTS.API_URL + 'Careers/GetCareerById/:CareerId', useToken: true }
-        })
-    }
-
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('createCareerDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CareerResource', 'ToastService', '$rootScope', createCareerDialogController])
-
-    function createCareerDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CareerResource,
-        ToastService, $rootScope) {
-
-                blockUI.start("Loading..."); 
-
-            		var vm = this;
-		vm.language = appCONSTANTS.supportedLanguage;
-		vm.close = function(){
-			$state.go('Career');
-		} 
-
-		 		vm.AddNewCareer = function () {
-            blockUI.start("Loading..."); 
-            debugger;
-            var newObj = new CareerResource();
-
-                 newObj.title = vm.title; 
-            newObj.description= vm.description; 
-            newObj.IsDeleted = false;  
-            newObj.$create().then(
-                function (data, status) { 
-        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
-                    $state.go('Career');
-                     blockUI.stop();        
-
-
-                },
-                function (data, status) {
-               blockUI.stop();        
-
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-        blockUI.stop();
-
-  	}	
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editCareerDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-         'CareerResource', 'ToastService',            'CareerByIdPrepService', editCareerDialogController])
-
-    function editCareerDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, 
-        CareerResource, ToastService, CareerByIdPrepService) {
-        blockUI.start("Loading..."); 
-
-                var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.Career = CareerByIdPrepService; 
-        console.log( vm.Career)
-        vm.Close = function () {
-            $state.go('Career');
-        }
-        vm.UpdateCareer = function () { 
-            blockUI.start("Loading..."); 
-
-                        var updateObj = new CareerResource();
-
-                        updateObj.title = vm.Career.title; 
-            updateObj.description= vm.Career.description; 
-            updateObj.careerId = vm.Career.careerId; 
-		    updateObj.IsDeleted = false; 
-		    updateObj.$update().then(
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
-
-                     $state.go('Career');
 
                 },
                 function (data, status) {
@@ -2469,25 +2469,25 @@ console.log( $scope.ClientList);
 (function () {
     'use strict';
 
-	    angular
+    angular
         .module('home')
         .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-        'CountryPrepService','FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
+            'CountryPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
 
-    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
-        FeaturePrepService, HotelResource,        ToastService, $rootScope) {
+    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        FeaturePrepService, HotelResource, ToastService, $rootScope) {
 
-                blockUI.start("Loading..."); 
-        function init(){ 
+        blockUI.start("Loading...");
+        function init() {
             $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
 
-                       $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
-           debugger;
+            debugger;
             $scope.FeatureList = FeaturePrepService.results;
         }
         init();
@@ -2502,18 +2502,18 @@ console.log( $scope.ClientList);
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
             $scope.CityList.push($scope.selectedCity);
             $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
-        } 
+        }
 
-        		var vm = this;
-		vm.language = appCONSTANTS.supportedLanguage;
-		vm.close = function(){
-			$state.go('Hotel');
-		} 
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.close = function () {
+            $state.go('Hotel');
+        }
 
-		          $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
+        $scope.$on('gmPlacesAutocomplete::placeChanged', function () {
             var location = $scope.autocomplete.getPlace().geometry.location;
-           vm.latitude = location.lat();
-           vm.longitude = location.lng();
+            vm.latitude = location.lat();
+            vm.longitude = location.lng();
             $scope.$apply();
         });
 
@@ -2527,15 +2527,15 @@ console.log( $scope.ClientList);
         }
         vm.AddNewHotel = function () {
             debugger;
-        blockUI.start("Loading..."); 
-        vm.isChanged = true;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
             var newHotel = new Object();
-            newHotel.titleDictionary = vm.titleDictionary; 
-            newHotel.descriptionDictionary = vm.descriptionDictionary; 
-            newHotel.star = vm.star; 
-            newHotel.cityId =  $scope.selectedCity.cityId; 
-            newHotel.latitude =  vm.latitude; 
-            newHotel.longitude =  vm.longitude; 
+            newHotel.titleDictionary = vm.titleDictionary;
+            newHotel.descriptionDictionary = vm.descriptionDictionary;
+            newHotel.star = vm.star;
+            newHotel.cityId = $scope.selectedCity.cityId;
+            newHotel.latitude = vm.latitude;
+            newHotel.longitude = vm.longitude;
             newHotel.hotelFeature = vm.selectedfeatures;
 
             var model = new FormData();
@@ -2556,20 +2556,20 @@ console.log( $scope.ClientList);
                     vm.isChanged = false;
                     ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
 
-                                       blockUI.stop();
-                     $state.go('Hotel')
+                    blockUI.stop();
+                    $state.go('Hotel')
 
                 },
                 function (data, status) {
                     vm.isChanged = false;
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-        blockUI.stop();
-    }
-                );
+                    blockUI.stop();
+                }
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {
-          debugger;  var imageFile = element[0];
+            debugger; var imageFile = element[0];
 
             var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
 
@@ -2622,7 +2622,7 @@ console.log( $scope.ClientList);
             vm.files.splice(index, 1);
         }
 
-	}	
+    }
 }());
 (function () {
     'use strict';

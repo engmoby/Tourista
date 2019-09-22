@@ -1,0 +1,29 @@
+
+<div> 
+    <div ng-if="ContactList.results.length == 0">
+        <span>{{'NoContactsAvailable' | translate}}</span>
+    </div> 
+     <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="ContactList.length > 0">
+        <div class="table-responsive"></div>
+        <table class="table pmd-table table-hover">
+            <thead>
+                <tr>
+                    <th>{{'Address' | translate}}</th>  
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Contact in ContactList">
+                    <td data-title="Name">{{Contact.addressDictionary[selectedLanguage]}}</td>
+                  
+                    <td width="30%" ng-show="!Contact.isStatic">
+                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editContact',{contactUsId: Contact.contactUsId});">mode_edit</i>
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>

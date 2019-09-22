@@ -19,7 +19,7 @@ namespace TouristaFrontEnd.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Global {
@@ -952,7 +952,7 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to News.
+        ///   Looks up a localized string similar to Tourist Attractions.
         /// </summary>
         public static string Header_News {
             get {
@@ -1222,7 +1222,7 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Latest News.
+        ///   Looks up a localized string similar to Latest Tourist Attractions.
         /// </summary>
         public static string LatestNews {
             get {
@@ -1258,7 +1258,7 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Latest News.
+        ///   Looks up a localized string similar to Latest Tourist Attractions.
         /// </summary>
         public static string News_Index_Desc {
             get {
@@ -1276,7 +1276,7 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All News.
+        ///   Looks up a localized string similar to All Tourist Attractions.
         /// </summary>
         public static string News_Index_Title {
             get {
@@ -1285,7 +1285,7 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recent News.
+        ///   Looks up a localized string similar to Recent Tourist Attractions.
         /// </summary>
         public static string News_RecentNews {
             get {
