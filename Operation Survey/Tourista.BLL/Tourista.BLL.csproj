@@ -96,7 +96,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataServices\BackageService.cs" />
+    <Compile Include="DataServices\BackageTranslationService.cs" />
+    <Compile Include="DataServices\Interfaces\ITypeService.cs" />
+    <Compile Include="DataServices\Interfaces\ITypeTranslationService.cs" />
+    <Compile Include="DataServices\TypeService.cs" />
+    <Compile Include="DataServices\TypeTranslationService.cs" />
     <Compile Include="DataServices\Interfaces\IConatctFormService.cs" />
+    <Compile Include="DataServices\Interfaces\IBackageService.cs" />
+    <Compile Include="DataServices\Interfaces\IBackageTranslationService.cs" />
     <Compile Include="DataServices\Interfaces\INewsletterService.cs" />
     <Compile Include="DataServices\NewsletterService.cs" />
     <Compile Include="DataServices\ConatctFormService.cs" />
@@ -170,7 +178,11 @@
     <Compile Include="DTOs\HotelReservationDto.cs" />
     <Compile Include="DTOs\AboutDto.cs" />
     <Compile Include="DTOs\UserDto.cs" />
+    <Compile Include="Services\BackageFacade.cs" />
+    <Compile Include="Services\Interfaces\ITypeFacade.cs" />
+    <Compile Include="Services\TypeFacade.cs" />
     <Compile Include="Services\Interfaces\IConatctFormFacade.cs" />
+    <Compile Include="Services\Interfaces\IBackageFacade.cs" />
     <Compile Include="Services\Interfaces\INewsletterFacade.cs" />
     <Compile Include="Services\NewsletterFacade.cs" />
     <Compile Include="Services\ContactFormFacade.cs" />

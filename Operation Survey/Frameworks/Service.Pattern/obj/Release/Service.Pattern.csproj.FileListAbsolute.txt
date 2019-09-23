@@ -36,3 +36,13 @@ C:\Users\TDS\Downloads\Tourista-master\Tourista-master\Operation Survey\Framewor
 C:\Users\TDS\Downloads\Tourista-master\Tourista-master\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.csproj.CopyComplete
 C:\Users\TDS\Downloads\Tourista-master\Tourista-master\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.dll
 C:\Users\TDS\Downloads\Tourista-master\Tourista-master\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.pdb
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\bin\Release\Service.Pattern.dll
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\bin\Release\Service.Pattern.pdb
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\bin\Release\Repository.Pattern.dll
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\bin\Release\Repository.Pattern.pdb
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\bin\Release\Repository.Pattern.dll.config
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.csprojAssemblyReference.cache
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.csproj.CoreCompileInputs.cache
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.csproj.CopyComplete
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.dll
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.pdb

@@ -12,13 +12,17 @@ namespace Tourista.DAL.Entities.Model
         }
         public long ContactUsId { get; set; }
         public string Phone { get; set; }
+        public string Phone1 { get; set; }
+        public string Phone2 { get; set; }
         public string Fax { get; set; }
         public string Facebook { get; set; }
         public string Instgram { get; set; }
         public string Twitter { get; set; }
         public string LinkedIn { get; set; }
         public string Mail { get; set; }
-         
+        public string Mail1 { get; set; }
+        public string Mail2 { get; set; }
+
         public DateTime? LastModificationTime { get; set; }
         public long? LastModifierUserId { get; set; } 
 

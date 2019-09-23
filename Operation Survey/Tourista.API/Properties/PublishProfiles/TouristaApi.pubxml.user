@@ -79,7 +79,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/ar-EG/Tourista.Resources.resources.dll">
-      <publishTime>07/23/2019 22:30:36</publishTime>
+      <publishTime>09/23/2019 16:22:34</publishTime>
     </File>
     <File Include="bin/AutoMapper.dll">
       <publishTime>11/22/2018 07:32:43</publishTime>
@@ -178,22 +178,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/Repository.Pattern.dll">
-      <publishTime>07/23/2019 22:30:32</publishTime>
+      <publishTime>09/23/2019 16:22:21</publishTime>
     </File>
     <File Include="bin/Repository.Pattern.dll.config">
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/Repository.Pattern.Ef6.dll">
-      <publishTime>07/23/2019 22:30:33</publishTime>
+      <publishTime>09/23/2019 16:22:27</publishTime>
     </File>
     <File Include="bin/Repository.Pattern.Ef6.dll.config">
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/Repository.Pattern.Ef6.pdb">
-      <publishTime>07/23/2019 22:30:33</publishTime>
+      <publishTime>09/23/2019 16:22:27</publishTime>
     </File>
     <File Include="bin/Repository.Pattern.pdb">
-      <publishTime>07/23/2019 22:30:32</publishTime>
+      <publishTime>09/23/2019 16:22:21</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/22/2018 07:32:43</publishTime>
@@ -232,10 +232,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/Service.Pattern.dll">
-      <publishTime>07/23/2019 22:30:33</publishTime>
+      <publishTime>09/23/2019 16:22:28</publishTime>
     </File>
     <File Include="bin/Service.Pattern.pdb">
-      <publishTime>07/23/2019 22:30:33</publishTime>
+      <publishTime>09/23/2019 16:22:28</publishTime>
     </File>
     <File Include="bin/Swashbuckle.Core.dll">
       <publishTime>11/22/2018 07:32:43</publishTime>
@@ -280,43 +280,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/Tourista.API.dll">
-      <publishTime>07/23/2019 22:30:41</publishTime>
+      <publishTime>09/23/2019 16:22:45</publishTime>
     </File>
     <File Include="bin/Tourista.API.pdb">
-      <publishTime>07/23/2019 22:30:41</publishTime>
+      <publishTime>09/23/2019 16:22:45</publishTime>
     </File>
     <File Include="bin/Tourista.BLL.dll">
-      <publishTime>07/23/2019 22:30:34</publishTime>
+      <publishTime>09/23/2019 16:22:34</publishTime>
     </File>
     <File Include="bin/Tourista.BLL.dll.config">
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/Tourista.BLL.pdb">
-      <publishTime>07/23/2019 22:30:34</publishTime>
+      <publishTime>09/23/2019 16:22:34</publishTime>
     </File>
     <File Include="bin/Tourista.Common.dll">
-      <publishTime>07/23/2019 22:30:32</publishTime>
+      <publishTime>09/23/2019 16:22:20</publishTime>
     </File>
     <File Include="bin/Tourista.Common.pdb">
-      <publishTime>07/23/2019 22:30:32</publishTime>
+      <publishTime>09/23/2019 16:22:20</publishTime>
     </File>
     <File Include="bin/Tourista.DAL.dll">
-      <publishTime>07/23/2019 22:30:33</publishTime>
+      <publishTime>09/23/2019 16:22:29</publishTime>
     </File>
     <File Include="bin/Tourista.DAL.dll.config">
-      <publishTime>11/22/2018 07:32:43</publishTime>
+      <publishTime>09/23/2019 14:24:47</publishTime>
     </File>
     <File Include="bin/Tourista.DAL.pdb">
-      <publishTime>07/23/2019 22:30:33</publishTime>
+      <publishTime>09/23/2019 16:22:29</publishTime>
     </File>
     <File Include="bin/Tourista.Resources.dll">
-      <publishTime>07/23/2019 22:30:36</publishTime>
+      <publishTime>09/23/2019 16:22:34</publishTime>
     </File>
     <File Include="bin/Tourista.Resources.dll.config">
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/Tourista.Resources.pdb">
-      <publishTime>07/23/2019 22:30:36</publishTime>
+      <publishTime>09/23/2019 16:22:34</publishTime>
     </File>
     <File Include="bin/Unity.Abstractions.dll">
       <publishTime>11/22/2018 07:32:43</publishTime>
@@ -341,6 +341,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/22/2018 07:32:43</publishTime>
+    </File>
+    <File Include="default.aspx">
+      <publishTime>07/28/2019 11:33:31</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>11/22/2018 07:32:43</publishTime>
@@ -418,7 +421,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/23/2019 22:30:42</publishTime>
+      <publishTime>09/23/2019 16:22:48</publishTime>
     </File>
   </ItemGroup>
 </Project>

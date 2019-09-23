@@ -64,3 +64,9 @@ C:\Users\TDS\Downloads\Tourista-master\Tourista-master\Operation Survey\Framewor
 C:\Users\TDS\Downloads\Tourista-master\Tourista-master\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.csproj.CoreCompileInputs.cache
 C:\Users\TDS\Downloads\Tourista-master\Tourista-master\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.dll
 C:\Users\TDS\Downloads\Tourista-master\Tourista-master\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.pdb
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\bin\Debug\Repository.Pattern.dll.config
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\bin\Debug\Repository.Pattern.dll
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\bin\Debug\Repository.Pattern.pdb
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.csproj.CoreCompileInputs.cache
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.dll
+C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.pdb

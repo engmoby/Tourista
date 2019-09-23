@@ -19,7 +19,7 @@ namespace Tourista.BLL.DTOs
         public long? HotelId { get; set; }
         public virtual HotelDto Hotel { get; set; }
         public long? TypeId { get; set; }
-        public virtual Type Type { get; set; }
+        public virtual TypeDto Type { get; set; }
         public List<string> ImagesURL { get; set; } 
 
         public bool IsDeleted { get; set; }
