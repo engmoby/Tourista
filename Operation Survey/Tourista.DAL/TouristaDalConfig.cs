@@ -37,9 +37,11 @@ namespace Tourista.DAL
                 .RegisterType<IRepositoryAsync<NewsTranslation>, Repository<NewsTranslation>>(new PerResolveLifetimeManager())
                   .RegisterType<IRepositoryAsync<Backage>, Repository<Backage>>(new PerResolveLifetimeManager())
                 .RegisterType<IRepositoryAsync<BackageTranslation>, Repository<BackageTranslation>>(new PerResolveLifetimeManager())
+                    .RegisterType<IRepositoryAsync<Offer>, Repository<Offer>>(new PerResolveLifetimeManager())
+                .RegisterType<IRepositoryAsync<OfferTranslation>, Repository<OfferTranslation>>(new PerResolveLifetimeManager())
 
-                                .RegisterType<IRepositoryAsync<BackageReservation>, Repository<BackageReservation>>(new PerResolveLifetimeManager())
-.RegisterType<IRepositoryAsync<Hotel>, Repository<Hotel>>(new PerResolveLifetimeManager())
+                    .RegisterType<IRepositoryAsync<BackageReservation>, Repository<BackageReservation>>(new PerResolveLifetimeManager())
+                 .RegisterType<IRepositoryAsync<Hotel>, Repository<Hotel>>(new PerResolveLifetimeManager())
                 .RegisterType<IRepositoryAsync<HotelTranslation>, Repository<HotelTranslation>>(new PerResolveLifetimeManager())
                 .RegisterType<IRepositoryAsync<HotelFeature>, Repository<HotelFeature>>(new PerResolveLifetimeManager())
                 .RegisterType<IRepositoryAsync<Tour>, Repository<Tour>>(new PerResolveLifetimeManager())
