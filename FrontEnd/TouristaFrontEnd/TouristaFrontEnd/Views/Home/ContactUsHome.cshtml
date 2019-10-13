@@ -34,7 +34,7 @@
                                 <div id="MSGCONTACT" style="color: red;"> </div>
 
                                 <div class="contact-submit">
-                                    <button id="sendBtn" data-hover="SEND NOW" class="btn btn-slide">
+                                    <button id="btnSubmitContactFrom" data-hover="SEND NOW" class="btn btn-slide">
                                         <span class="text">@TouristaFrontEnd.Resources.Global.ContactUs_SendInquiry</span>
                                         <span class="icons fa fa-long-arrow-right"></span>
                                     </button>
@@ -49,44 +49,65 @@
     </div>
 </section>
 @*<script>
-    $.validate({
-        form: '#myForm',
-        modules: 'security',
-        onError: function ($form) {
+        $.validate({
+            form: '#myForm',
+            modules: 'security',
+            onError: function ($form) {
+                debugger
+                alert('Validation of form ' + $form.attr('id') + ' failed!');
+            },
+            onSuccess: function ($form) {
+                debugger
+                sendContact();
+                return false;
+            }
+
+        });
+    </script>*@
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        //$('#btnSubmitContactFrom').attr('disabled', true);
+      
+
+
+
+        $("#btnSubmitContactFrom").click(function () {
+            if ($('#FirstName').val() == "" || $('#Email').val() == "" || $('#Message').val() == ""  ) {
+                alert("You must enter all inputs")
+                return;
+            } sendContact();
+        });
+
+        function sendContact() {
+
+            var contact = {
+                UserName: $("#FirstName").val(),
+                Email: $("#Email").val(),
+                Message: $("#Message").val()
+
+            }
+
+            //$('#MSGCONTACT').html('Error in Contact form');
             debugger
-            alert('Validation of form ' + $form.attr('id') + ' failed!');
-        },
-        onSuccess: function ($form) {
-            debugger
-            sendContact();
-            return false;
+            $.ajax({
+                url: "http://localhost:50755/API/ContactForms",
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    debugger
+                    alert("Thanks, we will contact you soon")
+                    $("#FirstName").val() = "";
+                    $("#Email").val() = "";
+                    $("#Message").val() = "";
+                    $('#btnSubmitContactFrom').attr('disabled', false);
+                   // $('#MSGCONTACT').html("sucess ContactUs_JS_2 !");
+                },
+                data: contact
+            });
         }
 
     });
 </script>
-
-<script type="text/javascript">
-
-    function sendContact() {
-        debugger
-
-        var contact = {
-            UserName: $("#FirstName").val(),
-            Email: $("#Email").val(),
-            Message: $("#Message").val()
-
-        }
-
-        $('#MSGCONTACT').html('ContactUs_JS_1');
-        debugger
-        $.ajax({
-            url: "http://localhost:32569/API/ContactForms",
-           type: 'post',
-            dataType: 'json',
-            success: function (data) {
-                $('#MSGCONTACT').html("sucess ContactUs_JS_2 !");
-            },
-            data: contact
-        });
-    }
-</script>*@

@@ -46,3 +46,10 @@ C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\o
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.csproj.CopyComplete
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.dll
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Release\Service.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Release\Service.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Release\Repository.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\bin\Release\Repository.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.csprojResolveAssemblyReference.cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Service.Pattern\obj\Release\Service.Pattern.pdb

@@ -96,8 +96,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataServices\Interfaces\IOfferReservationService.cs" />
+    <Compile Include="DataServices\Interfaces\IOfferService.cs" />
+    <Compile Include="DataServices\Interfaces\IOfferTranslationService.cs" />
+    <Compile Include="DataServices\OfferReservationService.cs" />
+    <Compile Include="DataServices\OfferService.cs" />
     <Compile Include="DataServices\BackageService.cs" />
+    <Compile Include="DataServices\OfferTranslationService.cs" />
     <Compile Include="DataServices\BackageTranslationService.cs" />
+    <Compile Include="DataServices\BackageReservationService.cs" />
+    <Compile Include="DataServices\Interfaces\IBackageReservationService.cs" />
     <Compile Include="DataServices\Interfaces\ITypeService.cs" />
     <Compile Include="DataServices\Interfaces\ITypeTranslationService.cs" />
     <Compile Include="DataServices\TypeService.cs" />
@@ -156,7 +164,10 @@
     <Compile Include="DataServices\CityTranslationService.cs" />
     <Compile Include="DataServices\RefreshTokenService.cs" />
     <Compile Include="DataServices\UserService.cs" />
+    <Compile Include="DTOs\OfferDto.cs" />
     <Compile Include="DTOs\BackageDto.cs" />
+    <Compile Include="DTOs\OfferReservationDto.cs" />
+    <Compile Include="DTOs\BackageReservationDto.cs" />
     <Compile Include="DTOs\TypeDto.cs" />
     <Compile Include="DTOs\NewsletterDto.cs" />
     <Compile Include="DTOs\ContactFromDto.cs" />
@@ -178,7 +189,13 @@
     <Compile Include="DTOs\HotelReservationDto.cs" />
     <Compile Include="DTOs\AboutDto.cs" />
     <Compile Include="DTOs\UserDto.cs" />
+    <Compile Include="Services\Interfaces\IOfferFacade.cs" />
+    <Compile Include="Services\Interfaces\IOfferReservationFacade.cs" />
+    <Compile Include="Services\OfferFacade.cs" />
     <Compile Include="Services\BackageFacade.cs" />
+    <Compile Include="Services\OfferReservationFacade.cs" />
+    <Compile Include="Services\BackageReservationFacade.cs" />
+    <Compile Include="Services\Interfaces\IBackageReservationFacade.cs" />
     <Compile Include="Services\Interfaces\ITypeFacade.cs" />
     <Compile Include="Services\TypeFacade.cs" />
     <Compile Include="Services\Interfaces\IConatctFormFacade.cs" />

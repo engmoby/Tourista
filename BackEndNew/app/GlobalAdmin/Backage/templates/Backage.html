@@ -1,0 +1,47 @@
+
+<div>
+    <div style="margin-bottom:10px">
+        <button ng-click="$state.go('newBackage');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{'AddNew' | translate}}</button>
+
+    </div> 
+    <div ng-if="BackageList.results.length == 0">
+        <span>{{'NoPackagesAvailable' | translate}}</span>
+    </div>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="BackageList.results.length > 0">
+        <div class="table-responsive"></div>
+        <table class="table pmd-table table-hover">
+            <thead>
+                <tr>
+                    <th>{{'Image' | translate}}</th> 
+                    <th>{{'Name' | translate}}</th> 
+                    <th>{{'Star' | translate}}</th> 
+                    <th>{{'City' | translate}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Backage in BackageList.results">
+                    <!-- <td data-title="image">
+					<img ng-src='{{Backage.imagesURL[0]}}' style="    width: 77px;" />
+
+                   </td> -->
+                   <td data-title="Image" ><img ng-src="{{Backage.imagesURL[0]}}"
+                     ng-alt="{{Backage.titleDictionary[selectedLanguage]}}" style="max-height: 200px;max-width: 200px;"/></td>
+
+                   <td data-title="Name">{{Backage.titleDictionary[selectedLanguage]}}</td>
+                   <td data-title="star">{{Backage.star}}</td>
+                    <td data-title="city">{{Backage.city.titleDictionary[selectedLanguage]}}</td>
+               
+                   
+                    <td  >
+                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editBackage',{backageId: Backage.backageId});">mode_edit</i>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>

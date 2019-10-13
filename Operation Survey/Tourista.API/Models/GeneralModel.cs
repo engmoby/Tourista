@@ -12,6 +12,6 @@ namespace Tourista.API.Models
         public List<OwnerModel> Owner { get; set; }
         public List<ContactModel> Contact { get; set; }
         public List<CountryModel> Country { get; set; }
-
+        public List<BackageModel> Backage { get;  set; }
     }
 }

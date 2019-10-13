@@ -70,3 +70,9 @@ C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Patter
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.csproj.CoreCompileInputs.cache
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.dll
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\bin\Debug\Repository.Pattern.dll.config
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\bin\Debug\Repository.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\bin\Debug\Repository.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.csprojResolveAssemblyReference.cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.pdb

@@ -11,7 +11,7 @@
                     controller: 'userController',
                     'controllerAs': 'userCtrl',
                     resolve: {
-                        userPrepService: userPrepService, 
+                        userPrepService: userPrepService,
                     },
                     data: {
                         permissions: {
@@ -29,7 +29,7 @@
                     'controllerAs': 'userCtrl',
 
                     resolve: {
-                        userPrepService: userPrepService, 
+                        userPrepService: userPrepService,
 
                     },
                     data: {
@@ -48,8 +48,8 @@
                     controller: 'editUserController',
                     'controllerAs': 'editUserCtrl',
                     resolve: {
-                        EditUserPrepService: EditUserPrepService ,
-                        userPrepService: userPrepService, 
+                        EditUserPrepService: EditUserPrepService,
+                        userPrepService: userPrepService,
 
                     },
                     data: {
@@ -66,7 +66,7 @@
                     controller: 'ClientController',
                     'controllerAs': 'ClientCtrl',
                     resolve: {
-                        ClientPrepService: ClientPrepService, 
+                        ClientPrepService: ClientPrepService,
                     },
                     data: {
                         permissions: {
@@ -77,7 +77,7 @@
 
                 })
 
-                 .state('Country', {
+                .state('Country', {
                     url: '/Country',
                     templateUrl: './app/GlobalAdmin/Country/templates/Country.html',
                     controller: 'CountryController',
@@ -155,7 +155,7 @@
                     }
 
                 })
-                
+
                 .state('Career', {
                     url: '/Career',
                     templateUrl: './app/GlobalAdmin/Career/templates/Career.html',
@@ -202,7 +202,7 @@
 
                 })
 
-                
+
                 .state('CareerForm', {
                     url: '/CareerForm',
                     templateUrl: './app/GlobalAdmin/CareerForm/templates/CareerForm.html',
@@ -293,7 +293,51 @@
                     }
 
                 })
-                
+                .state('Type', {
+                    url: '/Type',
+                    templateUrl: './app/GlobalAdmin/Type/templates/Type.html',
+                    controller: 'TypeController',
+                    'controllerAs': 'TypeCtrl',
+                    resolve: {
+                        TypePrepService: TypePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newType', {
+                    url: '/newType',
+                    templateUrl: './app/GlobalAdmin/Type/templates/new.html',
+                    controller: 'createTypeDialogController',
+                    'controllerAs': 'newTypeCtrl',
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editType', {
+                    url: '/editType/:typeId',
+                    templateUrl: './app/GlobalAdmin/Type/templates/edit.html',
+                    controller: 'editTypeDialogController',
+                    'controllerAs': 'editTypeCtrl',
+                    resolve: {
+                        TypeByIdPrepService: TypeByIdPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
                 .state('Feature', {
                     url: '/Feature',
                     templateUrl: './app/GlobalAdmin/Feature/templates/Feature.html',
@@ -340,7 +384,7 @@
 
                 })
 
-                
+
                 .state('News', {
                     url: '/News',
                     templateUrl: './app/GlobalAdmin/News/templates/News.html',
@@ -386,8 +430,8 @@
                     }
 
                 })
-                
-                
+
+
                 .state('Owner', {
                     url: '/Owner',
                     templateUrl: './app/GlobalAdmin/Owner/templates/Owner.html',
@@ -434,7 +478,7 @@
 
                 })
 
-                
+
                 .state('Hotel', {
                     url: '/Hotel',
                     templateUrl: './app/GlobalAdmin/Hotel/templates/Hotel.html',
@@ -459,10 +503,10 @@
                     'controllerAs': 'newHotelCtrl',
                     resolve: {
                         HotelPrepService: HotelPrepService,
-                        CountryPrepService: CountryPrepService, 
+                        CountryPrepService: CountryPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
-                     data: {
+                    data: {
                         permissions: {
                             only: ['4'],
                             redirectTo: 'root'
@@ -477,7 +521,7 @@
                     'controllerAs': 'editHotelCtrl',
                     resolve: {
                         HotelByIdPrepService: HotelByIdPrepService,
-                        CountryPrepService: CountryPrepService, 
+                        CountryPrepService: CountryPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
                     data: {
@@ -488,7 +532,64 @@
                     }
 
                 })
-                
+
+
+
+                .state('Backage', {
+                    url: '/Backage',
+                    templateUrl: './app/GlobalAdmin/Backage/templates/Backage.html',
+                    controller: 'BackageController',
+                    'controllerAs': 'BackageCtrl',
+                    resolve: {
+                        BackagePrepService: BackagePrepService,
+                        CountryPrepService: CountryPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newBackage', {
+                    url: '/newBackage',
+                    templateUrl: './app/GlobalAdmin/Backage/templates/new.html',
+                    controller: 'createBackageDialogController',
+                    'controllerAs': 'newBackageCtrl',
+                    resolve: {
+                        BackagePrepService: BackagePrepService,
+                        CountryPrepService: CountryPrepService,
+                        HotelPrepService: HotelPrepService,
+                        TypePrepService: TypePrepService,
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editBackage', {
+                    url: '/editBackage/:backageId',
+                    templateUrl: './app/GlobalAdmin/Backage/templates/edit.html',
+                    controller: 'editBackageDialogController',
+                    'controllerAs': 'editBackageCtrl',
+                    resolve: {
+                        BackageByIdPrepService: BackageByIdPrepService,
+                        CountryPrepService: CountryPrepService,
+                        HotelPrepService: HotelPrepService,
+                        TypePrepService: TypePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
                 .state('About', {
                     url: '/About',
                     templateUrl: './app/GlobalAdmin/About/templates/About.html',
@@ -504,7 +605,7 @@
                         }
                     }
 
-                }) 
+                })
                 .state('editAbout', {
                     url: '/editAbout/:aboutId',
                     templateUrl: './app/GlobalAdmin/About/templates/edit.html',
@@ -537,7 +638,7 @@
                         }
                     }
 
-                }) 
+                })
                 .state('editContact', {
                     url: '/editContact/:contactUsId',
                     templateUrl: './app/GlobalAdmin/Contact/templates/edit.html',
@@ -555,7 +656,7 @@
 
                 })
 
-                
+
                 .state('HotelReservation', {
                     url: '/HotelReservation',
                     templateUrl: './app/GlobalAdmin/HotelReservation/templates/HotelReservation.html',
@@ -571,7 +672,7 @@
                         }
                     }
 
-                }) 
+                })
                 .state('editHotelReservation', {
                     url: '/editHotelReservation/:hotelReservationId',
                     templateUrl: './app/GlobalAdmin/HotelReservation/templates/edit.html',
@@ -596,7 +697,7 @@
                     'controllerAs': 'dashboardCtrl',
                     resolve: {
                         TicketDashboardPrepService: TicketDashboardPrepService,
-                       // AnswerQuestionPrepService: AnswerQuestionPrepService
+                        // AnswerQuestionPrepService: AnswerQuestionPrepService
 
                     },
                     data: {
@@ -619,31 +720,31 @@
         return GetUserResource.getUser({ userId: $stateParams.userId }).$promise;
     }
 
-     
+
     PermissionPrepService.$inject = ['PermissionResource']
     function PermissionPrepService(PermissionResource) {
         return PermissionResource.getAllPermissions().$promise;
     }
-      /*Client */
-      ClientPrepService.$inject = ['ClientResource']
-      function ClientPrepService(ClientResource) {
-          return ClientResource.getAllClients().$promise;
-      }
-  /*Country */
-  CountryPrepService.$inject = ['CountryResource']
-  function CountryPrepService(CountryResource) {
-      return CountryResource.GetAllCountries().$promise;
-  }
+    /*Client */
+    ClientPrepService.$inject = ['ClientResource']
+    function ClientPrepService(ClientResource) {
+        return ClientResource.getAllClients().$promise;
+    }
+    /*Country */
+    CountryPrepService.$inject = ['CountryResource']
+    function CountryPrepService(CountryResource) {
+        return CountryResource.GetAllCountries().$promise;
+    }
 
-  AllCountryPrepService.$inject = ['CountryResource']
-  function AllCountryPrepService(CountryResource) {
-      return CountryResource.GetAllCountries({ pageSize: 0 }).$promise;
-  }
+    AllCountryPrepService.$inject = ['CountryResource']
+    function AllCountryPrepService(CountryResource) {
+        return CountryResource.GetAllCountries({ pageSize: 0 }).$promise;
+    }
 
-  CountryByIdPrepService.$inject = ['CountryResource', '$stateParams']
-  function CountryByIdPrepService(CountryResource, $stateParams) {
-      return CountryResource.getCountry({ countryId: $stateParams.countryId }).$promise;
-  }
+    CountryByIdPrepService.$inject = ['CountryResource', '$stateParams']
+    function CountryByIdPrepService(CountryResource, $stateParams) {
+        return CountryResource.getCountry({ countryId: $stateParams.countryId }).$promise;
+    }
 
 
     /*City */
@@ -656,177 +757,210 @@
     function CityByIdPrepService(CityResource, $stateParams) {
         return CityResource.getCity({ cityId: $stateParams.cityId }).$promise;
     }
-    
-/*Career */
-CareerPrepService.$inject = ['CareerResource']
-function CareerPrepService(CareerResource) {
-    return CareerResource.getAllCareers().$promise;
-}
 
-AllCareerPrepService.$inject = ['CareerResource']
-function AllCareerPrepService(CareerResource) {
-    return CareerResource.getAllCareers({ pageSize: 0 }).$promise;
-}
+    /*Career */
+    CareerPrepService.$inject = ['CareerResource']
+    function CareerPrepService(CareerResource) {
+        return CareerResource.getAllCareers().$promise;
+    }
 
-CareerByIdPrepService.$inject = ['CareerResource', '$stateParams']
-function CareerByIdPrepService(CareerResource, $stateParams) {
-    return CareerResource.getCareer({ careerId: $stateParams.careerId }).$promise;
-}
+    AllCareerPrepService.$inject = ['CareerResource']
+    function AllCareerPrepService(CareerResource) {
+        return CareerResource.getAllCareers({ pageSize: 0 }).$promise;
+    }
 
-
-/*CareerForm */
-CareerFormPrepService.$inject = ['CareerFormResource']
-function CareerFormPrepService(CareerFormResource) {
-    return CareerFormResource.getAllCareerForms().$promise;
-}
-
-AllCareerFormPrepService.$inject = ['CareerFormResource']
-function AllCareerFormPrepService(CareerFormResource) {
-    return CareerFormResource.getAllCareerForms({ pageSize: 0 }).$promise;
-}
-
-CareerFormByIdPrepService.$inject = ['CareerFormResource', '$stateParams']
-function CareerFormByIdPrepService(CareerFormResource, $stateParams) {
-    return CareerFormResource.getCareerForm({ CareerFormId: $stateParams.CareerFormId }).$promise;
-}
+    CareerByIdPrepService.$inject = ['CareerResource', '$stateParams']
+    function CareerByIdPrepService(CareerResource, $stateParams) {
+        return CareerResource.getCareer({ careerId: $stateParams.careerId }).$promise;
+    }
 
 
-/*Currency */
-CurrencyPrepService.$inject = ['CurrencyResource']
-function CurrencyPrepService(CurrencyResource) {
-    return CurrencyResource.getAllCurrencies().$promise;
-}
+    /*CareerForm */
+    CareerFormPrepService.$inject = ['CareerFormResource']
+    function CareerFormPrepService(CareerFormResource) {
+        return CareerFormResource.getAllCareerForms().$promise;
+    }
 
-AllCurrencyPrepService.$inject = ['CurrencyResource']
-function AllCurrencyPrepService(CurrencyResource) {
-    return CurrencyResource.getAllCurrencies({ pageSize: 0 }).$promise;
-}
+    AllCareerFormPrepService.$inject = ['CareerFormResource']
+    function AllCareerFormPrepService(CareerFormResource) {
+        return CareerFormResource.getAllCareerForms({ pageSize: 0 }).$promise;
+    }
 
-CurrencyByIdPrepService.$inject = ['CurrencyResource', '$stateParams']
-function CurrencyByIdPrepService(CurrencyResource, $stateParams) {
-    return CurrencyResource.getCurrency({ currencyId: $stateParams.currencyId }).$promise;
-}
-
-
-/*Feature */
-FeaturePrepService.$inject = ['FeatureResource']
-function FeaturePrepService(FeatureResource) {
-    return FeatureResource.getAllFeatures().$promise;
-}
-
-AllFeaturePrepService.$inject = ['FeatureResource']
-function AllFeaturePrepService(FeatureResource) {
-    return FeatureResource.getAllFeatures({ pageSize: 0 }).$promise;
-}
-
-FeatureByIdPrepService.$inject = ['FeatureResource', '$stateParams']
-function FeatureByIdPrepService(FeatureResource, $stateParams) {
-    return FeatureResource.getFeature({ featureId: $stateParams.featureId }).$promise;
-}
+    CareerFormByIdPrepService.$inject = ['CareerFormResource', '$stateParams']
+    function CareerFormByIdPrepService(CareerFormResource, $stateParams) {
+        return CareerFormResource.getCareerForm({ CareerFormId: $stateParams.CareerFormId }).$promise;
+    }
 
 
+    /*Currency */
+    CurrencyPrepService.$inject = ['CurrencyResource']
+    function CurrencyPrepService(CurrencyResource) {
+        return CurrencyResource.getAllCurrencies().$promise;
+    }
 
-/*News */
-NewsPrepService.$inject = ['NewsResource']
-function NewsPrepService(NewsResource) {
-    return NewsResource.getAllNews().$promise;
-}
+    AllCurrencyPrepService.$inject = ['CurrencyResource']
+    function AllCurrencyPrepService(CurrencyResource) {
+        return CurrencyResource.getAllCurrencies({ pageSize: 0 }).$promise;
+    }
 
-AllNewsPrepService.$inject = ['NewsResource']
-function AllNewsPrepService(NewsResource) {
-    return NewsResource.getAllNews({ pageSize: 0 }).$promise;
-}
-
-NewsByIdPrepService.$inject = ['NewsResource', '$stateParams']
-function NewsByIdPrepService(NewsResource, $stateParams) {
-    return NewsResource.getNews({newsId: $stateParams.newsId }).$promise;
-}
-
-/*Owner */
-OwnerPrepService.$inject = ['OwnerResource']
-function OwnerPrepService(OwnerResource) {
-    return OwnerResource.getAllOwners().$promise;
-}
-
-AllOwnerPrepService.$inject = ['OwnerResource']
-function AllOwnerPrepService(OwnerResource) {
-    return OwnerResource.getAllOwners({ pageSize: 0 }).$promise;
-}
-
-OwnerByIdPrepService.$inject = ['OwnerResource', '$stateParams']
-function OwnerByIdPrepService(OwnerResource, $stateParams) {
-    return OwnerResource.getOwner({ ownerId: $stateParams.ownerId }).$promise;
-}
-
-/*Hotel */
-HotelPrepService.$inject = ['HotelResource']
-function HotelPrepService(HotelResource) {
-    return HotelResource.GetAllHotels().$promise;
-}
-
-AllHotelPrepService.$inject = ['HotelResource']
-function AllHotelPrepService(HotelResource) {
-    return HotelResource.GetAllHotels({ pageSize: 0 }).$promise;
-}
-
-HotelByIdPrepService.$inject = ['HotelResource', '$stateParams']
-function HotelByIdPrepService(HotelResource, $stateParams) {
-    return HotelResource.getHotel({ hotelId: $stateParams.hotelId }).$promise;
-}
+    CurrencyByIdPrepService.$inject = ['CurrencyResource', '$stateParams']
+    function CurrencyByIdPrepService(CurrencyResource, $stateParams) {
+        return CurrencyResource.getCurrency({ currencyId: $stateParams.currencyId }).$promise;
+    }
 
 
-  /*About */
-  AboutPrepService.$inject = ['AboutResource']
-  function AboutPrepService(AboutResource) {
-      return AboutResource.GetAllAbout().$promise;
-  }
+    /*Type */
+    TypePrepService.$inject = ['TypeResource']
+    function TypePrepService(TypeResource) {
+        return TypeResource.getAllTypes().$promise;
+    }
 
-  AllAboutPrepService.$inject = ['AboutResource']
-  function AllAboutPrepService(AboutResource) {
-      return AboutResource.GetAllAbout({ pageSize: 0 }).$promise;
-  }
+    AllTypePrepService.$inject = ['TypeResource']
+    function AllTypePrepService(TypeResource) {
+        return TypeResource.getAllTypes({ pageSize: 0 }).$promise;
+    }
 
-  AboutByIdPrepService.$inject = ['AboutResource', '$stateParams']
-  function AboutByIdPrepService(AboutResource, $stateParams) {
-      return AboutResource.getAbout({ aboutId: $stateParams.aboutId }).$promise;
-  }
+    TypeByIdPrepService.$inject = ['TypeResource', '$stateParams']
+    function TypeByIdPrepService(TypeResource, $stateParams) {
+        return TypeResource.getType({ typeId: $stateParams.typeId }).$promise;
+    }
 
-  
-  /*Contact */
-  ContactPrepService.$inject = ['ContactResource']
-  function ContactPrepService(ContactResource) {
-      return ContactResource.GetAllContact().$promise;
-  }
+    /*Feature */
+    FeaturePrepService.$inject = ['FeatureResource']
+    function FeaturePrepService(FeatureResource) {
+        return FeatureResource.getAllFeatures().$promise;
+    }
 
-  AllContactPrepService.$inject = ['ContactResource']
-  function AllContactPrepService(ContactResource) {
-      return ContactResource.GetAllContact({ pageSize: 0 }).$promise;
-  }
+    AllFeaturePrepService.$inject = ['FeatureResource']
+    function AllFeaturePrepService(FeatureResource) {
+        return FeatureResource.getAllFeatures({ pageSize: 0 }).$promise;
+    }
 
-  ContactByIdPrepService.$inject = ['ContactResource', '$stateParams']
-  function ContactByIdPrepService(ContactResource, $stateParams) {
-      return ContactResource.getContact({ contactUsId: $stateParams.contactUsId }).$promise;
-  }
+    FeatureByIdPrepService.$inject = ['FeatureResource', '$stateParams']
+    function FeatureByIdPrepService(FeatureResource, $stateParams) {
+        return FeatureResource.getFeature({ featureId: $stateParams.featureId }).$promise;
+    }
 
 
-  
-  /*HotelReservation */
-  HotelReservationPrepService.$inject = ['HotelReservationResource']
-  function HotelReservationPrepService(HotelReservationResource) {
-      return HotelReservationResource.GetAllHotelReservation().$promise;
-  }
 
-  AllHotelReservationPrepService.$inject = ['HotelReservationResource']
-  function AllHotelReservationPrepService(HotelReservationResource) {
-      return HotelReservationResource.GetAllHotelReservation({ pageSize: 0 }).$promise;
-  }
+    /*News */
+    NewsPrepService.$inject = ['NewsResource']
+    function NewsPrepService(NewsResource) {
+        return NewsResource.getAllNews().$promise;
+    }
 
-  HotelReservationByIdPrepService.$inject = ['HotelReservationResource', '$stateParams']
-  function HotelReservationByIdPrepService(HotelReservationResource, $stateParams) {
-      return HotelReservationResource.getHotelReservation({ hotelReservationId: $stateParams.hotelReservationId }).$promise;
-  }
+    AllNewsPrepService.$inject = ['NewsResource']
+    function AllNewsPrepService(NewsResource) {
+        return NewsResource.getAllNews({ pageSize: 0 }).$promise;
+    }
 
-  
+    NewsByIdPrepService.$inject = ['NewsResource', '$stateParams']
+    function NewsByIdPrepService(NewsResource, $stateParams) {
+        return NewsResource.getNews({ newsId: $stateParams.newsId }).$promise;
+    }
+
+    /*Owner */
+    OwnerPrepService.$inject = ['OwnerResource']
+    function OwnerPrepService(OwnerResource) {
+        return OwnerResource.getAllOwners().$promise;
+    }
+
+    AllOwnerPrepService.$inject = ['OwnerResource']
+    function AllOwnerPrepService(OwnerResource) {
+        return OwnerResource.getAllOwners({ pageSize: 0 }).$promise;
+    }
+
+    OwnerByIdPrepService.$inject = ['OwnerResource', '$stateParams']
+    function OwnerByIdPrepService(OwnerResource, $stateParams) {
+        return OwnerResource.getOwner({ ownerId: $stateParams.ownerId }).$promise;
+    }
+
+    /*Hotel */
+    HotelPrepService.$inject = ['HotelResource']
+    function HotelPrepService(HotelResource) {
+        return HotelResource.GetAllHotels().$promise;
+    }
+
+    AllHotelPrepService.$inject = ['HotelResource']
+    function AllHotelPrepService(HotelResource) {
+        return HotelResource.GetAllHotels({ pageSize: 0 }).$promise;
+    }
+
+    HotelByIdPrepService.$inject = ['HotelResource', '$stateParams']
+    function HotelByIdPrepService(HotelResource, $stateParams) {
+        return HotelResource.getHotel({ hotelId: $stateParams.hotelId }).$promise;
+    }
+
+
+
+    /*Backage */
+    BackagePrepService.$inject = ['BackageResource']
+    function BackagePrepService(BackageResource) {
+        return BackageResource.GetAllBackages().$promise;
+    }
+
+    AllBackagePrepService.$inject = ['BackageResource']
+    function AllBackagePrepService(BackageResource) {
+        return BackageResource.GetAllBackages({ pageSize: 0 }).$promise;
+    }
+
+    BackageByIdPrepService.$inject = ['BackageResource', '$stateParams']
+    function BackageByIdPrepService(BackageResource, $stateParams) {
+        return BackageResource.getBackage({ backageId: $stateParams.backageId }).$promise;
+    }
+
+    /*About */
+    AboutPrepService.$inject = ['AboutResource']
+    function AboutPrepService(AboutResource) {
+        return AboutResource.GetAllAbout().$promise;
+    }
+
+    AllAboutPrepService.$inject = ['AboutResource']
+    function AllAboutPrepService(AboutResource) {
+        return AboutResource.GetAllAbout({ pageSize: 0 }).$promise;
+    }
+
+    AboutByIdPrepService.$inject = ['AboutResource', '$stateParams']
+    function AboutByIdPrepService(AboutResource, $stateParams) {
+        return AboutResource.getAbout({ aboutId: $stateParams.aboutId }).$promise;
+    }
+
+
+    /*Contact */
+    ContactPrepService.$inject = ['ContactResource']
+    function ContactPrepService(ContactResource) {
+        return ContactResource.GetAllContact().$promise;
+    }
+
+    AllContactPrepService.$inject = ['ContactResource']
+    function AllContactPrepService(ContactResource) {
+        return ContactResource.GetAllContact({ pageSize: 0 }).$promise;
+    }
+
+    ContactByIdPrepService.$inject = ['ContactResource', '$stateParams']
+    function ContactByIdPrepService(ContactResource, $stateParams) {
+        return ContactResource.getContact({ contactUsId: $stateParams.contactUsId }).$promise;
+    }
+
+
+
+    /*HotelReservation */
+    HotelReservationPrepService.$inject = ['HotelReservationResource']
+    function HotelReservationPrepService(HotelReservationResource) {
+        return HotelReservationResource.GetAllHotelReservation().$promise;
+    }
+
+    AllHotelReservationPrepService.$inject = ['HotelReservationResource']
+    function AllHotelReservationPrepService(HotelReservationResource) {
+        return HotelReservationResource.GetAllHotelReservation({ pageSize: 0 }).$promise;
+    }
+
+    HotelReservationByIdPrepService.$inject = ['HotelReservationResource', '$stateParams']
+    function HotelReservationByIdPrepService(HotelReservationResource, $stateParams) {
+        return HotelReservationResource.getHotelReservation({ hotelReservationId: $stateParams.hotelReservationId }).$promise;
+    }
+
+
     TicketDashboardPrepService.$inject = ['dashboardResource']
     function TicketDashboardPrepService(dashboardResource) {
         return dashboardResource.getTicketsDashboard().$promise;

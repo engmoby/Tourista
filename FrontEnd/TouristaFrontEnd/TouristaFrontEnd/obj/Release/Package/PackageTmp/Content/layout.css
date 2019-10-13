@@ -1708,6 +1708,7 @@ a:hover {
   margin-top: 20px;
   float: left;
   vertical-align: bottom;
+      margin: 2px;
 }
 .find-widget .text-box-wrapper > .text-box-wrapper {
   margin-top: 0;

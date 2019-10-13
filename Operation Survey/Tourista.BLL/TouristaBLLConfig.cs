@@ -21,9 +21,9 @@ namespace Tourista.BLL
         {
             mapperConfiguration.CreateMap<User, UserDto>()
                 .ForMember(dto => dto.Password, m => m.MapFrom(src => PasswordHelper.Decrypt(src.Password)));
-            mapperConfiguration.CreateMap<UserDto, User>() ;
+            mapperConfiguration.CreateMap<UserDto, User>();
 
-            mapperConfiguration.CreateMap<Career, CareerDto>() ;
+            mapperConfiguration.CreateMap<Career, CareerDto>();
             mapperConfiguration.CreateMap<CareerDto, Career>();
 
 
@@ -31,7 +31,7 @@ namespace Tourista.BLL
             mapperConfiguration.CreateMap<CareerFormDto, CareerForm>();
 
             mapperConfiguration.CreateMap<CountryDto, Country>()
-                .ForMember(dto => dto.Cityes, m => m.Ignore()); 
+                .ForMember(dto => dto.Cityes, m => m.Ignore());
             mapperConfiguration.CreateMap<Country, CountryDto>()
                 .ForMember(dto => dto.TitleDictionary, m => m.MapFrom(src => src.CountryTranslations.ToDictionary(translation => translation.Language.ToLower(), translation => translation.Title)));
 
@@ -73,7 +73,7 @@ namespace Tourista.BLL
                 .ForMember(dto => dto.DescriptionDictionary,
                     m => m.MapFrom(src => src.HotelTranslations.ToDictionary(
                         translation => translation.Language.ToLower(), translation => translation.Description)));
-               // .ForMember(dto => dto.City, m => m.MapFrom(src => src.CityId));
+            // .ForMember(dto => dto.City, m => m.MapFrom(src => src.CityId));
 
 
             mapperConfiguration.CreateMap<HotelReservationDto, HotelReservation>();
@@ -87,6 +87,30 @@ namespace Tourista.BLL
                 .ForMember(dto => dto.DescriptionDictionary,
                     m => m.MapFrom(src => src.BackageTranslations.ToDictionary(
                         translation => translation.Language.ToLower(), translation => translation.Description)));
+
+
+            mapperConfiguration.CreateMap<BackageReservationDto, BackageReservation>();
+            mapperConfiguration.CreateMap<BackageReservation, BackageReservationDto>();
+
+            mapperConfiguration.CreateMap<OfferDto, Offer>();
+            mapperConfiguration.CreateMap<Offer, OfferDto>()
+                .ForMember(dto => dto.TitleDictionary,
+                    m => m.MapFrom(src => src.OfferTranslations.ToDictionary(
+                        translation => translation.Language.ToLower(), translation => translation.Title)))
+                .ForMember(dto => dto.DescriptionDictionary,
+                    m => m.MapFrom(src => src.OfferTranslations.ToDictionary(
+                        translation => translation.Language.ToLower(), translation => translation.Description)));
+            //.ForMember(dto => dto.City, m => m.MapFrom(src => src.CityId));
+
+
+            mapperConfiguration.CreateMap<OfferReservationDto, OfferReservation>();
+            mapperConfiguration.CreateMap<OfferReservation, OfferReservationDto>();
+
+
+            mapperConfiguration.CreateMap<TypeDto, Type>();
+            mapperConfiguration.CreateMap<Type, TypeDto>()
+                .ForMember(dto => dto.TitleDictionary, m => m.MapFrom(src => src.TypeTranslations.ToDictionary(translation => translation.Language.ToLower(), translation => translation.Title)));
+
 
             mapperConfiguration.CreateMap<AboutDto, About>();
             mapperConfiguration.CreateMap<About, AboutDto>()
@@ -123,16 +147,30 @@ namespace Tourista.BLL
             container
                 .RegisterType<IHotelService, HotelService>(new PerResolveLifetimeManager())
                 .RegisterType<IHotelTranslationService, HotelTranslationService>(new PerResolveLifetimeManager())
-                 
+
+                  .RegisterType<IHotelService, HotelService>(new PerResolveLifetimeManager())
+                .RegisterType<IHotelTranslationService, HotelTranslationService>(new PerResolveLifetimeManager())
+
+                  .RegisterType<IBackageService, BackageService>(new PerResolveLifetimeManager())
+                .RegisterType<IBackageTranslationService, BackageTranslationService>(new PerResolveLifetimeManager())
+                .RegisterType<IBackageReservationService, BackageReservationService>(new PerResolveLifetimeManager())
+
+                     .RegisterType<IOfferService, OfferService>(new PerResolveLifetimeManager())
+                   .RegisterType<IOfferTranslationService, OfferTranslationService>(new PerResolveLifetimeManager())
+                .RegisterType<IOfferReservationService, OfferReservationService>(new PerResolveLifetimeManager())
+              
+                  .RegisterType<ITypeService, TypeService>(new PerResolveLifetimeManager())
+                .RegisterType<ITypeTranslationService, TypeTranslationService>(new PerResolveLifetimeManager())
+
                 //.RegisterType<ITourService, TourService>(new PerResolveLifetimeManager())
                 //.RegisterType<ITourTranslationService, TourTranslationService>(new PerResolveLifetimeManager())
-                
+
                 .RegisterType<ICountryService, CountryService>(new PerResolveLifetimeManager())
                 .RegisterType<ICountryTranslationService, CountryTranslationService>(new PerResolveLifetimeManager())
-               
+
                 .RegisterType<ICityService, CityService>(new PerResolveLifetimeManager())
                 .RegisterType<ICityTranslationService, CityTranslationService>(new PerResolveLifetimeManager())
-                 
+
                 .RegisterType<ICurrencyService, CurrencyService>(new PerResolveLifetimeManager())
                 .RegisterType<ICurrencyTranslationService, CurrencyTranslationService>(new PerResolveLifetimeManager())
 

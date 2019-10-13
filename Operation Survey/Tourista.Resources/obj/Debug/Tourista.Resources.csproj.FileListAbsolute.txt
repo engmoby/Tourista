@@ -77,3 +77,28 @@ C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.Resources\obj\Debug
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.dll
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.pdb
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csprojAssemblyReference.cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\csc.exe
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\System.Collections.Immutable.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\System.Reflection.Metadata.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\vbc.exe
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\VBCSCompiler.exe
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\roslyn\VBCSCompiler.exe.config
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\Tourista.Resources.dll.config
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\Tourista.Resources.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\Tourista.Resources.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\ar-EG\Tourista.Resources.resources.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csprojResolveAssemblyReference.cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.Resource.resources
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.Resource.ar-EG.resources
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csproj.GenerateResource.Cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\ar-EG\Tourista.Resources.resources.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.pdb

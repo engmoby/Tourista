@@ -11,7 +11,7 @@
     <link href="@TouristaFrontEnd.Resources.Global.StyleUrl" rel="stylesheet">
     <link href="@TouristaFrontEnd.Resources.Global.StyleUrl2" rel="stylesheet">
     @*<link href="~/Scripts/libs/bootstrap/css/bootstrap-arabic.css" rel="stylesheet" />*@
-
+    <link rel="icon" type="image/gif" href="/backend/assets/img/animated_favicon1.gif">
 
 
     @Scripts.Render("~/bundles/jquery")
@@ -48,6 +48,9 @@
                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Hotels, "Index", "Hotel", null, new { @class = "main-menu" })
                         </li>
 
+                        <li>
+                            @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Backages, "Index", "Backage", null, new { @class = "main-menu" })
+                        </li>
                         <li>
                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_News, "Index", "News", null, new { @class = "main-menu" })
                         </li>
@@ -104,6 +107,9 @@
                                         </li>
 
                                         <li>
+                                            @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Backages, "Index", "Backage", null, new { @class = "main-menu" })
+                                        </li>
+                                        <li>
                                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_News, "Index", "News", null, new { @class = "main-menu" })
                                         </li>
                                         <li>
@@ -151,7 +157,7 @@
                 <div class="social-footer">
                     <ul class="list-inline list-unstyled">
                         <li><a href="@Common.GeneralModel.Contact[0].Facebook" target="_blank" class="link facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="@Common.GeneralModel.Contact[0].LinkedIn" target="_blank" class="link facebook"><i class="fa fa-linkedin"></i></a></li>
+                        @*<li><a href="@Common.GeneralModel.Contact[0].LinkedIn" target="_blank" class="link facebook"><i class="fa fa-linkedin"></i></a></li>*@
                         <li><a href="@Common.GeneralModel.Contact[0].Twitter" class="link twitter"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="@Common.GeneralModel.Contact[0].Instgram" class="link facebook"><i class="fa fa-instagram"></i></a></li>
                     </ul>

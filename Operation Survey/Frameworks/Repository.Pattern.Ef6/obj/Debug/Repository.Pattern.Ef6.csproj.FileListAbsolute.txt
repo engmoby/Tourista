@@ -198,3 +198,19 @@ C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Patter
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.csproj.CopyComplete
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.dll
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.Ef6.dll.config
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.Ef6.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.Ef6.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\EntityFramework.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\EntityFramework.SqlServer.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\LinqKit.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\System.Net.Http.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\EntityFramework.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\EntityFramework.SqlServer.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\LinqKit.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\LinqKit.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.csprojResolveAssemblyReference.cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.pdb

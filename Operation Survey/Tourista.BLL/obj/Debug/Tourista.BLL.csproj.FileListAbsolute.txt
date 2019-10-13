@@ -136,3 +136,45 @@ C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.BLL\bin\Debug\LinqK
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.csproj.CopyComplete
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.dll
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.BLL.dll.config
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.BLL.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.BLL.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\AutoMapper.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.Unity.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\MSharp.Framework.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Newtonsoft.Json.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Repository.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Repository.Pattern.Ef6.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\sdk.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Service.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\System.Net.Http.Extensions.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\System.Net.Http.Formatting.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\System.Net.Http.Primitives.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.Common.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.DAL.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Windows.winmd
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\EntityFramework.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\LinqKit.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Repository.Pattern.Ef6.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Repository.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Service.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.Common.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Tourista.DAL.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\AutoMapper.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.Unity.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\MSharp.Framework.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\MSharp.Framework.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\Newtonsoft.Json.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\EntityFramework.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\LinqKit.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\bin\Debug\LinqKit.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.csprojResolveAssemblyReference.cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.BLL\obj\Debug\Tourista.BLL.pdb

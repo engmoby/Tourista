@@ -19,7 +19,7 @@ namespace TouristaFrontEnd.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Global {
@@ -97,11 +97,29 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About the package.
+        /// </summary>
+        public static string Aboutthebackage {
+            get {
+                return ResourceManager.GetString("Aboutthebackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About the hotel.
         /// </summary>
         public static string Aboutthehotel {
             get {
                 return ResourceManager.GetString("Aboutthehotel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About the Offer.
+        /// </summary>
+        public static string Abouttheoffer {
+            get {
+                return ResourceManager.GetString("Abouttheoffer", resourceCulture);
             }
         }
         
@@ -115,11 +133,29 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AWESOME PACKAGE.
+        /// </summary>
+        public static string AWESOMEBACKGE {
+            get {
+                return ResourceManager.GetString("AWESOMEBACKGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AWESOME TOURS.
         /// </summary>
         public static string AWESOMETOURS {
             get {
                 return ResourceManager.GetString("AWESOMETOURS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package Overview.
+        /// </summary>
+        public static string BackageOverview {
+            get {
+                return ResourceManager.GetString("BackageOverview", resourceCulture);
             }
         }
         
@@ -907,6 +943,15 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Packages.
+        /// </summary>
+        public static string Header_Backages {
+            get {
+                return ResourceManager.GetString("Header_Backages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Careers.
         /// </summary>
         public static string Header_Careers {
@@ -957,6 +1002,15 @@ namespace TouristaFrontEnd.Resources {
         public static string Header_News {
             get {
                 return ResourceManager.GetString("Header_News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offers.
+        /// </summary>
+        public static string Header_Offer {
+            get {
+                return ResourceManager.GetString("Header_Offer", resourceCulture);
             }
         }
         
@@ -1231,11 +1285,29 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to more packages.
+        /// </summary>
+        public static string morebackage {
+            get {
+                return ResourceManager.GetString("morebackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More Hotel.
         /// </summary>
         public static string MoreHotel {
             get {
                 return ResourceManager.GetString("MoreHotel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to more Offers.
+        /// </summary>
+        public static string moreOffer {
+            get {
+                return ResourceManager.GetString("moreOffer", resourceCulture);
             }
         }
         
@@ -1299,6 +1371,15 @@ namespace TouristaFrontEnd.Resources {
         public static string NumberOfRoom_Required {
             get {
                 return ResourceManager.GetString("NumberOfRoom_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer Overview.
+        /// </summary>
+        public static string OfferOverview {
+            get {
+                return ResourceManager.GetString("OfferOverview", resourceCulture);
             }
         }
         

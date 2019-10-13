@@ -9,6 +9,7 @@ namespace Tourista.BLL.DataServices.Interfaces
     {
         User ValidateUser(string email, string password );
         bool CheckEmailDuplicated(string email,int tenantId);
+        User GetUserByEmail(string email, int tenantId);
         bool CheckPhoneDuplicated(string phone, int tenantId);
         User CheckUserIsDeleted(string firstName, string password);
         PagedResultsDto GetAllSystemUsers(int page, int pageSize, int tenantId);

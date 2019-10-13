@@ -597,4 +597,31 @@
   <data name="StyleUrl2" xml:space="preserve">
     <value>/Content/components.css</value>
   </data>
+  <data name="Aboutthebackage" xml:space="preserve">
+    <value>About the package</value>
+  </data>
+  <data name="BackageOverview" xml:space="preserve">
+    <value>Package Overview</value>
+  </data>
+  <data name="Header_Backages" xml:space="preserve">
+    <value>Packages</value>
+  </data>
+  <data name="AWESOMEBACKGE" xml:space="preserve">
+    <value>AWESOME PACKAGE</value>
+  </data>
+  <data name="morebackage" xml:space="preserve">
+    <value>more packages</value>
+  </data>
+  <data name="Abouttheoffer" xml:space="preserve">
+    <value>About the Offer</value>
+  </data>
+  <data name="Header_Offer" xml:space="preserve">
+    <value>Offers</value>
+  </data>
+  <data name="moreOffer" xml:space="preserve">
+    <value>more Offers</value>
+  </data>
+  <data name="OfferOverview" xml:space="preserve">
+    <value>Offer Overview</value>
+  </data>
 </root>

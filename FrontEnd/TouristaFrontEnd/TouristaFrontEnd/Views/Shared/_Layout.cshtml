@@ -11,7 +11,7 @@
     <link href="@TouristaFrontEnd.Resources.Global.StyleUrl" rel="stylesheet">
     <link href="@TouristaFrontEnd.Resources.Global.StyleUrl2" rel="stylesheet">
     @*<link href="~/Scripts/libs/bootstrap/css/bootstrap-arabic.css" rel="stylesheet" />*@
-
+    <link rel="icon" type="image/gif" href="/backend/assets/img/animated_favicon1.gif">
 
 
     @Scripts.Render("~/bundles/jquery")
@@ -48,6 +48,9 @@
                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Hotels, "Index", "Hotel", null, new { @class = "main-menu" })
                         </li>
 
+                        <li>
+                            @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Backages, "Index", "Backage", null, new { @class = "main-menu" })
+                        </li>
                         <li>
                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_News, "Index", "News", null, new { @class = "main-menu" })
                         </li>
@@ -103,6 +106,9 @@
                                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Hotels, "Index", "Hotel", null, new { @class = "main-menu" })
                                         </li>
 
+                                        <li>
+                                            @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Backages, "Index", "Backage", null, new { @class = "main-menu" })
+                                        </li>
                                         <li>
                                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_News, "Index", "News", null, new { @class = "main-menu" })
                                         </li>
@@ -165,7 +171,7 @@
 
     @*<script>
         $.ajax({
-            url: "http://localhost:32569/api/Countries/GetAllCountries",
+            url: "http://localhost:50755//api/Countries/GetAllCountries",
             type: "Get",
             success: function (data) {
                 for (var i = 0; i < data.results.length; i++) {
@@ -184,7 +190,7 @@
         // Dropdown list change event.
         $('#Countryid').change(function () {
             $('#Cityid option').remove();
-            $.getJSON('http://localhost:32569/api/Countries/GetCountryById', { CountryId: $('#Countryid').val() }, function (data) {
+            $.getJSON('http://localhost:50755//api/Countries/GetCountryById', { CountryId: $('#Countryid').val() }, function (data) {
                 $.each(data.cityes, function () {
                     debugger
                     $('#Cityid').append('<option value=' + this.cityId + '>' + this.titleDictionary['@Common.CurrentLang'] + '</option>');
@@ -197,7 +203,7 @@
         // Dropdown list change event.
         $('#Cityid').change(function () {
             $('#Hotelid option').remove();
-            $.getJSON('http://localhost:32569/api/Hotels/GetHotelByCityId', { cityId: $('#Cityid').val() }, function (data) {
+            $.getJSON('http://localhost:50755//api/Hotels/GetHotelByCityId', { cityId: $('#Cityid').val() }, function (data) {
                 $.each(data, function () {
                     debugger
                     $('#Hotelid').append('<option value=' + this.hotelId + '>' + this.titleDictionary['@Common.CurrentLang'] + '</option>');

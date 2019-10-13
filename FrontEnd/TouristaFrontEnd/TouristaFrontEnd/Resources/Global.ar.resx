@@ -594,4 +594,31 @@
   <data name="StyleUrl2" xml:space="preserve">
     <value>/Content/components-ar.css</value>
   </data>
+  <data name="Aboutthebackage" xml:space="preserve">
+    <value>عن الصفقه</value>
+  </data>
+  <data name="BackageOverview" xml:space="preserve">
+    <value>معلومات عن الصفقه</value>
+  </data>
+  <data name="Header_Backages" xml:space="preserve">
+    <value>صفقات</value>
+  </data>
+  <data name="AWESOMEBACKGE" xml:space="preserve">
+    <value>صفقات رائعه</value>
+  </data>
+  <data name="morebackage" xml:space="preserve">
+    <value>المزيد من الصفقات</value>
+  </data>
+  <data name="AbouttheOffer" xml:space="preserve">
+    <value>عن العرض</value>
+  </data>
+  <data name="Header_Offer" xml:space="preserve">
+    <value>عروض</value>
+  </data>
+  <data name="moreOffer" xml:space="preserve">
+    <value>المزيد من العروض</value>
+  </data>
+  <data name="OfferOverview" xml:space="preserve">
+    <value>معلومات عن العرض</value>
+  </data>
 </root>

@@ -29,6 +29,10 @@ namespace Tourista.BLL.DataServices
         {
             return _repository.Queryable().Any(u => u.Email.ToLower() == email.ToLower() && !u.IsDeleted);
         }
+        public User GetUserByEmail(string email, int tenantId)
+        {
+            return _repository.Query(u => u.Email.ToLower() == email.ToLower() && !u.IsDeleted).Select().FirstOrDefault();
+        }
         public bool CheckPhoneDuplicated(string phone, int tenantId)
         {
             return _repository.Queryable().Any(u => u.Phone == phone.ToLower() && !u.IsDeleted);

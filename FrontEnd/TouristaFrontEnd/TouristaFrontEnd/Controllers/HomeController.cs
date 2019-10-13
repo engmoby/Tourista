@@ -54,6 +54,10 @@ namespace TouristaFrontEnd.Controllers
         {
             return PartialView();
         }
+        public ActionResult BackageHome()
+        {
+            return PartialView();
+        }
         public ActionResult OwnerHome()
         {
             return PartialView();

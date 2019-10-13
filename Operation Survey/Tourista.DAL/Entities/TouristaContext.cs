@@ -37,7 +37,12 @@ namespace Tourista.DAL.Entities
         public DbSet<HotelReservation> HotelReservations { get; set; }
         public DbSet<Backage> Backages { get; set; }
         public DbSet<BackageTranslation> BackageTranslations { get; set; }
+        public DbSet<BackageReservation> BackageReservations { get; set; }
 
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<OfferTranslation> OfferTranslations { get; set; } 
+
+        public DbSet<OfferReservation> OfferReservations { get; set; }
         public DbSet<News> Newses { get; set; }
         public DbSet<NewsTranslation> NewsTranslations { get; set; }
 

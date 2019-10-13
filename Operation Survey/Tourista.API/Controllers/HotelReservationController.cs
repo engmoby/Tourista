@@ -12,9 +12,11 @@ namespace Tourista.API.Controllers
     public class HotelReservationController : BaseApiController
     { 
         private readonly IHotelReservationFacade _hotelReservationFacade;
-        public HotelReservationController(IHotelReservationFacade hotelReservationFacade)
+        private readonly IUserFacade _userFacade;
+        public HotelReservationController(IHotelReservationFacade hotelReservationFacade, IUserFacade userFacade)
         {
             _hotelReservationFacade = hotelReservationFacade; 
+            _userFacade = userFacade;
         }
 
         [Route("api/HotelReservations/GetAllHotelReservations", Name = "GetAllHotelReservations")]
@@ -31,6 +33,13 @@ namespace Tourista.API.Controllers
         [HttpPost]
         public IHttpActionResult CreateHotelReservation([FromBody] HotelReservationModel hotelReservationModel)
         {
+            var userDto = new UserDto();
+            userDto.FullName = hotelReservationModel.User.FullName;
+            userDto.Email = hotelReservationModel.User.Email;
+            userDto.Phone = hotelReservationModel.User.Phone;
+            userDto.IsSystemUser = false;
+            var saveUser = _userFacade.RegisterClient(userDto, 0, 0);
+            hotelReservationModel.UserId = saveUser.UserId;
             var reurnHotelReservation = _hotelReservationFacade.CreateHotelReservation(Mapper.Map<HotelReservationDto>(hotelReservationModel),UserId, TenantId);
 
             return Ok(reurnHotelReservation);

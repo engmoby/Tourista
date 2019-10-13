@@ -51,25 +51,30 @@ namespace Tourista.API
 
         public static void ApplyMapping(IUnityContainer container, bool applyDependencyResolver)
         {
-            container 
+            container
                 .RegisterType<IUserFacade, UserFacade>(new PerResolveLifetimeManager())
                 .RegisterType<ICareerFacade, CareerFacade>(new PerResolveLifetimeManager())
                 .RegisterType<ICareerFormFacade, CareerFormFacade>(new PerResolveLifetimeManager())
-                .RegisterType<ICountryFacade, CountryFacade>(new PerResolveLifetimeManager()) 
-                .RegisterType<ICityFacade, CityFacade>(new PerResolveLifetimeManager()) 
+                .RegisterType<ICountryFacade, CountryFacade>(new PerResolveLifetimeManager())
+                .RegisterType<ICityFacade, CityFacade>(new PerResolveLifetimeManager())
                 .RegisterType<ICurrencyFacade, CurrencyFacade>(new PerResolveLifetimeManager())
                 .RegisterType<IFeatureFacade, FeatureFacade>(new PerResolveLifetimeManager())
                 .RegisterType<INewsFacade, NewsFacade>(new PerResolveLifetimeManager())
                 .RegisterType<IOwnerFacade, OwnerFacade>(new PerResolveLifetimeManager())
                 .RegisterType<IHotelFacade, HotelFacade>(new PerResolveLifetimeManager())
                 .RegisterType<IHotelReservationFacade, HotelReservationFacade>(new PerResolveLifetimeManager())
-                
-                
+                .RegisterType<ITypeFacade, TypeFacade>(new PerResolveLifetimeManager())
+                .RegisterType<IBackageFacade, BackageFacade>(new PerResolveLifetimeManager())
+                .RegisterType<IBackageReservationFacade, BackageReservationFacade>(new PerResolveLifetimeManager())
+     .RegisterType<IOfferFacade, OfferFacade>(new PerResolveLifetimeManager())
+                .RegisterType<IOfferReservationFacade, OfferReservationFacade>(new PerResolveLifetimeManager())
+
+
                 .RegisterType<IAboutFacade, AboutFacade>(new PerResolveLifetimeManager())
-                
+
                 .RegisterType<IContactFacade, ContactFacade>(new PerResolveLifetimeManager())
 
-                .RegisterType<INewsletterFacade, NewsletterFacade>(new PerResolveLifetimeManager()) 
+                .RegisterType<INewsletterFacade, NewsletterFacade>(new PerResolveLifetimeManager())
                 .RegisterType<IConatctFormFacade, ConatctFormFacade>(new PerResolveLifetimeManager())
 
                 ;

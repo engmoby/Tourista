@@ -74,9 +74,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Model\Offer.cs" />
+    <Compile Include="Entities\Model\OfferReservation.cs" />
+    <Compile Include="Entities\Model\OfferTranslation.cs" />
     <Compile Include="Entities\Model\CareerForm.cs" />
     <Compile Include="Entities\Model\Backage.cs" />
     <Compile Include="Entities\Model\BackageTranslation.cs" />
+    <Compile Include="Entities\Model\BackageReservation.cs" />
     <Compile Include="Entities\Model\Inquery.cs" />
     <Compile Include="Entities\Model\NewsLetter.cs" />
     <Compile Include="Entities\Model\HotelReservation.cs" />

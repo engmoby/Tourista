@@ -12,10 +12,12 @@ namespace Tourista.DAL.Entities.Model
         public long HotelId { get; set; }
         public virtual Hotel Hotel { get; set; }
 
-        [ForeignKey("User")]
+//        [ForeignKey("User")]
         public long? UserId { get; set; }
-        public virtual User User { get; set; }
+  //      public virtual User User { get; set; }
 
+        public string Address { get; set; }
+        public string Note { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
 
@@ -26,9 +28,9 @@ namespace Tourista.DAL.Entities.Model
         public int TenantId { get; set; }
         public int RoomCount { get; set; }
 
-        [ForeignKey("SeenUser")]
+       // [ForeignKey("SeenUser")]
         public long? SeenUserId { get; set; }
-        public virtual User SeenUser { get; set; }
+        //public virtual User SeenUser { get; set; }
         public DateTime? LastModificationTime { get; set; }
         public long? LastModifierUserId { get; set; }
         public DateTime? CreationTime { get; set; }

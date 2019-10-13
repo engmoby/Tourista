@@ -11,7 +11,7 @@
                     controller: 'userController',
                     'controllerAs': 'userCtrl',
                     resolve: {
-                        userPrepService: userPrepService, 
+                        userPrepService: userPrepService,
                     },
                     data: {
                         permissions: {
@@ -29,7 +29,7 @@
                     'controllerAs': 'userCtrl',
 
                     resolve: {
-                        userPrepService: userPrepService, 
+                        userPrepService: userPrepService,
 
                     },
                     data: {
@@ -48,8 +48,8 @@
                     controller: 'editUserController',
                     'controllerAs': 'editUserCtrl',
                     resolve: {
-                        EditUserPrepService: EditUserPrepService ,
-                        userPrepService: userPrepService, 
+                        EditUserPrepService: EditUserPrepService,
+                        userPrepService: userPrepService,
 
                     },
                     data: {
@@ -66,7 +66,7 @@
                     controller: 'ClientController',
                     'controllerAs': 'ClientCtrl',
                     resolve: {
-                        ClientPrepService: ClientPrepService, 
+                        ClientPrepService: ClientPrepService,
                     },
                     data: {
                         permissions: {
@@ -77,7 +77,7 @@
 
                 })
 
-                 .state('Country', {
+                .state('Country', {
                     url: '/Country',
                     templateUrl: './app/GlobalAdmin/Country/templates/Country.html',
                     controller: 'CountryController',
@@ -156,7 +156,7 @@
 
                 })
 
-                                .state('Career', {
+                .state('Career', {
                     url: '/Career',
                     templateUrl: './app/GlobalAdmin/Career/templates/Career.html',
                     controller: 'CareerController',
@@ -203,7 +203,7 @@
                 })
 
 
-                                .state('CareerForm', {
+                .state('CareerForm', {
                     url: '/CareerForm',
                     templateUrl: './app/GlobalAdmin/CareerForm/templates/CareerForm.html',
                     controller: 'CareerFormController',
@@ -293,8 +293,52 @@
                     }
 
                 })
+                .state('Type', {
+                    url: '/Type',
+                    templateUrl: './app/GlobalAdmin/Type/templates/Type.html',
+                    controller: 'TypeController',
+                    'controllerAs': 'TypeCtrl',
+                    resolve: {
+                        TypePrepService: TypePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
 
-                                .state('Feature', {
+                })
+                .state('newType', {
+                    url: '/newType',
+                    templateUrl: './app/GlobalAdmin/Type/templates/new.html',
+                    controller: 'createTypeDialogController',
+                    'controllerAs': 'newTypeCtrl',
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editType', {
+                    url: '/editType/:typeId',
+                    templateUrl: './app/GlobalAdmin/Type/templates/edit.html',
+                    controller: 'editTypeDialogController',
+                    'controllerAs': 'editTypeCtrl',
+                    resolve: {
+                        TypeByIdPrepService: TypeByIdPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('Feature', {
                     url: '/Feature',
                     templateUrl: './app/GlobalAdmin/Feature/templates/Feature.html',
                     controller: 'FeatureController',
@@ -341,7 +385,7 @@
                 })
 
 
-                                .state('News', {
+                .state('News', {
                     url: '/News',
                     templateUrl: './app/GlobalAdmin/News/templates/News.html',
                     controller: 'NewsController',
@@ -388,7 +432,7 @@
                 })
 
 
-                                                .state('Owner', {
+                .state('Owner', {
                     url: '/Owner',
                     templateUrl: './app/GlobalAdmin/Owner/templates/Owner.html',
                     controller: 'OwnerController',
@@ -435,7 +479,7 @@
                 })
 
 
-                                .state('Hotel', {
+                .state('Hotel', {
                     url: '/Hotel',
                     templateUrl: './app/GlobalAdmin/Hotel/templates/Hotel.html',
                     controller: 'HotelController',
@@ -459,10 +503,10 @@
                     'controllerAs': 'newHotelCtrl',
                     resolve: {
                         HotelPrepService: HotelPrepService,
-                        CountryPrepService: CountryPrepService, 
+                        CountryPrepService: CountryPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
-                     data: {
+                    data: {
                         permissions: {
                             only: ['4'],
                             redirectTo: 'root'
@@ -477,7 +521,7 @@
                     'controllerAs': 'editHotelCtrl',
                     resolve: {
                         HotelByIdPrepService: HotelByIdPrepService,
-                        CountryPrepService: CountryPrepService, 
+                        CountryPrepService: CountryPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
                     data: {
@@ -489,7 +533,64 @@
 
                 })
 
-                                .state('About', {
+
+
+                .state('Backage', {
+                    url: '/Backage',
+                    templateUrl: './app/GlobalAdmin/Backage/templates/Backage.html',
+                    controller: 'BackageController',
+                    'controllerAs': 'BackageCtrl',
+                    resolve: {
+                        BackagePrepService: BackagePrepService,
+                        CountryPrepService: CountryPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newBackage', {
+                    url: '/newBackage',
+                    templateUrl: './app/GlobalAdmin/Backage/templates/new.html',
+                    controller: 'createBackageDialogController',
+                    'controllerAs': 'newBackageCtrl',
+                    resolve: {
+                        BackagePrepService: BackagePrepService,
+                        CountryPrepService: CountryPrepService,
+                        HotelPrepService: HotelPrepService,
+                        TypePrepService: TypePrepService,
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editBackage', {
+                    url: '/editBackage/:backageId',
+                    templateUrl: './app/GlobalAdmin/Backage/templates/edit.html',
+                    controller: 'editBackageDialogController',
+                    'controllerAs': 'editBackageCtrl',
+                    resolve: {
+                        BackageByIdPrepService: BackageByIdPrepService,
+                        CountryPrepService: CountryPrepService,
+                        HotelPrepService: HotelPrepService,
+                        TypePrepService: TypePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('About', {
                     url: '/About',
                     templateUrl: './app/GlobalAdmin/About/templates/About.html',
                     controller: 'AboutController',
@@ -504,7 +605,7 @@
                         }
                     }
 
-                }) 
+                })
                 .state('editAbout', {
                     url: '/editAbout/:aboutId',
                     templateUrl: './app/GlobalAdmin/About/templates/edit.html',
@@ -537,7 +638,7 @@
                         }
                     }
 
-                }) 
+                })
                 .state('editContact', {
                     url: '/editContact/:contactUsId',
                     templateUrl: './app/GlobalAdmin/Contact/templates/edit.html',
@@ -556,7 +657,7 @@
                 })
 
 
-                                .state('HotelReservation', {
+                .state('HotelReservation', {
                     url: '/HotelReservation',
                     templateUrl: './app/GlobalAdmin/HotelReservation/templates/HotelReservation.html',
                     controller: 'HotelReservationController',
@@ -571,7 +672,7 @@
                         }
                     }
 
-                }) 
+                })
                 .state('editHotelReservation', {
                     url: '/editHotelReservation/:hotelReservationId',
                     templateUrl: './app/GlobalAdmin/HotelReservation/templates/edit.html',
@@ -618,28 +719,28 @@
     }
 
 
-         PermissionPrepService.$inject = ['PermissionResource']
+    PermissionPrepService.$inject = ['PermissionResource']
     function PermissionPrepService(PermissionResource) {
         return PermissionResource.getAllPermissions().$promise;
     }
-      ClientPrepService.$inject = ['ClientResource']
-      function ClientPrepService(ClientResource) {
-          return ClientResource.getAllClients().$promise;
-      }
-  CountryPrepService.$inject = ['CountryResource']
-  function CountryPrepService(CountryResource) {
-      return CountryResource.GetAllCountries().$promise;
-  }
+    ClientPrepService.$inject = ['ClientResource']
+    function ClientPrepService(ClientResource) {
+        return ClientResource.getAllClients().$promise;
+    }
+    CountryPrepService.$inject = ['CountryResource']
+    function CountryPrepService(CountryResource) {
+        return CountryResource.GetAllCountries().$promise;
+    }
 
-  AllCountryPrepService.$inject = ['CountryResource']
-  function AllCountryPrepService(CountryResource) {
-      return CountryResource.GetAllCountries({ pageSize: 0 }).$promise;
-  }
+    AllCountryPrepService.$inject = ['CountryResource']
+    function AllCountryPrepService(CountryResource) {
+        return CountryResource.GetAllCountries({ pageSize: 0 }).$promise;
+    }
 
-  CountryByIdPrepService.$inject = ['CountryResource', '$stateParams']
-  function CountryByIdPrepService(CountryResource, $stateParams) {
-      return CountryResource.getCountry({ countryId: $stateParams.countryId }).$promise;
-  }
+    CountryByIdPrepService.$inject = ['CountryResource', '$stateParams']
+    function CountryByIdPrepService(CountryResource, $stateParams) {
+        return CountryResource.getCountry({ countryId: $stateParams.countryId }).$promise;
+    }
 
 
     CityPrepService.$inject = ['CityResource']
@@ -652,167 +753,198 @@
         return CityResource.getCity({ cityId: $stateParams.cityId }).$promise;
     }
 
-CareerPrepService.$inject = ['CareerResource']
-function CareerPrepService(CareerResource) {
-    return CareerResource.getAllCareers().$promise;
-}
+    CareerPrepService.$inject = ['CareerResource']
+    function CareerPrepService(CareerResource) {
+        return CareerResource.getAllCareers().$promise;
+    }
 
-AllCareerPrepService.$inject = ['CareerResource']
-function AllCareerPrepService(CareerResource) {
-    return CareerResource.getAllCareers({ pageSize: 0 }).$promise;
-}
+    AllCareerPrepService.$inject = ['CareerResource']
+    function AllCareerPrepService(CareerResource) {
+        return CareerResource.getAllCareers({ pageSize: 0 }).$promise;
+    }
 
-CareerByIdPrepService.$inject = ['CareerResource', '$stateParams']
-function CareerByIdPrepService(CareerResource, $stateParams) {
-    return CareerResource.getCareer({ careerId: $stateParams.careerId }).$promise;
-}
-
-
-CareerFormPrepService.$inject = ['CareerFormResource']
-function CareerFormPrepService(CareerFormResource) {
-    return CareerFormResource.getAllCareerForms().$promise;
-}
-
-AllCareerFormPrepService.$inject = ['CareerFormResource']
-function AllCareerFormPrepService(CareerFormResource) {
-    return CareerFormResource.getAllCareerForms({ pageSize: 0 }).$promise;
-}
-
-CareerFormByIdPrepService.$inject = ['CareerFormResource', '$stateParams']
-function CareerFormByIdPrepService(CareerFormResource, $stateParams) {
-    return CareerFormResource.getCareerForm({ CareerFormId: $stateParams.CareerFormId }).$promise;
-}
+    CareerByIdPrepService.$inject = ['CareerResource', '$stateParams']
+    function CareerByIdPrepService(CareerResource, $stateParams) {
+        return CareerResource.getCareer({ careerId: $stateParams.careerId }).$promise;
+    }
 
 
-CurrencyPrepService.$inject = ['CurrencyResource']
-function CurrencyPrepService(CurrencyResource) {
-    return CurrencyResource.getAllCurrencies().$promise;
-}
+    CareerFormPrepService.$inject = ['CareerFormResource']
+    function CareerFormPrepService(CareerFormResource) {
+        return CareerFormResource.getAllCareerForms().$promise;
+    }
 
-AllCurrencyPrepService.$inject = ['CurrencyResource']
-function AllCurrencyPrepService(CurrencyResource) {
-    return CurrencyResource.getAllCurrencies({ pageSize: 0 }).$promise;
-}
+    AllCareerFormPrepService.$inject = ['CareerFormResource']
+    function AllCareerFormPrepService(CareerFormResource) {
+        return CareerFormResource.getAllCareerForms({ pageSize: 0 }).$promise;
+    }
 
-CurrencyByIdPrepService.$inject = ['CurrencyResource', '$stateParams']
-function CurrencyByIdPrepService(CurrencyResource, $stateParams) {
-    return CurrencyResource.getCurrency({ currencyId: $stateParams.currencyId }).$promise;
-}
-
-
-FeaturePrepService.$inject = ['FeatureResource']
-function FeaturePrepService(FeatureResource) {
-    return FeatureResource.getAllFeatures().$promise;
-}
-
-AllFeaturePrepService.$inject = ['FeatureResource']
-function AllFeaturePrepService(FeatureResource) {
-    return FeatureResource.getAllFeatures({ pageSize: 0 }).$promise;
-}
-
-FeatureByIdPrepService.$inject = ['FeatureResource', '$stateParams']
-function FeatureByIdPrepService(FeatureResource, $stateParams) {
-    return FeatureResource.getFeature({ featureId: $stateParams.featureId }).$promise;
-}
+    CareerFormByIdPrepService.$inject = ['CareerFormResource', '$stateParams']
+    function CareerFormByIdPrepService(CareerFormResource, $stateParams) {
+        return CareerFormResource.getCareerForm({ CareerFormId: $stateParams.CareerFormId }).$promise;
+    }
 
 
+    CurrencyPrepService.$inject = ['CurrencyResource']
+    function CurrencyPrepService(CurrencyResource) {
+        return CurrencyResource.getAllCurrencies().$promise;
+    }
 
-NewsPrepService.$inject = ['NewsResource']
-function NewsPrepService(NewsResource) {
-    return NewsResource.getAllNews().$promise;
-}
+    AllCurrencyPrepService.$inject = ['CurrencyResource']
+    function AllCurrencyPrepService(CurrencyResource) {
+        return CurrencyResource.getAllCurrencies({ pageSize: 0 }).$promise;
+    }
 
-AllNewsPrepService.$inject = ['NewsResource']
-function AllNewsPrepService(NewsResource) {
-    return NewsResource.getAllNews({ pageSize: 0 }).$promise;
-}
-
-NewsByIdPrepService.$inject = ['NewsResource', '$stateParams']
-function NewsByIdPrepService(NewsResource, $stateParams) {
-    return NewsResource.getNews({newsId: $stateParams.newsId }).$promise;
-}
-
-OwnerPrepService.$inject = ['OwnerResource']
-function OwnerPrepService(OwnerResource) {
-    return OwnerResource.getAllOwners().$promise;
-}
-
-AllOwnerPrepService.$inject = ['OwnerResource']
-function AllOwnerPrepService(OwnerResource) {
-    return OwnerResource.getAllOwners({ pageSize: 0 }).$promise;
-}
-
-OwnerByIdPrepService.$inject = ['OwnerResource', '$stateParams']
-function OwnerByIdPrepService(OwnerResource, $stateParams) {
-    return OwnerResource.getOwner({ ownerId: $stateParams.ownerId }).$promise;
-}
-
-HotelPrepService.$inject = ['HotelResource']
-function HotelPrepService(HotelResource) {
-    return HotelResource.GetAllHotels().$promise;
-}
-
-AllHotelPrepService.$inject = ['HotelResource']
-function AllHotelPrepService(HotelResource) {
-    return HotelResource.GetAllHotels({ pageSize: 0 }).$promise;
-}
-
-HotelByIdPrepService.$inject = ['HotelResource', '$stateParams']
-function HotelByIdPrepService(HotelResource, $stateParams) {
-    return HotelResource.getHotel({ hotelId: $stateParams.hotelId }).$promise;
-}
+    CurrencyByIdPrepService.$inject = ['CurrencyResource', '$stateParams']
+    function CurrencyByIdPrepService(CurrencyResource, $stateParams) {
+        return CurrencyResource.getCurrency({ currencyId: $stateParams.currencyId }).$promise;
+    }
 
 
-  AboutPrepService.$inject = ['AboutResource']
-  function AboutPrepService(AboutResource) {
-      return AboutResource.GetAllAbout().$promise;
-  }
+    TypePrepService.$inject = ['TypeResource']
+    function TypePrepService(TypeResource) {
+        return TypeResource.getAllTypes().$promise;
+    }
 
-  AllAboutPrepService.$inject = ['AboutResource']
-  function AllAboutPrepService(AboutResource) {
-      return AboutResource.GetAllAbout({ pageSize: 0 }).$promise;
-  }
+    AllTypePrepService.$inject = ['TypeResource']
+    function AllTypePrepService(TypeResource) {
+        return TypeResource.getAllTypes({ pageSize: 0 }).$promise;
+    }
 
-  AboutByIdPrepService.$inject = ['AboutResource', '$stateParams']
-  function AboutByIdPrepService(AboutResource, $stateParams) {
-      return AboutResource.getAbout({ aboutId: $stateParams.aboutId }).$promise;
-  }
+    TypeByIdPrepService.$inject = ['TypeResource', '$stateParams']
+    function TypeByIdPrepService(TypeResource, $stateParams) {
+        return TypeResource.getType({ typeId: $stateParams.typeId }).$promise;
+    }
 
+    FeaturePrepService.$inject = ['FeatureResource']
+    function FeaturePrepService(FeatureResource) {
+        return FeatureResource.getAllFeatures().$promise;
+    }
 
-  ContactPrepService.$inject = ['ContactResource']
-  function ContactPrepService(ContactResource) {
-      return ContactResource.GetAllContact().$promise;
-  }
+    AllFeaturePrepService.$inject = ['FeatureResource']
+    function AllFeaturePrepService(FeatureResource) {
+        return FeatureResource.getAllFeatures({ pageSize: 0 }).$promise;
+    }
 
-  AllContactPrepService.$inject = ['ContactResource']
-  function AllContactPrepService(ContactResource) {
-      return ContactResource.GetAllContact({ pageSize: 0 }).$promise;
-  }
-
-  ContactByIdPrepService.$inject = ['ContactResource', '$stateParams']
-  function ContactByIdPrepService(ContactResource, $stateParams) {
-      return ContactResource.getContact({ contactUsId: $stateParams.contactUsId }).$promise;
-  }
+    FeatureByIdPrepService.$inject = ['FeatureResource', '$stateParams']
+    function FeatureByIdPrepService(FeatureResource, $stateParams) {
+        return FeatureResource.getFeature({ featureId: $stateParams.featureId }).$promise;
+    }
 
 
 
-  HotelReservationPrepService.$inject = ['HotelReservationResource']
-  function HotelReservationPrepService(HotelReservationResource) {
-      return HotelReservationResource.GetAllHotelReservation().$promise;
-  }
+    NewsPrepService.$inject = ['NewsResource']
+    function NewsPrepService(NewsResource) {
+        return NewsResource.getAllNews().$promise;
+    }
 
-  AllHotelReservationPrepService.$inject = ['HotelReservationResource']
-  function AllHotelReservationPrepService(HotelReservationResource) {
-      return HotelReservationResource.GetAllHotelReservation({ pageSize: 0 }).$promise;
-  }
+    AllNewsPrepService.$inject = ['NewsResource']
+    function AllNewsPrepService(NewsResource) {
+        return NewsResource.getAllNews({ pageSize: 0 }).$promise;
+    }
 
-  HotelReservationByIdPrepService.$inject = ['HotelReservationResource', '$stateParams']
-  function HotelReservationByIdPrepService(HotelReservationResource, $stateParams) {
-      return HotelReservationResource.getHotelReservation({ hotelReservationId: $stateParams.hotelReservationId }).$promise;
-  }
+    NewsByIdPrepService.$inject = ['NewsResource', '$stateParams']
+    function NewsByIdPrepService(NewsResource, $stateParams) {
+        return NewsResource.getNews({ newsId: $stateParams.newsId }).$promise;
+    }
+
+    OwnerPrepService.$inject = ['OwnerResource']
+    function OwnerPrepService(OwnerResource) {
+        return OwnerResource.getAllOwners().$promise;
+    }
+
+    AllOwnerPrepService.$inject = ['OwnerResource']
+    function AllOwnerPrepService(OwnerResource) {
+        return OwnerResource.getAllOwners({ pageSize: 0 }).$promise;
+    }
+
+    OwnerByIdPrepService.$inject = ['OwnerResource', '$stateParams']
+    function OwnerByIdPrepService(OwnerResource, $stateParams) {
+        return OwnerResource.getOwner({ ownerId: $stateParams.ownerId }).$promise;
+    }
+
+    HotelPrepService.$inject = ['HotelResource']
+    function HotelPrepService(HotelResource) {
+        return HotelResource.GetAllHotels().$promise;
+    }
+
+    AllHotelPrepService.$inject = ['HotelResource']
+    function AllHotelPrepService(HotelResource) {
+        return HotelResource.GetAllHotels({ pageSize: 0 }).$promise;
+    }
+
+    HotelByIdPrepService.$inject = ['HotelResource', '$stateParams']
+    function HotelByIdPrepService(HotelResource, $stateParams) {
+        return HotelResource.getHotel({ hotelId: $stateParams.hotelId }).$promise;
+    }
 
 
-      TicketDashboardPrepService.$inject = ['dashboardResource']
+
+    BackagePrepService.$inject = ['BackageResource']
+    function BackagePrepService(BackageResource) {
+        return BackageResource.GetAllBackages().$promise;
+    }
+
+    AllBackagePrepService.$inject = ['BackageResource']
+    function AllBackagePrepService(BackageResource) {
+        return BackageResource.GetAllBackages({ pageSize: 0 }).$promise;
+    }
+
+    BackageByIdPrepService.$inject = ['BackageResource', '$stateParams']
+    function BackageByIdPrepService(BackageResource, $stateParams) {
+        return BackageResource.getBackage({ backageId: $stateParams.backageId }).$promise;
+    }
+
+    AboutPrepService.$inject = ['AboutResource']
+    function AboutPrepService(AboutResource) {
+        return AboutResource.GetAllAbout().$promise;
+    }
+
+    AllAboutPrepService.$inject = ['AboutResource']
+    function AllAboutPrepService(AboutResource) {
+        return AboutResource.GetAllAbout({ pageSize: 0 }).$promise;
+    }
+
+    AboutByIdPrepService.$inject = ['AboutResource', '$stateParams']
+    function AboutByIdPrepService(AboutResource, $stateParams) {
+        return AboutResource.getAbout({ aboutId: $stateParams.aboutId }).$promise;
+    }
+
+
+    ContactPrepService.$inject = ['ContactResource']
+    function ContactPrepService(ContactResource) {
+        return ContactResource.GetAllContact().$promise;
+    }
+
+    AllContactPrepService.$inject = ['ContactResource']
+    function AllContactPrepService(ContactResource) {
+        return ContactResource.GetAllContact({ pageSize: 0 }).$promise;
+    }
+
+    ContactByIdPrepService.$inject = ['ContactResource', '$stateParams']
+    function ContactByIdPrepService(ContactResource, $stateParams) {
+        return ContactResource.getContact({ contactUsId: $stateParams.contactUsId }).$promise;
+    }
+
+
+
+    HotelReservationPrepService.$inject = ['HotelReservationResource']
+    function HotelReservationPrepService(HotelReservationResource) {
+        return HotelReservationResource.GetAllHotelReservation().$promise;
+    }
+
+    AllHotelReservationPrepService.$inject = ['HotelReservationResource']
+    function AllHotelReservationPrepService(HotelReservationResource) {
+        return HotelReservationResource.GetAllHotelReservation({ pageSize: 0 }).$promise;
+    }
+
+    HotelReservationByIdPrepService.$inject = ['HotelReservationResource', '$stateParams']
+    function HotelReservationByIdPrepService(HotelReservationResource, $stateParams) {
+        return HotelReservationResource.getHotelReservation({ hotelReservationId: $stateParams.hotelReservationId }).$promise;
+    }
+
+
+    TicketDashboardPrepService.$inject = ['dashboardResource']
     function TicketDashboardPrepService(dashboardResource) {
         return dashboardResource.getTicketsDashboard().$promise;
     }
@@ -965,6 +1097,409 @@ function HotelByIdPrepService(HotelResource, $stateParams) {
         blockUI.stop();
 
         	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('BackageController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'BackageResource', 'BackagePrepService', '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', BackageController]);
+
+
+    function BackageController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, BackageResource, BackagePrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) {
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+
+        blockUI.start("Loading...");
+
+        var vm = this;
+        $scope.totalCount = BackagePrepService.totalCount;
+        $scope.BackageList = BackagePrepService;
+        console.log($scope.BackageList);
+        function refreshBackages() {
+
+            blockUI.start("Loading...");
+
+            var k = BackageResource.GetAllBackages({ page: vm.currentPage }).$promise.then(function (results) {
+                $scope.BackageList = results
+                blockUI.stop();
+
+            },
+                function (data, status) {
+                    blockUI.stop();
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+                });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshBackages();
+        }
+        blockUI.stop();
+
+    }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('BackageResource', ['$resource', 'appCONSTANTS', BackageResource]) 
+
+    function BackageResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Backages/', {}, {
+            GetAllBackages: { method: 'GET', url: appCONSTANTS.API_URL + 'Backages/GetAllBackages', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Backages/EditBackage', useToken: true },
+            getBackage: { method: 'GET', url: appCONSTANTS.API_URL + 'Backages/GetBackageById/:BackageId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('createBackageDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
+
+    function createBackageDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        HotelPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
+
+        blockUI.start("Loading...");
+        function init() {
+            $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
+            $scope.CountryList = [];
+            $scope.CountryList.push($scope.selectedCountry);
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+            debugger;
+            $scope.HotelList = HotelPrepService.results;
+            $scope.TypeList = TypePrepService.results;
+        }
+        init();
+
+        $scope.CountryChange = function () {
+            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+                if ($scope.CountryList[i].CountryId == 0) {
+                    $scope.CountryList.splice(i, 1);
+                }
+            }
+            $scope.CityList = [];
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList.push($scope.selectedCity);
+            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+        }
+
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.close = function () {
+            $state.go('Backage');
+        }
+
+
+
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.AddNewBackage = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var newBackage = new Object();
+            newBackage.titleDictionary = vm.titleDictionary;
+            newBackage.descriptionDictionary = vm.descriptionDictionary;
+            newBackage.star = vm.star;
+            newBackage.cityId = $scope.selectedCity.cityId;
+            newBackage.daysCount = vm.daysCount;
+            newBackage.nigthsCount = vm.nigthsCount;
+            newBackage.price = vm.price;
+            newBackage.hotelId = vm.selectedHotel.hotelId;
+            newBackage.typeId = vm.selectedType.typeId;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(newBackage));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Backages/',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Backage')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+                );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            debugger; var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.newBackageForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.files.splice(index, 1);
+        }
+
+    }
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('editBackageDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'BackageResource', 'ToastService', 'HotelPrepService','TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
+
+    function editBackageDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        BackageResource, ToastService, HotelPrepService,TypePrepService, BackageByIdPrepService) {
+        blockUI.start("Loading...");
+        function init() {
+            $scope.CountryList = [];
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.HotelList = HotelPrepService.results;
+            $scope.TypeList = TypePrepService.results;
+
+            $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+        }
+        init(); 
+
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.Backage = BackageByIdPrepService;
+        vm.RemoveImages = [];
+        vm.CheckImages = [];
+        vm.selectedHotel = [];
+        console.log(vm.Backage);
+        vm.CheckImages.push(vm.Backage.imagesURL);
+
+
+        var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Backage.hotel.hotelId }, true)[0]);
+        $scope.selectedHotel = $scope.HotelList[indexHotel];
+
+        var indexType = $scope.TypeList.indexOf($filter('filter')($scope.TypeList, { 'typeId': vm.Backage.type.typeId }, true)[0]);
+        $scope.selectedType = $scope.TypeList[indexType];
+
+        var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Backage.city.countryId }, true)[0]);
+        $scope.selectedCountry = $scope.CountryList[indexCountry];
+
+
+        $scope.CityList = $scope.selectedCountry.cityes;
+        var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Backage.city.cityId }, true)[0]);
+        $scope.selectedCity = $scope.selectedCountry.cityes[indexCity];
+
+        $scope.CountryChange = function () {
+            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+                if ($scope.CountryList[i].CountryId == 0) {
+                    $scope.CountryList.splice(i, 1);
+                }
+            }
+            $scope.CityList = [];
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList.push($scope.selectedCity);
+            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+        }
+
+        vm.Close = function () {
+            $state.go('Backage');
+        }
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.UpdateBackage = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var updateObj = new Object();
+            updateObj.backageId = vm.Backage.backageId;
+            updateObj.titleDictionary = vm.Backage.titleDictionary;
+            updateObj.descriptionDictionary = vm.Backage.descriptionDictionary;
+            updateObj.star = vm.Backage.star;
+            updateObj.cityId = $scope.selectedCity.cityId; 
+            updateObj.removeImages = vm.RemoveImages; 
+            updateObj.daysCount = vm.Backage.daysCount;
+            updateObj.nigthsCount = vm.Backage.nigthsCount;
+            updateObj.price = vm.Backage.price;
+            updateObj.hotelId = $scope.selectedHotel.hotelId;
+            updateObj.typeId = $scope.selectedType.typeId;
+
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Backages/EditBackage',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Backage')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+                );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.UpdateBackageForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            vm.CheckImages.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.RemoveImages.push(index);
+            vm.files.splice(index, 1);
+            vm.CheckImages.splice(index, 1);
+        }
+
+        vm.removeBackageFile = function (index) {
+            vm.CheckImages.splice(index, 1);
+            vm.Backage.imagesURL.splice(index, 1);
+        }
+    }
 }());
 (function () {
     'use strict';
@@ -2399,412 +2934,6 @@ console.log( $scope.ClientList);
 
 
          	}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('HotelController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'HotelResource', 'HotelPrepService',  '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', HotelController]);
-
-
-    function HotelController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, HotelResource, HotelPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
-
-        blockUI.start("Loading..."); 
-
-                    var vm = this;
-        $scope.totalCount = HotelPrepService.totalCount;
-        $scope.HotelList = HotelPrepService; 
-      console.log( $scope.HotelList);
-        function refreshHotels() {
-
-            blockUI.start("Loading..."); 
-
-                        var k = HotelResource.GetAllHotels({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.HotelList = results  
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshHotels();
-        }
-        blockUI.stop();
-
-            }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('HotelResource', ['$resource', 'appCONSTANTS', HotelResource]) 
-
-    function HotelResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'Hotels/', {}, {
-            GetAllHotels: { method: 'GET', url: appCONSTANTS.API_URL + 'Hotels/GetAllHotels', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Hotels/EditHotel', useToken: true },
-            getHotel: { method: 'GET', url: appCONSTANTS.API_URL + 'Hotels/GetHotelById/:HotelId', useToken: true }
-        })
-    } 
-
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
-
-    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        FeaturePrepService, HotelResource, ToastService, $rootScope) {
-
-        blockUI.start("Loading...");
-        function init() {
-            $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
-            $scope.CountryList = [];
-            $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
-
-            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-            $scope.CityList = [];
-            $scope.CityList.push($scope.selectedCity);
-            debugger;
-            $scope.FeatureList = FeaturePrepService.results;
-        }
-        init();
-
-        $scope.CountryChange = function () {
-            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
-                if ($scope.CountryList[i].CountryId == 0) {
-                    $scope.CountryList.splice(i, 1);
-                }
-            }
-            $scope.CityList = [];
-            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-            $scope.CityList.push($scope.selectedCity);
-            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
-        }
-
-        var vm = this;
-        vm.language = appCONSTANTS.supportedLanguage;
-        vm.close = function () {
-            $state.go('Hotel');
-        }
-
-        $scope.$on('gmPlacesAutocomplete::placeChanged', function () {
-            var location = $scope.autocomplete.getPlace().geometry.location;
-            vm.latitude = location.lat();
-            vm.longitude = location.lng();
-            $scope.$apply();
-        });
-
-        blockUI.stop();
-        vm.isChanged = false;
-
-        vm.LoadUploadImages = function () {
-            $("#file").click();
-            vm.fileExist = false;
-
-        }
-        vm.AddNewHotel = function () {
-            debugger;
-            blockUI.start("Loading...");
-            vm.isChanged = true;
-            var newHotel = new Object();
-            newHotel.titleDictionary = vm.titleDictionary;
-            newHotel.descriptionDictionary = vm.descriptionDictionary;
-            newHotel.star = vm.star;
-            newHotel.cityId = $scope.selectedCity.cityId;
-            newHotel.latitude = vm.latitude;
-            newHotel.longitude = vm.longitude;
-            newHotel.hotelFeature = vm.selectedfeatures;
-
-            var model = new FormData();
-            model.append('data', JSON.stringify(newHotel));
-            vm.files.forEach(function (element) {
-                model.append('file', element);
-            }, this);
-
-            $http({
-                method: 'POST',
-                url: appCONSTANTS.API_URL + 'Hotels/',
-                useToken: true,
-                headers: { 'Content-Type': undefined },
-                transformRequest: angular.identity,
-                data: model
-            }).then(
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
-
-                    blockUI.stop();
-                    $state.go('Hotel')
-
-                },
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                    blockUI.stop();
-                }
-            );
-        }
-        vm.files = [];
-        $scope.AddFile = function (element) {
-            debugger; var imageFile = element[0];
-
-            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
-
-            vm.files.forEach(function (file) {
-                if (file.name === imageFile.name) {
-                    vm.fileExist = true;
-                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
-                    return
-                }
-            }, this);
-            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
-
-                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
-                    if (!vm.fileExist) {
-                        $scope.newHotelForm.$dirty = true;
-                        $scope.$apply(function () {
-
-                            vm.files.push(imageFile);
-                            var reader = new FileReader();
-
-                            reader.onloadend = function () {
-                                $scope.$apply();
-                            };
-                            if (imageFile) {
-                                reader.readAsDataURL(imageFile);
-                            }
-                        })
-                    }
-                    else {
-                        $("#file").val('');
-                        $scope.$apply()
-                    }
-                } else {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
-                }
-
-            } else {
-                if (imageFile) {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
-                }
-
-            }
-
-
-        }
-
-        vm.removeFile = function (index) {
-            vm.files.splice(index, 1);
-        }
-
-    }
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editHotelDialogController', ['$scope', '$filter','blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-        'CountryPrepService',    'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
-
-    function editHotelDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
-         HotelResource, ToastService,FeaturePrepService, HotelByIdPrepService) {
-        blockUI.start("Loading..."); 
-        function init(){ 
-            $scope.CountryList = []; 
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
-            $scope.FeatureList = FeaturePrepService.results;
-
-                       $scope.CityList = [];
-            $scope.CityList.push($scope.selectedCity);
-        }
-        init();
-        $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
-            var location = $scope.autocomplete.getPlace().geometry.location;
-           vm.Hotel.latitude = location.lat();
-           vm.Hotel.longitude = location.lng();
-            $scope.$apply();
-        });
-
-        var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.Hotel = HotelByIdPrepService; 
-        vm.RemoveImages = []; 
-        vm.CheckImages = []; 
-        vm.selectedHotelFeatures=[] ;
-        console.log( vm.Hotel);
-        vm.CheckImages.push(vm.Hotel.imagesURL);
-        var i;
-        for (i = 0; i < vm.Hotel.hotelFeature.length; i++) {
-            var indexFeature = $scope.FeatureList.indexOf($filter('filter')($scope.FeatureList, { 'featureId': vm.Hotel.hotelFeature[i].featureId }, true)[0]);
-            vm.selectedHotelFeatures.push($scope.FeatureList[indexFeature]);
-
-        }
-
-
-      var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Hotel.city.countryId }, true)[0]);
-      $scope.selectedCountry=$scope.CountryList[indexCountry];
-
-
-            $scope.CityList = $scope.selectedCountry.cityes;
-  var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Hotel.city.cityId }, true)[0]);
-  $scope.selectedCity=$scope.selectedCountry.cityes[indexCity];  
-
-  $scope.CountryChange = function () {
-    for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
-        if ($scope.CountryList[i].CountryId == 0) {
-            $scope.CountryList.splice(i, 1);
-        }
-    }
-    $scope.CityList = [];
-    $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-    $scope.CityList.push($scope.selectedCity);
-    $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
-} 
-
-        vm.Close = function () {
-            $state.go('Hotel');
-        } 
-        blockUI.stop();
-        vm.isChanged = false;
-
-        vm.LoadUploadImages = function () {
-            $("#file").click();
-            vm.fileExist = false;
-
-        }
-        vm.UpdateHotel = function () {
-            debugger;
-        blockUI.start("Loading..."); 
-        vm.isChanged = true;
-            var updateObj = new Object();
-            updateObj.hotelId = vm.Hotel.hotelId; 
-            updateObj.titleDictionary = vm.Hotel.titleDictionary; 
-            updateObj.descriptionDictionary = vm.Hotel.descriptionDictionary; 
-            updateObj.star = vm.Hotel.star; 
-            updateObj.cityId =  $scope.selectedCity.cityId; 
-            updateObj.latitude =  vm.Hotel.latitude; 
-            updateObj.longitude =  vm.Hotel.longitude; 
-            updateObj.removeImages =  vm.RemoveImages; 
-            updateObj.hotelFeature = vm.selectedHotelFeatures;
-
-                    var model = new FormData();
-            model.append('data', JSON.stringify(updateObj));
-            vm.files.forEach(function (element) {
-                model.append('file', element);
-            }, this);
-
-            $http({
-                method: 'POST',
-                url: appCONSTANTS.API_URL + 'Hotels/EditHotel',
-                useToken: true,
-                headers: { 'Content-Type': undefined },
-                transformRequest: angular.identity,
-                data: model
-            }).then(
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
-
-                                       blockUI.stop();
-                     $state.go('Hotel')
-
-                },
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-        blockUI.stop();
-    }
-                );
-        }
-        vm.files = [];
-        $scope.AddFile = function (element) {
-            var imageFile = element[0];
-
-            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
-
-            vm.files.forEach(function (file) {
-                if (file.name === imageFile.name) {
-                    vm.fileExist = true;
-                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
-                    return
-                }
-            }, this);
-            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
-
-                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
-                    if (!vm.fileExist) {
-                        $scope.UpdateHotelForm.$dirty = true;
-                        $scope.$apply(function () {
-
-                            vm.files.push(imageFile);
-                            vm.CheckImages.push(imageFile);
-                            var reader = new FileReader();
-
-                            reader.onloadend = function () {
-                                $scope.$apply();
-                            };
-                            if (imageFile) {
-                                reader.readAsDataURL(imageFile);
-                            }
-                        })
-                    }
-                    else {
-                        $("#file").val('');
-                        $scope.$apply()
-                    }
-                } else {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
-                }
-
-            } else {
-                if (imageFile) {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
-                }
-
-            }
-
-
-        }
-
-        vm.removeFile = function (index) {
-           vm.RemoveImages.push(index);
-            vm.files.splice(index, 1);
-            vm.CheckImages.splice(index, 1);
-        }
-
-	        vm.removeHotelFile = function (index) { 
-            vm.CheckImages.splice(index, 1);
-            vm.Hotel.imagesURL.splice(index, 1);
-        }}	
-}());
 
 (function () {
     'use strict';
@@ -3395,6 +3524,566 @@ console.log( $scope.ClientList);
                                         ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
 
                      $state.go('Owner');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('HotelController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'HotelResource', 'HotelPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', HotelController]);
+
+
+    function HotelController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, HotelResource, HotelPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.totalCount = HotelPrepService.totalCount;
+        $scope.HotelList = HotelPrepService; 
+      console.log( $scope.HotelList);
+        function refreshHotels() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = HotelResource.GetAllHotels({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.HotelList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshHotels();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('HotelResource', ['$resource', 'appCONSTANTS', HotelResource]) 
+
+    function HotelResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Hotels/', {}, {
+            GetAllHotels: { method: 'GET', url: appCONSTANTS.API_URL + 'Hotels/GetAllHotels', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Hotels/EditHotel', useToken: true },
+            getHotel: { method: 'GET', url: appCONSTANTS.API_URL + 'Hotels/GetHotelById/:HotelId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
+
+    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        FeaturePrepService, HotelResource, ToastService, $rootScope) {
+
+        blockUI.start("Loading...");
+        function init() {
+            $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
+            $scope.CountryList = [];
+            $scope.CountryList.push($scope.selectedCountry);
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+            debugger;
+            $scope.FeatureList = FeaturePrepService.results;
+        }
+        init();
+
+        $scope.CountryChange = function () {
+            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+                if ($scope.CountryList[i].CountryId == 0) {
+                    $scope.CountryList.splice(i, 1);
+                }
+            }
+            $scope.CityList = [];
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList.push($scope.selectedCity);
+            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+        }
+
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.close = function () {
+            $state.go('Hotel');
+        }
+
+        $scope.$on('gmPlacesAutocomplete::placeChanged', function () {
+            var location = $scope.autocomplete.getPlace().geometry.location;
+            vm.latitude = location.lat();
+            vm.longitude = location.lng();
+            $scope.$apply();
+        });
+
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.AddNewHotel = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var newHotel = new Object();
+            newHotel.titleDictionary = vm.titleDictionary;
+            newHotel.descriptionDictionary = vm.descriptionDictionary;
+            newHotel.star = vm.star;
+            newHotel.cityId = $scope.selectedCity.cityId;
+            newHotel.latitude = vm.latitude;
+            newHotel.longitude = vm.longitude;
+            newHotel.hotelFeature = vm.selectedfeatures;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(newHotel));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Hotels/',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Hotel')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            debugger; var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.newHotelForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.files.splice(index, 1);
+        }
+
+    }
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editHotelDialogController', ['$scope', '$filter','blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+        'CountryPrepService',    'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
+
+    function editHotelDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
+         HotelResource, ToastService,FeaturePrepService, HotelByIdPrepService) {
+        blockUI.start("Loading..."); 
+        function init(){ 
+            $scope.CountryList = []; 
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
+            $scope.FeatureList = FeaturePrepService.results;
+
+                       $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+        }
+        init();
+        $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
+            var location = $scope.autocomplete.getPlace().geometry.location;
+           vm.Hotel.latitude = location.lat();
+           vm.Hotel.longitude = location.lng();
+            $scope.$apply();
+        });
+
+        var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.Hotel = HotelByIdPrepService; 
+        vm.RemoveImages = []; 
+        vm.CheckImages = []; 
+        vm.selectedHotelFeatures=[] ;
+        console.log( vm.Hotel);
+        vm.CheckImages.push(vm.Hotel.imagesURL);
+        var i;
+        for (i = 0; i < vm.Hotel.hotelFeature.length; i++) {
+            var indexFeature = $scope.FeatureList.indexOf($filter('filter')($scope.FeatureList, { 'featureId': vm.Hotel.hotelFeature[i].featureId }, true)[0]);
+            vm.selectedHotelFeatures.push($scope.FeatureList[indexFeature]);
+
+        }
+
+
+      var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Hotel.city.countryId }, true)[0]);
+      $scope.selectedCountry=$scope.CountryList[indexCountry];
+
+
+            $scope.CityList = $scope.selectedCountry.cityes;
+  var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Hotel.city.cityId }, true)[0]);
+  $scope.selectedCity=$scope.selectedCountry.cityes[indexCity];  
+
+  $scope.CountryChange = function () {
+    for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+        if ($scope.CountryList[i].CountryId == 0) {
+            $scope.CountryList.splice(i, 1);
+        }
+    }
+    $scope.CityList = [];
+    $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+    $scope.CityList.push($scope.selectedCity);
+    $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+} 
+
+        vm.Close = function () {
+            $state.go('Hotel');
+        } 
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.UpdateHotel = function () {
+            debugger;
+        blockUI.start("Loading..."); 
+        vm.isChanged = true;
+            var updateObj = new Object();
+            updateObj.hotelId = vm.Hotel.hotelId; 
+            updateObj.titleDictionary = vm.Hotel.titleDictionary; 
+            updateObj.descriptionDictionary = vm.Hotel.descriptionDictionary; 
+            updateObj.star = vm.Hotel.star; 
+            updateObj.cityId =  $scope.selectedCity.cityId; 
+            updateObj.latitude =  vm.Hotel.latitude; 
+            updateObj.longitude =  vm.Hotel.longitude; 
+            updateObj.removeImages =  vm.RemoveImages; 
+            updateObj.hotelFeature = vm.selectedHotelFeatures;
+
+                    var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Hotels/EditHotel',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                                       blockUI.stop();
+                     $state.go('Hotel')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+        blockUI.stop();
+    }
+                );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.UpdateHotelForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            vm.CheckImages.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+           vm.RemoveImages.push(index);
+            vm.files.splice(index, 1);
+            vm.CheckImages.splice(index, 1);
+        }
+
+	        vm.removeHotelFile = function (index) { 
+            vm.CheckImages.splice(index, 1);
+            vm.Hotel.imagesURL.splice(index, 1);
+        }}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('TypeController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'TypeResource', 'TypePrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', TypeController]);
+
+
+    function TypeController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, TypeResource, TypePrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[3].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.totalCount = TypePrepService.totalCount;
+        $scope.TypeList = TypePrepService;
+        function refreshTypes() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = TypeResource.getAllCurrencies({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.TypeList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshTypes();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('TypeResource', ['$resource', 'appCONSTANTS', TypeResource]) 
+
+    function TypeResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Types/', {}, {
+            getAllTypes: { method: 'GET', url: appCONSTANTS.API_URL + 'Types/GetAllTypes', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Types/EditType', useToken: true },
+            getType: { method: 'GET', url: appCONSTANTS.API_URL + 'Types/GetTypeById/:TypeId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('createTypeDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'TypeResource', 'ToastService', '$rootScope', createTypeDialogController])
+
+    function createTypeDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, TypeResource,
+        ToastService, $rootScope) {
+
+                blockUI.start("Loading..."); 
+
+            		var vm = this;
+		vm.language = appCONSTANTS.supportedLanguage;
+		vm.close = function(){
+			$state.go('Type');
+		} 
+
+		 		vm.AddNewType = function () {
+            blockUI.start("Loading..."); 
+
+                        var newObj = new TypeResource();
+            newObj.titleDictionary = vm.titleDictionary; 
+            newObj.IsDeleted = false;  
+            newObj.$create().then(
+                function (data, status) { 
+        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
+                    $state.go('Type');
+                     blockUI.stop();        
+
+
+                },
+                function (data, status) {
+               blockUI.stop();        
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+  	}	
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editTypeDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'TypeResource', 'ToastService',
+            'TypeByIdPrepService', editTypeDialogController])
+
+    function editTypeDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, TypeResource, ToastService, TypeByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.Type = TypeByIdPrepService; 
+        vm.Close = function () {
+            $state.go('Type');
+        }
+        vm.UpdateType = function () { 
+            blockUI.start("Loading..."); 
+
+                        var updateObj = new TypeResource();
+            updateObj.typeId = vm.Type.typeId;
+            updateObj.titleDictionary = vm.Type.titleDictionary;
+		    updateObj.IsDeleted = false; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('Type');
 
                 },
                 function (data, status) {

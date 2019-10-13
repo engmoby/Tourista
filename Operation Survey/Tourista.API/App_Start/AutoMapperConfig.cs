@@ -43,6 +43,19 @@ namespace Tourista.API
             mapperConfiguration.CreateMap<FeatureModel, FeatureDto>();
             mapperConfiguration.CreateMap<FeatureDto, FeatureModel>();
 
+            mapperConfiguration.CreateMap<BackageModel, BackageDto>();
+            mapperConfiguration.CreateMap<BackageDto, BackageModel>();
+
+            mapperConfiguration.CreateMap<BackageReservationModel, BackageReservationDto>();
+            mapperConfiguration.CreateMap<BackageReservationDto, BackageReservationModel>();
+
+
+            mapperConfiguration.CreateMap<OfferModel, OfferDto>();
+            mapperConfiguration.CreateMap<OfferDto, OfferModel>();
+
+            mapperConfiguration.CreateMap<OfferReservationModel, OfferReservationDto>();
+            mapperConfiguration.CreateMap<OfferReservationDto, OfferReservationModel>();
+
             mapperConfiguration.CreateMap<HotelModel, HotelDto>();
             mapperConfiguration.CreateMap<HotelDto, HotelModel>();
 
@@ -54,6 +67,8 @@ namespace Tourista.API
 
 
 
+            mapperConfiguration.CreateMap<TypeModel, TypeDto>();
+            mapperConfiguration.CreateMap<TypeDto, TypeModel>();
 
 
 

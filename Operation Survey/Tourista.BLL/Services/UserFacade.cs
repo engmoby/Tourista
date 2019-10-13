@@ -105,6 +105,44 @@ namespace Tourista.BLL.Services
 
             return userDto;
         }
+        public UserDto RegisterClient(UserDto userDto, int userId, int tenantId)
+        {
+            var userRetuenDto = new UserDto();
+                if (GetUser(userDto.UserId, tenantId) != null)
+            {
+                return EditUser(userDto, userId, tenantId);
+            }
+            if (_userService.CheckEmailDuplicated(userDto.Email, tenantId))
+            {
+                userRetuenDto= Mapper.Map<UserDto>(_userService.GetUserByEmail(userDto.Email, tenantId));
+            }
+            //if (_userService.CheckPhoneDuplicated(userDto.Phone, tenantId))
+            //{
+            //    userRetuenDto = GetUser(userDto.UserId, tenantId);
+            //}
+
+
+            var userObj = Mapper.Map<User>(userDto);
+            userObj.FullName = userDto.FullName;
+            //userObj.UserAccountId = Guid.NewGuid(); 
+            userObj.Email = userDto.Email;
+           // userObj.Phone = userDto.Phone;
+            //userObj.Password = PasswordHelper.Encrypt(userDto.Password);
+            userObj.CreationTime = DateTime.Now;
+            userObj.IsActive = true;
+            userObj.IsDeleted = false;
+            userObj.UserType = (int)userDto.UserType;
+            userObj.TenantId = tenantId;
+            userObj.IsSystemUser =false;
+            userObj.CreationTime = Strings.CurrentDateTime;
+            userObj.CreatorUserId = userId;
+
+            _userService.Insert(userObj);
+            SaveChanges();
+              userRetuenDto = Mapper.Map<UserDto>(userObj);
+
+            return userRetuenDto;
+        }
 
         public UserDto EditUserInfo(UserDto userDto, int userId, int tenantId)
         {

@@ -24,8 +24,10 @@ namespace Tourista.API.Controllers
         private readonly IContactFacade _contactFacade;
         private readonly IOwnerFacade _ownerFacade;
         private readonly ICountryFacade _countryFacade;
+        private readonly IBackageFacade _backageFacade;
 
-        public GeneralController(IAboutFacade aboutFacade, INewsFacade newsFacade, IHotelFacade hotelFacade, IContactFacade contactFacade, IOwnerFacade ownerFacade, ICountryFacade countryFacade)
+        public GeneralController(IAboutFacade aboutFacade, INewsFacade newsFacade, IHotelFacade hotelFacade,
+            IContactFacade contactFacade, IOwnerFacade ownerFacade, ICountryFacade countryFacade, IBackageFacade backageFacade)
 
         {
             _aboutFacade = aboutFacade;
@@ -34,6 +36,7 @@ namespace Tourista.API.Controllers
             _contactFacade = contactFacade;
             _ownerFacade = ownerFacade;
             _countryFacade = countryFacade;
+            _backageFacade = backageFacade;
         }
 
         [Route("api/General/GetAllGeneral", Name = "GetAllGeneral")]
@@ -77,6 +80,26 @@ namespace Tourista.API.Controllers
 
             generalModel.Hotel = hotelModel;
 
+            PagedResultsDto backageObj = _backageFacade.GetAllOnlineBackages(page, pagesize, TenantId);
+            var backageModel = Mapper.Map<List<BackageModel>>(backageObj.Data);
+            if (backageModel != null)
+                foreach (var item in backageModel)
+                {
+                    item.ImagesURL = new List<string>();
+                    string path = HostingEnvironment.MapPath("~/Images/") + "\\" + "Backage-" + item.BackageId;
+                    var imageCounter = Directory.Exists(path) ? Directory
+                        .GetFiles(path)
+                        .Count(x => !Path.GetFileName(x).Contains("thumb")) : -1;
+                    int id = 1;
+                    while (id < imageCounter + 1)
+                    {
+                        item.ImagesURL.Add(Url.Link("BackageImage", new { backageId = item.BackageId, imageId = id }));
+                        id++;
+                    }
+
+                }
+
+            generalModel.Backage = backageModel;
 
             PagedResultsDto ownerObj = _ownerFacade.GetAllOnlineOwners(page, pagesize, TenantId);
             var ownerModel = Mapper.Map<List<OwnerModel>>(ownerObj.Data);
@@ -96,7 +119,7 @@ namespace Tourista.API.Controllers
         }
 
 
-      
+
     }
 
 }

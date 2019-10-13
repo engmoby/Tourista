@@ -23,7 +23,7 @@
                                 placeholder="Write your email heeeer"
                                 id="Mail" data-validation="email">*@
                             <span class="input-group-btn">
-                                <button class="btn-email">&#8594;</button>
+                                <button id="btnSubmitNewslatter" class="btn-email">&#8594;</button>
                             </span>
 
                         </div>
@@ -91,7 +91,7 @@
                                 <div class="content-widget">
                                     <ul class="list-unstyled">
                                         <li><a href="/Hotel/Index" class="link">@TouristaFrontEnd.Resources.Global.Header_Hotels</a></li>
-                                        <li><a href="/Tour/Index" class="link">@TouristaFrontEnd.Resources.Global.Tours</a></li>
+                                        @*<li><a href="/Tour/Index" class="link">@TouristaFrontEnd.Resources.Global.Tours</a></li>*@
 
                                     </ul>
                                 </div>
@@ -137,106 +137,66 @@
     </div>
 </footer>
 <script type="text/javascript">
-    function validateEmail(email) {
-        debugger;
-        var pattern = new RegExp("[-0-9a-zA-Z.+_]+@@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}");
-        return pattern.test(email);
-    }
+
+ 
 
     $(document).ready(function () {
-        debugger;
+        $("#btnSubmitNewslatter").click(function () { 
+            sendnewsletter();
+        });
+           
+        function validateEmail(email) { 
+            var pattern = new RegExp("[-0-9a-zA-Z.+_]+@@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}");
+            return pattern.test(email);
+        } debugger;
 
-        $('#btnSave').attr('disabled', true);
+        $('#btnSubmitNewslatter').attr('disabled', true);
         $('#Mail').keyup(function () {
             if ($(this).val().length != 0) {
-                $('#btnSave').attr('disabled', false);
+                $('#btnSubmitNewslatter').attr('disabled', false);
             } else {
-                $('#btnSave').attr('disabled', true);
+                $('#btnSubmitNewslatter').attr('disabled', true);
             }
         });
 
-        $('#btnSave2').attr('disabled', true);
-        $('#Mail2').keyup(function () {
-            if ($(this).val().length != 0) {
-                $('#btnSave2').attr('disabled', false);
-            } else {
-                $('#btnSave2').attr('disabled', true);
-            }
-        });
+      
+        function sendnewsletter() { 
+            // First way to get a value
+            var value = $("#Mail").val();
 
+            // Second way to get a value
+            value = $("#Mail").attr('value');
+          
+            if (!validateEmail(newsletter.Mail)) {
+                $("#MSG").text(" Error in Newsletter");
+                $("#MSG").css("color", "red");
+
+            } else {
+                $('#btnSubmitNewslatter').attr('disabled', true);
+                $('#MSG').html(' NewsletterSending');
+                //   var apiUrl = document.querySelector('#HServicesURL').value;
+                $.ajax({
+                    url: "http://localhost:50755/API/Newsletters",
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        debugger;
+                        if (data.email != "") {
+                            $('#MSG').html(" NewsletterSubmitMsg");
+                            $('#btnSubmitNewslatter').attr('disabled', false);
+                            alert("Thanks, we will contact you soon")
+                        } else {
+                            $('#MSG').html(" AlreadyExist");
+                        }
+
+                    },
+                    data: { Email: $("#Mail").val() }
+                });
+            }
+            //Validate Email Input
+
+        }
+
+ 
     });
-
-    function sendnewsletter() {
-        debugger;
-        // First way to get a value
-        var value = $("#Mail").val();
-
-        // Second way to get a value
-        value = $("#Mail").attr('value');
-        var newsletter = {
-            Mail: $("#Mail").val()
-        }
-
-        if (!validateEmail(newsletter.Mail)) {
-            $("#MSG").text(" NewsletterError");
-            $("#MSG").css("color", "red");
-
-        } else {
-            $('#btnSave').attr('disabled', true);
-            $('#MSG').html(' NewsletterSending');
-            //   var apiUrl = document.querySelector('#HServicesURL').value;
-            $.ajax({
-                url: "http://localhost:32569/API/Newsletters",
-                type: 'post',
-                dataType: 'json',
-                success: function (data) {
-                    if (data.OperationStatus === "Succeded") {
-                        $('#MSG').html(" NewsletterSubmitMsg");
-                        $('#btnSave').attr('disabled', false);
-                    } else {
-                        $('#MSG').html(" AlreadyExist");
-                    }
-
-                },
-                data: newsletter
-            });
-        }
-        //Validate Email Input
-
-    }
-
-    function sendnewsletter2() {
-        debugger;
-        var newsletter = {
-            Mail: $("#Mail2").val()
-        }
-
-        if (!validateEmail(newsletter.Mail)) {
-            $("#MSG2").text(" NewsletterError");
-            $("#MSG2").css("color", "red");
-
-        } else {
-            $('#btnSave2').attr('disabled', true);
-            $('#MSG2').html(' NewsletterSending');
-            //   var apiUrl = document.querySelector('#HServicesURL').value;
-            $.ajax({
-                url: "http://localhost:32569/API/Newsletters",
-                type: 'post',
-                dataType: 'json',
-                success: function (data) {
-                    if (data.OperationStatus === "Succeded") {
-                        $('#MSG2').html(" NewsletterSubmitMsg");
-                        $('#btnSave2').attr('disabled', false);
-                    } else {
-                        $('#MSG2').html(" AlreadyExist");
-                    }
-
-                },
-                data: newsletter
-            });
-        }
-        //Validate Email Input
-
-    }
 </script>
-

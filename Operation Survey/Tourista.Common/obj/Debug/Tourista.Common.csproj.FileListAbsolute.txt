@@ -14,3 +14,8 @@ C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.Common\bin\Debug\To
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.csproj.CoreCompileInputs.cache
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.dll
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\bin\Debug\Tourista.Common.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\bin\Debug\Tourista.Common.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.csprojResolveAssemblyReference.cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.pdb

@@ -104,3 +104,35 @@ C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.DAL\obj\Release\Tou
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.DAL\obj\Release\Tourista.DAL.csproj.CopyComplete
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.DAL\obj\Release\Tourista.DAL.dll
 C:\Users\TDS\source\repos\Tourista\Operation Survey\Tourista.DAL\obj\Release\Tourista.DAL.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Tourista.DAL.dll.config
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Tourista.DAL.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Tourista.DAL.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\EntityFramework.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\EntityFramework.SqlServer.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.ServiceLocation.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.Configuration.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.Interception.Configuration.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.Interception.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.RegistrationByConvention.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Repository.Pattern.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Repository.Pattern.Ef6.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Tourista.Common.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\LinqKit.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Repository.Pattern.Ef6.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Repository.Pattern.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Tourista.Common.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\EntityFramework.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\EntityFramework.SqlServer.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.ServiceLocation.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.ServiceLocation.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.Configuration.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.Interception.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.Interception.Configuration.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\Microsoft.Practices.Unity.RegistrationByConvention.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\LinqKit.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Release\LinqKit.xml
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Release\Tourista.DAL.csprojResolveAssemblyReference.cache
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Release\Tourista.DAL.dll
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Release\Tourista.DAL.pdb

@@ -1805,7 +1805,8 @@
 }
 .mozilla5 .homepage-default .group-title .title,
 .safari .homepage-default .group-title .title {
-  background: linear-gradient(to right, #ffffff 0%, #ffffff 15%, #ffffff 35%, #ffffff 50%, #ffffff 85%, #ffdd00 90%, #ffffff 100%);
+  /*background: linear-gradient(to right, #ffffff 0%, #ffffff 15%, #ffffff 35%, #ffffff 50%, #ffffff 85%, #ffdd00 90%, #ffffff 100%);*/
+  background: linear-gradient(to right, #ffffff 0%, #ffffff 15%, #ffffff 35%, #ffffff 50%, #ffffff 85%, #1972ae 90%, #ea8633 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-animation: color-text 5s infinite;
@@ -1845,7 +1846,7 @@
   padding: 5px 0 5px 15px;
   position: relative;
   text-align: center;
-  color: #ffdd00;
+  color: #e88731;
   text-transform: uppercase;
   font-size: 13px;
   display: inline-block;

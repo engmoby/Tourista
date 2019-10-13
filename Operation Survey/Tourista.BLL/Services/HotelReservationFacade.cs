@@ -50,7 +50,7 @@ namespace Tourista.BLL.Services
             hotelReservationObj.Status = (int)Enums.Status.New;
 
             hotelReservationObj.CreationTime = Strings.CurrentDateTime;
-            hotelReservationObj.CreatorUserId = userId;
+            hotelReservationObj.CreatorUserId = hotelReservationDto.UserId;
             hotelReservationObj.TenantId = tenantId;
             _hotelReservationService.Insert(hotelReservationObj);
 

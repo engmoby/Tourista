@@ -182,10 +182,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CareerController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BackageController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -196,6 +198,10 @@
     <Compile Include="Helper\Common.cs" />
     <Compile Include="Helper\CultureHelper.cs" />
     <Compile Include="Helper\MenuItem.cs" />
+    <Compile Include="Models\OfferModel.cs" />
+    <Compile Include="Models\OfferReservationModel.cs" />
+    <Compile Include="Models\BackageReservationModel.cs" />
+    <Compile Include="Models\TypeModel.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminModel.cs" />
@@ -696,6 +702,13 @@
     <Content Include="Views\Career\Upload.cshtml" />
     <Content Include="Views\Home\Index - Copy.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Home\BackageHome.cshtml" />
+    <Content Include="Views\Backage\Details.cshtml" />
+    <Content Include="Views\Backage\Index.cshtml" />
+    <Content Include="Views\Backage\RelatedBackages.cshtml" />
+    <Content Include="Views\Offer\Details.cshtml" />
+    <Content Include="Views\Offer\Index.cshtml" />
+    <Content Include="Views\Offer\RelatedOffers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

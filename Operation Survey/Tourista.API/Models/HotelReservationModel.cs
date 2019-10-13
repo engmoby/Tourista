@@ -12,8 +12,11 @@ namespace Tourista.API.Models
         public long HotelId { get; set; }
         public virtual HotelModel Hotel { get; set; }
 
+
         public long UserId { get; set; }
         public virtual UserModel User { get; set; }
+        public string Address { get; set; }
+        public string Note { get; set; }
 
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }

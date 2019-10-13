@@ -1,0 +1,69 @@
+﻿@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+<section class="tours padding-top padding-bottom">
+    <div class="container">
+        <div class="tours-wrapper">
+            <div class="group-title">
+                <div class="sub-title"><p class="text">@TouristaFrontEnd.Resources.Global.PACK</p></div>
+                <h2 class="main-title">@TouristaFrontEnd.Resources.Global.AWESOMEBACKGE</h2>
+            </div>
+            <div class="tours-content margin-top70" style="height: 491px;">
+                <div class="tours-list">
+                    @if (Model.Backage != null)
+                    {
+                        foreach (BackageModel backageObj in Model.Backage)
+                        {     <div class="tours-layout">
+                        <div class="image-wrapper">
+                            
+                            <a href="/Backage/Details/@backageObj.BackageId" class="link">
+                            <img style="height: 55%;" src="@backageObj.ImagesURL[0]" alt="" class="img-responsive"></a>
+
+                            <div class="title-wrapper">
+                                <a href="tour-view.html" class="title">
+                                    @if (@backageObj.TitleDictionary[@Common.CurrentLang].Length >= 50)
+                                    {
+
+                                        @backageObj.TitleDictionary[@Common.CurrentLang].Substring(0, 50)
+
+                                    }
+                                    else
+                                    {
+                                        @backageObj.TitleDictionary[@Common.CurrentLang]
+                                    }
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="content-wrapper">
+
+                            <div class="content">
+                                <div class="title">
+                                    <div class="price"><sup>$</sup><span class="number">@backageObj.Price</span></div>
+                                    <p class="for-price">@backageObj.DaysCount days @backageObj.NigthsCount nights</p>
+                                </div>
+                                <p class="text">
+                                    @if (@backageObj.DescriptionDictionary[@Common.CurrentLang].Length >= 90)
+                                {
+
+                                    @MyHTMLHelpers.PreserveNewLines(Html, @backageObj.DescriptionDictionary[@Common.CurrentLang].Substring(0, 90))
+
+                                }
+                                else
+                                {
+                                    @MyHTMLHelpers.PreserveNewLines(Html, @backageObj.DescriptionDictionary[@Common.CurrentLang])
+                                }
+                            </p>
+
+                            <div class="group-btn-tours"><a href="/Backage/Details/@backageObj.BackageId" class="left-btn">@TouristaFrontEnd.Resources.Global.BookNow</a></div>
+
+                        </div>
+                    </div>
+                </div>
+                        }
+                    }
+                </div>
+                <a href="/Backage/Index" class="btn btn-transparent margin-top70">@TouristaFrontEnd.Resources.Global.morebackage</a>
+          <br />  </div>
+        </div>
+    </div>
+</section>
