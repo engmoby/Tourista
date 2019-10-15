@@ -109,6 +109,10 @@
                                         <li>
                                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Backages, "Index", "Backage", null, new { @class = "main-menu" })
                                         </li>
+
+                                        <li>
+                                            @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_Offer, "Index", "Offer", null, new { @class = "main-menu" })
+                                        </li>
                                         <li>
                                             @Html.ActionLink(@TouristaFrontEnd.Resources.Global.Header_News, "Index", "News", null, new { @class = "main-menu" })
                                         </li>
@@ -170,67 +174,67 @@
     </div>
 
     @*<script>
-        $.ajax({
-            url: "http://localhost:50755//api/Countries/GetAllCountries",
-            type: "Get",
-            success: function (data) {
-                for (var i = 0; i < data.results.length; i++) {
-                    debugger;
-                    $(
-                        "<option value='" + data.results[i].countryId + "'>" + data.results[i].titleDictionary['@Common.CurrentLang'] + "</option>"
+            $.ajax({
+                url: "http://localhost:50755//api/Countries/GetAllCountries",
+                type: "Get",
+                success: function (data) {
+                    for (var i = 0; i < data.results.length; i++) {
+                        debugger;
+                        $(
+                            "<option value='" + data.results[i].countryId + "'>" + data.results[i].titleDictionary['@Common.CurrentLang'] + "</option>"
 
-                    ).appendTo("#Countryid");
+                        ).appendTo("#Countryid");
+                    }
+                    $(document).ajaxStop($.unblockUI);
+                },
+                error: function (msg) {
                 }
-                $(document).ajaxStop($.unblockUI);
-            },
-            error: function (msg) {
-            }
-        });
-
-        // Dropdown list change event.
-        $('#Countryid').change(function () {
-            $('#Cityid option').remove();
-            $.getJSON('http://localhost:50755//api/Countries/GetCountryById', { CountryId: $('#Countryid').val() }, function (data) {
-                $.each(data.cityes, function () {
-                    debugger
-                    $('#Cityid').append('<option value=' + this.cityId + '>' + this.titleDictionary['@Common.CurrentLang'] + '</option>');
-                });
-            }).fail(function (jqXHR, textStatus, errorThrown) {
-                alert('Error getting products!');
             });
-        });
 
-        // Dropdown list change event.
-        $('#Cityid').change(function () {
-            $('#Hotelid option').remove();
-            $.getJSON('http://localhost:50755//api/Hotels/GetHotelByCityId', { cityId: $('#Cityid').val() }, function (data) {
-                $.each(data, function () {
-                    debugger
-                    $('#Hotelid').append('<option value=' + this.hotelId + '>' + this.titleDictionary['@Common.CurrentLang'] + '</option>');
+            // Dropdown list change event.
+            $('#Countryid').change(function () {
+                $('#Cityid option').remove();
+                $.getJSON('http://localhost:50755//api/Countries/GetCountryById', { CountryId: $('#Countryid').val() }, function (data) {
+                    $.each(data.cityes, function () {
+                        debugger
+                        $('#Cityid').append('<option value=' + this.cityId + '>' + this.titleDictionary['@Common.CurrentLang'] + '</option>');
+                    });
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert('Error getting products!');
                 });
-            }).fail(function (jqXHR, textStatus, errorThrown) {
-                alert('Error getting products!');
             });
-        });
 
-    </script>*@
+            // Dropdown list change event.
+            $('#Cityid').change(function () {
+                $('#Hotelid option').remove();
+                $.getJSON('http://localhost:50755//api/Hotels/GetHotelByCityId', { cityId: $('#Cityid').val() }, function (data) {
+                    $.each(data, function () {
+                        debugger
+                        $('#Hotelid').append('<option value=' + this.hotelId + '>' + this.titleDictionary['@Common.CurrentLang'] + '</option>');
+                    });
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert('Error getting products!');
+                });
+            });
+
+        </script>*@
 
     @*<script>
-        $.validate({
-            form: '#myForm',
-            modules: 'security',
-            onError: function ($form) {
-                debugger
-                alert('Validation of form ' + $form.attr('id') + ' failed!');
-            },
-            onSuccess: function ($form) {
-                debugger
-                sendnewsletter();
-                return false;
-            }
+            $.validate({
+                form: '#myForm',
+                modules: 'security',
+                onError: function ($form) {
+                    debugger
+                    alert('Validation of form ' + $form.attr('id') + ' failed!');
+                },
+                onSuccess: function ($form) {
+                    debugger
+                    sendnewsletter();
+                    return false;
+                }
 
-        });
-    </script>*@
+            });
+        </script>*@
 
     @*<script>
             $('#hotel').slick({

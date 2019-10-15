@@ -57,7 +57,7 @@
                                 @Model.TitleDictionary[@Common.CurrentLang]
                             }
                         </h2>
-                        <div class="price"><span class="text"></span><span class="number">@Model.Price</span><sup class="unit">SAR</sup></div>
+                        <div class="price"><span class="text"></span><span class="number">@Model.Price</span><sup class="unit">SAR</sup> /<sup class="unit">@Model.PriceBefore</sup></div>
                     </div>
                 </div>
             </div>
@@ -210,7 +210,7 @@
                                                 <label class="tb-label">Note:</label>
                                                 <div class="input-group"><textarea id="Note" type="textarea" placeholder="Write your note" rows="3" class="tb-input"></textarea></div>
                                             </div>
-                                            <button id="btnSubmitOffer" type="submit" data-hover="SEND REQUEST" class="btn btn-slide"><span class="text">BOOK Now</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                            <button id="btnSubmitOffer"   data-hover="SEND REQUEST" class="btn btn-slide"><span class="text">BOOK Now</span><span class="icons fa fa-long-arrow-right"></span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -254,7 +254,7 @@
 
             };
             $.ajax({
-                url: "http://touristaegy.com/backend/API/OfferReservations",
+                url: "http://localhost:50755/API/OfferReservations",
                 type: 'post',
                 dataType: 'json',
                 success: function (data) {
@@ -276,48 +276,12 @@
                     alert("Thanks, we will contact with soon ");
                 },
                 error: function (result) {
-                    alert("Failed");
+                    debugger;
+                    console.log(result);
                 }
-            });
-            @*$.ajax({
-                url: '@Url.Action("Details")',
-                type: "POST",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                data: {
-                    // PostId: $('.OfferId').val(),
-                    //UserName: $('#username').val(),
-                    Note: $('#Note').val(),
-                    //DateCreated: new Date(),
-                    //CommentText: $('#comment').val()
-                },
-                success: function (result) {
-
-                    alert("success " + result.UserName);
-                },
-                error: function (result) {
-                    alert("Failed");
-                }
-
-            });
-            return false;*@
+            }); 
         });
-
-        //$('#hotel').slick({
-        //    slidesToShow: 1,
-        //    slidesToScroll: 1,
-        //    arrows: true,
-        //    fade: true,
-        //    asNavFor: '#hotel_nav'
-        //});
-        //$('#hotel_nav').slick({
-        //    slidesToShow: 3,
-        //    slidesToScroll: 1,
-        //    asNavFor: '#hotel',
-        //    dots: true,
-        //    centerMode: true,
-        //    focusOnSelect: true
-        //});
+         
     });
 
 

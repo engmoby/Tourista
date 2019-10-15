@@ -77,7 +77,8 @@ namespace Tourista.BLL
 
 
             mapperConfiguration.CreateMap<HotelReservationDto, HotelReservation>();
-            mapperConfiguration.CreateMap<HotelReservation, HotelReservationDto>();
+            mapperConfiguration.CreateMap<HotelReservation, HotelReservationDto>() 
+            ;
 
             mapperConfiguration.CreateMap<BackageDto, Backage>();
             mapperConfiguration.CreateMap<Backage, BackageDto>()

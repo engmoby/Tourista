@@ -2934,6 +2934,412 @@ console.log( $scope.ClientList);
 
 
          	}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('HotelController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'HotelResource', 'HotelPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', HotelController]);
+
+
+    function HotelController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, HotelResource, HotelPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.totalCount = HotelPrepService.totalCount;
+        $scope.HotelList = HotelPrepService; 
+      console.log( $scope.HotelList);
+        function refreshHotels() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = HotelResource.GetAllHotels({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.HotelList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshHotels();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('HotelResource', ['$resource', 'appCONSTANTS', HotelResource]) 
+
+    function HotelResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Hotels/', {}, {
+            GetAllHotels: { method: 'GET', url: appCONSTANTS.API_URL + 'Hotels/GetAllHotels', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Hotels/EditHotel', useToken: true },
+            getHotel: { method: 'GET', url: appCONSTANTS.API_URL + 'Hotels/GetHotelById/:HotelId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
+
+    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        FeaturePrepService, HotelResource, ToastService, $rootScope) {
+
+        blockUI.start("Loading...");
+        function init() {
+            $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
+            $scope.CountryList = [];
+            $scope.CountryList.push($scope.selectedCountry);
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+            debugger;
+            $scope.FeatureList = FeaturePrepService.results;
+        }
+        init();
+
+        $scope.CountryChange = function () {
+            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+                if ($scope.CountryList[i].CountryId == 0) {
+                    $scope.CountryList.splice(i, 1);
+                }
+            }
+            $scope.CityList = [];
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList.push($scope.selectedCity);
+            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+        }
+
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.close = function () {
+            $state.go('Hotel');
+        }
+
+        $scope.$on('gmPlacesAutocomplete::placeChanged', function () {
+            var location = $scope.autocomplete.getPlace().geometry.location;
+            vm.latitude = location.lat();
+            vm.longitude = location.lng();
+            $scope.$apply();
+        });
+
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.AddNewHotel = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var newHotel = new Object();
+            newHotel.titleDictionary = vm.titleDictionary;
+            newHotel.descriptionDictionary = vm.descriptionDictionary;
+            newHotel.star = vm.star;
+            newHotel.cityId = $scope.selectedCity.cityId;
+            newHotel.latitude = vm.latitude;
+            newHotel.longitude = vm.longitude;
+            newHotel.hotelFeature = vm.selectedfeatures;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(newHotel));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Hotels/',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Hotel')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            debugger; var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.newHotelForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.files.splice(index, 1);
+        }
+
+    }
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editHotelDialogController', ['$scope', '$filter','blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+        'CountryPrepService',    'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
+
+    function editHotelDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
+         HotelResource, ToastService,FeaturePrepService, HotelByIdPrepService) {
+        blockUI.start("Loading..."); 
+        function init(){ 
+            $scope.CountryList = []; 
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
+            $scope.FeatureList = FeaturePrepService.results;
+
+                       $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+        }
+        init();
+        $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
+            var location = $scope.autocomplete.getPlace().geometry.location;
+           vm.Hotel.latitude = location.lat();
+           vm.Hotel.longitude = location.lng();
+            $scope.$apply();
+        });
+
+        var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.Hotel = HotelByIdPrepService; 
+        vm.RemoveImages = []; 
+        vm.CheckImages = []; 
+        vm.selectedHotelFeatures=[] ;
+        console.log( vm.Hotel);
+        vm.CheckImages.push(vm.Hotel.imagesURL);
+        var i;
+        for (i = 0; i < vm.Hotel.hotelFeature.length; i++) {
+            var indexFeature = $scope.FeatureList.indexOf($filter('filter')($scope.FeatureList, { 'featureId': vm.Hotel.hotelFeature[i].featureId }, true)[0]);
+            vm.selectedHotelFeatures.push($scope.FeatureList[indexFeature]);
+
+        }
+
+
+      var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Hotel.city.countryId }, true)[0]);
+      $scope.selectedCountry=$scope.CountryList[indexCountry];
+
+
+            $scope.CityList = $scope.selectedCountry.cityes;
+  var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Hotel.city.cityId }, true)[0]);
+  $scope.selectedCity=$scope.selectedCountry.cityes[indexCity];  
+
+  $scope.CountryChange = function () {
+    for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+        if ($scope.CountryList[i].CountryId == 0) {
+            $scope.CountryList.splice(i, 1);
+        }
+    }
+    $scope.CityList = [];
+    $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+    $scope.CityList.push($scope.selectedCity);
+    $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+} 
+
+        vm.Close = function () {
+            $state.go('Hotel');
+        } 
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.UpdateHotel = function () {
+            debugger;
+        blockUI.start("Loading..."); 
+        vm.isChanged = true;
+            var updateObj = new Object();
+            updateObj.hotelId = vm.Hotel.hotelId; 
+            updateObj.titleDictionary = vm.Hotel.titleDictionary; 
+            updateObj.descriptionDictionary = vm.Hotel.descriptionDictionary; 
+            updateObj.star = vm.Hotel.star; 
+            updateObj.cityId =  $scope.selectedCity.cityId; 
+            updateObj.latitude =  vm.Hotel.latitude; 
+            updateObj.longitude =  vm.Hotel.longitude; 
+            updateObj.removeImages =  vm.RemoveImages; 
+            updateObj.hotelFeature = vm.selectedHotelFeatures;
+
+                    var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Hotels/EditHotel',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                                       blockUI.stop();
+                     $state.go('Hotel')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+        blockUI.stop();
+    }
+                );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.UpdateHotelForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            vm.CheckImages.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+           vm.RemoveImages.push(index);
+            vm.files.splice(index, 1);
+            vm.CheckImages.splice(index, 1);
+        }
+
+	        vm.removeHotelFile = function (index) { 
+            vm.CheckImages.splice(index, 1);
+            vm.Hotel.imagesURL.splice(index, 1);
+        }}	
+}());
 
 (function () {
     'use strict';
@@ -3536,412 +3942,6 @@ console.log( $scope.ClientList);
         blockUI.stop();
 
         	}	
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('HotelController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'HotelResource', 'HotelPrepService',  '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', HotelController]);
-
-
-    function HotelController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, HotelResource, HotelPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
-
-        blockUI.start("Loading..."); 
-
-                    var vm = this;
-        $scope.totalCount = HotelPrepService.totalCount;
-        $scope.HotelList = HotelPrepService; 
-      console.log( $scope.HotelList);
-        function refreshHotels() {
-
-            blockUI.start("Loading..."); 
-
-                        var k = HotelResource.GetAllHotels({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.HotelList = results  
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshHotels();
-        }
-        blockUI.stop();
-
-            }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('HotelResource', ['$resource', 'appCONSTANTS', HotelResource]) 
-
-    function HotelResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'Hotels/', {}, {
-            GetAllHotels: { method: 'GET', url: appCONSTANTS.API_URL + 'Hotels/GetAllHotels', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Hotels/EditHotel', useToken: true },
-            getHotel: { method: 'GET', url: appCONSTANTS.API_URL + 'Hotels/GetHotelById/:HotelId', useToken: true }
-        })
-    } 
-
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
-
-    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        FeaturePrepService, HotelResource, ToastService, $rootScope) {
-
-        blockUI.start("Loading...");
-        function init() {
-            $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
-            $scope.CountryList = [];
-            $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
-
-            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-            $scope.CityList = [];
-            $scope.CityList.push($scope.selectedCity);
-            debugger;
-            $scope.FeatureList = FeaturePrepService.results;
-        }
-        init();
-
-        $scope.CountryChange = function () {
-            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
-                if ($scope.CountryList[i].CountryId == 0) {
-                    $scope.CountryList.splice(i, 1);
-                }
-            }
-            $scope.CityList = [];
-            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-            $scope.CityList.push($scope.selectedCity);
-            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
-        }
-
-        var vm = this;
-        vm.language = appCONSTANTS.supportedLanguage;
-        vm.close = function () {
-            $state.go('Hotel');
-        }
-
-        $scope.$on('gmPlacesAutocomplete::placeChanged', function () {
-            var location = $scope.autocomplete.getPlace().geometry.location;
-            vm.latitude = location.lat();
-            vm.longitude = location.lng();
-            $scope.$apply();
-        });
-
-        blockUI.stop();
-        vm.isChanged = false;
-
-        vm.LoadUploadImages = function () {
-            $("#file").click();
-            vm.fileExist = false;
-
-        }
-        vm.AddNewHotel = function () {
-            debugger;
-            blockUI.start("Loading...");
-            vm.isChanged = true;
-            var newHotel = new Object();
-            newHotel.titleDictionary = vm.titleDictionary;
-            newHotel.descriptionDictionary = vm.descriptionDictionary;
-            newHotel.star = vm.star;
-            newHotel.cityId = $scope.selectedCity.cityId;
-            newHotel.latitude = vm.latitude;
-            newHotel.longitude = vm.longitude;
-            newHotel.hotelFeature = vm.selectedfeatures;
-
-            var model = new FormData();
-            model.append('data', JSON.stringify(newHotel));
-            vm.files.forEach(function (element) {
-                model.append('file', element);
-            }, this);
-
-            $http({
-                method: 'POST',
-                url: appCONSTANTS.API_URL + 'Hotels/',
-                useToken: true,
-                headers: { 'Content-Type': undefined },
-                transformRequest: angular.identity,
-                data: model
-            }).then(
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
-
-                    blockUI.stop();
-                    $state.go('Hotel')
-
-                },
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                    blockUI.stop();
-                }
-            );
-        }
-        vm.files = [];
-        $scope.AddFile = function (element) {
-            debugger; var imageFile = element[0];
-
-            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
-
-            vm.files.forEach(function (file) {
-                if (file.name === imageFile.name) {
-                    vm.fileExist = true;
-                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
-                    return
-                }
-            }, this);
-            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
-
-                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
-                    if (!vm.fileExist) {
-                        $scope.newHotelForm.$dirty = true;
-                        $scope.$apply(function () {
-
-                            vm.files.push(imageFile);
-                            var reader = new FileReader();
-
-                            reader.onloadend = function () {
-                                $scope.$apply();
-                            };
-                            if (imageFile) {
-                                reader.readAsDataURL(imageFile);
-                            }
-                        })
-                    }
-                    else {
-                        $("#file").val('');
-                        $scope.$apply()
-                    }
-                } else {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
-                }
-
-            } else {
-                if (imageFile) {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
-                }
-
-            }
-
-
-        }
-
-        vm.removeFile = function (index) {
-            vm.files.splice(index, 1);
-        }
-
-    }
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editHotelDialogController', ['$scope', '$filter','blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-        'CountryPrepService',    'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
-
-    function editHotelDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
-         HotelResource, ToastService,FeaturePrepService, HotelByIdPrepService) {
-        blockUI.start("Loading..."); 
-        function init(){ 
-            $scope.CountryList = []; 
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
-            $scope.FeatureList = FeaturePrepService.results;
-
-                       $scope.CityList = [];
-            $scope.CityList.push($scope.selectedCity);
-        }
-        init();
-        $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
-            var location = $scope.autocomplete.getPlace().geometry.location;
-           vm.Hotel.latitude = location.lat();
-           vm.Hotel.longitude = location.lng();
-            $scope.$apply();
-        });
-
-        var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.Hotel = HotelByIdPrepService; 
-        vm.RemoveImages = []; 
-        vm.CheckImages = []; 
-        vm.selectedHotelFeatures=[] ;
-        console.log( vm.Hotel);
-        vm.CheckImages.push(vm.Hotel.imagesURL);
-        var i;
-        for (i = 0; i < vm.Hotel.hotelFeature.length; i++) {
-            var indexFeature = $scope.FeatureList.indexOf($filter('filter')($scope.FeatureList, { 'featureId': vm.Hotel.hotelFeature[i].featureId }, true)[0]);
-            vm.selectedHotelFeatures.push($scope.FeatureList[indexFeature]);
-
-        }
-
-
-      var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Hotel.city.countryId }, true)[0]);
-      $scope.selectedCountry=$scope.CountryList[indexCountry];
-
-
-            $scope.CityList = $scope.selectedCountry.cityes;
-  var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Hotel.city.cityId }, true)[0]);
-  $scope.selectedCity=$scope.selectedCountry.cityes[indexCity];  
-
-  $scope.CountryChange = function () {
-    for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
-        if ($scope.CountryList[i].CountryId == 0) {
-            $scope.CountryList.splice(i, 1);
-        }
-    }
-    $scope.CityList = [];
-    $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-    $scope.CityList.push($scope.selectedCity);
-    $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
-} 
-
-        vm.Close = function () {
-            $state.go('Hotel');
-        } 
-        blockUI.stop();
-        vm.isChanged = false;
-
-        vm.LoadUploadImages = function () {
-            $("#file").click();
-            vm.fileExist = false;
-
-        }
-        vm.UpdateHotel = function () {
-            debugger;
-        blockUI.start("Loading..."); 
-        vm.isChanged = true;
-            var updateObj = new Object();
-            updateObj.hotelId = vm.Hotel.hotelId; 
-            updateObj.titleDictionary = vm.Hotel.titleDictionary; 
-            updateObj.descriptionDictionary = vm.Hotel.descriptionDictionary; 
-            updateObj.star = vm.Hotel.star; 
-            updateObj.cityId =  $scope.selectedCity.cityId; 
-            updateObj.latitude =  vm.Hotel.latitude; 
-            updateObj.longitude =  vm.Hotel.longitude; 
-            updateObj.removeImages =  vm.RemoveImages; 
-            updateObj.hotelFeature = vm.selectedHotelFeatures;
-
-                    var model = new FormData();
-            model.append('data', JSON.stringify(updateObj));
-            vm.files.forEach(function (element) {
-                model.append('file', element);
-            }, this);
-
-            $http({
-                method: 'POST',
-                url: appCONSTANTS.API_URL + 'Hotels/EditHotel',
-                useToken: true,
-                headers: { 'Content-Type': undefined },
-                transformRequest: angular.identity,
-                data: model
-            }).then(
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
-
-                                       blockUI.stop();
-                     $state.go('Hotel')
-
-                },
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-        blockUI.stop();
-    }
-                );
-        }
-        vm.files = [];
-        $scope.AddFile = function (element) {
-            var imageFile = element[0];
-
-            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
-
-            vm.files.forEach(function (file) {
-                if (file.name === imageFile.name) {
-                    vm.fileExist = true;
-                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
-                    return
-                }
-            }, this);
-            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
-
-                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
-                    if (!vm.fileExist) {
-                        $scope.UpdateHotelForm.$dirty = true;
-                        $scope.$apply(function () {
-
-                            vm.files.push(imageFile);
-                            vm.CheckImages.push(imageFile);
-                            var reader = new FileReader();
-
-                            reader.onloadend = function () {
-                                $scope.$apply();
-                            };
-                            if (imageFile) {
-                                reader.readAsDataURL(imageFile);
-                            }
-                        })
-                    }
-                    else {
-                        $("#file").val('');
-                        $scope.$apply()
-                    }
-                } else {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
-                }
-
-            } else {
-                if (imageFile) {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
-                }
-
-            }
-
-
-        }
-
-        vm.removeFile = function (index) {
-           vm.RemoveImages.push(index);
-            vm.files.splice(index, 1);
-            vm.CheckImages.splice(index, 1);
-        }
-
-	        vm.removeHotelFile = function (index) { 
-            vm.CheckImages.splice(index, 1);
-            vm.Hotel.imagesURL.splice(index, 1);
-        }}	
 }());
 (function () {
     'use strict';
