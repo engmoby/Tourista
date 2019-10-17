@@ -124,6 +124,15 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About the HAJJ &amp; UMRAH.
+        /// </summary>
+        public static string Aboutthetour {
+            get {
+                return ResourceManager.GetString("Aboutthetour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attach file Required.
         /// </summary>
         public static string Attach_file_Required {
@@ -138,6 +147,15 @@ namespace TouristaFrontEnd.Resources {
         public static string AWESOMEBACKGE {
             get {
                 return ResourceManager.GetString("AWESOMEBACKGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AWESOME HAJJ &amp; UMRAH.
+        /// </summary>
+        public static string AWESOMETOUR {
+            get {
+                return ResourceManager.GetString("AWESOMETOUR", resourceCulture);
             }
         }
         
@@ -1033,6 +1051,15 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HAJJ &amp; UMRAH.
+        /// </summary>
+        public static string Header_Tour {
+            get {
+                return ResourceManager.GetString("Header_Tour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -1560,6 +1587,15 @@ namespace TouristaFrontEnd.Resources {
         public static string Subscribe {
             get {
                 return ResourceManager.GetString("Subscribe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HAJJ &amp; UMRAH Overview.
+        /// </summary>
+        public static string TourOverview {
+            get {
+                return ResourceManager.GetString("TourOverview", resourceCulture);
             }
         }
         

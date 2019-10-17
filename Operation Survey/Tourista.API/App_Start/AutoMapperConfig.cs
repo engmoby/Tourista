@@ -53,6 +53,13 @@ namespace Tourista.API
             mapperConfiguration.CreateMap<OfferModel, OfferDto>();
             mapperConfiguration.CreateMap<OfferDto, OfferModel>();
 
+
+            mapperConfiguration.CreateMap<TourModel, TourDto>();
+            mapperConfiguration.CreateMap<TourDto, TourModel>();
+            mapperConfiguration.CreateMap<TourReservationModel, TourReservationDto>();
+            mapperConfiguration.CreateMap<TourReservationDto, TourReservationModel>();
+
+
             mapperConfiguration.CreateMap<OfferReservationModel, OfferReservationDto>();
             mapperConfiguration.CreateMap<OfferReservationDto, OfferReservationModel>();
 

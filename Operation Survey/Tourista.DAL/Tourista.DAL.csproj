@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Model\TourReservation.cs" />
     <Compile Include="Entities\Model\Offer.cs" />
     <Compile Include="Entities\Model\OfferReservation.cs" />
     <Compile Include="Entities\Model\OfferTranslation.cs" />

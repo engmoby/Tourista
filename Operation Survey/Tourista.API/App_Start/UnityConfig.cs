@@ -70,6 +70,9 @@ namespace Tourista.API
                 .RegisterType<IOfferReservationFacade, OfferReservationFacade>(new PerResolveLifetimeManager())
 
 
+                .RegisterType<ITourFacade, TourFacade>(new PerResolveLifetimeManager())
+                .RegisterType<ITourReservationFacade, TourReservationFacade>(new PerResolveLifetimeManager())
+
                 .RegisterType<IAboutFacade, AboutFacade>(new PerResolveLifetimeManager())
 
                 .RegisterType<IContactFacade, ContactFacade>(new PerResolveLifetimeManager())

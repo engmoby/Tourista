@@ -332,6 +332,11 @@ a:hover {
 .page-banner.hotel-view {
  background-image: url('/Content/images/background/hotel-view-banner.jpg');
 }
+
+.tour-result-hajj {
+  background-image: url('/Content/images/background/hajj.jpg');
+	
+}
 .page-banner-2.homepage-02 {
  background-image: url('/Content/images/background/homepage-02-banner.jpg');
 }

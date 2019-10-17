@@ -1,0 +1,35 @@
+<div>
+    <div ng-if="OfferReservationList.results.length == 0">
+        <span>{{'NoOfferReservationsAvailable' | translate}}</span>
+    </div>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="OfferReservationList.results.length > 0">
+        <div class="table-responsive"></div>
+        <table class="table pmd-table table-hover">
+            <thead>
+                <tr>
+                    <th>{{'Offer' | translate}}</th>
+                    <th>{{'Date' | translate}}</th>
+                    <th>{{'User' | translate}}</th>
+                    <th>{{'Status' | translate}}</th>
+                    <th>{{'InCharge' | translate}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-class="{'red-text': OfferReservation.status == 3,'green-text': OfferReservation.status == 0}" ng-repeat="OfferReservation in OfferReservationList.results">
+                    <td data-title="Offer">{{OfferReservation.offer.titleDictionary[selectedLanguage]}}</td>
+                    <td data-title="Date">{{OfferReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>
+                    <td data-title="User"> {{OfferReservation.user.fullName}} </td>
+                    <td> {{(StatusList |filter: {id: key})[OfferReservation.status].text | translate}} </td>
+                    <td> {{OfferReservation.seenUser.fullName}} / {{OfferReservation.seenUser.title}} </td>
+                    <td>
+                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editOfferReservation',{offerReservationId: OfferReservation.offerReservationId});">mode_edit</i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+        flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>

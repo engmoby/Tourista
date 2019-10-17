@@ -75,7 +75,7 @@
             class="btn pmd-ripple-effect btn-primary" type="button" ng-click="AddNewclient()">
         {{'saveChangesBtn' | translate}}
     </button>
-    <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="Close()">{{'DiscardBtn' | translate}}</button>
+    <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="$state.go('users');">{{'DiscardBtn' | translate}}</button>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {

@@ -192,6 +192,7 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,6 +202,7 @@
     <Compile Include="Models\OfferModel.cs" />
     <Compile Include="Models\OfferReservationModel.cs" />
     <Compile Include="Models\BackageReservationModel.cs" />
+    <Compile Include="Models\TourReservationModel.cs" />
     <Compile Include="Models\TypeModel.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -709,6 +711,9 @@
     <Content Include="Views\Offer\Details.cshtml" />
     <Content Include="Views\Offer\Index.cshtml" />
     <Content Include="Views\Offer\RelatedOffers.cshtml" />
+    <Content Include="Views\Tour\Details.cshtml" />
+    <Content Include="Views\Tour\Index.cshtml" />
+    <Content Include="Views\Tour\RelatedTours.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

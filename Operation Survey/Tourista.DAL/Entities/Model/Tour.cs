@@ -14,8 +14,10 @@ namespace Tourista.DAL.Entities.Model
         public DateTime? StartFrom { get; set; }
         public DateTime? StartTo { get; set; }
         public int Duration { get; set; }
-        public decimal AdultPrice { get; set; }
-        public decimal ChildPrice { get; set; }
+        public int MekkaDays { get; set; }
+        public int MadinaDays { get; set; }
+        public decimal Price { get; set; }
+        public string HotelTitle { get; set; }
         public int UserId { get; set; }
 
         public bool IsDeleted { get; set; }

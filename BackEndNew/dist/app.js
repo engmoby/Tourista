@@ -533,6 +533,60 @@
 
                 })
 
+                .state('Tour', {
+                    url: '/Tour',
+                    templateUrl: './app/GlobalAdmin/Tour/templates/Tour.html',
+                    controller: 'TourController',
+                    'controllerAs': 'TourCtrl',
+                    resolve: {
+                        TourPrepService: TourPrepService,
+                        CountryPrepService: CountryPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newTour', {
+                    url: '/newTour',
+                    templateUrl: './app/GlobalAdmin/Tour/templates/new.html',
+                    controller: 'createTourDialogController',
+                    'controllerAs': 'newTourCtrl',
+                    resolve: {
+                        TourPrepService: TourPrepService,
+                        CountryPrepService: CountryPrepService,
+                        FeaturePrepService: FeaturePrepService,
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editTour', {
+                    url: '/editTour/:TourId',
+                    templateUrl: './app/GlobalAdmin/Tour/templates/edit.html',
+                    controller: 'editTourDialogController',
+                    'controllerAs': 'editTourCtrl',
+                    resolve: {
+                        TourByIdPrepService: TourByIdPrepService,
+                        CountryPrepService: CountryPrepService,
+                        FeaturePrepService: FeaturePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
 
 
                 .state('Backage', {
@@ -590,6 +644,131 @@
                     }
 
                 })
+
+
+                                .state('BackageReservation', {
+                    url: '/BackageReservation',
+                    templateUrl: './app/GlobalAdmin/BackageReservation/templates/BackageReservation.html',
+                    controller: 'BackageReservationController',
+                    'controllerAs': 'BackageReservationCtrl',
+                    resolve: {
+                        BackageReservationPrepService: BackageReservationPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editBackageReservation', {
+                    url: '/editBackageReservation/:backageReservationId',
+                    templateUrl: './app/GlobalAdmin/BackageReservation/templates/edit.html',
+                    controller: 'editBackageReservationDialogController',
+                    'controllerAs': 'editBackageReservationCtrl',
+                    resolve: {
+                        BackageReservationByIdPrepService: BackageReservationByIdPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
+
+                .state('Offer', {
+                    url: '/Offer',
+                    templateUrl: './app/GlobalAdmin/Offer/templates/Offer.html',
+                    controller: 'OfferController',
+                    'controllerAs': 'OfferCtrl',
+                    resolve: {
+                        OfferPrepService: OfferPrepService,
+                        CountryPrepService: CountryPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newOffer', {
+                    url: '/newOffer',
+                    templateUrl: './app/GlobalAdmin/Offer/templates/new.html',
+                    controller: 'createOfferDialogController',
+                    'controllerAs': 'newOfferCtrl',
+                    resolve: {
+                        OfferPrepService: OfferPrepService,
+                        CountryPrepService: CountryPrepService,
+                        HotelPrepService: HotelPrepService,
+                        TypePrepService: TypePrepService,
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editOffer', {
+                    url: '/editOffer/:offerId',
+                    templateUrl: './app/GlobalAdmin/Offer/templates/edit.html',
+                    controller: 'editOfferDialogController',
+                    'controllerAs': 'editOfferCtrl',
+                    resolve: {
+                        OfferByIdPrepService: OfferByIdPrepService,
+                        CountryPrepService: CountryPrepService,
+                        HotelPrepService: HotelPrepService,
+                        TypePrepService: TypePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
+                                .state('OfferReservation', {
+                    url: '/OfferReservation',
+                    templateUrl: './app/GlobalAdmin/OfferReservation/templates/OfferReservation.html',
+                    controller: 'OfferReservationController',
+                    'controllerAs': 'OfferReservationCtrl',
+                    resolve: {
+                        OfferReservationPrepService: OfferReservationPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editOfferReservation', {
+                    url: '/editOfferReservation/:offerReservationId',
+                    templateUrl: './app/GlobalAdmin/OfferReservation/templates/edit.html',
+                    controller: 'editOfferReservationDialogController',
+                    'controllerAs': 'editOfferReservationCtrl',
+                    resolve: {
+                        OfferReservationByIdPrepService: OfferReservationByIdPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
                 .state('About', {
                     url: '/About',
                     templateUrl: './app/GlobalAdmin/About/templates/About.html',
@@ -880,6 +1059,22 @@
 
 
 
+    TourPrepService.$inject = ['TourResource']
+    function TourPrepService(TourResource) {
+        return TourResource.GetAllTours().$promise;
+    }
+
+    AllTourPrepService.$inject = ['TourResource']
+    function AllTourPrepService(TourResource) {
+        return TourResource.GetAllTours({ pageSize: 0 }).$promise;
+    }
+
+    TourByIdPrepService.$inject = ['TourResource', '$stateParams']
+    function TourByIdPrepService(TourResource, $stateParams) {
+        return TourResource.getTour({ tourId: $stateParams.tourId }).$promise;
+    }
+
+
     BackagePrepService.$inject = ['BackageResource']
     function BackagePrepService(BackageResource) {
         return BackageResource.GetAllBackages().$promise;
@@ -893,6 +1088,50 @@
     BackageByIdPrepService.$inject = ['BackageResource', '$stateParams']
     function BackageByIdPrepService(BackageResource, $stateParams) {
         return BackageResource.getBackage({ backageId: $stateParams.backageId }).$promise;
+    }
+
+    BackageReservationPrepService.$inject = ['BackageReservationResource']
+    function BackageReservationPrepService(BackageReservationResource) {
+        return BackageReservationResource.GetAllBackageReservation().$promise;
+    }
+
+    AllBackageReservationPrepService.$inject = ['BackageReservationResource']
+    function AllBackageReservationPrepService(BackageReservationResource) {
+        return BackageReservationResource.GetAllBackageReservation({ pageSize: 0 }).$promise;
+    }
+
+    BackageReservationByIdPrepService.$inject = ['BackageReservationResource', '$stateParams']
+    function BackageReservationByIdPrepService(BackageReservationResource, $stateParams) {
+        return BackageReservationResource.getBackageReservation({ backageReservationId: $stateParams.backageReservationId }).$promise;
+    }
+
+    OfferPrepService.$inject = ['OfferResource']
+    function OfferPrepService(OfferResource) {
+        return OfferResource.GetAllOffers().$promise;
+    }
+
+    AllOfferPrepService.$inject = ['OfferResource']
+    function AllOfferPrepService(OfferResource) {
+        return OfferResource.GetAllOffers({ pageSize: 0 }).$promise;
+    }
+
+    OfferByIdPrepService.$inject = ['OfferResource', '$stateParams']
+    function OfferByIdPrepService(OfferResource, $stateParams) {
+        return OfferResource.getOffer({ offerId: $stateParams.offerId }).$promise;
+    }
+    OfferReservationPrepService.$inject = ['OfferReservationResource']
+    function OfferReservationPrepService(OfferReservationResource) {
+        return OfferReservationResource.GetAllOfferReservation().$promise;
+    }
+
+    AllOfferReservationPrepService.$inject = ['OfferReservationResource']
+    function AllOfferReservationPrepService(OfferReservationResource) {
+        return OfferReservationResource.GetAllOfferReservation({ pageSize: 0 }).$promise;
+    }
+
+    OfferReservationByIdPrepService.$inject = ['OfferReservationResource', '$stateParams']
+    function OfferReservationByIdPrepService(OfferReservationResource, $stateParams) {
+        return OfferReservationResource.getOfferReservation({ offerReservationId: $stateParams.offerReservationId }).$promise;
     }
 
     AboutPrepService.$inject = ['AboutResource']
@@ -1500,6 +1739,129 @@
             vm.Backage.imagesURL.splice(index, 1);
         }
     }
+}());
+
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('BackageReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'BackageReservationResource', 'BackageReservationPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', BackageReservationController]);
+
+
+    function BackageReservationController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, BackageReservationResource, BackageReservationPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.StatusList = appCONSTANTS.Status;
+        $scope.totalCount = BackageReservationPrepService.totalCount;
+        $scope.BackageReservationList = BackageReservationPrepService; 
+      console.log( $scope.BackageReservationList);
+        function refreshBackageReservations() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = BackageReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.BackageReservationList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshBackageReservations();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('BackageReservationResource', ['$resource', 'appCONSTANTS', BackageReservationResource]) 
+
+    function BackageReservationResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'BackageReservations/', {}, {
+            GetAllBackageReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'BackageReservations/GetAllBackageReservations', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'BackageReservations/EditBackageReservation', useToken: true },
+            getBackageReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'BackageReservations/GetBackageReservationById/:BackageReservationId', useToken: true }
+        })
+    } 
+
+}());
+
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editBackageReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'BackageReservationResource', 'ToastService',
+            'BackageReservationByIdPrepService', editBackageReservationDialogController])
+
+    function editBackageReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, BackageReservationResource, ToastService, BackageReservationByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+        $scope.StatusList = appCONSTANTS.Status;
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.BackageReservation = BackageReservationByIdPrepService; 
+        console.log( vm.BackageReservation);
+
+               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.BackageReservation.status }, true)[0]);
+        $scope.selectedStatus=$scope.StatusList[indexStatus];
+
+
+        vm.Close = function () {
+            $state.go('BackageReservation');
+        }
+        vm.UpdateBackageReservation = function () { 
+            blockUI.start("Loading..."); 
+            debugger;
+            var updateObj = new BackageReservationResource();
+            updateObj.backageReservationId = vm.BackageReservation.backageReservationId; 
+            updateObj.adult = vm.BackageReservation.adult; 
+            updateObj.roomCount = vm.BackageReservation.roomCount; 
+            updateObj.child = vm.BackageReservation.child; 
+            updateObj.status = $scope.selectedStatus.id; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('BackageReservation');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
 }());
 (function () {
     'use strict';
@@ -3789,6 +4151,532 @@ console.log( $scope.ClientList);
 
     angular
         .module('home')
+        .controller('OfferController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'OfferResource', 'OfferPrepService', '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', OfferController]);
+
+
+    function OfferController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, OfferResource, OfferPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) {
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+
+        blockUI.start("Loading...");
+
+        var vm = this;
+        $scope.totalCount = OfferPrepService.totalCount;
+        $scope.OfferList = OfferPrepService;
+        console.log($scope.OfferList);
+        function refreshOffers() {
+
+            blockUI.start("Loading...");
+
+            var k = OfferResource.GetAllOffers({ page: vm.currentPage }).$promise.then(function (results) {
+                $scope.OfferList = results
+                blockUI.stop();
+
+            },
+                function (data, status) {
+                    blockUI.stop();
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+                });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshOffers();
+        }
+        blockUI.stop();
+
+    }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('OfferResource', ['$resource', 'appCONSTANTS', OfferResource]) 
+
+    function OfferResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Offers/', {}, {
+            GetAllOffers: { method: 'GET', url: appCONSTANTS.API_URL + 'Offers/GetAllOffers', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Offers/EditOffer', useToken: true },
+            getOffer: { method: 'GET', url: appCONSTANTS.API_URL + 'Offers/GetOfferById/:OfferId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('createOfferDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
+
+    function createOfferDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        HotelPrepService, TypePrepService, OfferResource, ToastService, $rootScope) {
+
+        blockUI.start("Loading...");
+        function init() {
+            $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
+            $scope.CountryList = [];
+            $scope.CountryList.push($scope.selectedCountry);
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+            debugger;
+            $scope.HotelList = HotelPrepService.results;
+            $scope.TypeList = TypePrepService.results;
+        }
+        init();
+
+        $scope.CountryChange = function () {
+            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+                if ($scope.CountryList[i].CountryId == 0) {
+                    $scope.CountryList.splice(i, 1);
+                }
+            }
+            $scope.CityList = [];
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList.push($scope.selectedCity);
+            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+        }
+
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.close = function () {
+            $state.go('Offer');
+        }
+
+
+
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.AddNewOffer = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var newOffer = new Object();
+            newOffer.titleDictionary = vm.titleDictionary;
+            newOffer.descriptionDictionary = vm.descriptionDictionary;
+            newOffer.star = vm.star;
+            newOffer.cityId = $scope.selectedCity.cityId;
+            newOffer.daysCount = vm.daysCount;
+            newOffer.nigthsCount = vm.nigthsCount;
+            newOffer.price = vm.price;
+            newOffer.hotelId = vm.selectedHotel.hotelId;
+            newOffer.typeId = vm.selectedType.typeId;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(newOffer));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Offers/',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Offer')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+                );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            debugger; var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.newOfferForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.files.splice(index, 1);
+        }
+
+    }
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('editOfferDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'OfferResource', 'ToastService', 'HotelPrepService','TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
+
+    function editOfferDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        OfferResource, ToastService, HotelPrepService,TypePrepService, OfferByIdPrepService) {
+        blockUI.start("Loading...");
+        function init() {
+            $scope.CountryList = [];
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.HotelList = HotelPrepService.results;
+            $scope.TypeList = TypePrepService.results;
+
+            $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+        }
+        init(); 
+
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.Offer = OfferByIdPrepService;
+        vm.RemoveImages = [];
+        vm.CheckImages = [];
+        vm.selectedHotel = [];
+        console.log(vm.Offer);
+        vm.CheckImages.push(vm.Offer.imagesURL);
+
+
+        var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Offer.hotel.hotelId }, true)[0]);
+        $scope.selectedHotel = $scope.HotelList[indexHotel];
+
+        var indexType = $scope.TypeList.indexOf($filter('filter')($scope.TypeList, { 'typeId': vm.Offer.type.typeId }, true)[0]);
+        $scope.selectedType = $scope.TypeList[indexType];
+
+        var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Offer.city.countryId }, true)[0]);
+        $scope.selectedCountry = $scope.CountryList[indexCountry];
+
+
+        $scope.CityList = $scope.selectedCountry.cityes;
+        var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Offer.city.cityId }, true)[0]);
+        $scope.selectedCity = $scope.selectedCountry.cityes[indexCity];
+
+        $scope.CountryChange = function () {
+            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+                if ($scope.CountryList[i].CountryId == 0) {
+                    $scope.CountryList.splice(i, 1);
+                }
+            }
+            $scope.CityList = [];
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList.push($scope.selectedCity);
+            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+        }
+
+        vm.Close = function () {
+            $state.go('Offer');
+        }
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.UpdateOffer = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var updateObj = new Object();
+            updateObj.offerId = vm.Offer.offerId;
+            updateObj.titleDictionary = vm.Offer.titleDictionary;
+            updateObj.descriptionDictionary = vm.Offer.descriptionDictionary;
+            updateObj.star = vm.Offer.star;
+            updateObj.cityId = $scope.selectedCity.cityId; 
+            updateObj.removeImages = vm.RemoveImages; 
+            updateObj.daysCount = vm.Offer.daysCount;
+            updateObj.nigthsCount = vm.Offer.nigthsCount;
+            updateObj.price = vm.Offer.price;
+            updateObj.hotelId = $scope.selectedHotel.hotelId;
+            updateObj.typeId = $scope.selectedType.typeId;
+
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Offers/EditOffer',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Offer')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+                );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.UpdateOfferForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            vm.CheckImages.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.RemoveImages.push(index);
+            vm.files.splice(index, 1);
+            vm.CheckImages.splice(index, 1);
+        }
+
+        vm.removeOfferFile = function (index) {
+            vm.CheckImages.splice(index, 1);
+            vm.Offer.imagesURL.splice(index, 1);
+        }
+    }
+}());
+
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('OfferReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'OfferReservationResource', 'OfferReservationPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', OfferReservationController]);
+
+
+    function OfferReservationController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, OfferReservationResource, OfferReservationPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.StatusList = appCONSTANTS.Status;
+        $scope.totalCount = OfferReservationPrepService.totalCount;
+        $scope.OfferReservationList = OfferReservationPrepService; 
+      console.log( $scope.OfferReservationList);
+        function refreshOfferReservations() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = OfferReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.OfferReservationList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshOfferReservations();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('OfferReservationResource', ['$resource', 'appCONSTANTS', OfferReservationResource]) 
+
+    function OfferReservationResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'OfferReservations/', {}, {
+            GetAllOfferReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'OfferReservations/GetAllOfferReservations', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'OfferReservations/EditOfferReservation', useToken: true },
+            getOfferReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'OfferReservations/GetOfferReservationById/:OfferReservationId', useToken: true }
+        })
+    } 
+
+}());
+
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editOfferReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'OfferReservationResource', 'ToastService',
+            'OfferReservationByIdPrepService', editOfferReservationDialogController])
+
+    function editOfferReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, OfferReservationResource, ToastService, OfferReservationByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+        $scope.StatusList = appCONSTANTS.Status;
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.OfferReservation = OfferReservationByIdPrepService; 
+        console.log( vm.OfferReservation);
+
+               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.OfferReservation.status }, true)[0]);
+        $scope.selectedStatus=$scope.StatusList[indexStatus];
+
+
+        vm.Close = function () {
+            $state.go('OfferReservation');
+        }
+        vm.UpdateOfferReservation = function () { 
+            blockUI.start("Loading..."); 
+            debugger;
+            var updateObj = new OfferReservationResource();
+            updateObj.offerReservationId = vm.OfferReservation.offerReservationId; 
+            updateObj.adult = vm.OfferReservation.adult; 
+            updateObj.roomCount = vm.OfferReservation.roomCount; 
+            updateObj.child = vm.OfferReservation.child; 
+            updateObj.status = $scope.selectedStatus.id; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('OfferReservation');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
         .controller('OwnerController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'OwnerResource', 'OwnerPrepService',  '$localStorage',
             'authorizationService', 'appCONSTANTS',
@@ -3942,6 +4830,383 @@ console.log( $scope.ClientList);
         blockUI.stop();
 
         	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('TourController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'TourResource', 'TourPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', TourController]);
+
+
+    function TourController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, TourResource, TourPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.totalCount = TourPrepService.totalCount;
+        $scope.TourList = TourPrepService; 
+      console.log( $scope.TourList);
+        function refreshTours() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = TourResource.GetAllTours({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.TourList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshTours();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('TourResource', ['$resource', 'appCONSTANTS', TourResource]) 
+
+    function TourResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Tours/', {}, {
+            GetAllTours: { method: 'GET', url: appCONSTANTS.API_URL + 'Tours/GetAllTours', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Tours/EditTour', useToken: true },
+            getTour: { method: 'GET', url: appCONSTANTS.API_URL + 'Tours/GetTourById/:TourId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('createTourDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
+
+    function createTourDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        FeaturePrepService, TourResource, ToastService, $rootScope) {
+
+        blockUI.start("Loading..."); 
+
+             var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.close = function () {
+            $state.go('Tour');
+        }
+
+
+         blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.AddNewTour = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var newTour = new Object();
+            newTour.titleDictionary = vm.titleDictionary;
+            newTour.descriptionDictionary = vm.descriptionDictionary; 
+            newTour.mekkaDays = vm.mekkaDays; 
+            newTour.madinaDays = vm.madinaDays; 
+            newTour.duration = vm.duration; 
+            newTour.price = vm.price; 
+            newTour.startFrom = vm.startFrom;
+            newTour.startTo = vm.startTo;
+            newTour.hotelTitle = vm.hotelTitle;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(newTour));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Tours/',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Tour')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            debugger; var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.newTourForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.files.splice(index, 1);
+        }
+
+    }
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editTourDialogController', ['$scope', '$filter','blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+        'CountryPrepService',    'TourResource', 'ToastService', 'FeaturePrepService', 'TourByIdPrepService', editTourDialogController])
+
+    function editTourDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
+         TourResource, ToastService,FeaturePrepService, TourByIdPrepService) {
+        blockUI.start("Loading..."); 
+        function init(){ 
+            $scope.CountryList = []; 
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
+            $scope.FeatureList = FeaturePrepService.results;
+
+                       $scope.CityList = [];
+            $scope.CityList.push($scope.selectedCity);
+        }
+        init();
+        $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
+            var location = $scope.autocomplete.getPlace().geometry.location;
+           vm.Tour.latitude = location.lat();
+           vm.Tour.longitude = location.lng();
+            $scope.$apply();
+        });
+
+        var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.Tour = TourByIdPrepService; 
+        vm.RemoveImages = []; 
+        vm.CheckImages = []; 
+        vm.selectedTourFeatures=[] ;
+        console.log( vm.Tour);
+        vm.CheckImages.push(vm.Tour.imagesURL);
+        var i;
+        for (i = 0; i < vm.Tour.tourFeature.length; i++) {
+            var indexFeature = $scope.FeatureList.indexOf($filter('filter')($scope.FeatureList, { 'featureId': vm.Tour.tourFeature[i].featureId }, true)[0]);
+            vm.selectedTourFeatures.push($scope.FeatureList[indexFeature]);
+
+        }
+
+
+      var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Tour.city.countryId }, true)[0]);
+      $scope.selectedCountry=$scope.CountryList[indexCountry];
+
+
+            $scope.CityList = $scope.selectedCountry.cityes;
+  var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Tour.city.cityId }, true)[0]);
+  $scope.selectedCity=$scope.selectedCountry.cityes[indexCity];  
+
+  $scope.CountryChange = function () {
+    for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+        if ($scope.CountryList[i].CountryId == 0) {
+            $scope.CountryList.splice(i, 1);
+        }
+    }
+    $scope.CityList = [];
+    $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+    $scope.CityList.push($scope.selectedCity);
+    $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
+} 
+
+        vm.Close = function () {
+            $state.go('Tour');
+        } 
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.UpdateTour = function () {
+            debugger;
+        blockUI.start("Loading..."); 
+        vm.isChanged = true;
+            var updateObj = new Object();
+            updateObj.tourId = vm.Tour.tourId; 
+            updateObj.titleDictionary = vm.Tour.titleDictionary; 
+            updateObj.descriptionDictionary = vm.Tour.descriptionDictionary; 
+            updateObj.star = vm.Tour.star; 
+            updateObj.cityId =  $scope.selectedCity.cityId; 
+            updateObj.latitude =  vm.Tour.latitude; 
+            updateObj.longitude =  vm.Tour.longitude; 
+            updateObj.removeImages =  vm.RemoveImages; 
+            updateObj.tourFeature = vm.selectedTourFeatures;
+
+                    var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Tours/EditTour',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                                       blockUI.stop();
+                     $state.go('Tour')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+        blockUI.stop();
+    }
+                );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.UpdateTourForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            vm.CheckImages.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+           vm.RemoveImages.push(index);
+            vm.files.splice(index, 1);
+            vm.CheckImages.splice(index, 1);
+        }
+
+	        vm.removeTourFile = function (index) { 
+            vm.CheckImages.splice(index, 1);
+            vm.Tour.imagesURL.splice(index, 1);
+        }}	
 }());
 (function () {
     'use strict';

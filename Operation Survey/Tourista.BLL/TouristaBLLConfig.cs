@@ -107,6 +107,19 @@ namespace Tourista.BLL
             mapperConfiguration.CreateMap<OfferReservationDto, OfferReservation>();
             mapperConfiguration.CreateMap<OfferReservation, OfferReservationDto>();
 
+            mapperConfiguration.CreateMap<TourDto, Tour>();
+            mapperConfiguration.CreateMap<Tour, TourDto>()
+                .ForMember(dto => dto.TitleDictionary,
+                    m => m.MapFrom(src => src.TourTranslations.ToDictionary(
+                        translation => translation.Language.ToLower(), translation => translation.Title)))
+                .ForMember(dto => dto.DescriptionDictionary,
+                    m => m.MapFrom(src => src.TourTranslations.ToDictionary(
+                        translation => translation.Language.ToLower(), translation => translation.Description)));
+
+
+            mapperConfiguration.CreateMap<TourReservationDto, TourReservation>();
+            mapperConfiguration.CreateMap<TourReservation, TourReservationDto>();
+
 
             mapperConfiguration.CreateMap<TypeDto, Type>();
             mapperConfiguration.CreateMap<Type, TypeDto>()
@@ -134,10 +147,7 @@ namespace Tourista.BLL
 
             mapperConfiguration.CreateMap<ContactFormDto, Inquery>();
             mapperConfiguration.CreateMap<Inquery, ContactFormDto>();
-            //mapperConfiguration.CreateMap<TourDto, Tour>();
-            //mapperConfiguration.CreateMap<Tour, TourDto>()
-            //    .ForMember(dto => dto.TitleDictionary, m => m.MapFrom(src => src.TourTranslations.ToDictionary(translation => translation.Language.ToLower(), translation => translation.Title)));
-
+             
 
             Mapper.Initialize(mapperConfiguration);
         }
@@ -163,8 +173,9 @@ namespace Tourista.BLL
                   .RegisterType<ITypeService, TypeService>(new PerResolveLifetimeManager())
                 .RegisterType<ITypeTranslationService, TypeTranslationService>(new PerResolveLifetimeManager())
 
-                //.RegisterType<ITourService, TourService>(new PerResolveLifetimeManager())
-                //.RegisterType<ITourTranslationService, TourTranslationService>(new PerResolveLifetimeManager())
+                .RegisterType<ITourService, TourService>(new PerResolveLifetimeManager())
+                .RegisterType<ITourTranslationService, TourTranslationService>(new PerResolveLifetimeManager())
+                .RegisterType<ITourReservationService, TourReservationService>(new PerResolveLifetimeManager())
 
                 .RegisterType<ICountryService, CountryService>(new PerResolveLifetimeManager())
                 .RegisterType<ICountryTranslationService, CountryTranslationService>(new PerResolveLifetimeManager())

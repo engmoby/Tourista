@@ -21,7 +21,7 @@
                     <td data-title="Date">{{HotelReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>
                     <td data-title="User"> {{HotelReservation.user.fullName}} </td>
                     <td> {{(StatusList |filter: {id: key})[HotelReservation.status].text | translate}} </td>
-                    <td> {{HotelReservation.seenUser.fullName}} / {{HotelReservation.user.title}} </td>
+                    <td> {{HotelReservation.seenUser.fullName}} / {{HotelReservation.seenUser.title}} </td>
                     <td>
                         <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editHotelReservation',{hotelReservationId: HotelReservation.hotelReservationId});">mode_edit</i>
                     </td>

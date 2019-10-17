@@ -16,7 +16,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/ar/TouristaFrontEnd.resources.dll">
-      <publishTime>10/12/2019 20:56:16</publishTime>
+      <publishTime>10/17/2019 23:04:25</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -139,7 +139,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TouristaFrontEnd.dll">
-      <publishTime>10/12/2019 20:56:16</publishTime>
+      <publishTime>10/17/2019 23:04:24</publishTime>
     </File>
     <File Include="bin/TouristaFrontEnd.pdb">
       <publishTime>09/22/2019 21:20:15</publishTime>
@@ -154,7 +154,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2018 21:00:42</publishTime>
     </File>
     <File Include="Content/components-ar.css">
-      <publishTime>11/17/2018 01:18:52</publishTime>
+      <publishTime>09/17/2018 23:31:54</publishTime>
     </File>
     <File Include="Content/components-huy.css">
       <publishTime>09/25/2018 16:26:51</publishTime>
@@ -337,7 +337,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2019 22:32:20</publishTime>
     </File>
     <File Include="Content/images/background/background.html">
-      <publishTime>09/16/2018 21:17:20</publishTime>
+      <publishTime>08/13/2018 22:02:04</publishTime>
     </File>
     <File Include="Content/images/background/bg-banner-contact-form.jpg">
       <publishTime>09/16/2018 21:22:06</publishTime>
@@ -910,10 +910,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/16/2018 21:10:08</publishTime>
     </File>
     <File Include="Content/layout-ar.css">
-      <publishTime>11/17/2018 01:18:39</publishTime>
+      <publishTime>10/17/2019 22:16:27</publishTime>
     </File>
     <File Include="Content/layout.css">
-      <publishTime>10/04/2019 23:36:18</publishTime>
+      <publishTime>10/17/2019 22:05:18</publishTime>
     </File>
     <File Include="Content/library.css">
       <publishTime>09/25/2018 16:26:51</publishTime>
@@ -1414,7 +1414,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2018 21:01:03</publishTime>
     </File>
     <File Include="Views/Backage/Details.cshtml">
-      <publishTime>10/12/2019 20:52:08</publishTime>
+      <publishTime>10/13/2019 06:39:48</publishTime>
     </File>
     <File Include="Views/Backage/Index.cshtml">
       <publishTime>10/03/2019 00:05:24</publishTime>
@@ -1435,7 +1435,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2019 22:32:20</publishTime>
     </File>
     <File Include="Views/Contact/Index.cshtml">
-      <publishTime>11/16/2018 11:08:04</publishTime>
+      <publishTime>10/13/2019 06:54:14</publishTime>
     </File>
     <File Include="Views/Home/AboutHome.cshtml">
       <publishTime>10/17/2018 20:15:40</publishTime>
@@ -1444,7 +1444,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/12/2019 13:32:11</publishTime>
     </File>
     <File Include="Views/Home/ContactUsHome.cshtml">
-      <publishTime>09/27/2019 22:32:20</publishTime>
+      <publishTime>10/13/2019 07:24:10</publishTime>
     </File>
     <File Include="Views/Home/HotelHome.cshtml">
       <publishTime>09/27/2019 22:32:20</publishTime>
@@ -1462,7 +1462,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/12/2018 13:19:54</publishTime>
     </File>
     <File Include="Views/Hotel/Details.cshtml">
-      <publishTime>10/12/2019 21:16:09</publishTime>
+      <publishTime>10/17/2019 23:03:52</publishTime>
     </File>
     <File Include="Views/Hotel/Index.cshtml">
       <publishTime>10/03/2019 00:07:44</publishTime>
@@ -1500,11 +1500,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/News/RelatedNewsById.cshtml">
       <publishTime>11/16/2018 19:57:52</publishTime>
     </File>
+    <File Include="Views/Offer/Details.cshtml">
+      <publishTime>10/17/2019 23:04:03</publishTime>
+    </File>
+    <File Include="Views/Offer/Index.cshtml">
+      <publishTime>10/13/2019 07:30:58</publishTime>
+    </File>
+    <File Include="Views/Offer/RelatedOffers.cshtml">
+      <publishTime>10/13/2019 07:30:52</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/24/2018 21:01:02</publishTime>
     </File>
     <File Include="Views/Shared/Footer.cshtml">
-      <publishTime>10/12/2019 13:55:53</publishTime>
+      <publishTime>10/13/2019 07:06:24</publishTime>
     </File>
     <File Include="Views/Shared/Lockout.cshtml">
       <publishTime>09/24/2018 21:01:04</publishTime>
@@ -1513,10 +1522,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2018 23:47:19</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/12/2019 17:59:55</publishTime>
+      <publishTime>10/17/2019 22:22:49</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>09/24/2018 21:01:04</publishTime>
+    </File>
+    <File Include="Views/Tour/Details.cshtml">
+      <publishTime>10/17/2019 23:01:25</publishTime>
+    </File>
+    <File Include="Views/Tour/Index.cshtml">
+      <publishTime>10/17/2019 22:09:11</publishTime>
+    </File>
+    <File Include="Views/Tour/RelatedTours.cshtml">
+      <publishTime>10/16/2019 20:53:17</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/24/2018 21:00:29</publishTime>
@@ -1525,7 +1543,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2018 21:00:29</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/12/2019 20:44:59</publishTime>
+      <publishTime>10/17/2019 23:04:27</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -269,6 +269,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\TourController.cs" />
+    <Compile Include="Controllers\TourReservationController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\OfferReservationController.cs" />
     <Compile Include="Controllers\ContactFormController.cs" />
@@ -296,6 +298,7 @@
     <Compile Include="Infrastructure\Filters\CustomExceptionFilter.cs" />
     <Compile Include="Infrastructure\ImageConvert.cs" />
     <Compile Include="Infrastructure\LanguageMessageHandler.cs" />
+    <Compile Include="Models\TourReservationModel.cs" />
     <Compile Include="Models\OfferModel.cs" />
     <Compile Include="Models\OfferReservationModel.cs" />
     <Compile Include="Models\BackageReservationModel.cs" />

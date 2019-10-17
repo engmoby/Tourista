@@ -59,8 +59,8 @@
 	angular
 		.module('core')
 		.constant('appCONSTANTS', {
-			 'API_URL': 'http://localhost:50755/api/', 
-			 //'API_URL': 'http://touristaegy.com/backend/api/',
+			// 'API_URL': 'http://localhost:50755/api/', 
+			 'API_URL': 'http://touristaegy.com/backend/api/',
 			'defaultLanguage': 'en',
 			'supportedLanguage': {
 				'en': { 'key': 'en', 'value': 'english' },

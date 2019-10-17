@@ -621,4 +621,16 @@
   <data name="OfferOverview" xml:space="preserve">
     <value>معلومات عن العرض</value>
   </data>
+  <data name="Aboutthetour" xml:space="preserve">
+    <value>عن الحج والعمرة</value>
+  </data>
+  <data name="AWESOMETOUR" xml:space="preserve">
+    <value>رائع للحج والعمرة</value>
+  </data>
+  <data name="Header_Tour" xml:space="preserve">
+    <value>الحج والعمرة</value>
+  </data>
+  <data name="TourOverview" xml:space="preserve">
+    <value>نظرة عامة على الحج والعمرة</value>
+  </data>
 </root>

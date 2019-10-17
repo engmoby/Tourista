@@ -235,7 +235,7 @@
                                                 <label class="tb-label">Note:</label>
                                                 <div class="input-group"><textarea id="Note" type="textarea" placeholder="Write your note" rows="3" class="tb-input"></textarea></div>
                                             </div>
-                                            <button id="test" type="submit" data-hover="SEND REQUEST" class="btn btn-slide"><span class="text">BOOK Now</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                            <button id="btnSubmitHotel" type="submit" data-hover="SEND REQUEST" class="btn btn-slide"><span class="text">BOOK Now</span><span class="icons fa fa-long-arrow-right"></span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -245,6 +245,7 @@
                         </div>
                     </div>
                 </div>
+                <br />
 
                 <div class="container">
 
@@ -266,7 +267,7 @@
 
     $(document).ready(function () {
 
-        $("#test").click(function () {
+        $("#btnSubmitHotel").click(function () {
             debugger;
             if ($('#firstname').val() == "" || $('#lastname').val() == "" || $('#Email').val() == "" || $('#Phone').val() == "" ||
                 $('#CheckIn').val() == "" || $('#CheckOut').val() == "" || $('#Adult').val() == "" || $('#Child').val() == "") {

@@ -1,0 +1,30 @@
+﻿@using Tourista.API.Models
+@using TouristaFrontEnd.Helper
+@model List<Tourista.API.Models.OfferModel>
+
+    @if (Model != null)
+    {
+        foreach (OfferModel OfferObj in Model)
+        {
+            <div class="special-offer margin-top70">
+                <h3 class="title-style-2">@TouristaFrontEnd.Resources.Global.Related</h3>
+                <div class="special-offer-list" style="margin-bottom: 44px;height: max-content;">
+
+                    <div class="special-offer-layout">
+                        <div class="image-wrapper">
+                            <a href="/Offer/Details/@OfferObj.OfferId" class="link"><img src="@OfferObj.ImagesURL[0]" alt="" class="img-responsive"></a>
+
+                            <div class="title-wrapper">
+                                <a href="/Offer/Details/@OfferObj.OfferId" class="title">
+                                    @(@OfferObj.TitleDictionary[@Common.CurrentLang].Length >= 20 ? OfferObj.TitleDictionary[@Common.CurrentLang].Substring(0, 20) : OfferObj.TitleDictionary[@Common.CurrentLang])
+                                </a>
+                                <i class="icons flaticon-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
+

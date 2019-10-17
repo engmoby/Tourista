@@ -96,6 +96,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataServices\Interfaces\ITourReservationService.cs" />
+    <Compile Include="DataServices\Interfaces\ITourService.cs" />
+    <Compile Include="DataServices\Interfaces\ITourTranslationService.cs" />
+    <Compile Include="DataServices\TourReservationService.cs" />
+    <Compile Include="DataServices\TourService.cs" />
+    <Compile Include="DataServices\TourTranslationService.cs" />
     <Compile Include="DataServices\Interfaces\IOfferReservationService.cs" />
     <Compile Include="DataServices\Interfaces\IOfferService.cs" />
     <Compile Include="DataServices\Interfaces\IOfferTranslationService.cs" />
@@ -164,6 +170,8 @@
     <Compile Include="DataServices\CityTranslationService.cs" />
     <Compile Include="DataServices\RefreshTokenService.cs" />
     <Compile Include="DataServices\UserService.cs" />
+    <Compile Include="DTOs\TourReservationDto.cs" />
+    <Compile Include="DTOs\TourDto.cs" />
     <Compile Include="DTOs\OfferDto.cs" />
     <Compile Include="DTOs\BackageDto.cs" />
     <Compile Include="DTOs\OfferReservationDto.cs" />
@@ -189,6 +197,10 @@
     <Compile Include="DTOs\HotelReservationDto.cs" />
     <Compile Include="DTOs\AboutDto.cs" />
     <Compile Include="DTOs\UserDto.cs" />
+    <Compile Include="Services\Interfaces\ITourReservationFacade.cs" />
+    <Compile Include="Services\TourReservationFacade.cs" />
+    <Compile Include="Services\Interfaces\ITourFacade.cs" />
+    <Compile Include="Services\TourFacade.cs" />
     <Compile Include="Services\Interfaces\IOfferFacade.cs" />
     <Compile Include="Services\Interfaces\IOfferReservationFacade.cs" />
     <Compile Include="Services\OfferFacade.cs" />

@@ -1,0 +1,47 @@
+
+<div>
+    <div style="margin-bottom:10px">
+        <button ng-click="$state.go('newTour');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{'AddNew' | translate}}</button>
+
+    </div> 
+    <div ng-if="TourList.results.length == 0">
+        <span>{{'NoToursAvailable' | translate}}</span>
+    </div>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="TourList.results.length > 0">
+        <div class="table-responsive"></div>
+        <table class="table pmd-table table-hover">
+            <thead>
+                <tr>
+                    <th>{{'Image' | translate}}</th> 
+                    <th>{{'Name' | translate}}</th> 
+                    <th>{{'Madina Days' | translate}}</th> 
+                    <th>{{'Mekka Days' | translate}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Tour in TourList.results">
+                    <!-- <td data-title="image">
+					<img ng-src='{{Tour.imagesURL[0]}}' style="    width: 77px;" />
+
+                   </td> -->
+                   <td data-title="Image" ><img ng-src="{{Tour.imagesURL[0]}}"
+                     ng-alt="{{Tour.titleDictionary[selectedLanguage]}}" style="max-height: 200px;max-width: 200px;"/></td>
+
+                   <td data-title="Name">{{Tour.titleDictionary[selectedLanguage]}}</td>
+                   <td data-title="star">{{Tour.madinaDays}}</td>
+                    <td data-title="city">{{Tour.mekkaDays}}</td>
+               
+                   
+                    <td  >
+                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editTour',{tourId: Tour.tourId});">mode_edit</i>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>

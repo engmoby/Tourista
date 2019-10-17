@@ -533,6 +533,60 @@
 
                 })
 
+                .state('Tour', {
+                    url: '/Tour',
+                    templateUrl: './app/GlobalAdmin/Tour/templates/Tour.html',
+                    controller: 'TourController',
+                    'controllerAs': 'TourCtrl',
+                    resolve: {
+                        TourPrepService: TourPrepService,
+                        CountryPrepService: CountryPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newTour', {
+                    url: '/newTour',
+                    templateUrl: './app/GlobalAdmin/Tour/templates/new.html',
+                    controller: 'createTourDialogController',
+                    'controllerAs': 'newTourCtrl',
+                    resolve: {
+                        TourPrepService: TourPrepService,
+                        CountryPrepService: CountryPrepService,
+                        FeaturePrepService: FeaturePrepService,
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editTour', {
+                    url: '/editTour/:TourId',
+                    templateUrl: './app/GlobalAdmin/Tour/templates/edit.html',
+                    controller: 'editTourDialogController',
+                    'controllerAs': 'editTourCtrl',
+                    resolve: {
+                        TourByIdPrepService: TourByIdPrepService,
+                        CountryPrepService: CountryPrepService,
+                        FeaturePrepService: FeaturePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
 
 
                 .state('Backage', {
@@ -590,6 +644,131 @@
                     }
 
                 })
+
+                
+                .state('BackageReservation', {
+                    url: '/BackageReservation',
+                    templateUrl: './app/GlobalAdmin/BackageReservation/templates/BackageReservation.html',
+                    controller: 'BackageReservationController',
+                    'controllerAs': 'BackageReservationCtrl',
+                    resolve: {
+                        BackageReservationPrepService: BackageReservationPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editBackageReservation', {
+                    url: '/editBackageReservation/:backageReservationId',
+                    templateUrl: './app/GlobalAdmin/BackageReservation/templates/edit.html',
+                    controller: 'editBackageReservationDialogController',
+                    'controllerAs': 'editBackageReservationCtrl',
+                    resolve: {
+                        BackageReservationByIdPrepService: BackageReservationByIdPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
+
+                .state('Offer', {
+                    url: '/Offer',
+                    templateUrl: './app/GlobalAdmin/Offer/templates/Offer.html',
+                    controller: 'OfferController',
+                    'controllerAs': 'OfferCtrl',
+                    resolve: {
+                        OfferPrepService: OfferPrepService,
+                        CountryPrepService: CountryPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newOffer', {
+                    url: '/newOffer',
+                    templateUrl: './app/GlobalAdmin/Offer/templates/new.html',
+                    controller: 'createOfferDialogController',
+                    'controllerAs': 'newOfferCtrl',
+                    resolve: {
+                        OfferPrepService: OfferPrepService,
+                        CountryPrepService: CountryPrepService,
+                        HotelPrepService: HotelPrepService,
+                        TypePrepService: TypePrepService,
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editOffer', {
+                    url: '/editOffer/:offerId',
+                    templateUrl: './app/GlobalAdmin/Offer/templates/edit.html',
+                    controller: 'editOfferDialogController',
+                    'controllerAs': 'editOfferCtrl',
+                    resolve: {
+                        OfferByIdPrepService: OfferByIdPrepService,
+                        CountryPrepService: CountryPrepService,
+                        HotelPrepService: HotelPrepService,
+                        TypePrepService: TypePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                
+                .state('OfferReservation', {
+                    url: '/OfferReservation',
+                    templateUrl: './app/GlobalAdmin/OfferReservation/templates/OfferReservation.html',
+                    controller: 'OfferReservationController',
+                    'controllerAs': 'OfferReservationCtrl',
+                    resolve: {
+                        OfferReservationPrepService: OfferReservationPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editOfferReservation', {
+                    url: '/editOfferReservation/:offerReservationId',
+                    templateUrl: './app/GlobalAdmin/OfferReservation/templates/edit.html',
+                    controller: 'editOfferReservationDialogController',
+                    'controllerAs': 'editOfferReservationCtrl',
+                    resolve: {
+                        OfferReservationByIdPrepService: OfferReservationByIdPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
                 .state('About', {
                     url: '/About',
                     templateUrl: './app/GlobalAdmin/About/templates/About.html',
@@ -893,6 +1072,23 @@
 
 
 
+    /*Tour */
+    TourPrepService.$inject = ['TourResource']
+    function TourPrepService(TourResource) {
+        return TourResource.GetAllTours().$promise;
+    }
+
+    AllTourPrepService.$inject = ['TourResource']
+    function AllTourPrepService(TourResource) {
+        return TourResource.GetAllTours({ pageSize: 0 }).$promise;
+    }
+
+    TourByIdPrepService.$inject = ['TourResource', '$stateParams']
+    function TourByIdPrepService(TourResource, $stateParams) {
+        return TourResource.getTour({ tourId: $stateParams.tourId }).$promise;
+    }
+
+
     /*Backage */
     BackagePrepService.$inject = ['BackageResource']
     function BackagePrepService(BackageResource) {
@@ -907,6 +1103,53 @@
     BackageByIdPrepService.$inject = ['BackageResource', '$stateParams']
     function BackageByIdPrepService(BackageResource, $stateParams) {
         return BackageResource.getBackage({ backageId: $stateParams.backageId }).$promise;
+    }
+
+    /*BackageReservation */
+    BackageReservationPrepService.$inject = ['BackageReservationResource']
+    function BackageReservationPrepService(BackageReservationResource) {
+        return BackageReservationResource.GetAllBackageReservation().$promise;
+    }
+
+    AllBackageReservationPrepService.$inject = ['BackageReservationResource']
+    function AllBackageReservationPrepService(BackageReservationResource) {
+        return BackageReservationResource.GetAllBackageReservation({ pageSize: 0 }).$promise;
+    }
+
+    BackageReservationByIdPrepService.$inject = ['BackageReservationResource', '$stateParams']
+    function BackageReservationByIdPrepService(BackageReservationResource, $stateParams) {
+        return BackageReservationResource.getBackageReservation({ backageReservationId: $stateParams.backageReservationId }).$promise;
+    }
+
+    /*Offer */
+    OfferPrepService.$inject = ['OfferResource']
+    function OfferPrepService(OfferResource) {
+        return OfferResource.GetAllOffers().$promise;
+    }
+
+    AllOfferPrepService.$inject = ['OfferResource']
+    function AllOfferPrepService(OfferResource) {
+        return OfferResource.GetAllOffers({ pageSize: 0 }).$promise;
+    }
+
+    OfferByIdPrepService.$inject = ['OfferResource', '$stateParams']
+    function OfferByIdPrepService(OfferResource, $stateParams) {
+        return OfferResource.getOffer({ offerId: $stateParams.offerId }).$promise;
+    }
+    /*OfferReservation */
+    OfferReservationPrepService.$inject = ['OfferReservationResource']
+    function OfferReservationPrepService(OfferReservationResource) {
+        return OfferReservationResource.GetAllOfferReservation().$promise;
+    }
+
+    AllOfferReservationPrepService.$inject = ['OfferReservationResource']
+    function AllOfferReservationPrepService(OfferReservationResource) {
+        return OfferReservationResource.GetAllOfferReservation({ pageSize: 0 }).$promise;
+    }
+
+    OfferReservationByIdPrepService.$inject = ['OfferReservationResource', '$stateParams']
+    function OfferReservationByIdPrepService(OfferReservationResource, $stateParams) {
+        return OfferReservationResource.getOfferReservation({ offerReservationId: $stateParams.offerReservationId }).$promise;
     }
 
     /*About */

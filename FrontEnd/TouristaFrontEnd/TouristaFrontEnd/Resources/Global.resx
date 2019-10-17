@@ -624,4 +624,16 @@
   <data name="OfferOverview" xml:space="preserve">
     <value>Offer Overview</value>
   </data>
+  <data name="Aboutthetour" xml:space="preserve">
+    <value>About the HAJJ &amp; UMRAH</value>
+  </data>
+  <data name="AWESOMETOUR" xml:space="preserve">
+    <value>AWESOME HAJJ &amp; UMRAH</value>
+  </data>
+  <data name="Header_Tour" xml:space="preserve">
+    <value>HAJJ &amp; UMRAH</value>
+  </data>
+  <data name="TourOverview" xml:space="preserve">
+    <value>HAJJ &amp; UMRAH Overview</value>
+  </data>
 </root>

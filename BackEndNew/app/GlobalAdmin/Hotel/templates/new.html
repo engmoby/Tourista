@@ -145,7 +145,7 @@
 
                 <input id="file" name="file" style="display: none;"
                     onchange="angular.element(this).scope().AddFile(this.files)" type="file">
-                <button class="btn btn-primary editable-table-button btn-xs btn-with-icon"
+                <button ng-disabled="newHotelCtrl.files.length == 1" class="btn btn-primary editable-table-button btn-xs btn-with-icon"
                     ng-click="newHotelCtrl.LoadUploadImages()">{{'AddImageBtn' |translate}}</button>
 
                 <br>
