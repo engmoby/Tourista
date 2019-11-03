@@ -66,6 +66,7 @@ namespace Tourista.BLL.Services
             OfferObj.DaysCount = OfferDto.DaysCount;
             OfferObj.NigthsCount = OfferDto.NigthsCount;
             OfferObj.Star = OfferDto.Star;
+            OfferObj.PriceBefore = OfferDto.PriceBefore;
             OfferObj.Price = OfferDto.Price;
             OfferObj.CreationTime = Strings.CurrentDateTime;
             OfferObj.CreatorUserId = userId;
@@ -118,6 +119,7 @@ namespace Tourista.BLL.Services
             OfferObj.DaysCount = OfferDto.DaysCount;
             OfferObj.NigthsCount = OfferDto.NigthsCount;
             OfferObj.Star = OfferDto.Star;
+            OfferObj.PriceBefore = OfferDto.PriceBefore;
             OfferObj.Price = OfferDto.Price;
             OfferObj.LastModificationTime = Strings.CurrentDateTime;
             OfferObj.LastModifierUserId = userId;

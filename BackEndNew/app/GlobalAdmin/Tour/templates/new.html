@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="modal-header bordered">
-        <h2 class="pmd-card-title-text">{{'NewTour' | translate}}</h2>
+        <h2 class="pmd-card-title-text">{{'New HAJJ & UMRAH' | translate}}</h2>
     </div>
     <div class="modal-body">
         <form class="form-horizontal" name="newTourForm">
@@ -98,14 +98,14 @@
 
                 <div style="margin-right: 50px; width: 150px;" class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
                     <label>{{'Duration' | translate}}</label>
-                    <input required type="text" class="mat-input form-control" name="duration" numbers-only ng-model="newTourCtrl.duration"
-                        ng-minlength="1" ng-maxlength="1">
+                    <input required type="text" class="mat-input form-control" name="duration" numbers-only ng-model="newTourCtrl.duration" ng-minlength="1"
+                        ng-maxlength="2">
 
                     <div ng-messages="newTourForm.duration.$error">
                         <div ng-if="newTourForm.duration.$error.required && !newTourForm.duration.$pristine">
                             {{'duration Required' | translate}}</div>
                         <div ng-if="(newTourForm.duration.$error.minlength || newTourForm.duration.$error.maxlength)">
-                            {{'Max 1 number' | translate}}</div>
+                            {{'Max 2 number' | translate}}</div>
                     </div>
 
                 </div>
@@ -126,9 +126,10 @@
             <div class="row">
                 <div class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
                     <label> {{ 'startFrom' | translate}} </label>
-                    <input required type="text" class="mat-input form-control" name="startFrom"   ng-model="newTourCtrl.startFrom"
-                     ng-minlength="1"
-                        ng-maxlength="50">
+                    <input name="itemDatetime" ng-model="itemDatetime" type="text" id="startFrom" class="form-control" ng-change="dateChange();"
+                    />
+                    <!-- <input required type="text" class="mat-input form-control" name="startFrom" ng-model="newTourCtrl.startFrom" ng-minlength="1"
+                        ng-maxlength="50"> -->
                     <div ng-messages="newTourForm.startFrom.$error">
                         <div ng-if="newTourForm.startFrom.$error.required && !newTourForm.startFrom.$pristine">{{'startFromReqError' | translate}}</div>
                         <div ng-if="(newTourForm.startFrom.$error.minlength || newTourForm.startFrom.$error.maxlength)">{{'startFromLengthError' | translate}}</div>
@@ -137,8 +138,10 @@
 
                 <div class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
                     <label> {{ 'startTo' | translate}} </label>
-                    <input required type="text" class="mat-input form-control" name="startTo"   ng-model="newTourCtrl.startTo" ng-minlength="1"
-                        ng-maxlength="50">
+                    <input name="itemDatetime" ng-model="itemDatetime" type="text" id="startTo" class="form-control" ng-change="dateChange();"
+                    />
+                    <!-- <input required type="text" class="mat-input form-control" name="startTo" ng-model="newTourCtrl.startTo" ng-minlength="1"
+                        ng-maxlength="50"> -->
                     <div ng-messages="newTourForm.startTo.$error">
                         <div ng-if="newTourForm.startTo.$error.required && !newTourForm.startTo.$pristine">{{'startToReqError' | translate}}</div>
                         <div ng-if="(newTourForm.startTo.$error.minlength || newTourForm.startTo.$error.maxlength)">{{'startToLengthError' | translate}}</div>
@@ -147,7 +150,7 @@
 
                 <div class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
                     <label> {{ 'hotelTitle' | translate}} </label>
-                    <input required type="text" class="mat-input form-control" name="hotelTitle"   ng-model="newTourCtrl.hotelTitle" ng-minlength="1"
+                    <input required type="text" class="mat-input form-control" name="hotelTitle" ng-model="newTourCtrl.hotelTitle" ng-minlength="1"
                         ng-maxlength="50">
                     <div ng-messages="newTourForm.hotelTitle.$error">
                         <div ng-if="newTourForm.hotelTitle.$error.required && !newTourForm.hotelTitle.$pristine">{{'hotelTitleReqError' | translate}}</div>
@@ -193,13 +196,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        // $(".select-add-tags").select2({
-        //     tags: true,
-        //     theme: "bootstrap",
-        //     insertTag: function (data, tag) { 
-        //         data.push(tag); 
-        //     }
-        // });
         $(".select-tags").select2({
             tags: false,
             theme: "bootstrap",
@@ -208,6 +204,31 @@
         $(".select-with-search").select2({
             theme: "bootstrap"
         });
+    });
+
+</script>
+<script>
+    $(function () {
+        var today = new Date();
+        today.setDate(today.getDate() + 1)
+
+        $('#startFrom').datetimepicker({
+            widgetPositioning: { vertical: "bottom" },
+            minDate: today,
+        })
+            .on('dp.change', function (e) {
+                debugger;
+                angular.element(document.getElementById('startFrom')).scope().dateChange();
+            });
+
+        $('#startTo').datetimepicker({
+            widgetPositioning: { vertical: "bottom" },
+            minDate: today,
+        })
+            .on('dp.change', function (e) {
+                debugger;
+                angular.element(document.getElementById('startTo')).scope().dateChange();
+            });
     });
 
 </script>

@@ -127,7 +127,8 @@
 
                                                                         @foreach (HotelFeatureModel feature in Model.HotelFeature)
                                                                         {
-                                                                            <li class="wrapper-car-item"><i class="car-icon flaticon-fruit"></i><span>@feature.Feature.TitleDictionary[@Common.CurrentLang]</span></li>
+                                                                            //car - icon flaticon - fruit
+                                                                            <li class="wrapper-car-item"><i class="@feature.Feature.Icon"></i><span>@feature.Feature.TitleDictionary[@Common.CurrentLang]</span></li>
                                                                         }
                                                                         @*<li class="wrapper-car-item"><i class="car-icon flaticon-people-1"></i><span>5 People</span></li>
                                                                             <li class="wrapper-car-item"><i class="car-icon flaticon-fruit"></i><span>Automatic</span></li>

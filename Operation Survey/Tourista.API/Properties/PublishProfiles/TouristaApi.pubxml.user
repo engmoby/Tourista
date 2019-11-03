@@ -79,7 +79,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2018 07:32:43</publishTime>
     </File>
     <File Include="bin/ar-EG/Tourista.Resources.resources.dll">
-      <publishTime>10/16/2019 23:42:20</publishTime>
+      <publishTime>10/27/2019 20:33:38</publishTime>
     </File>
     <File Include="bin/AutoMapper.dll">
       <publishTime>07/23/2018 03:44:10</publishTime>
@@ -280,13 +280,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 03:44:10</publishTime>
     </File>
     <File Include="bin/Tourista.API.dll">
-      <publishTime>10/17/2019 23:03:29</publishTime>
+      <publishTime>10/28/2019 22:40:56</publishTime>
     </File>
     <File Include="bin/Tourista.API.pdb">
       <publishTime>09/23/2019 16:22:45</publishTime>
     </File>
     <File Include="bin/Tourista.BLL.dll">
-      <publishTime>10/17/2019 23:03:19</publishTime>
+      <publishTime>10/28/2019 22:40:47</publishTime>
     </File>
     <File Include="bin/Tourista.BLL.dll.config">
       <publishTime>11/22/2018 07:32:43</publishTime>
@@ -301,7 +301,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/23/2019 16:22:20</publishTime>
     </File>
     <File Include="bin/Tourista.DAL.dll">
-      <publishTime>10/17/2019 23:03:16</publishTime>
+      <publishTime>10/26/2019 18:25:14</publishTime>
     </File>
     <File Include="bin/Tourista.DAL.dll.config">
       <publishTime>09/23/2019 14:24:47</publishTime>
@@ -310,7 +310,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/23/2019 16:22:29</publishTime>
     </File>
     <File Include="bin/Tourista.Resources.dll">
-      <publishTime>10/16/2019 23:42:19</publishTime>
+      <publishTime>10/27/2019 20:33:38</publishTime>
     </File>
     <File Include="bin/Tourista.Resources.dll.config">
       <publishTime>11/22/2018 07:32:43</publishTime>
@@ -421,7 +421,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/29/2018 22:14:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/17/2019 23:03:32</publishTime>
+      <publishTime>10/28/2019 22:40:57</publishTime>
     </File>
   </ItemGroup>
 </Project>

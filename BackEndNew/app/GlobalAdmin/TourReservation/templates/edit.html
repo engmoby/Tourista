@@ -1,0 +1,142 @@
+<div class="modal-content">
+    <div class="modal-header bordered">
+        <h2 class="pmd-card-title-text">{{'TourReservation' | translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="editTourReservationForm">
+
+            <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                <label for="first-name">{{'Tickect No' | translate}}</label>
+                <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editTourReservationCtrl.TourReservation.tickectNo">
+            </div>
+
+            <div>
+                <br>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in editTourReservationCtrl.language">
+                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">
+                                {{lang.value | translate}}
+                            </a>
+                    </li>
+                </ul>
+                <div class="pmd-card">
+                    <div class="pmd-card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tablist" class="tab-pane" ng-class="{'active':$index == 0}" ng-repeat="lang in editTourReservationCtrl.language"
+                                id="{{lang.value}}-form">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">
+                                    <label for="first-name"> {{ lang.value+'Name' | translate}} </label>
+                                    <input readonly="readonly" required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+'Name'}}"
+                                        ng-model="editTourReservationCtrl.TourReservation.tour.titleDictionary[lang.key]" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'checkIn' | translate}}</label>
+                    <input id="checkin" type="text" class="mat-input form-control" ng-model="editTourReservationCtrl.TourReservation.checkIn">
+                </div>
+
+                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'checkOut' | translate}}</label>
+                    <input id="checkout" type="text" required class="mat-input form-control" ng-model="editTourReservationCtrl.TourReservation.checkOut">
+                      <input type="text" id="startdate" class="form-control" required />  
+                </div>
+
+
+            </div> -->
+
+            <!-- <div class="row">
+                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'Child' | translate}}</label>
+                    <input type="text" class="mat-input form-control" numbers-only name="child" ng-minlength="1" ng-maxlength="3" ng-model="editTourReservationCtrl.TourReservation.child">
+                    <span class="error" ng-show="editTourReservationForm.child.$error.pattern">{{'Not Child Number' | translate}} </span>
+                    <div ng-messages="editTourReservationForm.child.$error">
+                        <div ng-if="editTourReservationForm.child.$error.required && !editTourReservationForm.child.$pristine">{{'Child required' | translate}}</div>
+                        <div ng-if="(editTourReservationForm.child.$error.minlength || editTourReservationForm.child.$error.maxlength)">{{'PhoneLengthError' | translate}}</div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'Adult' | translate}}</label>
+                    <input type="text" class="mat-input form-control" numbers-only name="adult" ng-minlength="1" ng-maxlength="3" ng-model="editTourReservationCtrl.TourReservation.adult">
+                    <span class="error" ng-show="editTourReservationForm.adult.$error.pattern">{{'Not Adult Number' | translate}} </span>
+                    <div ng-messages="editTourReservationForm.adult.$error">
+                        <div ng-if="editTourReservationForm.adult.$error.required && !editTourReservationForm.adult.$pristine">{{'Adult required' | translate}}</div>
+                        <div ng-if="(editTourReservationForm.adult.$error.minlength || editTourReservationForm.adult.$error.maxlength)">{{'PhoneLengthError' | translate}}</div>
+                    </div>
+
+                </div> 
+
+            </div> -->
+            <div class="row">
+                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'UserName' | translate}}</label>
+                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editTourReservationCtrl.TourReservation.user.fullName">
+                </div>
+                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'Email' | translate}}</label>
+                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editTourReservationCtrl.TourReservation.user.email">
+                </div>
+                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label for="first-name">{{'phone' | translate}}</label>
+                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editTourReservationCtrl.TourReservation.user.phone">
+                </div>
+            </div>
+
+            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                <label for="first-name">{{'Status' | translate}}</label>
+                <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags" ng-model="selectedStatus"
+                    ng-options="group as group.text for group in StatusList">
+                
+                        </select>
+                <!-- {{selectedStatus.id}} -->
+            </div>
+
+        </form>
+    </div>
+    <div class="pmd-modal-action text-right">
+        <button ng-disabled="editTourReservationForm.$invalid || editTourReservationCtrl.TourReservation.status != 0" class="btn pmd-ripple-effect btn-primary"
+            type="button" ng-click="editTourReservationCtrl.UpdateTourReservation()">{{'saveChangesBtn' | translate}}</button>
+        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editTourReservationCtrl.Close()">{{'DiscardBtn' | translate}}</button>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".select-tags").select2({
+            tags: false,
+            theme: "bootstrap",
+        })
+
+        $(".select-with-search").select2({
+            theme: "bootstrap"
+        });
+    });
+
+    $(function () {
+        $('#checkin').datetimepicker(
+            {
+                //   viewMode: 'years',
+                //  format: 'DD/MM/YYYY',
+                minDate: new Date()
+            }
+        );
+        $('#checkout').datetimepicker(
+            {
+                //   viewMode: 'years',
+                //  format: 'DD/MM/YYYY',
+                minDate: new Date()
+            }
+        );
+    });
+
+</script>

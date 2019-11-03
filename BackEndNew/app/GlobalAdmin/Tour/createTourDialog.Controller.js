@@ -37,8 +37,8 @@
             newTour.madinaDays = vm.madinaDays; 
             newTour.duration = vm.duration; 
             newTour.price = vm.price; 
-            newTour.startFrom = vm.startFrom;
-            newTour.startTo = vm.startTo;
+            newTour.startFrom =$('#startFrom').val();// vm.startFrom;
+            newTour.startTo = $('#startTo').val();//vm.startTo;
             newTour.hotelTitle = vm.hotelTitle;
 
             var model = new FormData();
@@ -69,6 +69,18 @@
                     blockUI.stop();
                 }
             );
+        }
+        $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
+            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $scope.dateIsValid = false;
+                // $scope.$apply();
+            } else if ($scope.newTourForm.$valid) {
+                $scope.dateIsValid = true;
+                // $scope.$apply();
+            }
         }
         vm.files = [];
         $scope.AddFile = function (element) {

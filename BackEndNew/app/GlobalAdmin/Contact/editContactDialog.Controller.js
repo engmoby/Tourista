@@ -23,8 +23,12 @@
             updateObj.contactUsId = vm.Contact.contactUsId;
             updateObj.addressDictionary = vm.Contact.addressDictionary; 
             updateObj.mail = vm.Contact.mail; 
+            updateObj.mail1 = vm.Contact.mail1; 
+            updateObj.mail2 = vm.Contact.mail2; 
             updateObj.fax = vm.Contact.fax; 
             updateObj.phone = vm.Contact.phone; 
+            updateObj.phone1 = vm.Contact.phone1; 
+            updateObj.phone2 = vm.Contact.phone2; 
             updateObj.facebook = vm.Contact.facebook; 
             updateObj.instgram = vm.Contact.instgram; 
             updateObj.twitter = vm.Contact.twitter; 

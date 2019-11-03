@@ -569,7 +569,7 @@
 
                 })
                 .state('editTour', {
-                    url: '/editTour/:TourId',
+                    url: '/editTour/:tourId',
                     templateUrl: './app/GlobalAdmin/Tour/templates/edit.html',
                     controller: 'editTourDialogController',
                     'controllerAs': 'editTourCtrl',
@@ -577,6 +577,40 @@
                         TourByIdPrepService: TourByIdPrepService,
                         CountryPrepService: CountryPrepService,
                         FeaturePrepService: FeaturePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
+
+                .state('TourReservation', {
+                    url: '/TourReservation',
+                    templateUrl: './app/GlobalAdmin/TourReservation/templates/TourReservation.html',
+                    controller: 'TourReservationController',
+                    'controllerAs': 'TourReservationCtrl',
+                    resolve: {
+                        TourReservationPrepService: TourReservationPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editTourReservation', {
+                    url: '/editTourReservation/:tourReservationId',
+                    templateUrl: './app/GlobalAdmin/TourReservation/templates/edit.html',
+                    controller: 'editTourReservationDialogController',
+                    'controllerAs': 'editTourReservationCtrl',
+                    resolve: {
+                        TourReservationByIdPrepService: TourReservationByIdPrepService
                     },
                     data: {
                         permissions: {
@@ -836,6 +870,52 @@
                 })
 
 
+                .state('Inquery', {
+                    url: '/Inquery',
+                    templateUrl: './app/GlobalAdmin/Inquery/templates/Inquery.html',
+                    controller: 'InqueryController',
+                    'controllerAs': 'InqueryCtrl',
+                    resolve: {
+                        InqueryPrepService: InqueryPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newInquery', {
+                    url: '/newInquery',
+                    templateUrl: './app/GlobalAdmin/Inquery/templates/new.html',
+                    controller: 'createInqueryDialogController',
+                    'controllerAs': 'newInqueryCtrl',
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editInquery', {
+                    url: '/editInquery/:InqueryId',
+                    templateUrl: './app/GlobalAdmin/Inquery/templates/edit.html',
+                    controller: 'editInqueryDialogController',
+                    'controllerAs': 'editInqueryCtrl',
+                    resolve: {
+                        InqueryByIdPrepService: InqueryByIdPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
                 .state('HotelReservation', {
                     url: '/HotelReservation',
                     templateUrl: './app/GlobalAdmin/HotelReservation/templates/HotelReservation.html',
@@ -970,6 +1050,23 @@
         return CareerFormResource.getCareerForm({ CareerFormId: $stateParams.CareerFormId }).$promise;
     }
 
+    
+    /*Inquery */
+    InqueryPrepService.$inject = ['ContactFormResource']
+    function InqueryPrepService(ContactFormResource) {
+        return ContactFormResource.getAllInquerys().$promise;
+    }
+
+    AllInqueryPrepService.$inject = ['ContactFormResource']
+    function AllInqueryPrepService(ContactFormResource) {
+        return ContactFormResource.getAllInquerys({ pageSize: 0 }).$promise;
+    }
+
+    InqueryByIdPrepService.$inject = ['ContactFormResource', '$stateParams']
+    function InqueryByIdPrepService(ContactFormResource, $stateParams) {
+        return ContactFormResource.getInquery({ InqueryId: $stateParams.InqueryId }).$promise;
+    }
+
 
     /*Currency */
     CurrencyPrepService.$inject = ['CurrencyResource']
@@ -1088,6 +1185,22 @@
         return TourResource.getTour({ tourId: $stateParams.tourId }).$promise;
     }
 
+
+    /*TourReservation */
+    TourReservationPrepService.$inject = ['TourReservationResource']
+    function TourReservationPrepService(TourReservationResource) {
+        return TourReservationResource.GetAllTourReservation().$promise;
+    }
+
+    AllTourReservationPrepService.$inject = ['TourReservationResource']
+    function AllTourReservationPrepService(TourReservationResource) {
+        return TourReservationResource.GetAllTourReservation({ pageSize: 0 }).$promise;
+    }
+
+    TourReservationByIdPrepService.$inject = ['TourReservationResource', '$stateParams']
+    function TourReservationByIdPrepService(TourReservationResource, $stateParams) {
+        return TourReservationResource.getTourReservation({ tourReservationId: $stateParams.tourReservationId }).$promise;
+    }
 
     /*Backage */
     BackagePrepService.$inject = ['BackageResource']

@@ -95,7 +95,6 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\ar-EG\Tourista.Resources.resources.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csprojResolveAssemblyReference.cache
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.Resource.resources
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.Resource.ar-EG.resources
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csproj.GenerateResource.Cache

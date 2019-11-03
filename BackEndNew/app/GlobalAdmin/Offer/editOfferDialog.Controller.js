@@ -86,6 +86,7 @@
             updateObj.removeImages = vm.RemoveImages; 
             updateObj.daysCount = vm.Offer.daysCount;
             updateObj.nigthsCount = vm.Offer.nigthsCount;
+            updateObj.priceBefore = vm.Offer.priceBefore;
             updateObj.price = vm.Offer.price;
             updateObj.hotelId = $scope.selectedHotel.hotelId;
             updateObj.typeId = $scope.selectedType.typeId;

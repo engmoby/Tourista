@@ -7,8 +7,7 @@
             <div>
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" ng-class="{'active':$index == 0}"
-                        ng-repeat="lang in editTourCtrl.language">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in editTourCtrl.language">
                         <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab"
                             data-toggle="tab">
                             {{lang.value | translate}}
@@ -46,8 +45,7 @@
             <div>
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" ng-class="{'active':$index == 0}"
-                        ng-repeat="lang in editTourCtrl.language">
+                    <li role="presentation" ng-class="{'active':$index == 0}" ng-repeat="lang in editTourCtrl.language">
                         <a href="javascript:void(0);" data-target="#{{lang.value}}-desc-form" aria-controls="home"
                             role="tab" data-toggle="tab">
                             {{lang.value | translate}}
@@ -66,8 +64,7 @@
                                         name="descriptionDictionary{{lang.value+'Name'}}"
                                         ng-model="editTourCtrl.Tour.descriptionDictionary[lang.key]" ng-minlength="3"
                                         ng-maxlength="5255"></textarea>
-                                    <div
-                                        ng-messages="UpdateTourForm.descriptionDictionary{{lang.value+'Name'}}.$error">
+                                    <div ng-messages="UpdateTourForm.descriptionDictionary{{lang.value+'Name'}}.$error">
 
                                         <div
                                             ng-show="UpdateTourForm.descriptionDictionary{{lang.value+'Name'}}.$error.required && !UpdateTourForm.descriptionDictionary{{lang.value+'Name'}}.$pristine">
@@ -85,64 +82,116 @@
             <div class="row">
                 <div
                     class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
-                    <label for="first-name">{{'Country' | translate}}</label>
+                    <label for="first-name">{{'mekka Days' | translate}}</label>
+                    <input required type="text" class="mat-input form-control" name="mekkaDays" numbers-only
+                        ng-model="editTourCtrl.Tour.mekkaDays" ng-minlength="1" ng-maxlength="1">
 
-                    <select required style="width:50% !important"
-                        class="form-control select-with-search pmd-select2-tags" ng-change="CountryChange()"
-                        ng-model="selectedCountry"
-                        ng-options="a as a.titleDictionary[selectedLanguage] for a in CountryList"></select>
+                    <div ng-messages="UpdateTourForm.mekkaDays.$error">
+                        <div ng-if="UpdateTourForm.mekkaDays.$error.required && !UpdateTourForm.mekkaDays.$pristine">
+                            {{'mekkaDays Required' | translate}}</div>
+                        <div
+                            ng-if="(UpdateTourForm.mekkaDays.$error.minlength || UpdateTourForm.mekkaDays.$error.maxlength)">
+                            {{'Max 1 number' | translate}}</div>
+                    </div>
                 </div>
 
                 <div
                     class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
-                    <label for="first-name">{{'City' | translate}}</label>
+                    <label for="first-name">{{'Madina Days' | translate}}</label>
+                    <input required type="text" class="mat-input form-control" name="madinaDays" numbers-only
+                        ng-model="editTourCtrl.Tour.madinaDays" ng-minlength="1" ng-maxlength="1">
 
-                    <select required style="width:50% !important"
-                        class="form-control select-with-search pmd-select2-tags" ng-change="CityChange()"
-                        ng-model="selectedCity"
-                        ng-options="a as a.titleDictionary[selectedLanguage] for a in CityList"></select>
+                    <div ng-messages="UpdateTourForm.madinaDays.$error">
+                        <div ng-if="UpdateTourForm.madinaDays.$error.required && !UpdateTourForm.madinaDays.$pristine">
+                            {{'madinaDays Required' | translate}}</div>
+                        <div
+                            ng-if="(UpdateTourForm.madinaDays.$error.minlength || UpdateTourForm.madinaDays.$error.maxlength)">
+                            {{'Max 1 number' | translate}}</div>
+                    </div>
                 </div>
 
 
                 <div style="margin-right: 50px; width: 150px;"
                     class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
-                    <label>{{'Star' | translate}}</label>
-                    <input required type="text" class="mat-input form-control" name="star" numbers-only
-                        ng-model="editTourCtrl.Tour.star" ng-minlength="1" ng-maxlength="1">
+                    <label>{{'Duration' | translate}}</label>
+                    <input required type="text" class="mat-input form-control" name="duration" numbers-only
+                        ng-model="editTourCtrl.Tour.duration" ng-minlength="1" ng-maxlength="2">
 
-                    <div ng-messages="UpdateTourForm.star.$error">
-                        <div ng-if="UpdateTourForm.star.$error.required && !UpdateTourForm.star.$pristine">
-                            {{'Star Required' | translate}}</div>
-                        <div ng-if="(UpdateTourForm.star.$error.minlength || UpdateTourForm.star.$error.maxlength)">
-                            {{'Max 1 number' | translate}}</div>
+                    <div ng-messages="UpdateTourForm.duration.$error">
+                        <div ng-if="UpdateTourForm.duration.$error.required && !UpdateTourForm.duration.$pristine">
+                            {{'duration Required' | translate}}</div>
+                        <div
+                            ng-if="(UpdateTourForm.duration.$error.minlength || UpdateTourForm.duration.$error.maxlength)">
+                            {{'Max 2 number' | translate}}</div>
                     </div>
 
                 </div>
-                <!-- <div
+
+                <div
                     class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
-                    <label>{{'Location' | translate}}</label>
-                    <input type="text" class="mat-input form-control" gm-places-autocomplete ng-model="autocomplete"
-                        style="width: 300px;" />
-                    <input type="text" name="late" required hidden="hidden" ng-model="editTourCtrl.Tour.latitude" />
-                    <div ng-messages="UpdateTourForm.late.$error">
-                        <div ng-if="UpdateTourForm.late.$error.required && !UpdateTourForm.late.$pristine">
-                            {{'Location Required' | translate}}</div>
+                    <label> {{ 'Price' | translate}} </label>
+                    <input required type="text" class="mat-input form-control" name="price" numbers-only
+                        ng-model="editTourCtrl.Tour.price" ng-minlength="1" ng-maxlength="50">
+                    <div ng-messages="UpdateTourForm.price.$error">
+                        <div ng-if="UpdateTourForm.price.$error.required && !UpdateTourForm.price.$pristine">
+                            {{'priceReqError' | translate}}</div>
+                        <div ng-if="(UpdateTourForm.price.$error.minlength || UpdateTourForm.price.$error.maxlength)">
+                            {{'priceLengthError' | translate}}</div>
                     </div>
-                </div> -->
-
+                </div>
 
 
             </div>
 
+            <div class="row">
+                <div
+                    class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label> {{ 'startFrom' | translate}} </label>
+                    <input name="itemDatetime" ng-model="itemDatetime" ng-model="editTourCtrl.Tour.startFrom"
+                        type="text" id="startFrom" class="form-control" ng-change="dateChange();" />
+                    {{editTourCtrl.Tour.startFrom}}
+                    <div ng-messages="UpdateTourForm.startFrom.$error">
+                        <div ng-if="UpdateTourForm.startFrom.$error.required && !UpdateTourForm.startFrom.$pristine">
+                            {{'startFromReqError' | translate}}</div>
+                        <div
+                            ng-if="(UpdateTourForm.startFrom.$error.minlength || UpdateTourForm.startFrom.$error.maxlength)">
+                            {{'startFromLengthError' | translate}}</div>
+                    </div>
+                </div>
 
+                <div
+                    class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label> {{ 'startTo' | translate}} </label>
+                    <input name="itemDatetime" ng-model="itemDatetime" type="text" id="startTo" class="form-control"
+                        ng-change="dateChange();" />
+                    <!-- <input required type="text" class="mat-input form-control" name="startTo" ng-model="editTourCtrl.startTo" ng-minlength="1"
+                        ng-maxlength="50"> -->
+                    <div ng-messages="UpdateTourForm.startTo.$error">
+                        <div ng-if="UpdateTourForm.startTo.$error.required && !UpdateTourForm.startTo.$pristine">
+                            {{'startToReqError' | translate}}</div>
+                        <div
+                            ng-if="(UpdateTourForm.startTo.$error.minlength || UpdateTourForm.startTo.$error.maxlength)">
+                            {{'startToLengthError' | translate}}</div>
+                    </div>
+                </div>
 
-            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
-                <label> {{ 'Features' | translate}} </label>
-                <select required style="width:100% !important" class="form-control select-with-search pmd-select2-tags"
-                    multiple ng-model="editTourCtrl.selectedTourFeatures"
-                    ng-options="feature as feature.titleDictionary[selectedLanguage] for feature in FeatureList"></select>
+                <div
+                    class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                    <label> {{ 'hotelTitle' | translate}} </label>
+                    <input required type="text" class="mat-input form-control" name="hotelTitle"
+                        ng-model="editTourCtrl.Tour.hotelTitle" ng-minlength="1" ng-maxlength="50">
+                    <div ng-messages="UpdateTourForm.hotelTitle.$error">
+                        <div ng-if="UpdateTourForm.hotelTitle.$error.required && !UpdateTourForm.hotelTitle.$pristine">
+                            {{'hotelTitleReqError' | translate}}</div>
+                        <div
+                            ng-if="(UpdateTourForm.hotelTitle.$error.minlength || UpdateTourForm.hotelTitle.$error.maxlength)">
+                            {{'hotelTitleLengthError' | translate}}</div>
+                    </div>
+                </div>
+
 
             </div>
+
             <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
 
 
@@ -199,18 +248,8 @@
     </div>
 </div>
 
-
-
-
 <script type="text/javascript">
     $(document).ready(function () {
-        // $(".select-add-tags").select2({
-        //     tags: true,
-        //     theme: "bootstrap",
-        //     insertTag: function (data, tag) { 
-        //         data.push(tag); 
-        //     }
-        // });
         $(".select-tags").select2({
             tags: false,
             theme: "bootstrap",
@@ -220,4 +259,30 @@
             theme: "bootstrap"
         });
     });
+
+</script>
+<script>
+    $(function () {
+        var today = new Date();
+        today.setDate(today.getDate() + 1)
+
+        $('#startFrom').datetimepicker({
+            widgetPositioning: { vertical: "bottom" },
+            minDate: today,
+        })
+            .on('dp.change', function (e) {
+                debugger;
+                angular.element(document.getElementById('startFrom')).scope().dateChange();
+            });
+
+        $('#startTo').datetimepicker({
+            widgetPositioning: { vertical: "bottom" },
+            minDate: today,
+        })
+            .on('dp.change', function (e) {
+                debugger;
+                angular.element(document.getElementById('startTo')).scope().dateChange();
+            });
+    });
+
 </script>

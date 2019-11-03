@@ -569,7 +569,7 @@
 
                 })
                 .state('editTour', {
-                    url: '/editTour/:TourId',
+                    url: '/editTour/:tourId',
                     templateUrl: './app/GlobalAdmin/Tour/templates/edit.html',
                     controller: 'editTourDialogController',
                     'controllerAs': 'editTourCtrl',
@@ -577,6 +577,40 @@
                         TourByIdPrepService: TourByIdPrepService,
                         CountryPrepService: CountryPrepService,
                         FeaturePrepService: FeaturePrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
+
+                .state('TourReservation', {
+                    url: '/TourReservation',
+                    templateUrl: './app/GlobalAdmin/TourReservation/templates/TourReservation.html',
+                    controller: 'TourReservationController',
+                    'controllerAs': 'TourReservationCtrl',
+                    resolve: {
+                        TourReservationPrepService: TourReservationPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editTourReservation', {
+                    url: '/editTourReservation/:tourReservationId',
+                    templateUrl: './app/GlobalAdmin/TourReservation/templates/edit.html',
+                    controller: 'editTourReservationDialogController',
+                    'controllerAs': 'editTourReservationCtrl',
+                    resolve: {
+                        TourReservationByIdPrepService: TourReservationByIdPrepService
                     },
                     data: {
                         permissions: {
@@ -836,6 +870,52 @@
                 })
 
 
+                .state('Inquery', {
+                    url: '/Inquery',
+                    templateUrl: './app/GlobalAdmin/Inquery/templates/Inquery.html',
+                    controller: 'InqueryController',
+                    'controllerAs': 'InqueryCtrl',
+                    resolve: {
+                        InqueryPrepService: InqueryPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('newInquery', {
+                    url: '/newInquery',
+                    templateUrl: './app/GlobalAdmin/Inquery/templates/new.html',
+                    controller: 'createInqueryDialogController',
+                    'controllerAs': 'newInqueryCtrl',
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+                .state('editInquery', {
+                    url: '/editInquery/:InqueryId',
+                    templateUrl: './app/GlobalAdmin/Inquery/templates/edit.html',
+                    controller: 'editInqueryDialogController',
+                    'controllerAs': 'editInqueryCtrl',
+                    resolve: {
+                        InqueryByIdPrepService: InqueryByIdPrepService
+                    },
+                    data: {
+                        permissions: {
+                            only: ['4'],
+                            redirectTo: 'root'
+                        }
+                    }
+
+                })
+
                 .state('HotelReservation', {
                     url: '/HotelReservation',
                     templateUrl: './app/GlobalAdmin/HotelReservation/templates/HotelReservation.html',
@@ -964,6 +1044,22 @@
     }
 
 
+    InqueryPrepService.$inject = ['ContactFormResource']
+    function InqueryPrepService(ContactFormResource) {
+        return ContactFormResource.getAllInquerys().$promise;
+    }
+
+    AllInqueryPrepService.$inject = ['ContactFormResource']
+    function AllInqueryPrepService(ContactFormResource) {
+        return ContactFormResource.getAllInquerys({ pageSize: 0 }).$promise;
+    }
+
+    InqueryByIdPrepService.$inject = ['ContactFormResource', '$stateParams']
+    function InqueryByIdPrepService(ContactFormResource, $stateParams) {
+        return ContactFormResource.getInquery({ InqueryId: $stateParams.InqueryId }).$promise;
+    }
+
+
     CurrencyPrepService.$inject = ['CurrencyResource']
     function CurrencyPrepService(CurrencyResource) {
         return CurrencyResource.getAllCurrencies().$promise;
@@ -1074,6 +1170,21 @@
         return TourResource.getTour({ tourId: $stateParams.tourId }).$promise;
     }
 
+
+    TourReservationPrepService.$inject = ['TourReservationResource']
+    function TourReservationPrepService(TourReservationResource) {
+        return TourReservationResource.GetAllTourReservation().$promise;
+    }
+
+    AllTourReservationPrepService.$inject = ['TourReservationResource']
+    function AllTourReservationPrepService(TourReservationResource) {
+        return TourReservationResource.GetAllTourReservation({ pageSize: 0 }).$promise;
+    }
+
+    TourReservationByIdPrepService.$inject = ['TourReservationResource', '$stateParams']
+    function TourReservationByIdPrepService(TourReservationResource, $stateParams) {
+        return TourReservationResource.getTourReservation({ tourReservationId: $stateParams.tourReservationId }).$promise;
+    }
 
     BackagePrepService.$inject = ['BackageResource']
     function BackagePrepService(BackageResource) {
@@ -1241,7 +1352,7 @@
         appCONSTANTS, ToastService) {
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[14].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 
@@ -1757,7 +1868,7 @@
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[2].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -1879,7 +1990,7 @@
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[2].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[9].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -2089,7 +2200,7 @@
 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[2].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[10].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 
@@ -2539,7 +2650,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) {
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[15].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 
@@ -2615,8 +2726,12 @@ console.log( $scope.ClientList);
             updateObj.contactUsId = vm.Contact.contactUsId;
             updateObj.addressDictionary = vm.Contact.addressDictionary; 
             updateObj.mail = vm.Contact.mail; 
+            updateObj.mail1 = vm.Contact.mail1; 
+            updateObj.mail2 = vm.Contact.mail2; 
             updateObj.fax = vm.Contact.fax; 
             updateObj.phone = vm.Contact.phone; 
+            updateObj.phone1 = vm.Contact.phone1; 
+            updateObj.phone2 = vm.Contact.phone2; 
             updateObj.facebook = vm.Contact.facebook; 
             updateObj.instgram = vm.Contact.instgram; 
             updateObj.twitter = vm.Contact.twitter; 
@@ -2657,7 +2772,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[8].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -3312,7 +3427,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[6].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -3719,7 +3834,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[7].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -3830,6 +3945,179 @@ console.log( $scope.ClientList);
 
     angular
         .module('home')
+        .controller('InqueryController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'ContactFormResource', 'InqueryPrepService', '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', InqueryController])
+
+
+
+
+
+    function InqueryController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, ContactFormResource, InqueryPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) {
+        $scope.FrontServer = appCONSTANTS.FrontServer_URL;
+        $scope.showModal = false;
+        $scope.toggleModal = function (obj) {
+            $scope.showModal = !$scope.showModal;
+            $scope.showmessage = obj.message;
+        };
+
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[10].children[0]).addClass("active")
+
+        blockUI.start("Loading...");
+
+        var vm = this;
+        $scope.totalCount = InqueryPrepService.totalCount;
+        $scope.InqueryList = InqueryPrepService;
+        console.log($scope.InqueryList);
+        function refreshInquerys() {
+
+            blockUI.start("Loading...");
+
+            var k = ContactFormResource.getAllInquerys({ page: vm.currentPage }).$promise.then(function (results) {
+                $scope.InqueryList = results
+                blockUI.stop();
+
+            },
+            function (data, status) {
+                blockUI.stop();
+
+                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshInquerys();
+        }
+        blockUI.stop();
+
+    }
+
+
+})();
+(function () {
+
+        angular
+      .module('home')
+        .factory('ContactFormResource', ['$resource', 'appCONSTANTS', ContactFormResource]) 
+
+    function ContactFormResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'ContactForms/', {}, {
+            getAllInquerys: { method: 'GET', url: appCONSTANTS.API_URL + 'ContactForms/GetAllContactForms', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'ContactForms/EditContactForm', useToken: true },
+            getContactForm: { method: 'GET', url: appCONSTANTS.API_URL + 'ContactForms/GetContactFormById/:ContactFormId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('createCareerFormDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CareerFormResource', 'ToastService', '$rootScope', createCareerFormDialogController])
+
+    function createCareerFormDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CareerFormResource,
+        ToastService, $rootScope) {
+
+                blockUI.start("Loading..."); 
+
+            		var vm = this;
+		vm.language = appCONSTANTS.supportedLanguage;
+		vm.close = function(){
+			$state.go('CareerForm');
+		} 
+
+		 		vm.AddNewCareerForm = function () {
+            blockUI.start("Loading..."); 
+            debugger;
+            var newObj = new CareerFormResource();
+
+                 newObj.title = vm.title; 
+            newObj.description= vm.description; 
+            newObj.IsDeleted = false;  
+            newObj.$create().then(
+                function (data, status) { 
+        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
+                    $state.go('CareerForm');
+                     blockUI.stop();        
+
+
+                },
+                function (data, status) {
+               blockUI.stop();        
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+  	}	
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editInqueryDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+         'ContactFormResource', 'ToastService',            'InqueryByIdPrepService', editInqueryDialogController])
+
+    function editInqueryDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, 
+        ContactFormResource, ToastService, InqueryByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.Inquery = InqueryByIdPrepService; 
+        console.log( vm.Inquery)
+        vm.Close = function () {
+            $state.go('Inquery');
+        }
+        vm.UpdateInquery = function () { 
+            blockUI.start("Loading..."); 
+
+                        var updateObj = new ContactFormResource();
+
+                        updateObj.title = vm.Inquery.title; 
+            updateObj.description= vm.Inquery.description; 
+            updateObj.InqueryId = vm.Inquery.InqueryId; 
+		    updateObj.IsDeleted = false; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('Inquery');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
         .controller('NewsController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'NewsResource', 'NewsPrepService',  '$localStorage',
             'authorizationService', 'appCONSTANTS',
@@ -3841,7 +4129,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[5].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[13].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -4162,7 +4450,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) {
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[12].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 
@@ -4279,6 +4567,7 @@ console.log( $scope.ClientList);
             newOffer.cityId = $scope.selectedCity.cityId;
             newOffer.daysCount = vm.daysCount;
             newOffer.nigthsCount = vm.nigthsCount;
+            newOffer.priceBefore = vm.priceBefore;
             newOffer.price = vm.price;
             newOffer.hotelId = vm.selectedHotel.hotelId;
             newOffer.typeId = vm.selectedType.typeId;
@@ -4451,6 +4740,7 @@ console.log( $scope.ClientList);
             updateObj.removeImages = vm.RemoveImages; 
             updateObj.daysCount = vm.Offer.daysCount;
             updateObj.nigthsCount = vm.Offer.nigthsCount;
+            updateObj.priceBefore = vm.Offer.priceBefore;
             updateObj.price = vm.Offer.price;
             updateObj.hotelId = $scope.selectedHotel.hotelId;
             updateObj.typeId = $scope.selectedType.typeId;
@@ -4566,7 +4856,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[4].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -4831,36 +5121,38 @@ console.log( $scope.ClientList);
 
         	}	
 }());
+
 (function () {
     'use strict';
 
     angular
         .module('home')
-        .controller('TourController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'TourResource', 'TourPrepService',  '$localStorage',
+        .controller('TourReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'TourReservationResource', 'TourReservationPrepService',  '$localStorage',
             'authorizationService', 'appCONSTANTS',
-            'ToastService', TourController]);
+            'ToastService', TourReservationController]);
 
 
-    function TourController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, TourResource, TourPrepService, $localStorage, authorizationService,
+    function TourReservationController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, TourReservationResource, TourReservationPrepService, $localStorage, authorizationService,
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[1].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[7].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
                     var vm = this;
-        $scope.totalCount = TourPrepService.totalCount;
-        $scope.TourList = TourPrepService; 
-      console.log( $scope.TourList);
-        function refreshTours() {
+        $scope.StatusList = appCONSTANTS.Status;
+        $scope.totalCount = TourReservationPrepService.totalCount;
+        $scope.TourReservationList = TourReservationPrepService; 
+      console.log( $scope.TourReservationList);
+        function refreshTourReservations() {
 
             blockUI.start("Loading..."); 
 
-                        var k = TourResource.GetAllTours({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.TourList = results  
+                        var k = TourReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.TourReservationList = results  
                 blockUI.stop();
 
                             },
@@ -4876,11 +5168,132 @@ console.log( $scope.ClientList);
         vm.currentPage = 1;
         $scope.changePage = function (page) {
             vm.currentPage = page;
-            refreshTours();
+            refreshTourReservations();
         }
         blockUI.stop();
 
             }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('TourReservationResource', ['$resource', 'appCONSTANTS', TourReservationResource]) 
+
+    function TourReservationResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'TourReservations/', {}, {
+            GetAllTourReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'TourReservations/GetAllTourReservations', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'TourReservations/EditTourReservation', useToken: true },
+            getTourReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'TourReservations/GetTourReservationById/:TourReservationId', useToken: true }
+        })
+    } 
+
+}());
+
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editTourReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'TourReservationResource', 'ToastService',
+            'TourReservationByIdPrepService', editTourReservationDialogController])
+
+    function editTourReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, TourReservationResource, ToastService, TourReservationByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+        $scope.StatusList = appCONSTANTS.Status;
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.TourReservation = TourReservationByIdPrepService; 
+        console.log( vm.TourReservation);
+
+               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.TourReservation.status }, true)[0]);
+        $scope.selectedStatus=$scope.StatusList[indexStatus];
+
+
+        vm.Close = function () {
+            $state.go('TourReservation');
+        }
+        vm.UpdateTourReservation = function () { 
+            blockUI.start("Loading..."); 
+            debugger;
+            var updateObj = new TourReservationResource();
+            updateObj.TourReservationId = vm.TourReservation.TourReservationId; 
+            updateObj.adult = vm.TourReservation.adult; 
+            updateObj.roomCount = vm.TourReservation.roomCount; 
+            updateObj.child = vm.TourReservation.child; 
+            updateObj.status = $scope.selectedStatus.id; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('TourReservation');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('TourController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'TourResource', 'TourPrepService', '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', TourController]);
+
+
+    function TourController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, TourResource, TourPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) {
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[5].children[0]).addClass("active")
+
+        blockUI.start("Loading...");
+
+        var vm = this;
+        $scope.totalCount = TourPrepService.totalCount;
+        $scope.TourList = TourPrepService;
+        console.log($scope.TourList);
+        function refreshTours() {
+
+            blockUI.start("Loading...");
+
+            var k = TourResource.GetAllTours({ page: vm.currentPage }).$promise.then(function (results) {
+                $scope.TourList = results
+                blockUI.stop();
+
+            },
+                function (data, status) {
+                    blockUI.stop();
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+                });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshTours();
+        }
+        blockUI.stop();
+
+    }
 
 })();
 (function () {
@@ -4937,8 +5350,8 @@ console.log( $scope.ClientList);
             newTour.madinaDays = vm.madinaDays; 
             newTour.duration = vm.duration; 
             newTour.price = vm.price; 
-            newTour.startFrom = vm.startFrom;
-            newTour.startTo = vm.startTo;
+            newTour.startFrom =$('#startFrom').val();
+            newTour.startTo = $('#startTo').val();
             newTour.hotelTitle = vm.hotelTitle;
 
             var model = new FormData();
@@ -4969,6 +5382,16 @@ console.log( $scope.ClientList);
                     blockUI.stop();
                 }
             );
+        }
+        $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
+            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $scope.dateIsValid = false;
+            } else if ($scope.newTourForm.$valid) {
+                $scope.dateIsValid = true;
+            }
         }
         vm.files = [];
         $scope.AddFile = function (element) {
@@ -5030,69 +5453,34 @@ console.log( $scope.ClientList);
 (function () {
     'use strict';
 
-	    angular
+    angular
         .module('home')
-        .controller('editTourDialogController', ['$scope', '$filter','blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-        'CountryPrepService',    'TourResource', 'ToastService', 'FeaturePrepService', 'TourByIdPrepService', editTourDialogController])
+        .controller('editTourDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
 
-    function editTourDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
-         TourResource, ToastService,FeaturePrepService, TourByIdPrepService) {
-        blockUI.start("Loading..."); 
-        function init(){ 
-            $scope.CountryList = []; 
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
-            $scope.FeatureList = FeaturePrepService.results;
+    function editTourDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        TourResource, ToastService, TourByIdPrepService) {
+        blockUI.start("Loading...");
 
-                       $scope.CityList = [];
-            $scope.CityList.push($scope.selectedCity);
-        }
-        init();
-        $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
-            var location = $scope.autocomplete.getPlace().geometry.location;
-           vm.Tour.latitude = location.lat();
-           vm.Tour.longitude = location.lng();
-            $scope.$apply();
-        });
 
-        var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.Tour = TourByIdPrepService; 
-        vm.RemoveImages = []; 
-        vm.CheckImages = []; 
-        vm.selectedTourFeatures=[] ;
-        console.log( vm.Tour);
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.Tour = TourByIdPrepService;
+        vm.RemoveImages = [];
+        vm.CheckImages = [];
+
+              vm.Tour.startFrom = vm.Tour.startFrom + "Z";
+        vm.Tour.startFrom = $filter('date')(new Date(vm.Tour.startFrom), "MM/dd/yyyy hh:mm a");
+
+        vm.Tour.orderStartDate = vm.Tour.orderStartDate + "Z";
+        vm.Tour.orderStartDate = $filter('date')(new Date(vm.Tour.orderStartDate), "MM/dd/yyyy hh:mm a");
+
+        console.log(vm.Tour);
         vm.CheckImages.push(vm.Tour.imagesURL);
-        var i;
-        for (i = 0; i < vm.Tour.tourFeature.length; i++) {
-            var indexFeature = $scope.FeatureList.indexOf($filter('filter')($scope.FeatureList, { 'featureId': vm.Tour.tourFeature[i].featureId }, true)[0]);
-            vm.selectedTourFeatures.push($scope.FeatureList[indexFeature]);
 
-        }
-
-
-      var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Tour.city.countryId }, true)[0]);
-      $scope.selectedCountry=$scope.CountryList[indexCountry];
-
-
-            $scope.CityList = $scope.selectedCountry.cityes;
-  var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Tour.city.cityId }, true)[0]);
-  $scope.selectedCity=$scope.selectedCountry.cityes[indexCity];  
-
-  $scope.CountryChange = function () {
-    for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
-        if ($scope.CountryList[i].CountryId == 0) {
-            $scope.CountryList.splice(i, 1);
-        }
-    }
-    $scope.CityList = [];
-    $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-    $scope.CityList.push($scope.selectedCity);
-    $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
-} 
-
-        vm.Close = function () {
+                  vm.Close = function () {
             $state.go('Tour');
-        } 
+        }
         blockUI.stop();
         vm.isChanged = false;
 
@@ -5101,22 +5489,33 @@ console.log( $scope.ClientList);
             vm.fileExist = false;
 
         }
+
+                $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
+            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $scope.dateIsValid = false;
+            } else if ($scope.UpdateTourForm.$valid) {
+                $scope.dateIsValid = true;
+            }
+        }
         vm.UpdateTour = function () {
             debugger;
-        blockUI.start("Loading..."); 
-        vm.isChanged = true;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
             var updateObj = new Object();
-            updateObj.tourId = vm.Tour.tourId; 
-            updateObj.titleDictionary = vm.Tour.titleDictionary; 
-            updateObj.descriptionDictionary = vm.Tour.descriptionDictionary; 
-            updateObj.star = vm.Tour.star; 
-            updateObj.cityId =  $scope.selectedCity.cityId; 
-            updateObj.latitude =  vm.Tour.latitude; 
-            updateObj.longitude =  vm.Tour.longitude; 
-            updateObj.removeImages =  vm.RemoveImages; 
+            updateObj.tourId = vm.Tour.tourId;
+            updateObj.titleDictionary = vm.Tour.titleDictionary;
+            updateObj.descriptionDictionary = vm.Tour.descriptionDictionary;
+            updateObj.star = vm.Tour.star;
+            updateObj.cityId = $scope.selectedCity.cityId;
+            updateObj.latitude = vm.Tour.latitude;
+            updateObj.longitude = vm.Tour.longitude;
+            updateObj.removeImages = vm.RemoveImages;
             updateObj.tourFeature = vm.selectedTourFeatures;
 
-                    var model = new FormData();
+            var model = new FormData();
             model.append('data', JSON.stringify(updateObj));
             vm.files.forEach(function (element) {
                 model.append('file', element);
@@ -5134,16 +5533,16 @@ console.log( $scope.ClientList);
                     vm.isChanged = false;
                     ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
 
-                                       blockUI.stop();
-                     $state.go('Tour')
+                    blockUI.stop();
+                    $state.go('Tour')
 
                 },
                 function (data, status) {
                     vm.isChanged = false;
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-        blockUI.stop();
-    }
-                );
+                    blockUI.stop();
+                }
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {
@@ -5198,15 +5597,16 @@ console.log( $scope.ClientList);
         }
 
         vm.removeFile = function (index) {
-           vm.RemoveImages.push(index);
+            vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
         }
 
-	        vm.removeTourFile = function (index) { 
+        vm.removeTourFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Tour.imagesURL.splice(index, 1);
-        }}	
+        }
+    }
 }());
 (function () {
     'use strict';
@@ -5224,7 +5624,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[3].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[11].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 

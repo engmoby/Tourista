@@ -57,8 +57,12 @@ namespace Tourista.BLL.Services
             ContactObj.LastModificationTime = Strings.CurrentDateTime;
             ContactObj.LastModifierUserId = userId;
             ContactObj.Phone = ContactDto.Phone; 
+            ContactObj.Phone1 = ContactDto.Phone1; 
+            ContactObj.Phone2 = ContactDto.Phone2;
             ContactObj.Fax= ContactDto.Fax; 
             ContactObj.Mail = ContactDto.Mail; 
+            ContactObj.Mail1 = ContactDto.Mail1; 
+            ContactObj.Mail2 = ContactDto.Mail2;
             ContactObj.Facebook= ContactDto.Facebook; 
             ContactObj.Twitter= ContactDto.Twitter; 
             ContactObj.Instgram= ContactDto.Instgram; 

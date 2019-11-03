@@ -65,6 +65,7 @@
             newOffer.cityId = $scope.selectedCity.cityId;
             newOffer.daysCount = vm.daysCount;
             newOffer.nigthsCount = vm.nigthsCount;
+            newOffer.priceBefore = vm.priceBefore;
             newOffer.price = vm.price;
             newOffer.hotelId = vm.selectedHotel.hotelId;
             newOffer.typeId = vm.selectedType.typeId;

@@ -1,0 +1,47 @@
+<div>
+    <div ng-if="InqueryList.results.length == 0">
+        <span>{{'NoInquerysAvailable' | translate}}</span>
+    </div>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="InqueryList.results.length > 0">
+        <div class="table-responsive"></div>
+        <table class="table pmd-table table-hover">
+            <thead>
+                <tr>
+                    <th>{{'userName' | translate}}</th>
+                    <th>{{'EmailLbl' | translate}}</th>
+                    <th>{{'Date' | translate}}</th>
+                    <th>Message</th>
+                    <!-- <th>Status</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Inquery in InqueryList.results">
+                    <td data-title="name">{{Inquery.userName}}</td>
+                    <td data-title="email">{{Inquery.email}}</td>
+
+                    <td data-title="date">{{Inquery.creationTime || Date}}</td>
+                    <td data-title="message"> <button ng-click="toggleModal(Inquery)" class="btn btn-default">Message</button></td>
+
+                    <!-- <td data-title="name">
+                        <div class="buttons" ng-show="!Inquery.Seen">
+                            <button class="center-block btn btn-default  restore-button btn-xs btn-with-icon" ng-click="Seen(Inquery)"><i class="fa fa-undo" aria-hidden="true"></i> Seen</button>
+                        </div>
+                        <div class="buttons" ng-show="Inquery.Seen">
+                            {{Inquery.SeenBy}}
+                        </div>
+                    </td> -->
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
+        flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    </div>
+</div>
+
+<modal title="Display message" visible="showModal">
+
+    {{showmessage}}
+
+</modal>
