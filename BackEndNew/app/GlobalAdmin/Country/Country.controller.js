@@ -14,7 +14,7 @@
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[8].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[9].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
             

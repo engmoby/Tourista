@@ -633,4 +633,10 @@
   <data name="TourOverview" xml:space="preserve">
     <value>نظرة عامة على الحج والعمرة</value>
   </data>
+  <data name="FooterText" xml:space="preserve">
+    <value>اشترك في TOURISTA للحصول على أحدث العروض والصفقات</value>
+  </data>
+  <data name="StyleUrl3" xml:space="preserve">
+    <value>/Content/bootstrap-arabic.css</value>
+  </data>
 </root>

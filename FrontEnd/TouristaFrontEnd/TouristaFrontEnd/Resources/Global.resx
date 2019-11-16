@@ -636,4 +636,10 @@
   <data name="TourOverview" xml:space="preserve">
     <value>HAJJ &amp; UMRAH Overview</value>
   </data>
+  <data name="FooterText" xml:space="preserve">
+    <value>Subscribe TOURISTA to get the latest offers and deals</value>
+  </data>
+  <data name="StyleUrl3" xml:space="preserve">
+    <value>/Content/bootstrap.css</value>
+  </data>
 </root>

@@ -1,4 +1,43 @@
-(function () {
+(function() {
+    'use strict';
+
+      angular
+      .module('home')
+      .config(config)
+      .run(runBlock);
+
+      config.$inject = ['ngProgressLiteProvider'];
+    runBlock.$inject = ['$rootScope', 'ngProgressLite' ];
+
+      function config(ngProgressLiteProvider) {
+      ngProgressLiteProvider.settings.speed = 1000;
+
+      }
+
+      function runBlock($rootScope, ngProgressLite ) {
+
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+          startProgress();
+      });
+      var routingDoneEvents = ['$stateChangeSuccess', '$stateChangeError', '$stateNotFound'];
+
+        angular.forEach(routingDoneEvents, function(event) {
+        $rootScope.$on(event, function(event, toState, toParams, fromState, fromParams) {
+          endProgress();
+        });
+      });
+
+        function startProgress() {
+        ngProgressLite.start();
+      }
+
+        function endProgress() {
+        ngProgressLite.done();
+      }
+
+      }
+  })();
+  (function () {
     'use strict';
 
     angular
@@ -1299,46 +1338,7 @@
         return dashboardResource.getTicketsDashboard().$promise;
     }
 }());
-(function() {
-    'use strict';
-
-      angular
-      .module('home')
-      .config(config)
-      .run(runBlock);
-
-      config.$inject = ['ngProgressLiteProvider'];
-    runBlock.$inject = ['$rootScope', 'ngProgressLite' ];
-
-      function config(ngProgressLiteProvider) {
-      ngProgressLiteProvider.settings.speed = 1000;
-
-      }
-
-      function runBlock($rootScope, ngProgressLite ) {
-
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-          startProgress();
-      });
-      var routingDoneEvents = ['$stateChangeSuccess', '$stateChangeError', '$stateNotFound'];
-
-        angular.forEach(routingDoneEvents, function(event) {
-        $rootScope.$on(event, function(event, toState, toParams, fromState, fromParams) {
-          endProgress();
-        });
-      });
-
-        function startProgress() {
-        ngProgressLite.start();
-      }
-
-        function endProgress() {
-        ngProgressLite.done();
-      }
-
-      }
-  })();
-  (function () {
+(function () {
     'use strict';
 
     angular
@@ -1352,7 +1352,7 @@
         appCONSTANTS, ToastService) {
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[14].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[16].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 
@@ -1990,7 +1990,7 @@
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[9].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[10].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -2200,7 +2200,7 @@
 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[10].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[11].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 
@@ -2650,7 +2650,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) {
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[15].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[17].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 
@@ -2772,7 +2772,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[8].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[9].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -3083,7 +3083,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[4].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[13].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -3427,7 +3427,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[6].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[7].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -3834,7 +3834,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[7].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[8].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -3966,7 +3966,7 @@ console.log( $scope.ClientList);
 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[10].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[18].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 
@@ -4129,7 +4129,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[13].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[14].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -5121,129 +5121,6 @@ console.log( $scope.ClientList);
 
         	}	
 }());
-
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('TourReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'TourReservationResource', 'TourReservationPrepService',  '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', TourReservationController]);
-
-
-    function TourReservationController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, TourReservationResource, TourReservationPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[7].children[0]).addClass("active")
-
-        blockUI.start("Loading..."); 
-
-                    var vm = this;
-        $scope.StatusList = appCONSTANTS.Status;
-        $scope.totalCount = TourReservationPrepService.totalCount;
-        $scope.TourReservationList = TourReservationPrepService; 
-      console.log( $scope.TourReservationList);
-        function refreshTourReservations() {
-
-            blockUI.start("Loading..."); 
-
-                        var k = TourReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.TourReservationList = results  
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshTourReservations();
-        }
-        blockUI.stop();
-
-            }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('TourReservationResource', ['$resource', 'appCONSTANTS', TourReservationResource]) 
-
-    function TourReservationResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'TourReservations/', {}, {
-            GetAllTourReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'TourReservations/GetAllTourReservations', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'TourReservations/EditTourReservation', useToken: true },
-            getTourReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'TourReservations/GetTourReservationById/:TourReservationId', useToken: true }
-        })
-    } 
-
-}());
-
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editTourReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'TourReservationResource', 'ToastService',
-            'TourReservationByIdPrepService', editTourReservationDialogController])
-
-    function editTourReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, TourReservationResource, ToastService, TourReservationByIdPrepService) {
-        blockUI.start("Loading..."); 
-
-                var vm = this; 
-        $scope.StatusList = appCONSTANTS.Status;
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.TourReservation = TourReservationByIdPrepService; 
-        console.log( vm.TourReservation);
-
-               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.TourReservation.status }, true)[0]);
-        $scope.selectedStatus=$scope.StatusList[indexStatus];
-
-
-        vm.Close = function () {
-            $state.go('TourReservation');
-        }
-        vm.UpdateTourReservation = function () { 
-            blockUI.start("Loading..."); 
-            debugger;
-            var updateObj = new TourReservationResource();
-            updateObj.TourReservationId = vm.TourReservation.TourReservationId; 
-            updateObj.adult = vm.TourReservation.adult; 
-            updateObj.roomCount = vm.TourReservation.roomCount; 
-            updateObj.child = vm.TourReservation.child; 
-            updateObj.status = $scope.selectedStatus.id; 
-		    updateObj.$update().then(
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
-
-                     $state.go('TourReservation');
-
-                },
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-        blockUI.stop();
-
-        	}	
-}());
 (function () {
     'use strict';
 
@@ -5469,16 +5346,12 @@ console.log( $scope.ClientList);
         vm.RemoveImages = [];
         vm.CheckImages = [];
 
-              vm.Tour.startFrom = vm.Tour.startFrom + "Z";
+        vm.Tour.startFrom = vm.Tour.startFrom + "Z";
         vm.Tour.startFrom = $filter('date')(new Date(vm.Tour.startFrom), "MM/dd/yyyy hh:mm a");
 
-        vm.Tour.orderStartDate = vm.Tour.orderStartDate + "Z";
-        vm.Tour.orderStartDate = $filter('date')(new Date(vm.Tour.orderStartDate), "MM/dd/yyyy hh:mm a");
-
         console.log(vm.Tour);
-        vm.CheckImages.push(vm.Tour.imagesURL);
 
-                  vm.Close = function () {
+        vm.Close = function () {
             $state.go('Tour');
         }
         blockUI.stop();
@@ -5490,11 +5363,11 @@ console.log( $scope.ClientList);
 
         }
 
-                $scope.dateIsValid = false;
+        $scope.dateIsValid = false;
         $scope.dateChange = function () {
             debugger;
             if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
-            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
                 $scope.dateIsValid = false;
             } else if ($scope.UpdateTourForm.$valid) {
                 $scope.dateIsValid = true;
@@ -5509,11 +5382,14 @@ console.log( $scope.ClientList);
             updateObj.titleDictionary = vm.Tour.titleDictionary;
             updateObj.descriptionDictionary = vm.Tour.descriptionDictionary;
             updateObj.star = vm.Tour.star;
-            updateObj.cityId = $scope.selectedCity.cityId;
-            updateObj.latitude = vm.Tour.latitude;
-            updateObj.longitude = vm.Tour.longitude;
-            updateObj.removeImages = vm.RemoveImages;
-            updateObj.tourFeature = vm.selectedTourFeatures;
+            updateObj.mekkaDays = vm.Tour.mekkaDays; 
+            updateObj.madinaDays = vm.Tour.madinaDays; 
+            updateObj.duration = vm.Tour.duration; 
+            updateObj.price = vm.Tour.price; 
+            updateObj.startFrom =$('#startFrom').val();
+            updateObj.startTo = $('#startTo').val();
+            updateObj.hotelTitle = vm.Tour.hotelTitle;
+
 
             var model = new FormData();
             model.append('data', JSON.stringify(updateObj));
@@ -5608,6 +5484,129 @@ console.log( $scope.ClientList);
         }
     }
 }());
+
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('TourReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'TourReservationResource', 'TourReservationPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', TourReservationController]);
+
+
+    function TourReservationController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, TourReservationResource, TourReservationPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[6].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.StatusList = appCONSTANTS.Status;
+        $scope.totalCount = TourReservationPrepService.totalCount;
+        $scope.TourReservationList = TourReservationPrepService; 
+      console.log( $scope.TourReservationList);
+        function refreshTourReservations() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = TourReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.TourReservationList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshTourReservations();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('TourReservationResource', ['$resource', 'appCONSTANTS', TourReservationResource]) 
+
+    function TourReservationResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'TourReservations/', {}, {
+            GetAllTourReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'TourReservations/GetAllTourReservations', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'TourReservations/EditTourReservation', useToken: true },
+            getTourReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'TourReservations/GetTourReservationById/:TourReservationId', useToken: true }
+        })
+    } 
+
+}());
+
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editTourReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'TourReservationResource', 'ToastService',
+            'TourReservationByIdPrepService', editTourReservationDialogController])
+
+    function editTourReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, TourReservationResource, ToastService, TourReservationByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+        $scope.StatusList = appCONSTANTS.Status;
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.TourReservation = TourReservationByIdPrepService; 
+        console.log( vm.TourReservation);
+
+               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.TourReservation.status }, true)[0]);
+        $scope.selectedStatus=$scope.StatusList[indexStatus];
+
+
+        vm.Close = function () {
+            $state.go('TourReservation');
+        }
+        vm.UpdateTourReservation = function () { 
+            blockUI.start("Loading..."); 
+            debugger;
+            var updateObj = new TourReservationResource();
+            updateObj.TourReservationId = vm.TourReservation.TourReservationId; 
+            updateObj.adult = vm.TourReservation.adult; 
+            updateObj.roomCount = vm.TourReservation.roomCount; 
+            updateObj.child = vm.TourReservation.child; 
+            updateObj.status = $scope.selectedStatus.id; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('TourReservation');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
 (function () {
     'use strict';
 
@@ -5624,7 +5623,7 @@ console.log( $scope.ClientList);
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[11].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[12].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
@@ -5840,7 +5839,7 @@ console.log( $scope.ClientList);
           $localStorage, authorizationService, appCONSTANTS, ToastService) {
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[7].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[15].children[0]).addClass("active")
 
         blockUI.start("Loading...");
 

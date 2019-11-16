@@ -943,6 +943,15 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subscribe TOURISTA to get the latest offers and deals.
+        /// </summary>
+        public static string FooterText {
+            get {
+                return ResourceManager.GetString("FooterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GO EXPLORE.
         /// </summary>
         public static string GOEXPLORE {
@@ -1578,6 +1587,15 @@ namespace TouristaFrontEnd.Resources {
         public static string StyleUrl2 {
             get {
                 return ResourceManager.GetString("StyleUrl2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /Content/bootstrap.css.
+        /// </summary>
+        public static string StyleUrl3 {
+            get {
+                return ResourceManager.GetString("StyleUrl3", resourceCulture);
             }
         }
         

@@ -16,16 +16,15 @@
         vm.Tour = TourByIdPrepService;
         vm.RemoveImages = [];
         vm.CheckImages = [];
-      
+
         vm.Tour.startFrom = vm.Tour.startFrom + "Z";
         vm.Tour.startFrom = $filter('date')(new Date(vm.Tour.startFrom), "MM/dd/yyyy hh:mm a");
-
-        vm.Tour.orderStartDate = vm.Tour.orderStartDate + "Z";
-        vm.Tour.orderStartDate = $filter('date')(new Date(vm.Tour.orderStartDate), "MM/dd/yyyy hh:mm a");
+         // vm.Tour.orderStartDate = vm.Tour.orderStartDate + "Z";
+        // vm.Tour.orderStartDate = $filter('date')(new Date(vm.Tour.orderStartDate), "MM/dd/yyyy hh:mm a");
 
         console.log(vm.Tour);
-        vm.CheckImages.push(vm.Tour.imagesURL);
-          
+       // vm.CheckImages.push(vm.Tour.imagesURL);
+
         vm.Close = function () {
             $state.go('Tour');
         }
@@ -37,12 +36,12 @@
             vm.fileExist = false;
 
         }
-        
+
         $scope.dateIsValid = false;
         $scope.dateChange = function () {
             debugger;
             if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
-            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
                 $scope.dateIsValid = false;
                 // $scope.$apply();
             } else if ($scope.UpdateTourForm.$valid) {
@@ -59,11 +58,14 @@
             updateObj.titleDictionary = vm.Tour.titleDictionary;
             updateObj.descriptionDictionary = vm.Tour.descriptionDictionary;
             updateObj.star = vm.Tour.star;
-            updateObj.cityId = $scope.selectedCity.cityId;
-            updateObj.latitude = vm.Tour.latitude;
-            updateObj.longitude = vm.Tour.longitude;
-            updateObj.removeImages = vm.RemoveImages;
-            updateObj.tourFeature = vm.selectedTourFeatures;
+            updateObj.mekkaDays = vm.Tour.mekkaDays; 
+            updateObj.madinaDays = vm.Tour.madinaDays; 
+            updateObj.duration = vm.Tour.duration; 
+            updateObj.price = vm.Tour.price; 
+            updateObj.startFrom =$('#startFrom').val();// vm.startFrom;
+            updateObj.startTo = $('#startTo').val();//vm.startTo;
+            updateObj.hotelTitle = vm.Tour.hotelTitle;
+
 
             var model = new FormData();
             model.append('data', JSON.stringify(updateObj));

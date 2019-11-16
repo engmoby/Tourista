@@ -51,8 +51,8 @@ namespace TouristaFrontEnd
                 "~/Scripts/libs/slick-slider/slick-theme.css",
                 "~/Scripts/libs/selectbox/css/jquery.selectbox.css",
                 "~/Scripts/libs/please-wait/please-wait.css",
-                "~/Content/layout.css",
-                "~/Content/components.css",
+                //"~/Content/layout.css",
+                //"~/Content/components.css",
                 "~/Content/responsive.css",
                 "~/Scripts/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css"
                 ));

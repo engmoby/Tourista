@@ -323,9 +323,9 @@ angular.module('home').run(['$templateCache', function($templateCache) {
     '                                <td>\n' +
     '                                    <img ng-src="{{file}}" style="max-height: 286px;max-width: 477px;">\n' +
     '                                </td>\n' +
-    '                                <!-- <td>\n' +
+    '                                <td>\n' +
     '                                        <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="editBackageCtrl.removeBackageFile($index)">delete</i>\n' +
-    '                                    </td> -->\n' +
+    '                                    </td>\n' +
     '                            </tr>\n' +
     '                        </tbody>\n' +
     '                    </table>\n' +
@@ -4281,7 +4281,7 @@ angular.module('home').run(['$templateCache', function($templateCache) {
   $templateCache.put('./app/GlobalAdmin/Tour/templates/edit.html',
     '<div class="modal-content">\n' +
     '    <div class="modal-header bordered">\n' +
-    '        <h2 class="pmd-card-title-text">{{\'UpdateTour\' | translate}}</h2>\n' +
+    '        <h2 class="pmd-card-title-text">{{\'UpdateHAJJ & UMRAH\' | translate}}</h2>\n' +
     '    </div>\n' +
     '    <div class="modal-body">\n' +
     '        <form class="form-horizontal" name="UpdateTourForm">\n' +
@@ -4521,7 +4521,7 @@ angular.module('home').run(['$templateCache', function($templateCache) {
     '    </div>\n' +
     '    <div class="pmd-modal-action text-right">\n' +
     '        <button\n' +
-    '            ng-disabled="UpdateTourForm.$invalid || editTourCtrl.CheckImages.length == 0  || editTourCtrl.Tour.latitude  == \'\'"\n' +
+    '            ng-disabled="UpdateTourForm.$invalid  "\n' +
     '            class="btn pmd-ripple-effect btn-primary" Tour="button"\n' +
     '            ng-click="editTourCtrl.UpdateTour()">{{\'saveChangesBtn\' | translate}}</button>\n' +
     '        <button class="btn pmd-ripple-effect btn-default" Tour="button"\n' +

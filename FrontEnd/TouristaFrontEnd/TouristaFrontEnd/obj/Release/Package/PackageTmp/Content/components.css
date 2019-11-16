@@ -1047,8 +1047,8 @@
   box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
 }
 .tours-layout:hover .image-wrapper .link {
-  filter: url(../images/blur.svg#svg-blur);
-  -webkit-filter: url(../images/blur.svg#svg-blur);
+  filter: url(/Content/images/blur.svg#svg-blur);
+  -webkit-filter: url(/Content/images/blur.svg#svg-blur);
   filter: blur(1px);
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
@@ -2321,6 +2321,7 @@
   padding-left: 6px;
   cursor: pointer;
 }
+
     .video-thumbnail .video-button-close {
         position: absolute;
         z-index: 12;
@@ -2624,7 +2625,7 @@
 .banner-sale-1 .title-box {
   color: rgba(255, 221, 0, 0.8);
   width: 100%;
-  background-image: url("../images/background/bg-section-banner-1.jpg");
+  background-image: url("/Content/images/background/bg-section-banner-1.jpg");
   background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
@@ -2653,7 +2654,7 @@
 }
 /*----------  Banner sale 2  ----------*/
 .banner-sale-2 {
-  background-image: url("../images/background/bg-section-banner-2.jpg");
+  background-image: url("/Content/images/background/bg-section-banner-2.jpg");
   height: 500px;
   position: relative;
   background-attachment: fixed;
@@ -2668,7 +2669,7 @@
 }
 .banner-sale-2 .banner-building {
   position: absolute;
-  background-image: url("../images/background/bg-section-banner-3.png");
+  background-image: url("/Content/images/background/bg-section-banner-3.png");
   top: 0;
   left: 0;
   right: 0;
@@ -2713,7 +2714,7 @@
 }
 /*----------  Banner sale 3  ----------*/
 .banner-sale-3 {
-  background-image: url("../images/background/about-us-1.jpg");
+  background-image: url("/Content/images/background/about-us-1.jpg");
   position: relative;
   background-repeat: repeat;
   background-position: center;
@@ -2755,7 +2756,7 @@
   z-index: 4;
 }
 .clouds_one {
-  background: url("../images/homepage/cloud.png") no-repeat center;
+  background: url("/Content/images/homepage/cloud.png") no-repeat center;
   background-repeat: repeat-x;
   position: absolute;
   left: 0;
@@ -2771,7 +2772,7 @@
   -o-transform: translate3d(0, 0, 0);
 }
 .clouds_two {
-  background: url("../images/homepage/cloud.png") no-repeat center;
+  background: url("/Content/images/homepage/cloud.png") no-repeat center;
   position: absolute;
   left: 0;
   top: 0;
@@ -3747,7 +3748,7 @@
 }
 /* Gallery Block */
 .gallery-block {
-  background: url(../images/tour-view/grid-images/bg-grid.png) no-repeat center right;
+  background: url(/Content/images/tour-view/grid-images/bg-grid.png) no-repeat center right;
   background-size: cover;
   padding-bottom: 80px;
 }
@@ -4456,7 +4457,7 @@
 }
 /*----------  About-us Our  ----------*/
 .page-our-values {
-  background-image: url("../images/background/bg-section-about-values.jpg");
+  background-image: url("/Content/images/background/bg-section-about-values.jpg");
   background-repeat: repeat;
   background-position: center;
   background-size: cover;
@@ -4487,7 +4488,7 @@
   font-weight: 300;
 }
 .our-expert {
-  background-image: url("../images/background/bg-section-about.jpg");
+  background-image: url("/Content/images/background/bg-section-about.jpg");
 }
 .our-expert {
   position: relative;
@@ -4586,7 +4587,7 @@
   display: none !important;
 }
 .about-tours {
-  background-image: url("../images/background/about-us-1.jpg");
+  background-image: url("/Content/images/background/about-us-1.jpg");
   background-repeat: repeat;
   position: relative;
   background-position: center;
@@ -4797,7 +4798,7 @@
   margin: 0 auto;
 }
 .page-contact-form {
-  background-image: url("../images/background/bg-section-contact-form-1.jpg");
+  background-image: url("/Content/images/background/bg-section-contact-form-1.jpg");
   background-attachment: fixed;
 }
 .page-contact-form .wrapper-form-images {
@@ -4832,7 +4833,7 @@
   height: 520px;
 }
 .page-contact-map .map-block .wrapper-info {
-  background-image: url("../images/background/bg-section-contact-map.jpg");
+  background-image: url("/Content/images/background/bg-section-contact-map.jpg");
   width: 100%;
   height: 520px;
   position: absolute;
@@ -4847,13 +4848,13 @@
 }
 /*----------  page 404  ----------*/
 .page-404 {
-  background-image: url("../images/background/bg-section-404.jpg");
+  background-image: url("/Content/images/background/bg-section-404.jpg");
 }
 .page-404:before {
-  background-image: url("../images/background/bg-section-404-2.png");
+  background-image: url("/Content/images/background/bg-section-404-2.png");
 }
 .page-404:after {
-  background-image: url("../images/background/bg-section-404-1.png");
+  background-image: url("/Content/images/background/bg-section-404-1.png");
 }
 .page-404 {
   width: 100%;
@@ -4920,13 +4921,13 @@
   -moz-animation: cloud_left_to_right 150s linear infinite;
   -ms-animation: cloud_left_to_right 150s linear infinite;
   -o-animation: cloud_left_to_right 150s linear infinite;
-  background-image: url("../images/background/bg_404_Cloud-1.png");
+  background-image: url("/Content/images/background/bg_404_Cloud-1.png");
   z-index: 1;
 }
 .page-404 .page-clouds-2 {
   z-index: 3;
   background-position: top;
-  background-image: url("../images/background/bg_404_Cloud-2.png");
+  background-image: url("/Content/images/background/bg_404_Cloud-2.png");
   animation: cloud_right_to_left 250s linear infinite;
   -webkit-animation: cloud_right_to_left 250s linear infinite;
   -moz-animation: cloud_right_to_left 250s linear infinite;
@@ -4940,7 +4941,7 @@
   -moz-animation: cloud_left_to_right 300s linear infinite;
   -ms-animation: cloud_left_to_right 300s linear infinite;
   -o-animation: cloud_left_to_right 300s linear infinite;
-  background-image: url("../images/background/bg_404_Cloud-3.png");
+  background-image: url("/Content/images/background/bg_404_Cloud-3.png");
   z-index: 3;
 }
 .page-404 .img-404 {

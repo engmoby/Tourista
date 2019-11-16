@@ -101,3 +101,4 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\ar-EG\Tourista.Resources.resources.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csprojResolveAssemblyReference.cache
