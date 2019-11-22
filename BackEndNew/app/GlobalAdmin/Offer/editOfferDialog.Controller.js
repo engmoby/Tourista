@@ -4,21 +4,22 @@
     angular
         .module('home')
         .controller('editOfferDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'OfferResource', 'ToastService', 'HotelPrepService','TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
+            'CountryPrepService','CurrencyPrepService', 'OfferResource', 'ToastService', 'HotelPrepService', 'TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
 
     function editOfferDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        OfferResource, ToastService, HotelPrepService,TypePrepService, OfferByIdPrepService) {
+        CurrencyPrepService,OfferResource, ToastService, HotelPrepService, TypePrepService, OfferByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
             $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
             $scope.HotelList = HotelPrepService.results;
             $scope.TypeList = TypePrepService.results;
+            $scope.CurrencyList = CurrencyPrepService.results;
 
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
         }
-        init(); 
+        init();
 
         var vm = this;
         vm.language = appCONSTANTS.supportedLanguage;
@@ -34,7 +35,16 @@
         //     vm.selectedHotel.push($scope.HotelList[indexHotel]);
 
         // }
+        vm.Offer.dateFrom = vm.Offer.dateFrom + "Z";
+        vm.Offer.dateFrom = $filter('date')(new Date(vm.Offer.dateFrom), "MM/dd/yyyy hh:mm a"); 
+        vm.Offer.dateTo = vm.Offer.dateTo + "Z";
+        vm.Offer.dateTo = $filter('date')(new Date(vm.Offer.dateTo), "MM/dd/yyyy hh:mm a");
+       
 
+        var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Offer.currency.currencyId }, true)[0]);
+        $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
+
+     
         var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Offer.hotel.hotelId }, true)[0]);
         $scope.selectedHotel = $scope.HotelList[indexHotel];
 
@@ -73,6 +83,19 @@
             vm.fileExist = false;
 
         }
+        
+        $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#dateFrom').data('date') == null || $('#dateFrom').data('date') == "" ||
+                $('#dateTo').data('date') == null || $('#dateTo').data('date') == "") {
+                $scope.dateIsValid = false;
+                // $scope.$apply();
+            } else if ($scope.UpdateTourForm.$valid) {
+                $scope.dateIsValid = true;
+                // $scope.$apply();
+            }
+        }
         vm.UpdateOffer = function () {
             debugger;
             blockUI.start("Loading...");
@@ -81,16 +104,19 @@
             updateObj.offerId = vm.Offer.offerId;
             updateObj.titleDictionary = vm.Offer.titleDictionary;
             updateObj.descriptionDictionary = vm.Offer.descriptionDictionary;
-            updateObj.star = vm.Offer.star;
-            updateObj.cityId = $scope.selectedCity.cityId; 
-            updateObj.removeImages = vm.RemoveImages; 
+            updateObj.star = $scope.selectedHotel.star;
+            updateObj.cityId = $scope.selectedCity.cityId;
+            updateObj.removeImages = vm.RemoveImages;
             updateObj.daysCount = vm.Offer.daysCount;
             updateObj.nigthsCount = vm.Offer.nigthsCount;
             updateObj.priceBefore = vm.Offer.priceBefore;
             updateObj.price = vm.Offer.price;
             updateObj.hotelId = $scope.selectedHotel.hotelId;
             updateObj.typeId = $scope.selectedType.typeId;
+            updateObj.currencyId = $scope.selectedCurrency.currencyId;
 
+            updateObj.dateFrom =$('#dateFrom').val();// vm.dateFrom;
+            updateObj.dateTo = $('#dateTo').val();//vm.dateTo;
 
             var model = new FormData();
             model.append('data', JSON.stringify(updateObj));
@@ -119,7 +145,7 @@
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
                     blockUI.stop();
                 }
-                );
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {

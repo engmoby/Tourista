@@ -30,5 +30,8 @@ namespace Tourista.DAL.Entities.Model
 
         public virtual ICollection<TourTranslation> TourTranslations { get; set; } 
         public int TenantId { get; set; }
+
+        public long CurrencyId { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

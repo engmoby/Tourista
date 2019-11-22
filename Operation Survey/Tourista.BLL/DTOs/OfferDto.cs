@@ -21,7 +21,7 @@ namespace Tourista.BLL.DTOs
         public virtual HotelDto Hotel { get; set; }
         public long? TypeId { get; set; }
         public virtual TypeDto Type { get; set; }
-        public List<string> ImagesURL { get; set; } 
+        public List<string> ImagesURL { get; set; }
 
         public bool IsDeleted { get; set; }
         public DateTime? LastModificationTime { get; set; }
@@ -29,7 +29,13 @@ namespace Tourista.BLL.DTOs
         public DateTime? CreationTime { get; set; }
         public long? CreatorUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
-        public long? DeleterUserId { get; set; } 
+        public long? DeleterUserId { get; set; }
+
+        public long CurrencyId { get; set; }
+        public virtual CurrencyDto Currency { get; set; }
+
+        public DateTime? DateFrom { get; set; }
+        public DateTime? DateTo { get; set; }
     }
 }
 

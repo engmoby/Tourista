@@ -1528,6 +1528,15 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Results Found.
+        /// </summary>
+        public static string ResultsFound {
+            get {
+                return ResourceManager.GetString("ResultsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type Keyword....
         /// </summary>
         public static string Search_Box {

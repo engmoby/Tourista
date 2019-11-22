@@ -639,4 +639,7 @@
   <data name="StyleUrl3" xml:space="preserve">
     <value>/Content/bootstrap-arabic.css</value>
   </data>
+  <data name="ResultsFound" xml:space="preserve">
+    <value>العثور على نتائج</value>
+  </data>
 </root>

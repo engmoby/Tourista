@@ -70,6 +70,7 @@ namespace Tourista.BLL.Services
             TourObj.Price = TourDto.Price;
             TourObj.CreationTime = Strings.CurrentDateTime;
             TourObj.CreatorUserId = userId;
+            TourObj.CurrencyId = TourDto.CurrencyId;
 
 
 
@@ -121,8 +122,9 @@ namespace Tourista.BLL.Services
             TourObj.LastModificationTime = Strings.CurrentDateTime;
             TourObj.LastModifierUserId = userId;
             TourObj.IsDeleted = TourDto.IsDeleted;
+            TourObj.CurrencyId = TourDto.CurrencyId;
 
-        
+
             _TourService.Update(TourObj);
             SaveChanges();
             var imageId = imageCounter + 1;

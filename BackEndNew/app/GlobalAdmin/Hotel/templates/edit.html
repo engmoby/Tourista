@@ -118,7 +118,16 @@
                     </div>
 
                 </div>
-                <!-- <div
+            
+                <div
+                class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                <label> {{ 'Currency' | translate}} </label>
+                <select required style="width:100% !important"
+                    class="form-control select-with-search pmd-select2-tags" ng-model="selectedCurrency"
+                    ng-options="currency as currency.titleDictionary[selectedLanguage] for currency in CurrencyList"></select>
+
+            </div>  
+<!-- <div
                     class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
                     <label>{{'Location' | translate}}</label>
                     <input type="text" class="mat-input form-control" gm-places-autocomplete ng-model="autocomplete"

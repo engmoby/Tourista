@@ -4,15 +4,15 @@
     angular
         .module('home')
         .controller('editBackageDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'BackageResource', 'ToastService', 'HotelPrepService','TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
+            'CountryPrepService', 'BackageResource', 'ToastService', 'CurrencyPrepService','TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
 
     function editBackageDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        BackageResource, ToastService, HotelPrepService,TypePrepService, BackageByIdPrepService) {
+        BackageResource, ToastService, CurrencyPrepService,TypePrepService, BackageByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
             $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
-            $scope.HotelList = HotelPrepService.results;
+            $scope.CurrencyList = CurrencyPrepService.results;
             $scope.TypeList = TypePrepService.results;
 
             $scope.CityList = [];
@@ -25,18 +25,18 @@
         vm.Backage = BackageByIdPrepService;
         vm.RemoveImages = [];
         vm.CheckImages = [];
-        vm.selectedHotel = [];
+        vm.selectedCurrency = [];
         console.log(vm.Backage);
         vm.CheckImages.push(vm.Backage.imagesURL);
         // var i;
-        // for (i = 0; i < vm.Backage.backageHotel.length; i++) {
-        //     var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'HotelId': vm.Backage.backageHotel[i].HotelId }, true)[0]);
-        //     vm.selectedHotel.push($scope.HotelList[indexHotel]);
+        // for (i = 0; i < vm.Backage.backageCurrency.length; i++) {
+        //     var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'CurrencyId': vm.Backage.backageCurrency[i].CurrencyId }, true)[0]);
+        //     vm.selectedCurrency.push($scope.CurrencyList[indexCurrency]);
 
         // }
 
-        var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Backage.hotel.hotelId }, true)[0]);
-        $scope.selectedHotel = $scope.HotelList[indexHotel];
+        var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Backage.currency.currencyId }, true)[0]);
+        $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
 
         var indexType = $scope.TypeList.indexOf($filter('filter')($scope.TypeList, { 'typeId': vm.Backage.type.typeId }, true)[0]);
         $scope.selectedType = $scope.TypeList[indexType];
@@ -81,13 +81,13 @@
             updateObj.backageId = vm.Backage.backageId;
             updateObj.titleDictionary = vm.Backage.titleDictionary;
             updateObj.descriptionDictionary = vm.Backage.descriptionDictionary;
-            updateObj.star = vm.Backage.star;
+            //updateObj.star = vm.Backage.star;
             updateObj.cityId = $scope.selectedCity.cityId; 
             updateObj.removeImages = vm.RemoveImages; 
             updateObj.daysCount = vm.Backage.daysCount;
             updateObj.nigthsCount = vm.Backage.nigthsCount;
             updateObj.price = vm.Backage.price;
-            updateObj.hotelId = $scope.selectedHotel.hotelId;
+             updateObj.currencyId = $scope.selectedCurrency.currencyId;
             updateObj.typeId = $scope.selectedType.typeId;
 
 

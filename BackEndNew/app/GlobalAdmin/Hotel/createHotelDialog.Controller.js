@@ -4,10 +4,10 @@
     angular
         .module('home')
         .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
+            'CountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
 
     function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        FeaturePrepService, HotelResource, ToastService, $rootScope) {
+        CurrencyPrepService,FeaturePrepService, HotelResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
         function init() {
@@ -20,6 +20,7 @@
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
             debugger;
+            $scope.CurrencyList = CurrencyPrepService.results;
             $scope.FeatureList = FeaturePrepService.results;
         }
         init();
@@ -70,6 +71,7 @@
             newHotel.latitude = vm.latitude;
             newHotel.longitude = vm.longitude;
             newHotel.hotelFeature = vm.selectedfeatures;
+            newHotel.currencyId = vm.selectedCurrency.currencyId;
 
             var model = new FormData();
             model.append('data', JSON.stringify(newHotel));

@@ -21,7 +21,7 @@
                     <td data-title="Date">{{OfferReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>
                     <td data-title="User"> {{OfferReservation.user.fullName}} </td>
                     <td> {{(StatusList |filter: {id: key})[OfferReservation.status].text | translate}} </td>
-                    <td> {{OfferReservation.seenUser.fullName}} / {{OfferReservation.seenUser.title}} </td>
+                    <td> {{OfferReservation.seenUser.fullName}}   </td>
                     <td>
                         <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editOfferReservation',{offerReservationId: OfferReservation.offerReservationId});">mode_edit</i>
                     </td>

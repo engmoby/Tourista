@@ -27,14 +27,14 @@
                                 <div class="post-info">
                                     <a href="/News/Details/@newsObj.NewsId">
 
-                                    <div class="meta-info">
+                                    @*<div class="meta-info">
                                         <span>
                                             @if (newsObj.CreationTime != null)
                                             {
                                                 @newsObj.CreationTime.Value.ToString("D")
                                             }
                                         </span>
-                                    </div>
+                                    </div>*@
                                     <div class="single-rp-preview">
                                         @if (@newsObj.TitleDictionary[@Common.CurrentLang].Length >= 50)
                                         {

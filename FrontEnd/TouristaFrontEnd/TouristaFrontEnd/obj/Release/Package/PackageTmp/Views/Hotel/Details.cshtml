@@ -282,7 +282,7 @@
 
             };
             $.ajax({
-                url: "http://touristaegy.com/backend/API/HotelReservations",
+                url: "http://localhost:50755/api/HotelReservations",
                 type: 'post',
                 dataType: 'json',
                 success: function (data) {
@@ -290,7 +290,8 @@
 
                 },
                 data: {
-                    CheckIn: $('#CheckIn').val(),
+                    
+            CheckIn: $('#CheckIn').val(),
                     CheckOut: $('#CheckOut').val(),
                     Adult: $('#Adult').val(),
                     Child: $('#Child').val(),
@@ -304,6 +305,7 @@
                     alert("Thanks, we will contact with soon " + result.TickectNo);
                 },
                 error: function (result) {
+                    debugger;
                     alert("Failed");
                 }
             });

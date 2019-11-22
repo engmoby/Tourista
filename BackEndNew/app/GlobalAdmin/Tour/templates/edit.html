@@ -164,7 +164,8 @@
                     <label> {{ 'startTo' | translate}} </label>
                     <input name="itemDatetime" ng-model="itemDatetime" type="text" id="startTo" class="form-control"
                         ng-change="dateChange();" />
-                    <!-- <input required type="text" class="mat-input form-control" name="startTo" ng-model="editTourCtrl.startTo" ng-minlength="1"
+                        {{editTourCtrl.Tour.startTo}}
+                        <!-- <input required type="text" class="mat-input form-control" name="startTo" ng-model="editTourCtrl.startTo" ng-minlength="1"
                         ng-maxlength="50"> -->
                     <div ng-messages="UpdateTourForm.startTo.$error">
                         <div ng-if="UpdateTourForm.startTo.$error.required && !UpdateTourForm.startTo.$pristine">
@@ -189,6 +190,14 @@
                     </div>
                 </div>
 
+                <div
+                class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                <label> {{ 'Currency' | translate}} </label>
+                <select required style="width:100% !important"
+                    class="form-control select-with-search pmd-select2-tags" ng-model="selectedCurrency"
+                    ng-options="currency as currency.titleDictionary[selectedLanguage] for currency in CurrencyList"></select>
+
+            </div>  
 
             </div>
 
@@ -239,9 +248,7 @@
         </form>
     </div>
     <div class="pmd-modal-action text-right">
-        <button
-            ng-disabled="UpdateTourForm.$invalid  "
-            class="btn pmd-ripple-effect btn-primary" Tour="button"
+        <button ng-disabled="UpdateTourForm.$invalid  " class="btn pmd-ripple-effect btn-primary" Tour="button"
             ng-click="editTourCtrl.UpdateTour()">{{'saveChangesBtn' | translate}}</button>
         <button class="btn pmd-ripple-effect btn-default" Tour="button"
             ng-click="$state.go('Tour');">{{'DiscardBtn' | translate}}</button>

@@ -543,6 +543,7 @@
                     resolve: {
                         HotelPrepService: HotelPrepService,
                         CountryPrepService: CountryPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
                     data: {
@@ -561,6 +562,7 @@
                     resolve: {
                         HotelByIdPrepService: HotelByIdPrepService,
                         CountryPrepService: CountryPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
                     data: {
@@ -597,6 +599,7 @@
                     resolve: {
                         TourPrepService: TourPrepService,
                         CountryPrepService: CountryPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
                     data: {
@@ -615,6 +618,7 @@
                     resolve: {
                         TourByIdPrepService: TourByIdPrepService,
                         CountryPrepService: CountryPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
                     data: {
@@ -687,7 +691,7 @@
                     resolve: {
                         BackagePrepService: BackagePrepService,
                         CountryPrepService: CountryPrepService,
-                        HotelPrepService: HotelPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService,
                     },
                     data: {
@@ -706,7 +710,7 @@
                     resolve: {
                         BackageByIdPrepService: BackageByIdPrepService,
                         CountryPrepService: CountryPrepService,
-                        HotelPrepService: HotelPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService
                     },
                     data: {
@@ -779,6 +783,7 @@
                         OfferPrepService: OfferPrepService,
                         CountryPrepService: CountryPrepService,
                         HotelPrepService: HotelPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService,
                     },
                     data: {
@@ -798,6 +803,7 @@
                         OfferByIdPrepService: OfferByIdPrepService,
                         CountryPrepService: CountryPrepService,
                         HotelPrepService: HotelPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService
                     },
                     data: {
@@ -1521,10 +1527,10 @@
     angular
         .module('home')
         .controller('createBackageDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
+            'CountryPrepService', 'CurrencyPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
 
-    function createBackageDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        HotelPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
+    function createBackageDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, 
+        CountryPrepService,CurrencyPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
         function init() {
@@ -1537,7 +1543,7 @@
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
             debugger;
-            $scope.HotelList = HotelPrepService.results;
+            $scope.CurrencyList = CurrencyPrepService.results;
             $scope.TypeList = TypePrepService.results;
         }
         init();
@@ -1577,12 +1583,11 @@
             var newBackage = new Object();
             newBackage.titleDictionary = vm.titleDictionary;
             newBackage.descriptionDictionary = vm.descriptionDictionary;
-            newBackage.star = vm.star;
             newBackage.cityId = $scope.selectedCity.cityId;
             newBackage.daysCount = vm.daysCount;
             newBackage.nigthsCount = vm.nigthsCount;
             newBackage.price = vm.price;
-            newBackage.hotelId = vm.selectedHotel.hotelId;
+            newBackage.currencyId = vm.selectedCurrency.currencyId;
             newBackage.typeId = vm.selectedType.typeId;
 
             var model = new FormData();
@@ -1612,7 +1617,7 @@
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
                     blockUI.stop();
                 }
-                );
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {
@@ -1677,15 +1682,15 @@
     angular
         .module('home')
         .controller('editBackageDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'BackageResource', 'ToastService', 'HotelPrepService','TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
+            'CountryPrepService', 'BackageResource', 'ToastService', 'CurrencyPrepService','TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
 
     function editBackageDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        BackageResource, ToastService, HotelPrepService,TypePrepService, BackageByIdPrepService) {
+        BackageResource, ToastService, CurrencyPrepService,TypePrepService, BackageByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
             $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
-            $scope.HotelList = HotelPrepService.results;
+            $scope.CurrencyList = CurrencyPrepService.results;
             $scope.TypeList = TypePrepService.results;
 
             $scope.CityList = [];
@@ -1698,13 +1703,13 @@
         vm.Backage = BackageByIdPrepService;
         vm.RemoveImages = [];
         vm.CheckImages = [];
-        vm.selectedHotel = [];
+        vm.selectedCurrency = [];
         console.log(vm.Backage);
         vm.CheckImages.push(vm.Backage.imagesURL);
 
 
-        var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Backage.hotel.hotelId }, true)[0]);
-        $scope.selectedHotel = $scope.HotelList[indexHotel];
+        var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Backage.currency.currencyId }, true)[0]);
+        $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
 
         var indexType = $scope.TypeList.indexOf($filter('filter')($scope.TypeList, { 'typeId': vm.Backage.type.typeId }, true)[0]);
         $scope.selectedType = $scope.TypeList[indexType];
@@ -1748,13 +1753,12 @@
             updateObj.backageId = vm.Backage.backageId;
             updateObj.titleDictionary = vm.Backage.titleDictionary;
             updateObj.descriptionDictionary = vm.Backage.descriptionDictionary;
-            updateObj.star = vm.Backage.star;
             updateObj.cityId = $scope.selectedCity.cityId; 
             updateObj.removeImages = vm.RemoveImages; 
             updateObj.daysCount = vm.Backage.daysCount;
             updateObj.nigthsCount = vm.Backage.nigthsCount;
             updateObj.price = vm.Backage.price;
-            updateObj.hotelId = $scope.selectedHotel.hotelId;
+             updateObj.currencyId = $scope.selectedCurrency.currencyId;
             updateObj.typeId = $scope.selectedType.typeId;
 
 
@@ -2346,128 +2350,6 @@
         blockUI.stop();
 
         	}	
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('CityController', ['$rootScope', '$scope', '$filter', '$translate',
-            '$state', 'CityResource',   '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', CityController]);
-
-
-    function CityController($rootScope, $scope, $filter, $translate,
-        $state, CityResource,  $localStorage, authorizationService,
-        appCONSTANTS, ToastService) {
-
-        blockUI.start("Loading..."); 
-
-                    refreshCitys();
-
-        function refreshCitys() {
-           blockUI.start("Loading..."); 
-
-                        var k = CityResource.getAllCitys().$promise.then(function (results) {
-                $scope.CityList = results;
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-
-    }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('CityResource', ['$resource', 'appCONSTANTS', CityResource]) 
-
-    function CityResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'Cities/', {}, {
-            getAllCities: { method: 'GET', url: appCONSTANTS.API_URL + 'Cities/GetAllCities', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Cities/EditCity', useToken: true },
-            getCity: { method: 'GET', url: appCONSTANTS.API_URL + 'Cities/GetCityById/:CityId', useToken: true }
-        })
-    } 
-
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('createCityDialogController', ['$scope', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CityResource', 'ToastService', '$rootScope', 'CountryByIdPrepService', createCityDialogController])
-
-    function createCityDialogController($scope, $http, $state, appCONSTANTS, $translate, CityResource,
-        ToastService, $rootScope, CountryByIdPrepService) {
-		var vm = this;
-		vm.Country = CountryByIdPrepService;
-		vm.language = appCONSTANTS.supportedLanguage;
-		vm.close = function(){
-		    $state.go('Country');
-		} 
-
-		 		vm.AddNewCity = function () {
-            var newObj = new CityResource();
-		    newObj.countryId = vm.Country.countryId;
-            newObj.titleDictionary = vm.titleDictionary;
-            newObj.IsDeleted = false;  
-            newObj.$create().then(
-                function (data, status) {
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
-                    $state.go('Country');
-
-                },
-                function (data, status) {
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-
-  	}	
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editCityDialogController', ['$scope', '$http', '$state', 'appCONSTANTS', '$translate', 'CityResource', 'ToastService',
-            'CityByIdPrepService', editCityDialogController])
-
-    function editCityDialogController($scope, $http, $state, appCONSTANTS, $translate, CityResource, ToastService, CityByIdPrepService) {
-		var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.City = CityByIdPrepService; 
-        vm.close = function () {
-            $state.go('Country');
-        }
-        vm.UpdateCity = function () { 
-            var updateObj = new CityResource();
-            updateObj.cityId = vm.City.cityId;
-            updateObj.titleDictionary = vm.City.titleDictionary;
-		    updateObj.IsDeleted = false; 
-		    updateObj.$update().then(
-                function (data, status) {
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
-
-                     $state.go('Country');
-
-                },
-                function (data, status) {
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-	}	
 }());
 (function () {
     'use strict';
@@ -3484,10 +3366,10 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
+            'CountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
 
     function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        FeaturePrepService, HotelResource, ToastService, $rootScope) {
+        CurrencyPrepService,FeaturePrepService, HotelResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
         function init() {
@@ -3500,6 +3382,7 @@ console.log( $scope.ClientList);
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
             debugger;
+            $scope.CurrencyList = CurrencyPrepService.results;
             $scope.FeatureList = FeaturePrepService.results;
         }
         init();
@@ -3549,6 +3432,7 @@ console.log( $scope.ClientList);
             newHotel.latitude = vm.latitude;
             newHotel.longitude = vm.longitude;
             newHotel.hotelFeature = vm.selectedfeatures;
+            newHotel.currencyId = vm.selectedCurrency.currencyId;
 
             var model = new FormData();
             model.append('data', JSON.stringify(newHotel));
@@ -3639,37 +3523,32 @@ console.log( $scope.ClientList);
 (function () {
     'use strict';
 
-	    angular
+    angular
         .module('home')
-        .controller('editHotelDialogController', ['$scope', '$filter','blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-        'CountryPrepService',    'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
+        .controller('editHotelDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'CurrencyPrepService', 'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
 
-    function editHotelDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
-         HotelResource, ToastService,FeaturePrepService, HotelByIdPrepService) {
-        blockUI.start("Loading..."); 
-        function init(){ 
-            $scope.CountryList = []; 
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
+    function editHotelDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        CurrencyPrepService, HotelResource, ToastService, FeaturePrepService, HotelByIdPrepService) {
+        blockUI.start("Loading...");
+        function init() {
+            $scope.CountryList = [];
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
             $scope.FeatureList = FeaturePrepService.results;
+            $scope.CurrencyList = CurrencyPrepService.results;
 
-                       $scope.CityList = [];
+            $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
         }
         init();
-        $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
-            var location = $scope.autocomplete.getPlace().geometry.location;
-           vm.Hotel.latitude = location.lat();
-           vm.Hotel.longitude = location.lng();
-            $scope.$apply();
-        });
 
-        var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.Hotel = HotelByIdPrepService; 
-        vm.RemoveImages = []; 
-        vm.CheckImages = []; 
-        vm.selectedHotelFeatures=[] ;
-        console.log( vm.Hotel);
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.Hotel = HotelByIdPrepService;
+        vm.RemoveImages = [];
+        vm.CheckImages = [];
+        vm.selectedHotelFeatures = [];
+        console.log(vm.Hotel);
         vm.CheckImages.push(vm.Hotel.imagesURL);
         var i;
         for (i = 0; i < vm.Hotel.hotelFeature.length; i++) {
@@ -3677,31 +3556,33 @@ console.log( $scope.ClientList);
             vm.selectedHotelFeatures.push($scope.FeatureList[indexFeature]);
 
         }
+        var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Hotel.currency.currencyId }, true)[0]);
+        $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
 
 
-      var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Hotel.city.countryId }, true)[0]);
-      $scope.selectedCountry=$scope.CountryList[indexCountry];
+        var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Hotel.city.countryId }, true)[0]);
+        $scope.selectedCountry = $scope.CountryList[indexCountry];
 
 
-            $scope.CityList = $scope.selectedCountry.cityes;
-  var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Hotel.city.cityId }, true)[0]);
-  $scope.selectedCity=$scope.selectedCountry.cityes[indexCity];  
+        $scope.CityList = $scope.selectedCountry.cityes;
+        var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Hotel.city.cityId }, true)[0]);
+        $scope.selectedCity = $scope.selectedCountry.cityes[indexCity];
 
-  $scope.CountryChange = function () {
-    for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
-        if ($scope.CountryList[i].CountryId == 0) {
-            $scope.CountryList.splice(i, 1);
+        $scope.CountryChange = function () {
+            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+                if ($scope.CountryList[i].CountryId == 0) {
+                    $scope.CountryList.splice(i, 1);
+                }
+            }
+            $scope.CityList = [];
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList.push($scope.selectedCity);
+            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
         }
-    }
-    $scope.CityList = [];
-    $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-    $scope.CityList.push($scope.selectedCity);
-    $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
-} 
 
         vm.Close = function () {
             $state.go('Hotel');
-        } 
+        }
         blockUI.stop();
         vm.isChanged = false;
 
@@ -3712,20 +3593,21 @@ console.log( $scope.ClientList);
         }
         vm.UpdateHotel = function () {
             debugger;
-        blockUI.start("Loading..."); 
-        vm.isChanged = true;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
             var updateObj = new Object();
-            updateObj.hotelId = vm.Hotel.hotelId; 
-            updateObj.titleDictionary = vm.Hotel.titleDictionary; 
-            updateObj.descriptionDictionary = vm.Hotel.descriptionDictionary; 
-            updateObj.star = vm.Hotel.star; 
-            updateObj.cityId =  $scope.selectedCity.cityId; 
-            updateObj.latitude =  vm.Hotel.latitude; 
-            updateObj.longitude =  vm.Hotel.longitude; 
-            updateObj.removeImages =  vm.RemoveImages; 
+            updateObj.hotelId = vm.Hotel.hotelId;
+            updateObj.titleDictionary = vm.Hotel.titleDictionary;
+            updateObj.descriptionDictionary = vm.Hotel.descriptionDictionary;
+            updateObj.star = vm.Hotel.star;
+            updateObj.cityId = $scope.selectedCity.cityId;
+            updateObj.latitude = vm.Hotel.latitude;
+            updateObj.longitude = vm.Hotel.longitude;
+            updateObj.removeImages = vm.RemoveImages;
             updateObj.hotelFeature = vm.selectedHotelFeatures;
+            updateObj.currencyId = $scope.selectedCurrency.currencyId;
 
-                    var model = new FormData();
+            var model = new FormData();
             model.append('data', JSON.stringify(updateObj));
             vm.files.forEach(function (element) {
                 model.append('file', element);
@@ -3743,16 +3625,16 @@ console.log( $scope.ClientList);
                     vm.isChanged = false;
                     ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
 
-                                       blockUI.stop();
-                     $state.go('Hotel')
+                    blockUI.stop();
+                    $state.go('Hotel')
 
                 },
                 function (data, status) {
                     vm.isChanged = false;
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-        blockUI.stop();
-    }
-                );
+                    blockUI.stop();
+                }
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {
@@ -3807,15 +3689,138 @@ console.log( $scope.ClientList);
         }
 
         vm.removeFile = function (index) {
-           vm.RemoveImages.push(index);
+            vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
         }
 
-	        vm.removeHotelFile = function (index) { 
+        vm.removeHotelFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Hotel.imagesURL.splice(index, 1);
-        }}	
+        }
+    }
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('CityController', ['$rootScope', '$scope', '$filter', '$translate',
+            '$state', 'CityResource',   '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', CityController]);
+
+
+    function CityController($rootScope, $scope, $filter, $translate,
+        $state, CityResource,  $localStorage, authorizationService,
+        appCONSTANTS, ToastService) {
+
+        blockUI.start("Loading..."); 
+
+                    refreshCitys();
+
+        function refreshCitys() {
+           blockUI.start("Loading..."); 
+
+                        var k = CityResource.getAllCitys().$promise.then(function (results) {
+                $scope.CityList = results;
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+
+    }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('CityResource', ['$resource', 'appCONSTANTS', CityResource]) 
+
+    function CityResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Cities/', {}, {
+            getAllCities: { method: 'GET', url: appCONSTANTS.API_URL + 'Cities/GetAllCities', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Cities/EditCity', useToken: true },
+            getCity: { method: 'GET', url: appCONSTANTS.API_URL + 'Cities/GetCityById/:CityId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('createCityDialogController', ['$scope', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CityResource', 'ToastService', '$rootScope', 'CountryByIdPrepService', createCityDialogController])
+
+    function createCityDialogController($scope, $http, $state, appCONSTANTS, $translate, CityResource,
+        ToastService, $rootScope, CountryByIdPrepService) {
+		var vm = this;
+		vm.Country = CountryByIdPrepService;
+		vm.language = appCONSTANTS.supportedLanguage;
+		vm.close = function(){
+		    $state.go('Country');
+		} 
+
+		 		vm.AddNewCity = function () {
+            var newObj = new CityResource();
+		    newObj.countryId = vm.Country.countryId;
+            newObj.titleDictionary = vm.titleDictionary;
+            newObj.IsDeleted = false;  
+            newObj.$create().then(
+                function (data, status) {
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
+                    $state.go('Country');
+
+                },
+                function (data, status) {
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+
+  	}	
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editCityDialogController', ['$scope', '$http', '$state', 'appCONSTANTS', '$translate', 'CityResource', 'ToastService',
+            'CityByIdPrepService', editCityDialogController])
+
+    function editCityDialogController($scope, $http, $state, appCONSTANTS, $translate, CityResource, ToastService, CityByIdPrepService) {
+		var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.City = CityByIdPrepService; 
+        vm.close = function () {
+            $state.go('Country');
+        }
+        vm.UpdateCity = function () { 
+            var updateObj = new CityResource();
+            updateObj.cityId = vm.City.cityId;
+            updateObj.titleDictionary = vm.City.titleDictionary;
+		    updateObj.IsDeleted = false; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('Country');
+
+                },
+                function (data, status) {
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+	}	
 }());
 
 (function () {
@@ -4507,9 +4512,10 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('createOfferDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
+          'CurrencyPrepService',  'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
 
-    function createOfferDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function createOfferDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate,
+        CurrencyPrepService, CountryPrepService,
         HotelPrepService, TypePrepService, OfferResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
@@ -4518,6 +4524,7 @@ console.log( $scope.ClientList);
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
             $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CurrencyList = CurrencyPrepService.results;
 
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
             $scope.CityList = [];
@@ -4556,6 +4563,16 @@ console.log( $scope.ClientList);
             vm.fileExist = false;
 
         }
+        $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
+            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $scope.dateIsValid = false;
+            } else if ($scope.newOfferForm.$valid) {
+                $scope.dateIsValid = true;
+            }
+        }
         vm.AddNewOffer = function () {
             debugger;
             blockUI.start("Loading...");
@@ -4563,7 +4580,7 @@ console.log( $scope.ClientList);
             var newOffer = new Object();
             newOffer.titleDictionary = vm.titleDictionary;
             newOffer.descriptionDictionary = vm.descriptionDictionary;
-            newOffer.star = vm.star;
+             newOffer.star =vm.selectedHotel.star;
             newOffer.cityId = $scope.selectedCity.cityId;
             newOffer.daysCount = vm.daysCount;
             newOffer.nigthsCount = vm.nigthsCount;
@@ -4571,8 +4588,11 @@ console.log( $scope.ClientList);
             newOffer.price = vm.price;
             newOffer.hotelId = vm.selectedHotel.hotelId;
             newOffer.typeId = vm.selectedType.typeId;
+            newOffer.currencyId = vm.selectedCurrency.currencyId;
+            newOffer.dateFrom =$('#startFrom').val();
+            newOffer.dateTo = $('#startTo').val();
 
-            var model = new FormData();
+                       var model = new FormData();
             model.append('data', JSON.stringify(newOffer));
             vm.files.forEach(function (element) {
                 model.append('file', element);
@@ -4664,21 +4684,22 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('editOfferDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'OfferResource', 'ToastService', 'HotelPrepService','TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
+            'CountryPrepService','CurrencyPrepService', 'OfferResource', 'ToastService', 'HotelPrepService', 'TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
 
     function editOfferDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        OfferResource, ToastService, HotelPrepService,TypePrepService, OfferByIdPrepService) {
+        CurrencyPrepService,OfferResource, ToastService, HotelPrepService, TypePrepService, OfferByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
             $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
             $scope.HotelList = HotelPrepService.results;
             $scope.TypeList = TypePrepService.results;
+            $scope.CurrencyList = CurrencyPrepService.results;
 
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
         }
-        init(); 
+        init();
 
         var vm = this;
         vm.language = appCONSTANTS.supportedLanguage;
@@ -4689,8 +4710,17 @@ console.log( $scope.ClientList);
         console.log(vm.Offer);
         vm.CheckImages.push(vm.Offer.imagesURL);
 
+        vm.Offer.dateFrom = vm.Offer.dateFrom + "Z";
+        vm.Offer.dateFrom = $filter('date')(new Date(vm.Offer.dateFrom), "MM/dd/yyyy hh:mm a"); 
+        vm.Offer.dateTo = vm.Offer.dateTo + "Z";
+        vm.Offer.dateTo = $filter('date')(new Date(vm.Offer.dateTo), "MM/dd/yyyy hh:mm a");
 
-        var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Offer.hotel.hotelId }, true)[0]);
+
+               var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Offer.currency.currencyId }, true)[0]);
+        $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
+
+
+             var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Offer.hotel.hotelId }, true)[0]);
         $scope.selectedHotel = $scope.HotelList[indexHotel];
 
         var indexType = $scope.TypeList.indexOf($filter('filter')($scope.TypeList, { 'typeId': vm.Offer.type.typeId }, true)[0]);
@@ -4727,6 +4757,17 @@ console.log( $scope.ClientList);
             vm.fileExist = false;
 
         }
+
+                $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#dateFrom').data('date') == null || $('#dateFrom').data('date') == "" ||
+                $('#dateTo').data('date') == null || $('#dateTo').data('date') == "") {
+                $scope.dateIsValid = false;
+            } else if ($scope.UpdateTourForm.$valid) {
+                $scope.dateIsValid = true;
+            }
+        }
         vm.UpdateOffer = function () {
             debugger;
             blockUI.start("Loading...");
@@ -4735,16 +4776,19 @@ console.log( $scope.ClientList);
             updateObj.offerId = vm.Offer.offerId;
             updateObj.titleDictionary = vm.Offer.titleDictionary;
             updateObj.descriptionDictionary = vm.Offer.descriptionDictionary;
-            updateObj.star = vm.Offer.star;
-            updateObj.cityId = $scope.selectedCity.cityId; 
-            updateObj.removeImages = vm.RemoveImages; 
+            updateObj.star = $scope.selectedHotel.star;
+            updateObj.cityId = $scope.selectedCity.cityId;
+            updateObj.removeImages = vm.RemoveImages;
             updateObj.daysCount = vm.Offer.daysCount;
             updateObj.nigthsCount = vm.Offer.nigthsCount;
             updateObj.priceBefore = vm.Offer.priceBefore;
             updateObj.price = vm.Offer.price;
             updateObj.hotelId = $scope.selectedHotel.hotelId;
             updateObj.typeId = $scope.selectedType.typeId;
+            updateObj.currencyId = $scope.selectedCurrency.currencyId;
 
+            updateObj.dateFrom =$('#dateFrom').val();
+            updateObj.dateTo = $('#dateTo').val();
 
             var model = new FormData();
             model.append('data', JSON.stringify(updateObj));
@@ -4773,7 +4817,7 @@ console.log( $scope.ClientList);
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
                     blockUI.stop();
                 }
-                );
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {
@@ -4967,6 +5011,377 @@ console.log( $scope.ClientList);
 
     angular
         .module('home')
+        .controller('TourController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'TourResource', 'TourPrepService', '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', TourController]);
+
+
+    function TourController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, TourResource, TourPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) {
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[5].children[0]).addClass("active")
+
+        blockUI.start("Loading...");
+
+        var vm = this;
+        $scope.totalCount = TourPrepService.totalCount;
+        $scope.TourList = TourPrepService;
+        console.log($scope.TourList);
+        function refreshTours() {
+
+            blockUI.start("Loading...");
+
+            var k = TourResource.GetAllTours({ page: vm.currentPage }).$promise.then(function (results) {
+                $scope.TourList = results
+                blockUI.stop();
+
+            },
+                function (data, status) {
+                    blockUI.stop();
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+                });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshTours();
+        }
+        blockUI.stop();
+
+    }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('TourResource', ['$resource', 'appCONSTANTS', TourResource]) 
+
+    function TourResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Tours/', {}, {
+            GetAllTours: { method: 'GET', url: appCONSTANTS.API_URL + 'Tours/GetAllTours', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Tours/EditTour', useToken: true },
+            getTour: { method: 'GET', url: appCONSTANTS.API_URL + 'Tours/GetTourById/:TourId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('createTourDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
+
+    function createTourDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        CurrencyPrepService, FeaturePrepService, TourResource, ToastService, $rootScope) {
+
+        blockUI.start("Loading..."); 
+        $scope.CurrencyList = CurrencyPrepService.results;
+
+             var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.close = function () {
+            $state.go('Tour');
+        }
+
+
+         blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+        vm.AddNewTour = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var newTour = new Object();
+            newTour.titleDictionary = vm.titleDictionary;
+            newTour.descriptionDictionary = vm.descriptionDictionary; 
+            newTour.mekkaDays = vm.mekkaDays; 
+            newTour.madinaDays = vm.madinaDays; 
+            newTour.duration = vm.duration; 
+            newTour.price = vm.price; 
+            newTour.startFrom =$('#startFrom').val();
+            newTour.startTo = $('#startTo').val();
+            newTour.hotelTitle = vm.hotelTitle;
+            newTour.currencyId = vm.selectedCurrency.currencyId;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(newTour));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Tours/',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Tour')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
+        $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
+            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $scope.dateIsValid = false;
+            } else if ($scope.newTourForm.$valid) {
+                $scope.dateIsValid = true;
+            }
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            debugger; var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.newTourForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.files.splice(index, 1);
+        }
+
+    }
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('editTourDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService','CurrencyPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
+
+    function editTourDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        CurrencyPrepService,   TourResource, ToastService, TourByIdPrepService) {
+        blockUI.start("Loading...");
+
+
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.Tour = TourByIdPrepService;
+        vm.RemoveImages = [];
+        vm.CheckImages = [];
+        $scope.CurrencyList = CurrencyPrepService.results;
+        var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Tour.currency.currencyId }, true)[0]);
+        $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
+
+        vm.Tour.startFrom = vm.Tour.startFrom + "Z";
+        vm.Tour.startFrom = $filter('date')(new Date(vm.Tour.startFrom), "MM/dd/yyyy hh:mm a"); 
+        vm.Tour.startTo = vm.Tour.startTo + "Z";
+        vm.Tour.startTo = $filter('date')(new Date(vm.Tour.startTo), "MM/dd/yyyy hh:mm a");
+
+               console.log(vm.Tour);
+
+        vm.Close = function () {
+            $state.go('Tour');
+        }
+        blockUI.stop();
+        vm.isChanged = false;
+
+        vm.LoadUploadImages = function () {
+            $("#file").click();
+            vm.fileExist = false;
+
+        }
+
+        $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
+                $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $scope.dateIsValid = false;
+            } else if ($scope.UpdateTourForm.$valid) {
+                $scope.dateIsValid = true;
+            }
+        }
+        vm.UpdateTour = function () {
+            debugger;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
+            var updateObj = new Object();
+            updateObj.tourId = vm.Tour.tourId;
+            updateObj.titleDictionary = vm.Tour.titleDictionary;
+            updateObj.descriptionDictionary = vm.Tour.descriptionDictionary;
+            updateObj.star = vm.Tour.star;
+            updateObj.mekkaDays = vm.Tour.mekkaDays; 
+            updateObj.madinaDays = vm.Tour.madinaDays; 
+            updateObj.duration = vm.Tour.duration; 
+            updateObj.price = vm.Tour.price; 
+            updateObj.startFrom =$('#startFrom').val();
+            updateObj.startTo = $('#startTo').val();
+            updateObj.hotelTitle = vm.Tour.hotelTitle;
+            updateObj.currencyId = $scope.selectedCurrency.currencyId;
+
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Tours/EditTour',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('Tour')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
+        vm.files = [];
+        $scope.AddFile = function (element) {
+            var imageFile = element[0];
+
+            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
+
+            vm.files.forEach(function (file) {
+                if (file.name === imageFile.name) {
+                    vm.fileExist = true;
+                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
+                    return
+                }
+            }, this);
+            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
+
+                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
+                    if (!vm.fileExist) {
+                        $scope.UpdateTourForm.$dirty = true;
+                        $scope.$apply(function () {
+
+                            vm.files.push(imageFile);
+                            vm.CheckImages.push(imageFile);
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                $scope.$apply();
+                            };
+                            if (imageFile) {
+                                reader.readAsDataURL(imageFile);
+                            }
+                        })
+                    }
+                    else {
+                        $("#file").val('');
+                        $scope.$apply()
+                    }
+                } else {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
+                }
+
+            } else {
+                if (imageFile) {
+                    $("#file").val('');
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
+                }
+
+            }
+
+
+        }
+
+        vm.removeFile = function (index) {
+            vm.RemoveImages.push(index);
+            vm.files.splice(index, 1);
+            vm.CheckImages.splice(index, 1);
+        }
+
+        vm.removeTourFile = function (index) {
+            vm.CheckImages.splice(index, 1);
+            vm.Tour.imagesURL.splice(index, 1);
+        }
+    }
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
         .controller('OwnerController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'OwnerResource', 'OwnerPrepService',  '$localStorage',
             'authorizationService', 'appCONSTANTS',
@@ -5120,369 +5535,6 @@ console.log( $scope.ClientList);
         blockUI.stop();
 
         	}	
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('TourController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'TourResource', 'TourPrepService', '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', TourController]);
-
-
-    function TourController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, TourResource, TourPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) {
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[5].children[0]).addClass("active")
-
-        blockUI.start("Loading...");
-
-        var vm = this;
-        $scope.totalCount = TourPrepService.totalCount;
-        $scope.TourList = TourPrepService;
-        console.log($scope.TourList);
-        function refreshTours() {
-
-            blockUI.start("Loading...");
-
-            var k = TourResource.GetAllTours({ page: vm.currentPage }).$promise.then(function (results) {
-                $scope.TourList = results
-                blockUI.stop();
-
-            },
-                function (data, status) {
-                    blockUI.stop();
-
-                    ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-                });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshTours();
-        }
-        blockUI.stop();
-
-    }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('TourResource', ['$resource', 'appCONSTANTS', TourResource]) 
-
-    function TourResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'Tours/', {}, {
-            GetAllTours: { method: 'GET', url: appCONSTANTS.API_URL + 'Tours/GetAllTours', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Tours/EditTour', useToken: true },
-            getTour: { method: 'GET', url: appCONSTANTS.API_URL + 'Tours/GetTourById/:TourId', useToken: true }
-        })
-    } 
-
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('createTourDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
-
-    function createTourDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        FeaturePrepService, TourResource, ToastService, $rootScope) {
-
-        blockUI.start("Loading..."); 
-
-             var vm = this;
-        vm.language = appCONSTANTS.supportedLanguage;
-        vm.close = function () {
-            $state.go('Tour');
-        }
-
-
-         blockUI.stop();
-        vm.isChanged = false;
-
-        vm.LoadUploadImages = function () {
-            $("#file").click();
-            vm.fileExist = false;
-
-        }
-        vm.AddNewTour = function () {
-            debugger;
-            blockUI.start("Loading...");
-            vm.isChanged = true;
-            var newTour = new Object();
-            newTour.titleDictionary = vm.titleDictionary;
-            newTour.descriptionDictionary = vm.descriptionDictionary; 
-            newTour.mekkaDays = vm.mekkaDays; 
-            newTour.madinaDays = vm.madinaDays; 
-            newTour.duration = vm.duration; 
-            newTour.price = vm.price; 
-            newTour.startFrom =$('#startFrom').val();
-            newTour.startTo = $('#startTo').val();
-            newTour.hotelTitle = vm.hotelTitle;
-
-            var model = new FormData();
-            model.append('data', JSON.stringify(newTour));
-            vm.files.forEach(function (element) {
-                model.append('file', element);
-            }, this);
-
-            $http({
-                method: 'POST',
-                url: appCONSTANTS.API_URL + 'Tours/',
-                useToken: true,
-                headers: { 'Content-Type': undefined },
-                transformRequest: angular.identity,
-                data: model
-            }).then(
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
-
-                    blockUI.stop();
-                    $state.go('Tour')
-
-                },
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                    blockUI.stop();
-                }
-            );
-        }
-        $scope.dateIsValid = false;
-        $scope.dateChange = function () {
-            debugger;
-            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
-            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
-                $scope.dateIsValid = false;
-            } else if ($scope.newTourForm.$valid) {
-                $scope.dateIsValid = true;
-            }
-        }
-        vm.files = [];
-        $scope.AddFile = function (element) {
-            debugger; var imageFile = element[0];
-
-            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
-
-            vm.files.forEach(function (file) {
-                if (file.name === imageFile.name) {
-                    vm.fileExist = true;
-                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
-                    return
-                }
-            }, this);
-            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
-
-                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
-                    if (!vm.fileExist) {
-                        $scope.newTourForm.$dirty = true;
-                        $scope.$apply(function () {
-
-                            vm.files.push(imageFile);
-                            var reader = new FileReader();
-
-                            reader.onloadend = function () {
-                                $scope.$apply();
-                            };
-                            if (imageFile) {
-                                reader.readAsDataURL(imageFile);
-                            }
-                        })
-                    }
-                    else {
-                        $("#file").val('');
-                        $scope.$apply()
-                    }
-                } else {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
-                }
-
-            } else {
-                if (imageFile) {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
-                }
-
-            }
-
-
-        }
-
-        vm.removeFile = function (index) {
-            vm.files.splice(index, 1);
-        }
-
-    }
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('editTourDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
-
-    function editTourDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        TourResource, ToastService, TourByIdPrepService) {
-        blockUI.start("Loading...");
-
-
-        var vm = this;
-        vm.language = appCONSTANTS.supportedLanguage;
-        vm.Tour = TourByIdPrepService;
-        vm.RemoveImages = [];
-        vm.CheckImages = [];
-
-        vm.Tour.startFrom = vm.Tour.startFrom + "Z";
-        vm.Tour.startFrom = $filter('date')(new Date(vm.Tour.startFrom), "MM/dd/yyyy hh:mm a");
-
-        console.log(vm.Tour);
-
-        vm.Close = function () {
-            $state.go('Tour');
-        }
-        blockUI.stop();
-        vm.isChanged = false;
-
-        vm.LoadUploadImages = function () {
-            $("#file").click();
-            vm.fileExist = false;
-
-        }
-
-        $scope.dateIsValid = false;
-        $scope.dateChange = function () {
-            debugger;
-            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
-                $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
-                $scope.dateIsValid = false;
-            } else if ($scope.UpdateTourForm.$valid) {
-                $scope.dateIsValid = true;
-            }
-        }
-        vm.UpdateTour = function () {
-            debugger;
-            blockUI.start("Loading...");
-            vm.isChanged = true;
-            var updateObj = new Object();
-            updateObj.tourId = vm.Tour.tourId;
-            updateObj.titleDictionary = vm.Tour.titleDictionary;
-            updateObj.descriptionDictionary = vm.Tour.descriptionDictionary;
-            updateObj.star = vm.Tour.star;
-            updateObj.mekkaDays = vm.Tour.mekkaDays; 
-            updateObj.madinaDays = vm.Tour.madinaDays; 
-            updateObj.duration = vm.Tour.duration; 
-            updateObj.price = vm.Tour.price; 
-            updateObj.startFrom =$('#startFrom').val();
-            updateObj.startTo = $('#startTo').val();
-            updateObj.hotelTitle = vm.Tour.hotelTitle;
-
-
-            var model = new FormData();
-            model.append('data', JSON.stringify(updateObj));
-            vm.files.forEach(function (element) {
-                model.append('file', element);
-            }, this);
-
-            $http({
-                method: 'POST',
-                url: appCONSTANTS.API_URL + 'Tours/EditTour',
-                useToken: true,
-                headers: { 'Content-Type': undefined },
-                transformRequest: angular.identity,
-                data: model
-            }).then(
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
-
-                    blockUI.stop();
-                    $state.go('Tour')
-
-                },
-                function (data, status) {
-                    vm.isChanged = false;
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                    blockUI.stop();
-                }
-            );
-        }
-        vm.files = [];
-        $scope.AddFile = function (element) {
-            var imageFile = element[0];
-
-            var allowedImageTypes = ['image/jpg', 'image/png', 'image/jpeg']
-
-            vm.files.forEach(function (file) {
-                if (file.name === imageFile.name) {
-                    vm.fileExist = true;
-                    ToastService.show("right", "bottom", "fadeInUp", "File is already exist", "error");
-                    return
-                }
-            }, this);
-            if (imageFile && imageFile.size >= 0 && ((imageFile.size / (1024 * 1000)) < 2)) {
-
-                if (allowedImageTypes.indexOf(imageFile.type) !== -1) {
-                    if (!vm.fileExist) {
-                        $scope.UpdateTourForm.$dirty = true;
-                        $scope.$apply(function () {
-
-                            vm.files.push(imageFile);
-                            vm.CheckImages.push(imageFile);
-                            var reader = new FileReader();
-
-                            reader.onloadend = function () {
-                                $scope.$apply();
-                            };
-                            if (imageFile) {
-                                reader.readAsDataURL(imageFile);
-                            }
-                        })
-                    }
-                    else {
-                        $("#file").val('');
-                        $scope.$apply()
-                    }
-                } else {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imageTypeError'), "error");
-                }
-
-            } else {
-                if (imageFile) {
-                    $("#file").val('');
-                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('imgaeSizeError'), "error");
-                }
-
-            }
-
-
-        }
-
-        vm.removeFile = function (index) {
-            vm.RemoveImages.push(index);
-            vm.files.splice(index, 1);
-            vm.CheckImages.splice(index, 1);
-        }
-
-        vm.removeTourFile = function (index) {
-            vm.CheckImages.splice(index, 1);
-            vm.Tour.imagesURL.splice(index, 1);
-        }
-    }
 }());
 
 (function () {

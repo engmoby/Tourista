@@ -23,6 +23,9 @@ namespace Tourista.API.Models
         public DateTime? CreationTime { get; set; }
         public long? CreatorUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
-        public long? DeleterUserId { get; set; } 
+        public long? DeleterUserId { get; set; }
+
+        public long CurrencyId { get; set; }
+        public virtual CurrencyModel Currency { get; set; }
     }
 }

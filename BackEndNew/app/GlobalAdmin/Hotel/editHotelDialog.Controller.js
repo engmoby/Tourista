@@ -1,37 +1,38 @@
 (function () {
     'use strict';
-	
+
     angular
         .module('home')
-        .controller('editHotelDialogController', ['$scope', '$filter','blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-        'CountryPrepService',    'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
+        .controller('editHotelDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CountryPrepService', 'CurrencyPrepService', 'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
 
-    function editHotelDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate,CountryPrepService,
-         HotelResource, ToastService,FeaturePrepService, HotelByIdPrepService) {
-        blockUI.start("Loading..."); 
-        function init(){ 
-            $scope.CountryList = []; 
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results) 
+    function editHotelDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+        CurrencyPrepService, HotelResource, ToastService, FeaturePrepService, HotelByIdPrepService) {
+        blockUI.start("Loading...");
+        function init() {
+            $scope.CountryList = [];
+            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
             $scope.FeatureList = FeaturePrepService.results;
-           
+            $scope.CurrencyList = CurrencyPrepService.results;
+
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
         }
         init();
-        $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
-            var location = $scope.autocomplete.getPlace().geometry.location;
-           vm.Hotel.latitude = location.lat();
-           vm.Hotel.longitude = location.lng();
-            $scope.$apply();
-        });
+        // $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
+        //     var location = $scope.autocomplete.getPlace().geometry.location;
+        //    vm.Hotel.latitude = location.lat();
+        //    vm.Hotel.longitude = location.lng();
+        //     $scope.$apply();
+        // });
 
-        var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.Hotel = HotelByIdPrepService; 
-        vm.RemoveImages = []; 
-        vm.CheckImages = []; 
-        vm.selectedHotelFeatures=[] ;
-        console.log( vm.Hotel);
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.Hotel = HotelByIdPrepService;
+        vm.RemoveImages = [];
+        vm.CheckImages = [];
+        vm.selectedHotelFeatures = [];
+        console.log(vm.Hotel);
         vm.CheckImages.push(vm.Hotel.imagesURL);
         var i;
         for (i = 0; i < vm.Hotel.hotelFeature.length; i++) {
@@ -39,32 +40,34 @@
             vm.selectedHotelFeatures.push($scope.FeatureList[indexFeature]);
 
         }
+        var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Hotel.currency.currencyId }, true)[0]);
+        $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
 
 
-      var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Hotel.city.countryId }, true)[0]);
-      $scope.selectedCountry=$scope.CountryList[indexCountry];
+        var indexCountry = $scope.CountryList.indexOf($filter('filter')($scope.CountryList, { 'countryId': vm.Hotel.city.countryId }, true)[0]);
+        $scope.selectedCountry = $scope.CountryList[indexCountry];
 
-      
-      $scope.CityList = $scope.selectedCountry.cityes;
-  var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Hotel.city.cityId }, true)[0]);
-  $scope.selectedCity=$scope.selectedCountry.cityes[indexCity];  
 
-  $scope.CountryChange = function () {
-    /*$scope.CountryList.splice(0, 1);*/
-    for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
-        if ($scope.CountryList[i].CountryId == 0) {
-            $scope.CountryList.splice(i, 1);
+        $scope.CityList = $scope.selectedCountry.cityes;
+        var indexCity = $scope.selectedCountry.cityes.indexOf($filter('filter')($scope.selectedCountry.cityes, { 'cityId': vm.Hotel.city.cityId }, true)[0]);
+        $scope.selectedCity = $scope.selectedCountry.cityes[indexCity];
+
+        $scope.CountryChange = function () {
+            /*$scope.CountryList.splice(0, 1);*/
+            for (var i = $scope.CountryList.length - 1; i >= 0; i--) {
+                if ($scope.CountryList[i].CountryId == 0) {
+                    $scope.CountryList.splice(i, 1);
+                }
+            }
+            $scope.CityList = [];
+            $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
+            $scope.CityList.push($scope.selectedCity);
+            $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
         }
-    }
-    $scope.CityList = [];
-    $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
-    $scope.CityList.push($scope.selectedCity);
-    $scope.CityList = $scope.CityList.concat($scope.selectedCountry.cityes);
-} 
 
         vm.Close = function () {
             $state.go('Hotel');
-        } 
+        }
         blockUI.stop();
         vm.isChanged = false;
 
@@ -75,19 +78,20 @@
         }
         vm.UpdateHotel = function () {
             debugger;
-        blockUI.start("Loading..."); 
-        vm.isChanged = true;
+            blockUI.start("Loading...");
+            vm.isChanged = true;
             var updateObj = new Object();
-            updateObj.hotelId = vm.Hotel.hotelId; 
-            updateObj.titleDictionary = vm.Hotel.titleDictionary; 
-            updateObj.descriptionDictionary = vm.Hotel.descriptionDictionary; 
-            updateObj.star = vm.Hotel.star; 
-            updateObj.cityId =  $scope.selectedCity.cityId; 
-            updateObj.latitude =  vm.Hotel.latitude; 
-            updateObj.longitude =  vm.Hotel.longitude; 
-            updateObj.removeImages =  vm.RemoveImages; 
+            updateObj.hotelId = vm.Hotel.hotelId;
+            updateObj.titleDictionary = vm.Hotel.titleDictionary;
+            updateObj.descriptionDictionary = vm.Hotel.descriptionDictionary;
+            updateObj.star = vm.Hotel.star;
+            updateObj.cityId = $scope.selectedCity.cityId;
+            updateObj.latitude = vm.Hotel.latitude;
+            updateObj.longitude = vm.Hotel.longitude;
+            updateObj.removeImages = vm.RemoveImages;
             updateObj.hotelFeature = vm.selectedHotelFeatures;
-        
+            updateObj.currencyId = $scope.selectedCurrency.currencyId;
+
             var model = new FormData();
             model.append('data', JSON.stringify(updateObj));
             vm.files.forEach(function (element) {
@@ -105,17 +109,17 @@
                 function (data, status) {
                     vm.isChanged = false;
                     ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
-                   
+
                     blockUI.stop();
-                     $state.go('Hotel')
+                    $state.go('Hotel')
 
                 },
                 function (data, status) {
                     vm.isChanged = false;
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-        blockUI.stop();
-    }
-                );
+                    blockUI.stop();
+                }
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {
@@ -170,13 +174,14 @@
         }
 
         vm.removeFile = function (index) {
-           vm.RemoveImages.push(index);
+            vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
         }
-	
-        vm.removeHotelFile = function (index) { 
+
+        vm.removeHotelFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Hotel.imagesURL.splice(index, 1);
-        }}	
+        }
+    }
 }());

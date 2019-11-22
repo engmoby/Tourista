@@ -69,6 +69,7 @@ namespace Tourista.BLL.Services
             BackageObj.Price = BackageDto.Price;
             BackageObj.CreationTime = Strings.CurrentDateTime;
             BackageObj.CreatorUserId = userId;
+            BackageObj.CurrencyId = BackageDto.CurrencyId;
 
 
 
@@ -122,8 +123,9 @@ namespace Tourista.BLL.Services
             BackageObj.LastModificationTime = Strings.CurrentDateTime;
             BackageObj.LastModifierUserId = userId;
             BackageObj.IsDeleted = BackageDto.IsDeleted;
+            BackageObj.CurrencyId = BackageDto.CurrencyId;
 
-        
+
             _BackageService.Update(BackageObj);
             SaveChanges();
             var imageId = imageCounter + 1;

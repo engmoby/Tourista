@@ -52,6 +52,7 @@ namespace Tourista.BLL.Services
             hotelReservationObj.CreationTime = Strings.CurrentDateTime;
             hotelReservationObj.CreatorUserId = hotelReservationDto.UserId;
             hotelReservationObj.TenantId = tenantId;
+            hotelReservationObj.SeenUserId = 0;
             _hotelReservationService.Insert(hotelReservationObj);
 
             SaveChanges();

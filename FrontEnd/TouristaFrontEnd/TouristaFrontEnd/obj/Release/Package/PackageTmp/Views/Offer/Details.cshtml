@@ -57,7 +57,7 @@
                                 @Model.TitleDictionary[@Common.CurrentLang]
                             }
                         </h2>
-                        <div class="price"><span class="text"></span><span class="number">@Model.Price</span><sup class="unit">SAR</sup> /<sup class="unit" style="text-decoration: line-through;">@Model.PriceBefore</sup></div>
+                        <div class="price"><span class="text"></span><span class="number">@Model.Price</span><sup class="unit">@Model.Currency.TitleDictionary[@Common.CurrentLang]</sup> /<sup class="unit" style="text-decoration: line-through;">@Model.PriceBefore</sup></div>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                         </h3>
 
                         <div class="schedule-block">
-                            <div class="element"><p class="schedule-title">Date</p><span class="schedule-content">@Model.CreationTime.ToString("dd-MMM-yyyy") </span></div>
+                            <div class="element"><p class="schedule-title">Date</p><span class="schedule-content">@Model.DateFrom.ToString("dd-MMM-yyyy") :  @Model.DateTo.ToString("dd-MMM-yyyy") </span></div>
                             <div class="element"><p class="schedule-title">Days Count</p><span class="schedule-content">@Model.DaysCount</span></div>
                             <div class="element"><p class="schedule-title">Nigths Count</p><span class="schedule-content">@Model.NigthsCount</span></div>
                             <div class="element"><p class="schedule-title">City</p><span class="schedule-content">@Model.City.TitleDictionary[@Common.CurrentLang]</span></div>

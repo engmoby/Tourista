@@ -57,7 +57,7 @@
                                 @Model.TitleDictionary[@Common.CurrentLang]
                             }
                         </h2>
-                        <div class="price"><span class="text"></span><span class="number">@Model.Price</span><sup class="unit">SAR</sup></div>
+                        <div class="price"><span class="text"></span><span class="number">@Model.Price</span><sup class="unit">@Model.Currency.TitleDictionary[@Common.CurrentLang]</sup></div>
                     </div>
                 </div>
             </div>
@@ -72,11 +72,11 @@
                         </h3>
 
                         <div class="schedule-block">
-                            <div class="element"><p class="schedule-title">Date</p><span class="schedule-content">@Model.CreationTime.ToString("dd-MMM-yyyy") </span></div>
+                            @*<div class="element"><p class="schedule-title">Date</p><span class="schedule-content">@Model.CreationTime.ToString("dd-MMM-yyyy") </span></div>*@
                             <div class="element"><p class="schedule-title">Days Count</p><span class="schedule-content">@Model.DaysCount</span></div>
                             <div class="element"><p class="schedule-title">Nigths Count</p><span class="schedule-content">@Model.NigthsCount</span></div>
                             <div class="element"><p class="schedule-title">City</p><span class="schedule-content">@Model.City.TitleDictionary[@Common.CurrentLang]</span></div>
-                            <div class="element"><p class="schedule-title">Hotel</p><span class="schedule-content">@Model.Hotel.TitleDictionary[@Common.CurrentLang]</span></div>
+                            @*<div class="element"><p class="schedule-title">Hotel</p><span class="schedule-content">@Model.Hotel.TitleDictionary[@Common.CurrentLang]</span></div>*@
                         </div>
                         <div class="content-wrapper">
                             <h3 class="title-style-2 title " style="margin-top: 50px;">@TouristaFrontEnd.Resources.Global.Aboutthebackage </h3>
@@ -107,9 +107,9 @@
                                 <div class="car-rent-layout">
                                     <div class="content-wrapper">
                                         <h3 class="title-style-2 title">@TouristaFrontEnd.Resources.Global.Aboutthebackage </h3>
-                                        <div class="car-meta-info star-ratings">
+                                        @*<div class="car-meta-info star-ratings">
                                             <div class="guest-rating">@TouristaFrontEnd.Resources.Global.Stars: @Model.Star</div>
-                                        </div>
+                                        </div>*@
                                         <!-- content -->
                                         <div class="entry-content description">
                                             <div class="vc_row wpb_row vc_row-fluid">

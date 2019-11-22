@@ -92,9 +92,9 @@
                 </div>
 
                 <div class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
-                    <label> {{ 'Hotel' | translate}} </label>
-                    <select required style="width:100% !important" class="form-control select-with-search pmd-select2-tags"   ng-model="newBackageCtrl.selectedHotel"
-                        ng-options="hotel as hotel.titleDictionary[selectedLanguage] for hotel in HotelList"></select>
+                    <label> {{ 'Currency' | translate}} </label>
+                    <select required style="width:100% !important" class="form-control select-with-search pmd-select2-tags"   ng-model="newBackageCtrl.selectedCurrency"
+                        ng-options="currency as currency.titleDictionary[selectedLanguage] for currency in CurrencyList"></select>
 
                 </div> 
 
@@ -130,7 +130,7 @@
                 </div>
 
 
-                <div style="margin-right: 50px; width: 150px;" class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+                <!-- <div style="margin-right: 50px; width: 150px;" class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
                     <label>{{'Star' | translate}}</label>
                     <input required type="text" class="mat-input form-control" name="star" numbers-only ng-model="newBackageCtrl.star" ng-minlength="1"
                         ng-maxlength="1">
@@ -142,7 +142,7 @@
                             {{'Max 1 number' | translate}}</div>
                     </div>
 
-                </div>
+                </div> -->
 
                 <div class="col-md-3 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
                     <label> {{ 'Price' | translate}} </label>

@@ -504,6 +504,7 @@
                     resolve: {
                         HotelPrepService: HotelPrepService,
                         CountryPrepService: CountryPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
                     data: {
@@ -522,6 +523,7 @@
                     resolve: {
                         HotelByIdPrepService: HotelByIdPrepService,
                         CountryPrepService: CountryPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
                     data: {
@@ -558,6 +560,7 @@
                     resolve: {
                         TourPrepService: TourPrepService,
                         CountryPrepService: CountryPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
                     data: {
@@ -576,6 +579,7 @@
                     resolve: {
                         TourByIdPrepService: TourByIdPrepService,
                         CountryPrepService: CountryPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
                     data: {
@@ -648,7 +652,7 @@
                     resolve: {
                         BackagePrepService: BackagePrepService,
                         CountryPrepService: CountryPrepService,
-                        HotelPrepService: HotelPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService,
                     },
                     data: {
@@ -667,7 +671,7 @@
                     resolve: {
                         BackageByIdPrepService: BackageByIdPrepService,
                         CountryPrepService: CountryPrepService,
-                        HotelPrepService: HotelPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService
                     },
                     data: {
@@ -740,6 +744,7 @@
                         OfferPrepService: OfferPrepService,
                         CountryPrepService: CountryPrepService,
                         HotelPrepService: HotelPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService,
                     },
                     data: {
@@ -759,6 +764,7 @@
                         OfferByIdPrepService: OfferByIdPrepService,
                         CountryPrepService: CountryPrepService,
                         HotelPrepService: HotelPrepService,
+                        CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService
                     },
                     data: {

@@ -23,7 +23,7 @@
                                         <textarea required type="text" class="mat-input form-control" 
                                         name="descriptionDictionary{{lang.value+'Name'}}"
                                          ng-model="editAboutCtrl.About.descriptionDictionary[lang.key]"
-                                          ng-minlength="3" ng-maxlength="255"></textarea>
+                                          ng-minlength="3"></textarea>
                                         <div ng-messages="editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$error" >
                                             
                                             <div ng-show="editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$error.required && !editAboutForm.descriptionDictionary{{lang.value+'Name'}}.$pristine">{{'requiredErr' | translate}}</div>

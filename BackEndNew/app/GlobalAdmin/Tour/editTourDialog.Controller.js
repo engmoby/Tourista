@@ -4,10 +4,10 @@
     angular
         .module('home')
         .controller('editTourDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
+            'CountryPrepService','CurrencyPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
 
     function editTourDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        TourResource, ToastService, TourByIdPrepService) {
+        CurrencyPrepService,   TourResource, ToastService, TourByIdPrepService) {
         blockUI.start("Loading...");
 
 
@@ -16,12 +16,15 @@
         vm.Tour = TourByIdPrepService;
         vm.RemoveImages = [];
         vm.CheckImages = [];
+        $scope.CurrencyList = CurrencyPrepService.results;
+        var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Tour.currency.currencyId }, true)[0]);
+        $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
 
         vm.Tour.startFrom = vm.Tour.startFrom + "Z";
-        vm.Tour.startFrom = $filter('date')(new Date(vm.Tour.startFrom), "MM/dd/yyyy hh:mm a");
-         // vm.Tour.orderStartDate = vm.Tour.orderStartDate + "Z";
-        // vm.Tour.orderStartDate = $filter('date')(new Date(vm.Tour.orderStartDate), "MM/dd/yyyy hh:mm a");
-
+        vm.Tour.startFrom = $filter('date')(new Date(vm.Tour.startFrom), "MM/dd/yyyy hh:mm a"); 
+        vm.Tour.startTo = vm.Tour.startTo + "Z";
+        vm.Tour.startTo = $filter('date')(new Date(vm.Tour.startTo), "MM/dd/yyyy hh:mm a");
+       
         console.log(vm.Tour);
        // vm.CheckImages.push(vm.Tour.imagesURL);
 
@@ -65,6 +68,7 @@
             updateObj.startFrom =$('#startFrom').val();// vm.startFrom;
             updateObj.startTo = $('#startTo').val();//vm.startTo;
             updateObj.hotelTitle = vm.Tour.hotelTitle;
+            updateObj.currencyId = $scope.selectedCurrency.currencyId;
 
 
             var model = new FormData();

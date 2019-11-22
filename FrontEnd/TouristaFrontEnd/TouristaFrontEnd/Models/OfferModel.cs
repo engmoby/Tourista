@@ -34,5 +34,8 @@ namespace Tourista.API.Models
         public DateTime? DeletionTime { get; set; }
         public long? DeleterUserId { get; set; }
         public CityModel City { get; set; }
+        public CurrencyModel Currency { get; set; }
+        public DateTime? DateFrom { get; set; }
+        public DateTime? DateTo { get; set; }
     }
 }

@@ -4,10 +4,10 @@
     angular
         .module('home')
         .controller('createBackageDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
+            'CountryPrepService', 'CurrencyPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
 
-    function createBackageDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        HotelPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
+    function createBackageDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, 
+        CountryPrepService,CurrencyPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
         function init() {
@@ -20,7 +20,7 @@
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
             debugger;
-            $scope.HotelList = HotelPrepService.results;
+            $scope.CurrencyList = CurrencyPrepService.results;
             $scope.TypeList = TypePrepService.results;
         }
         init();
@@ -61,12 +61,12 @@
             var newBackage = new Object();
             newBackage.titleDictionary = vm.titleDictionary;
             newBackage.descriptionDictionary = vm.descriptionDictionary;
-            newBackage.star = vm.star;
+            // newBackage.star = vm.star;
             newBackage.cityId = $scope.selectedCity.cityId;
             newBackage.daysCount = vm.daysCount;
             newBackage.nigthsCount = vm.nigthsCount;
             newBackage.price = vm.price;
-            newBackage.hotelId = vm.selectedHotel.hotelId;
+            newBackage.currencyId = vm.selectedCurrency.currencyId;
             newBackage.typeId = vm.selectedType.typeId;
 
             var model = new FormData();
@@ -96,7 +96,7 @@
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
                     blockUI.stop();
                 }
-                );
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {

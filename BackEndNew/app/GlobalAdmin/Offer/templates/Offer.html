@@ -1,9 +1,9 @@
-
 <div>
     <div style="margin-bottom:10px">
-        <button ng-click="$state.go('newOffer');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{'AddNew' | translate}}</button>
+        <button ng-click="$state.go('newOffer');" class="btn pmd-ripple-effect btn-primary pmd-z-depth"
+            type="button">{{'AddNew' | translate}}</button>
 
-    </div> 
+    </div>
     <div ng-if="OfferList.results.length == 0">
         <span>{{'NoOffersAvailable' | translate}}</span>
     </div>
@@ -12,9 +12,9 @@
         <table class="table pmd-table table-hover">
             <thead>
                 <tr>
-                    <th>{{'Image' | translate}}</th> 
-                    <th>{{'Name' | translate}}</th> 
-                    <th>{{'Star' | translate}}</th> 
+                    <th>{{'Image' | translate}}</th>
+                    <th>{{'Name' | translate}}</th>
+                    <!-- <th>{{'Star' | translate}}</th>  -->
                     <th>{{'City' | translate}}</th>
                     <th></th>
                 </tr>
@@ -25,23 +25,26 @@
 					<img ng-src='{{Offer.imagesURL[0]}}' style="    width: 77px;" />
 
                    </td> -->
-                   <td data-title="Image" ><img ng-src="{{Offer.imagesURL[0]}}"
-                     ng-alt="{{Offer.titleDictionary[selectedLanguage]}}" style="max-height: 200px;max-width: 200px;"/></td>
+                    <td data-title="Image"><img ng-src="{{Offer.imagesURL[0]}}"
+                            ng-alt="{{Offer.titleDictionary[selectedLanguage]}}"
+                            style="max-height: 200px;max-width: 200px;" /></td>
 
-                   <td data-title="Name">{{Offer.titleDictionary[selectedLanguage]}}</td>
-                   <td data-title="star">{{Offer.star}}</td>
+                    <td data-title="Name">{{Offer.titleDictionary[selectedLanguage]}}</td>
+                    <!-- <td data-title="star">{{Offer.star}}</td> -->
                     <td data-title="city">{{Offer.city.titleDictionary[selectedLanguage]}}</td>
-               
-                   
-                    <td  >
-                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editOffer',{offerId: Offer.offerId});">mode_edit</i>
+
+
+                    <td>
+                        <i class="material-icons md-dark pmd-md cursorPointer font25"
+                            ng-click="$state.go('editOffer',{offerId: Offer.offerId});">mode_edit</i>
                     </td>
                 </tr>
-                
+
             </tbody>
         </table>
     </div>
-    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
-         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount"
+        paging-action="changePage(page)" flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true"
+        disabled-class="hide">
     </div>
 </div>

@@ -7,6 +7,7 @@ using Tourista.BLL.DTOs;
 using Tourista.DAL.Entities.Model;
 using Repository.Pattern.Repositories;
 using Service.Pattern;
+using Tourista.Common;
 
 namespace Tourista.BLL.DataServices
 {
@@ -38,7 +39,7 @@ namespace Tourista.BLL.DataServices
         }
         public PagedResultsDto GetAllOnlineTours(int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId).OrderByDescending(x => x.TourId);
+            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId && x.StartTo >= Strings.CurrentDateTime).OrderByDescending(x => x.TourId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             var modelReturn = query.OrderByDescending(x => x.TourId).Skip((page - 1) * pageSize).Take(pageSize).ToList();

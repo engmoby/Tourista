@@ -642,4 +642,7 @@
   <data name="StyleUrl3" xml:space="preserve">
     <value>/Content/bootstrap.css</value>
   </data>
+  <data name="ResultsFound" xml:space="preserve">
+    <value>Results Found</value>
+  </data>
 </root>

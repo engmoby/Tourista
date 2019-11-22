@@ -14,9 +14,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="Contact in ContactList">
-                    <td data-title="Name">{{Contact.addressDictionary[selectedLanguage]}}</td>
+                    <td width="90%" data-title="Name">{{Contact.addressDictionary[selectedLanguage]}}</td>
                   
-                    <td width="30%" ng-show="!Contact.isStatic">
+                    <td width="10%" ng-show="!Contact.isStatic">
                         <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editContact',{contactUsId: Contact.contactUsId});">mode_edit</i>
                     </td>
                 </tr> 

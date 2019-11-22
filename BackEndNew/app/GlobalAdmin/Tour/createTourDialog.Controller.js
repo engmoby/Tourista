@@ -4,12 +4,13 @@
     angular
         .module('home')
         .controller('createTourDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
+            'CountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
 
     function createTourDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        FeaturePrepService, TourResource, ToastService, $rootScope) {
+        CurrencyPrepService, FeaturePrepService, TourResource, ToastService, $rootScope) {
 
         blockUI.start("Loading..."); 
+        $scope.CurrencyList = CurrencyPrepService.results;
      
         var vm = this;
         vm.language = appCONSTANTS.supportedLanguage;
@@ -40,6 +41,7 @@
             newTour.startFrom =$('#startFrom').val();// vm.startFrom;
             newTour.startTo = $('#startTo').val();//vm.startTo;
             newTour.hotelTitle = vm.hotelTitle;
+            newTour.currencyId = vm.selectedCurrency.currencyId;
 
             var model = new FormData();
             model.append('data', JSON.stringify(newTour));

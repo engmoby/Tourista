@@ -68,6 +68,7 @@ namespace Tourista.BLL.Services
             hotelObj.Star = hotelDto.Star;
             hotelObj.CreationTime = Strings.CurrentDateTime;
             hotelObj.CreatorUserId = userId;
+            hotelObj.CurrencyId = hotelDto.CurrencyId;
 
 
             foreach (var roleper in hotelDto.HotelFeature)
@@ -125,6 +126,7 @@ namespace Tourista.BLL.Services
             hotelObj.LastModificationTime = Strings.CurrentDateTime;
             hotelObj.LastModifierUserId = userId;
             hotelObj.IsDeleted = hotelDto.IsDeleted;
+            hotelObj.CurrencyId = hotelDto.CurrencyId;
 
             foreach (var roleper in hotelDto.HotelFeature)
             {

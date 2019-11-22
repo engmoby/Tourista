@@ -12,6 +12,10 @@ namespace Tourista.DAL.Entities.Model
             OfferTranslations = new List<OfferTranslation>();
         }
         public long OfferId { get; set; }
+
+
+        public DateTime? DateFrom { get; set; }
+        public DateTime? DateTo { get; set; }
         public int Star { get; set; }
         public int DaysCount { get; set; }
         public int NigthsCount { get; set; }
@@ -37,5 +41,8 @@ namespace Tourista.DAL.Entities.Model
         [ForeignKey("User")]
         public long? UserId { get; set; }
         public User User { get; set; }
+
+        public long CurrencyId { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

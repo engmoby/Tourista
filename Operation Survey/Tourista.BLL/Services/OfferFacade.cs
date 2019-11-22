@@ -70,7 +70,10 @@ namespace Tourista.BLL.Services
             OfferObj.Price = OfferDto.Price;
             OfferObj.CreationTime = Strings.CurrentDateTime;
             OfferObj.CreatorUserId = userId;
+            OfferObj.CurrencyId = OfferDto.CurrencyId;
 
+            OfferObj.DateFrom = OfferDto.DateFrom;
+            OfferObj.DateTo = OfferDto.DateTo;
 
 
             _OfferTranslationService.InsertRange(OfferObj.OfferTranslations);
@@ -124,8 +127,11 @@ namespace Tourista.BLL.Services
             OfferObj.LastModificationTime = Strings.CurrentDateTime;
             OfferObj.LastModifierUserId = userId;
             OfferObj.IsDeleted = OfferDto.IsDeleted;
+            OfferObj.CurrencyId = OfferDto.CurrencyId;
 
-        
+            OfferObj.DateFrom = OfferDto.DateFrom;
+            OfferObj.DateTo = OfferDto.DateTo;
+
             _OfferService.Update(OfferObj);
             SaveChanges();
             var imageId = imageCounter + 1;

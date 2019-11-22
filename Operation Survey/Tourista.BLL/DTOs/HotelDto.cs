@@ -22,7 +22,10 @@ namespace Tourista.BLL.DTOs
         public DateTime? CreationTime { get; set; }
         public long? CreatorUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
-        public long? DeleterUserId { get; set; } 
+        public long? DeleterUserId { get; set; }
+
+        public long CurrencyId { get; set; }
+        public virtual CurrencyDto Currency { get; set; }
     }
 }
 

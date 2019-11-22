@@ -21,7 +21,7 @@
                     <td data-title="Date">{{TourReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>
                     <td data-title="User"> {{TourReservation.user.fullName}} </td>
                     <td> {{(StatusList |filter: {id: key})[TourReservation.status].text | translate}} </td>
-                    <td> {{TourReservation.seenUser.fullName}} / {{TourReservation.seenUser.title}} </td>
+                    <td> {{TourReservation.seenUser.fullName}}   </td>
                     <td>
                         <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editTourReservation',{tourReservationId: TourReservation.tourReservationId});">mode_edit</i>
                     </td>

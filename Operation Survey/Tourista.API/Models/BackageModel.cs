@@ -34,5 +34,8 @@ namespace Tourista.API.Models
         public long? DeleterUserId { get; set; }
         public CityModel City { get; set; }
 
+        public long CurrencyId { get; set; }
+        public virtual CurrencyModel Currency { get; set; }
+
     }
 }

@@ -4,9 +4,10 @@
     angular
         .module('home')
         .controller('createOfferDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
+          'CurrencyPrepService',  'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
 
-    function createOfferDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function createOfferDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate,
+        CurrencyPrepService, CountryPrepService,
         HotelPrepService, TypePrepService, OfferResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
@@ -15,6 +16,7 @@
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
             $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CurrencyList = CurrencyPrepService.results;
 
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
             $scope.CityList = [];
@@ -54,6 +56,18 @@
             vm.fileExist = false;
 
         }
+        $scope.dateIsValid = false;
+        $scope.dateChange = function () {
+            debugger;
+            if ($('#startFrom').data('date') == null || $('#startFrom').data('date') == "" ||
+            $('#startTo').data('date') == null || $('#startTo').data('date') == "") {
+                $scope.dateIsValid = false;
+                // $scope.$apply();
+            } else if ($scope.newOfferForm.$valid) {
+                $scope.dateIsValid = true;
+                // $scope.$apply();
+            }
+        }
         vm.AddNewOffer = function () {
             debugger;
             blockUI.start("Loading...");
@@ -61,7 +75,7 @@
             var newOffer = new Object();
             newOffer.titleDictionary = vm.titleDictionary;
             newOffer.descriptionDictionary = vm.descriptionDictionary;
-            newOffer.star = vm.star;
+             newOffer.star =vm.selectedHotel.star;
             newOffer.cityId = $scope.selectedCity.cityId;
             newOffer.daysCount = vm.daysCount;
             newOffer.nigthsCount = vm.nigthsCount;
@@ -69,7 +83,10 @@
             newOffer.price = vm.price;
             newOffer.hotelId = vm.selectedHotel.hotelId;
             newOffer.typeId = vm.selectedType.typeId;
-
+            newOffer.currencyId = vm.selectedCurrency.currencyId;
+            newOffer.dateFrom =$('#startFrom').val();// vm.startFrom;
+            newOffer.dateTo = $('#startTo').val();//vm.startTo;
+           
             var model = new FormData();
             model.append('data', JSON.stringify(newOffer));
             vm.files.forEach(function (element) {

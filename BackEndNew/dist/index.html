@@ -42,6 +42,7 @@
 			-webkit-font-feature-settings: 'liga';
 			-webkit-font-smoothing: antialiased;
 		}
+
 		/* arabic */
 
 		@font-face {
@@ -52,6 +53,7 @@
 			src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v6/SLXGc1nY6HkvalIkTpu0xg.woff2) format('woff2');
 			unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
 		}
+
 		/* latin-ext */
 
 		@font-face {
@@ -62,6 +64,7 @@
 			src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v6/SLXGc1nY6HkvalIvTpu0xg.woff2) format('woff2');
 			unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 		}
+
 		/* latin */
 
 		@font-face {
@@ -461,7 +464,8 @@
 
 		<div class="container-fluid">
 			<div class="pull-right navigation">
-				<a href="javascript:void(0);" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle">
+				<a href="javascript:void(0);"
+					class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle">
 					<!-- <i class="material-icons">menu</i> -->
 					<i class="material-icons md-light">menu</i>
 				</a>
@@ -505,7 +509,8 @@
 						</div>
 					</div>
 					<div class="media-right media-middle" title="logout">
-						<span style="color: #494b74;" ng-click="logout()" class="btn-user dropdown-toggle media" data-sidebar="true" aria-expandedhref="javascript:void(0);">
+						<span style="color: #494b74;" ng-click="logout()" class="btn-user dropdown-toggle media"
+							data-sidebar="true" aria-expandedhref="javascript:void(0);">
 							{{'logout' | translate}}
 						</span>
 						<!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -596,7 +601,7 @@
 					<span class="media-body" ng-cloak>{{'HAJJ & UMRAH' | translate}}</span>
 				</a>
 			</li>
-			
+
 			<li ng-show="user.PermissionId.indexOf('10') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('TourReservation');">
 					<i class="media-left media-middle">
@@ -694,21 +699,6 @@
 				</a>
 			</li>
 
-			<!-- <li ng-show="user.PermissionId.indexOf('4') !== -1">
-				<a class="pmd-ripple-effect " ng-click="$state.go('Currency');">
-					<i class="media-left media-middle">
-						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
-							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
-							xml:space="preserve">
-							<g>
-								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
-						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
-							</g>
-						</svg>
-					</i>
-					<span class="media-body" ng-cloak>{{'Currency' | translate}}</span>
-				</a>
-			</li> -->
 			<li ng-show="user.PermissionId.indexOf('4') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Type');">
 					<i class="media-left media-middle">
@@ -788,7 +778,7 @@
 					</i>
 					<span class="media-body" ng-cloak>{{'User' | translate}}</span>
 				</a>
-			</li> 
+			</li>
 			<!-- <li ng-show="user.PermissionId.indexOf('2') !== -1">
 				<a class="pmd-ripple-effect " ng-click="$state.go('Client');">
 					<i class="media-left media-middle">
@@ -847,6 +837,22 @@
 						</svg>
 					</i>
 					<span class="media-body" ng-cloak>{{'Inquery' | translate}}</span>
+				</a>
+			</li>
+
+			<li ng-show="user.PermissionId.indexOf('4') !== -1">
+				<a class="pmd-ripple-effect " ng-click="$state.go('Currency');">
+					<i class="media-left media-middle">
+						<svg version="1.1" x="0px" y="0px" width="19.83px" height="18px"
+							viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18"
+							xml:space="preserve">
+							<g>
+								<path fill="#C9C8C8" d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z
+						 M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" />
+							</g>
+						</svg>
+					</i>
+					<span class="media-body" ng-cloak>{{'Currency' | translate}}</span>
 				</a>
 			</li>
 			<!-- 
@@ -923,9 +929,10 @@
 		}
 	</script>
 
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1GFqRw-hwzD2x-j_o68tcS_uEI4tX-ak&callback=initMap">
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1GFqRw-hwzD2x-j_o68tcS_uEI4tX-ak&callback=initMap">
 
-	</script>
+		</script>
 
 </body>
 

@@ -21,7 +21,7 @@
                     <td data-title="Date">{{BackageReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>
                     <td data-title="User"> {{BackageReservation.user.fullName}} </td>
                     <td> {{(StatusList |filter: {id: key})[BackageReservation.status].text | translate}} </td>
-                    <td> {{BackageReservation.seenUser.fullName}} / {{BackageReservation.seenUser.title}} </td>
+                    <td> {{BackageReservation.seenUser.fullName}}  </td>
                     <td>
                         <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editBackageReservation',{backageReservationId: BackageReservation.backageReservationId});">mode_edit</i>
                     </td>
