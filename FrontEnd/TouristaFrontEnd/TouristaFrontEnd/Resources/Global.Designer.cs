@@ -1402,6 +1402,15 @@ namespace TouristaFrontEnd.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Note.
+        /// </summary>
+        public static string Note {
+            get {
+                return ResourceManager.GetString("Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NumberOfRoom Required.
         /// </summary>
         public static string NumberOfRoom_Required {

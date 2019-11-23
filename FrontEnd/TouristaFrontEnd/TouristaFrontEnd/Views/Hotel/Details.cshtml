@@ -162,22 +162,22 @@
 
                                     </div>*@
                                 <div class="find-widget find-hotel-widget widget new-style">
-                                    <h4 class="title-widgets">BOOK  </h4>
+                                    <h4 class="title-widgets">@TouristaFrontEnd.Resources.Global.BookNow  </h4>
                                     <form id="backageformsubmit">
                                         @Html.Hidden("HotelId")
                                         <div class="text-input small-margin-top">
                                             <div class="input-daterange">
                                                 <div class="text-box-wrapper half">
-                                                    <label class="tb-label">Check in</label>
+                                                    <label class="tb-label">@TouristaFrontEnd.Resources.Global.CheckIn</label>
                                                     <div class="input-group"><input id="CheckIn" type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
                                                 </div>
                                                 <div class="text-box-wrapper half">
-                                                    <label class="tb-label">Check out</label>
+                                                    <label class="tb-label">@TouristaFrontEnd.Resources.Global.CheckOut</label>
                                                     <div class="input-group"><input id="CheckOut" type="text" placeholder="MM/DD/YY" class="tb-input"><i class="tb-icon fa fa-calendar input-group-addon"></i></div>
                                                 </div>
                                             </div>
                                             <div class="count adult-count text-box-wrapper">
-                                                <label class="tb-label">Adult</label>
+                                                <label class="tb-label">@TouristaFrontEnd.Resources.Global.Booking_Adults</label>
                                                 <div class="select-wrapper">
                                                     <!--i.fa.fa-chevron-down-->
                                                     <select id="Adult" class="form-control custom-select selectbox">
@@ -195,7 +195,7 @@
                                                 </div>
                                             </div>
                                             <div class="count child-count text-box-wrapper">
-                                                <label class="tb-label">Child</label>
+                                                <label class="tb-label">@TouristaFrontEnd.Resources.Global.Booking_Child</label>
                                                 <div class="select-wrapper">
                                                     <!--i.fa.fa-chevron-down--><select id="Child" class="form-control custom-select selectbox">
 
@@ -213,30 +213,30 @@
                                             </div>
 
                                             <div class="first-name text-box-wrapper">
-                                                <label class="tb-label">Your First Name</label>
-                                                <div class="input-group"><input id="firstname" required type="text" placeholder="Write your first name" class="tb-input"></div>
+                                                <label class="tb-label">@TouristaFrontEnd.Resources.Global.Career_Details_Firstname</label>
+                                                <div class="input-group"><input id="firstname" required type="text" placeholder="@TouristaFrontEnd.Resources.Global.Career_Details_Firstname" class="tb-input"></div>
                                             </div>
                                             <div class="last-name text-box-wrapper">
-                                                <label class="tb-label">Your Last Name</label>
-                                                <div class="input-group"><input id="lastname" type="text" placeholder="Write your last name" class="tb-input"></div>
+                                                <label class="tb-label">@TouristaFrontEnd.Resources.Global.Career_Details_LastName</label>
+                                                <div class="input-group"><input id="lastname" type="text" placeholder="@TouristaFrontEnd.Resources.Global.Career_Details_LastName" class="tb-input"></div>
                                             </div>
                                             <div class="email text-box-wrapper">
-                                                <label class="tb-label">Your Email</label>
-                                                <div class="input-group"><input id="Email" type="email" placeholder="Write your email address" class="tb-input"></div>
+                                                <label class="tb-label">@TouristaFrontEnd.Resources.Global.Booking_Email</label>
+                                                <div class="input-group"><input id="Email" type="email" placeholder="@TouristaFrontEnd.Resources.Global.Booking_Email" class="tb-input"></div>
                                             </div>
                                             <div class="phone text-box-wrapper">
-                                                <label class="tb-label">Your Number Phone</label>
-                                                <div class="input-group"><input id="Phone" type="text" placeholder="Write your number phone" class="tb-input"></div>
+                                                <label class="tb-label">@TouristaFrontEnd.Resources.Global.ContactUs_Phone</label>
+                                                <div class="input-group"><input id="Phone" type="text" placeholder="@TouristaFrontEnd.Resources.Global.ContactUs_Phone" class="tb-input"></div>
                                             </div>
                                             <div class="place text-box-wrapper">
-                                                <label class="tb-label">Where are your address?</label>
-                                                <div class="input-group"><input id="Address" type="text" placeholder="Write your address" class="tb-input"></div>
+                                                <label class="tb-label">@TouristaFrontEnd.Resources.Global.CotactUs_OfficeAddress</label>
+                                                <div class="input-group"><input id="Address" type="text" placeholder="@TouristaFrontEnd.Resources.Global.CotactUs_OfficeAddress" class="tb-input"></div>
                                             </div>
                                             <div class="note text-box-wrapper">
-                                                <label class="tb-label">Note:</label>
-                                                <div class="input-group"><textarea id="Note" type="textarea" placeholder="Write your note" rows="3" class="tb-input"></textarea></div>
+                                                <label class="tb-label">@TouristaFrontEnd.Resources.Global.Note</label>
+                                                <div class="input-group"><textarea id="Note" type="textarea" placeholder="@TouristaFrontEnd.Resources.Global.Note" rows="3" class="tb-input"></textarea></div>
                                             </div>
-                                            <button id="btnSubmitHotel" type="submit" data-hover="SEND REQUEST" class="btn btn-slide"><span class="text">BOOK Now</span><span class="icons fa fa-long-arrow-right"></span></button>
+                                            <button id="btnSubmitHotel" type="submit" data-hover="SEND REQUEST" class="btn btn-slide"><span class="text">@TouristaFrontEnd.Resources.Global.BookNow</span><span class="icons fa fa-long-arrow-right"></span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -290,8 +290,8 @@
 
                 },
                 data: {
-                    
-            CheckIn: $('#CheckIn').val(),
+
+                    CheckIn: $('#CheckIn').val(),
                     CheckOut: $('#CheckOut').val(),
                     Adult: $('#Adult').val(),
                     Child: $('#Child').val(),

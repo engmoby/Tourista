@@ -136,3 +136,5 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\bin\Debug\
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csprojResolveAssemblyReference.cache
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.pdb
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.Migrations.inialdb.resources
+G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csproj.GenerateResource.Cache

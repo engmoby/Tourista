@@ -27,7 +27,7 @@
             blockUI.start("Loading..."); 
             debugger;
             var updateObj = new TourReservationResource();
-            updateObj.TourReservationId = vm.TourReservation.TourReservationId; 
+            updateObj.tourReservationId = vm.TourReservation.tourReservationId; 
             updateObj.adult = vm.TourReservation.adult; 
             updateObj.roomCount = vm.TourReservation.roomCount; 
             updateObj.child = vm.TourReservation.child; 

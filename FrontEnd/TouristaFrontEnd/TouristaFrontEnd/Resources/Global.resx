@@ -645,4 +645,7 @@
   <data name="ResultsFound" xml:space="preserve">
     <value>Results Found</value>
   </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
 </root>

@@ -642,4 +642,7 @@
   <data name="ResultsFound" xml:space="preserve">
     <value>العثور على نتائج</value>
   </data>
+  <data name="Note" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
 </root>
