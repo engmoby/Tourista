@@ -102,3 +102,29 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.pdb
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csprojResolveAssemblyReference.cache
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\csc.exe
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\System.Collections.Immutable.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\System.Reflection.Metadata.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\vbc.exe
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\VBCSCompiler.exe
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\roslyn\VBCSCompiler.exe.config
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\Tourista.Resources.dll.config
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\Tourista.Resources.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\Tourista.Resources.pdb
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\ar-EG\Tourista.Resources.resources.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.Resource.resources
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.Resource.ar-EG.resources
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csproj.GenerateResource.cache
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csproj.CoreCompileInputs.cache
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\ar-EG\Tourista.Resources.resources.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csproj.CopyComplete
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.dll
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.pdb

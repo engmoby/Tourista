@@ -214,3 +214,23 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.P
 G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.csprojResolveAssemblyReference.cache
 G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.pdb
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.Ef6.dll.config
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.Ef6.dll
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.Ef6.pdb
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\EntityFramework.dll
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\EntityFramework.SqlServer.dll
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\LinqKit.dll
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.dll
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\System.Net.Http.dll
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.pdb
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\Repository.Pattern.dll.config
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\EntityFramework.xml
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\EntityFramework.SqlServer.xml
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\LinqKit.pdb
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\LinqKit.xml
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\bin\Debug\LinqKit.dll.config
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.csprojAssemblyReference.cache
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.csproj.CoreCompileInputs.cache
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.csproj.CopyComplete
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.dll
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern.Ef6\obj\Debug\Repository.Pattern.Ef6.pdb

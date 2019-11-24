@@ -138,3 +138,42 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.pdb
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.Migrations.inialdb.resources
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csproj.GenerateResource.Cache
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Tourista.DAL.dll.config
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Tourista.DAL.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Tourista.DAL.pdb
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\EntityFramework.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Repository.Pattern.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Repository.Pattern.Ef6.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Tourista.Common.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\LinqKit.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Repository.Pattern.Ef6.pdb
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Repository.Pattern.Ef6.dll.config
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Repository.Pattern.pdb
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Repository.Pattern.dll.config
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Tourista.Common.pdb
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\EntityFramework.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.Interception.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\LinqKit.pdb
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\LinqKit.xml
+E:\Private\Tourista\Operation Survey\Tourista.DAL\bin\Debug\LinqKit.dll.config
+E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csprojAssemblyReference.cache
+E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csproj.CoreCompileInputs.cache
+E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csproj.CopyComplete
+E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.dll
+E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.pdb
+E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.Migrations.initialDB.resources
+E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csproj.GenerateResource.cache

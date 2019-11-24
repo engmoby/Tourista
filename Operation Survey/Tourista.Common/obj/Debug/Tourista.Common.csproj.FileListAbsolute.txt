@@ -19,3 +19,8 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\bin\Deb
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.pdb
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.csprojResolveAssemblyReference.cache
+E:\Private\Tourista\Operation Survey\Tourista.Common\bin\Debug\Tourista.Common.dll
+E:\Private\Tourista\Operation Survey\Tourista.Common\bin\Debug\Tourista.Common.pdb
+E:\Private\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.csproj.CoreCompileInputs.cache
+E:\Private\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.dll
+E:\Private\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.pdb
