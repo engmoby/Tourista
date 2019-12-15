@@ -24,3 +24,4 @@ E:\Private\Tourista\Operation Survey\Tourista.Common\bin\Debug\Tourista.Common.p
 E:\Private\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.csproj.CoreCompileInputs.cache
 E:\Private\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.dll
 E:\Private\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.pdb
+E:\Private\Tourista\Operation Survey\Tourista.Common\obj\Debug\Tourista.Common.csprojAssemblyReference.cache

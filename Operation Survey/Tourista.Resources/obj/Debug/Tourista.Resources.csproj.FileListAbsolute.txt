@@ -128,3 +128,4 @@ E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\ar-EG\Tourista
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csproj.CopyComplete
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.dll
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.pdb
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Debug\Tourista.Resources.csprojAssemblyReference.cache

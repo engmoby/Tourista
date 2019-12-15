@@ -118,10 +118,6 @@
     <Compile Include="Entities\Model\User.cs" />
     <Compile Include="Entities\TouristaContext.cs" />
     <Compile Include="Entities\TouristaDalConfig.cs" />
-    <Compile Include="Migrations\201911241853466_initialDB.cs" />
-    <Compile Include="Migrations\201911241853466_initialDB.Designer.cs">
-      <DependentUpon>201911241853466_initialDB.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TouristaDalConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,11 +139,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911241853466_initialDB.resx">
-      <DependentUpon>201911241853466_initialDB.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -175,5 +175,3 @@ E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csproj.
 E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csproj.CopyComplete
 E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.dll
 E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.pdb
-E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.Migrations.initialDB.resources
-E:\Private\Tourista\Operation Survey\Tourista.DAL\obj\Debug\Tourista.DAL.csproj.GenerateResource.cache

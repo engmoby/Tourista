@@ -95,201 +95,6 @@ angular.module('home').run(['$templateCache', function($templateCache) {
 }]);
 
 angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/BackageReservation/templates/BackageReservation.html',
-    '<div>\n' +
-    '    <div ng-if="BackageReservationList.results.length == 0">\n' +
-    '        <span>{{\'NoBackageReservationsAvailable\' | translate}}</span>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="BackageReservationList.results.length > 0">\n' +
-    '        <div class="table-responsive"></div>\n' +
-    '        <table class="table pmd-table table-hover">\n' +
-    '            <thead>\n' +
-    '                <tr>\n' +
-    '                    <th>{{\'Backage\' | translate}}</th>\n' +
-    '                    <th>{{\'Date\' | translate}}</th>\n' +
-    '                    <th>{{\'User\' | translate}}</th>\n' +
-    '                    <th>{{\'Status\' | translate}}</th>\n' +
-    '                    <th>{{\'InCharge\' | translate}}</th>\n' +
-    '                    <th></th>\n' +
-    '                </tr>\n' +
-    '            </thead>\n' +
-    '            <tbody>\n' +
-    '                <tr ng-class="{\'red-text\': BackageReservation.status == 3,\'green-text\': BackageReservation.status == 0}" ng-repeat="BackageReservation in BackageReservationList.results">\n' +
-    '                    <td data-title="Backage">{{BackageReservation.backage.titleDictionary[selectedLanguage]}}</td>\n' +
-    '                    <td data-title="Date">{{BackageReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>\n' +
-    '                    <td data-title="User"> {{BackageReservation.user.fullName}} </td>\n' +
-    '                    <td> {{(StatusList |filter: {id: key})[BackageReservation.status].text | translate}} </td>\n' +
-    '                    <td> {{BackageReservation.seenUser.fullName}}  </td>\n' +
-    '                    <td>\n' +
-    '                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editBackageReservation\',{backageReservationId: BackageReservation.backageReservationId});">mode_edit</i>\n' +
-    '                    </td>\n' +
-    '                </tr>\n' +
-    '            </tbody>\n' +
-    '        </table>\n' +
-    '    </div>\n' +
-    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
-    '        flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
-    '    </div>\n' +
-    '</div>');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/BackageReservation/templates/edit.html',
-    '<div class="modal-content">\n' +
-    '    <div class="modal-header bordered">\n' +
-    '        <h2 class="pmd-card-title-text">{{\'BackageReservation\' | translate}}</h2>\n' +
-    '    </div>\n' +
-    '    <div class="modal-body">\n' +
-    '        <form class="form-horizontal" name="editBackageReservationForm">\n' +
-    '\n' +
-    '            <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
-    '                <label for="first-name">{{\'Tickect No\' | translate}}</label>\n' +
-    '                <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.tickectNo">\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div>\n' +
-    '                <br>\n' +
-    '                <!-- Nav tabs -->\n' +
-    '                <ul class="nav nav-tabs" role="tablist">\n' +
-    '                    <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editBackageReservationCtrl.language">\n' +
-    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
-    '                                {{lang.value | translate}}\n' +
-    '                            </a>\n' +
-    '                    </li>\n' +
-    '                </ul>\n' +
-    '                <div class="pmd-card">\n' +
-    '                    <div class="pmd-card-body">\n' +
-    '                        <!-- Tab panes -->\n' +
-    '                        <div class="tab-content">\n' +
-    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editBackageReservationCtrl.language"\n' +
-    '                                id="{{lang.value}}-form">\n' +
-    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
-    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
-    '                                    <input readonly="readonly" required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}"\n' +
-    '                                        ng-model="editBackageReservationCtrl.BackageReservation.backage.titleDictionary[lang.key]"\n' +
-    '                                    />\n' +
-    '                                </div>\n' +
-    '                            </div>\n' +
-    '                        </div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '            <div class="row">\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'checkIn\' | translate}}</label>\n' +
-    '                    <input id="checkin" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.checkIn">\n' +
-    '                </div>\n' +
-    '\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'checkOut\' | translate}}</label>\n' +
-    '                    <input id="checkout" type="text" required class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.checkOut">\n' +
-    '                    <!-- <input type="text" id="startdate" class="form-control" required /> -->\n' +
-    '                </div>\n' +
-    '\n' +
-    '\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div class="row">\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'Child\' | translate}}</label>\n' +
-    '                    <input type="text" class="mat-input form-control" numbers-only name="child" ng-minlength="1" ng-maxlength="3" ng-model="editBackageReservationCtrl.BackageReservation.child">\n' +
-    '                    <span class="error" ng-show="editBackageReservationForm.child.$error.pattern">{{\'Not Child Number\' | translate}} </span>\n' +
-    '                    <div ng-messages="editBackageReservationForm.child.$error">\n' +
-    '                        <div ng-if="editBackageReservationForm.child.$error.required && !editBackageReservationForm.child.$pristine">{{\'Child required\' | translate}}</div>\n' +
-    '                        <div ng-if="(editBackageReservationForm.child.$error.minlength || editBackageReservationForm.child.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                </div>\n' +
-    '\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'Adult\' | translate}}</label>\n' +
-    '                    <input type="text" class="mat-input form-control" numbers-only name="adult" ng-minlength="1" ng-maxlength="3" ng-model="editBackageReservationCtrl.BackageReservation.adult">\n' +
-    '                    <span class="error" ng-show="editBackageReservationForm.adult.$error.pattern">{{\'Not Adult Number\' | translate}} </span>\n' +
-    '                    <div ng-messages="editBackageReservationForm.adult.$error">\n' +
-    '                        <div ng-if="editBackageReservationForm.adult.$error.required && !editBackageReservationForm.adult.$pristine">{{\'Adult required\' | translate}}</div>\n' +
-    '                        <div ng-if="(editBackageReservationForm.adult.$error.minlength || editBackageReservationForm.adult.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                </div>\n' +
-    '                <!-- <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'roomCount\' | translate}}</label>\n' +
-    '                    <input type="text" class="mat-input form-control" numbers-only name="roomCount" ng-minlength="1" ng-maxlength="3" ng-model="editBackageReservationCtrl.BackageReservation.roomCount">\n' +
-    '                    <span class="error" ng-show="editBackageReservationForm.roomCount.$error.pattern">{{\'Not roomCount Number\' | translate}} </span>\n' +
-    '                    <div ng-messages="editBackageReservationForm.roomCount.$error">\n' +
-    '                        <div ng-if="editBackageReservationForm.roomCount.$error.required && !editBackageReservationForm.roomCount.$pristine">{{\'roomCount required\' | translate}}</div>\n' +
-    '                        <div ng-if="(editBackageReservationForm.roomCount.$error.minlength || editBackageReservationForm.roomCount.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                </div> -->\n' +
-    '\n' +
-    '            </div>\n' +
-    '            <div class="row">\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'UserName\' | translate}}</label>\n' +
-    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.user.fullName">\n' +
-    '                </div>\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'Email\' | translate}}</label>\n' +
-    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.user.email">\n' +
-    '                </div>\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'phone\' | translate}}</label>\n' +
-    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.user.phone">\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                <label for="first-name">{{\'Status\' | translate}}</label>\n' +
-    '                <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags" ng-model="selectedStatus"\n' +
-    '                    ng-options="group as group.text for group in StatusList">\n' +
-    '                \n' +
-    '                        </select>\n' +
-    '                <!-- {{selectedStatus.id}} -->\n' +
-    '            </div>\n' +
-    '\n' +
-    '        </form>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-modal-action text-right">\n' +
-    '        <button ng-disabled="editBackageReservationForm.$invalid || editBackageReservationCtrl.BackageReservation.status != 0" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editBackageReservationCtrl.UpdateBackageReservation()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editBackageReservationCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '\n' +
-    '\n' +
-    '<script type="text/javascript">\n' +
-    '    $(document).ready(function () {\n' +
-    '        $(".select-tags").select2({\n' +
-    '            tags: false,\n' +
-    '            theme: "bootstrap",\n' +
-    '        })\n' +
-    '\n' +
-    '        $(".select-with-search").select2({\n' +
-    '            theme: "bootstrap"\n' +
-    '        });\n' +
-    '    });\n' +
-    '\n' +
-    '    $(function () {\n' +
-    '        $(\'#checkin\').datetimepicker(\n' +
-    '            {\n' +
-    '                //   viewMode: \'years\',\n' +
-    '                //  format: \'DD/MM/YYYY\',\n' +
-    '                minDate: new Date()\n' +
-    '            }\n' +
-    '        );\n' +
-    '        $(\'#checkout\').datetimepicker(\n' +
-    '            {\n' +
-    '                //   viewMode: \'years\',\n' +
-    '                //  format: \'DD/MM/YYYY\',\n' +
-    '                minDate: new Date()\n' +
-    '            }\n' +
-    '        );\n' +
-    '    });\n' +
-    '\n' +
-    '</script>');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
   $templateCache.put('./app/GlobalAdmin/Backage/templates/Backage.html',
     '<div>\n' +
     '    <div style="margin-bottom:10px">\n' +
@@ -840,6 +645,328 @@ angular.module('home').run(['$templateCache', function($templateCache) {
 }]);
 
 angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/BackageReservation/templates/BackageReservation.html',
+    '<div>\n' +
+    '    <div ng-if="BackageReservationList.results.length == 0">\n' +
+    '        <span>{{\'NoBackageReservationsAvailable\' | translate}}</span>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="BackageReservationList.results.length > 0">\n' +
+    '        <div class="table-responsive"></div>\n' +
+    '        <table class="table pmd-table table-hover">\n' +
+    '            <thead>\n' +
+    '                <tr>\n' +
+    '                    <th>{{\'Backage\' | translate}}</th>\n' +
+    '                    <th>{{\'Date\' | translate}}</th>\n' +
+    '                    <th>{{\'User\' | translate}}</th>\n' +
+    '                    <th>{{\'Status\' | translate}}</th>\n' +
+    '                    <th>{{\'InCharge\' | translate}}</th>\n' +
+    '                    <th></th>\n' +
+    '                </tr>\n' +
+    '            </thead>\n' +
+    '            <tbody>\n' +
+    '                <tr ng-class="{\'red-text\': BackageReservation.status == 3,\'green-text\': BackageReservation.status == 0}" ng-repeat="BackageReservation in BackageReservationList.results">\n' +
+    '                    <td data-title="Backage">{{BackageReservation.backage.titleDictionary[selectedLanguage]}}</td>\n' +
+    '                    <td data-title="Date">{{BackageReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>\n' +
+    '                    <td data-title="User"> {{BackageReservation.user.fullName}} </td>\n' +
+    '                    <td> {{(StatusList |filter: {id: key})[BackageReservation.status].text | translate}} </td>\n' +
+    '                    <td> {{BackageReservation.seenUser.fullName}}  </td>\n' +
+    '                    <td>\n' +
+    '                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editBackageReservation\',{backageReservationId: BackageReservation.backageReservationId});">mode_edit</i>\n' +
+    '                    </td>\n' +
+    '                </tr>\n' +
+    '            </tbody>\n' +
+    '        </table>\n' +
+    '    </div>\n' +
+    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
+    '        flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
+    '    </div>\n' +
+    '</div>');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/BackageReservation/templates/edit.html',
+    '<div class="modal-content">\n' +
+    '    <div class="modal-header bordered">\n' +
+    '        <h2 class="pmd-card-title-text">{{\'BackageReservation\' | translate}}</h2>\n' +
+    '    </div>\n' +
+    '    <div class="modal-body">\n' +
+    '        <form class="form-horizontal" name="editBackageReservationForm">\n' +
+    '\n' +
+    '            <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
+    '                <label for="first-name">{{\'Tickect No\' | translate}}</label>\n' +
+    '                <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.tickectNo">\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <div>\n' +
+    '                <br>\n' +
+    '                <!-- Nav tabs -->\n' +
+    '                <ul class="nav nav-tabs" role="tablist">\n' +
+    '                    <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editBackageReservationCtrl.language">\n' +
+    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
+    '                                {{lang.value | translate}}\n' +
+    '                            </a>\n' +
+    '                    </li>\n' +
+    '                </ul>\n' +
+    '                <div class="pmd-card">\n' +
+    '                    <div class="pmd-card-body">\n' +
+    '                        <!-- Tab panes -->\n' +
+    '                        <div class="tab-content">\n' +
+    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editBackageReservationCtrl.language"\n' +
+    '                                id="{{lang.value}}-form">\n' +
+    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
+    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
+    '                                    <input readonly="readonly" required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}"\n' +
+    '                                        ng-model="editBackageReservationCtrl.BackageReservation.backage.titleDictionary[lang.key]"\n' +
+    '                                    />\n' +
+    '                                </div>\n' +
+    '                            </div>\n' +
+    '                        </div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '            <div class="row">\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'checkIn\' | translate}}</label>\n' +
+    '                    <input id="checkin" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.checkIn">\n' +
+    '                </div>\n' +
+    '\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'checkOut\' | translate}}</label>\n' +
+    '                    <input id="checkout" type="text" required class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.checkOut">\n' +
+    '                    <!-- <input type="text" id="startdate" class="form-control" required /> -->\n' +
+    '                </div>\n' +
+    '\n' +
+    '\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <div class="row">\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'Child\' | translate}}</label>\n' +
+    '                    <input type="text" class="mat-input form-control" numbers-only name="child" ng-minlength="1" ng-maxlength="3" ng-model="editBackageReservationCtrl.BackageReservation.child">\n' +
+    '                    <span class="error" ng-show="editBackageReservationForm.child.$error.pattern">{{\'Not Child Number\' | translate}} </span>\n' +
+    '                    <div ng-messages="editBackageReservationForm.child.$error">\n' +
+    '                        <div ng-if="editBackageReservationForm.child.$error.required && !editBackageReservationForm.child.$pristine">{{\'Child required\' | translate}}</div>\n' +
+    '                        <div ng-if="(editBackageReservationForm.child.$error.minlength || editBackageReservationForm.child.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div>\n' +
+    '\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'Adult\' | translate}}</label>\n' +
+    '                    <input type="text" class="mat-input form-control" numbers-only name="adult" ng-minlength="1" ng-maxlength="3" ng-model="editBackageReservationCtrl.BackageReservation.adult">\n' +
+    '                    <span class="error" ng-show="editBackageReservationForm.adult.$error.pattern">{{\'Not Adult Number\' | translate}} </span>\n' +
+    '                    <div ng-messages="editBackageReservationForm.adult.$error">\n' +
+    '                        <div ng-if="editBackageReservationForm.adult.$error.required && !editBackageReservationForm.adult.$pristine">{{\'Adult required\' | translate}}</div>\n' +
+    '                        <div ng-if="(editBackageReservationForm.adult.$error.minlength || editBackageReservationForm.adult.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div>\n' +
+    '                <!-- <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'roomCount\' | translate}}</label>\n' +
+    '                    <input type="text" class="mat-input form-control" numbers-only name="roomCount" ng-minlength="1" ng-maxlength="3" ng-model="editBackageReservationCtrl.BackageReservation.roomCount">\n' +
+    '                    <span class="error" ng-show="editBackageReservationForm.roomCount.$error.pattern">{{\'Not roomCount Number\' | translate}} </span>\n' +
+    '                    <div ng-messages="editBackageReservationForm.roomCount.$error">\n' +
+    '                        <div ng-if="editBackageReservationForm.roomCount.$error.required && !editBackageReservationForm.roomCount.$pristine">{{\'roomCount required\' | translate}}</div>\n' +
+    '                        <div ng-if="(editBackageReservationForm.roomCount.$error.minlength || editBackageReservationForm.roomCount.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div> -->\n' +
+    '\n' +
+    '            </div>\n' +
+    '            <div class="row">\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'UserName\' | translate}}</label>\n' +
+    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.user.fullName">\n' +
+    '                </div>\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'Email\' | translate}}</label>\n' +
+    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.user.email">\n' +
+    '                </div>\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'phone\' | translate}}</label>\n' +
+    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editBackageReservationCtrl.BackageReservation.user.phone">\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                <label for="first-name">{{\'Status\' | translate}}</label>\n' +
+    '                <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags" ng-model="selectedStatus"\n' +
+    '                    ng-options="group as group.text for group in StatusList">\n' +
+    '                \n' +
+    '                        </select>\n' +
+    '                <!-- {{selectedStatus.id}} -->\n' +
+    '            </div>\n' +
+    '\n' +
+    '        </form>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-modal-action text-right">\n' +
+    '        <button ng-disabled="editBackageReservationForm.$invalid || editBackageReservationCtrl.BackageReservation.status != 0" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editBackageReservationCtrl.UpdateBackageReservation()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editBackageReservationCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '    </div>\n' +
+    '</div>\n' +
+    '\n' +
+    '\n' +
+    '<script type="text/javascript">\n' +
+    '    $(document).ready(function () {\n' +
+    '        $(".select-tags").select2({\n' +
+    '            tags: false,\n' +
+    '            theme: "bootstrap",\n' +
+    '        })\n' +
+    '\n' +
+    '        $(".select-with-search").select2({\n' +
+    '            theme: "bootstrap"\n' +
+    '        });\n' +
+    '    });\n' +
+    '\n' +
+    '    $(function () {\n' +
+    '        $(\'#checkin\').datetimepicker(\n' +
+    '            {\n' +
+    '                //   viewMode: \'years\',\n' +
+    '                //  format: \'DD/MM/YYYY\',\n' +
+    '                minDate: new Date()\n' +
+    '            }\n' +
+    '        );\n' +
+    '        $(\'#checkout\').datetimepicker(\n' +
+    '            {\n' +
+    '                //   viewMode: \'years\',\n' +
+    '                //  format: \'DD/MM/YYYY\',\n' +
+    '                minDate: new Date()\n' +
+    '            }\n' +
+    '        );\n' +
+    '    });\n' +
+    '\n' +
+    '</script>');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Career/templates/Career.html',
+    '\n' +
+    '<div>\n' +
+    '    <div style="margin-bottom:10px">\n' +
+    '        <button ng-click="$state.go(\'newCareer\');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{\'AddNew\' | translate}}</button>\n' +
+    '\n' +
+    '    </div> \n' +
+    '    {{CareerList.results}}\n' +
+    '    <div ng-if="CareerList.length == 0">\n' +
+    '        <span>{{\'NoCareersAvailable\' | translate}}</span>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="CareerList.length > 0">\n' +
+    '        <div class="table-responsive"></div>\n' +
+    '        <table class="table pmd-table table-hover">\n' +
+    '            <thead>\n' +
+    '                <tr>\n' +
+    '                    <th>{{\'Title\' | translate}}</th>\n' +
+    '                    <th>{{\'Description\' | translate}}</th> \n' +
+    '                    <th></th>\n' +
+    '                </tr>\n' +
+    '            </thead>\n' +
+    '            <tbody>\n' +
+    '                <tr ng-repeat="Career in CareerList">\n' +
+    '                    <td data-title="title">{{Career.title}}</td>\n' +
+    '                    <td data-title="description">{{Career.description}}</td>\n' +
+    '                     \n' +
+    '                   \n' +
+    '                    <td width="30%" >\n' +
+    '                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editCareer\',{careerId: Career.careerId});">mode_edit</i>\n' +
+    '                    </td>\n' +
+    '                </tr>\n' +
+    '                 \n' +
+    '            </tbody>\n' +
+    '        </table>\n' +
+    '    </div>\n' +
+    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
+    '         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
+    '    </div>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Career/templates/edit.html',
+    '<div class="modal-content">\n' +
+    '	<div class="modal-header bordered">\n' +
+    '		<h2 class="pmd-card-title-text">{{\'Career\' | translate}}</h2>  \n' +
+    '	</div>\n' +
+    '	<div class="modal-body">\n' +
+    '		<form class="form-horizontal" name="editTypeForm"> \n' +
+    '           <div> \n' +
+    '                <div class="form-group pmd-textfield pmd-textfield-floating-label-compeleted">\n' +
+    '                    <label for="first-name"> {{  \'Name\' | translate}} </label>\n' +
+    '                    <input required Career="text" class="mat-input form-control" name="title" ng-model="editCareerCtrl.Career.title" ng-minlength="3" ng-maxlength="255">\n' +
+    '                    <div ng-messages="newCareerForm.title.$error" >\n' +
+    '                        \n' +
+    '                        <div ng-show="newCareerForm.title.$error.required && !newCareerForm.title.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                        <div ng-show="(newCareerForm.title.$error.minlength || newCareerForm.title.$error.maxlength) && !newCareerForm.title.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div> \n' +
+    '            <div> \n' +
+    '                <div class="form-group pmd-textfield pmd-textfield-floating-label-compeleted">\n' +
+    '                    <label for="first-name"> {{\' Description\' | translate}} </label>\n' +
+    '                    <textarea required Career="text" class="mat-input form-control" name="description" \n' +
+    '                    ng-model="editCareerCtrl.Career.description" ng-minlength="3" ng-maxlength="255"></textarea>\n' +
+    '                    <div ng-messages="newCareerForm.description.$error" >\n' +
+    '                        \n' +
+    '                        <div ng-show="newCareerForm.description.$error.required && !newCareerForm.description.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                        <div ng-show="(newCareerForm.description.$error.minlength || newCareerForm.description.$error.maxlength) && !newCareerForm.description.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div> \n' +
+    '		</form>\n' +
+    '	</div>\n' +
+    '	<div class="pmd-modal-action text-right">\n' +
+    '		<button ng-disabled="editTypeForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editCareerCtrl.UpdateCareer()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editCareerCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '	</div>\n' +
+    '</div>\n' +
+    '\n' +
+    '	\n' +
+    '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Career/templates/new.html',
+    '<div class="modal-content">\n' +
+    '    <div class="modal-header bordered">\n' +
+    '        <h2 class="pmd-card-title-text">{{\'NewCareer\' | translate}}</h2>\n' +
+    '    </div>\n' +
+    '    <div class="modal-body">\n' +
+    '        <form class="form-horizontal" name="newCareerForm"> \n' +
+    '            <div> \n' +
+    '                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
+    '                    <label for="first-name"> {{  \'Name\' | translate}} </label>\n' +
+    '                    <input required Career="text" class="mat-input form-control" name="title" ng-model="newCareerCtrl.title" ng-minlength="3" ng-maxlength="255">\n' +
+    '                    <div ng-messages="newCareerForm.title.$error" >\n' +
+    '                        \n' +
+    '                        <div ng-show="newCareerForm.title.$error.required && !newCareerForm.title.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                        <div ng-show="(newCareerForm.title.$error.minlength || newCareerForm.title.$error.maxlength) && !newCareerForm.title.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div> \n' +
+    '            <div> \n' +
+    '                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
+    '                    <label for="first-name"> {{\' Description\' | translate}} </label>\n' +
+    '                    <textarea required Career="text" class="mat-input form-control" name="description" \n' +
+    '                    ng-model="newCareerCtrl.description" ng-minlength="3" ng-maxlength="255"></textarea>\n' +
+    '                    <div ng-messages="newCareerForm.description.$error" >\n' +
+    '                        \n' +
+    '                        <div ng-show="newCareerForm.description.$error.required && !newCareerForm.description.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                        <div ng-show="(newCareerForm.description.$error.minlength || newCareerForm.description.$error.maxlength) && !newCareerForm.description.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div> \n' +
+    '        </form>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-modal-action text-right">\n' +
+    '        <button ng-disabled="newCareerForm.$invalid" class="btn pmd-ripple-effect btn-primary" Career="button" ng-click="newCareerCtrl.AddNewCareer()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '        <button class="btn pmd-ripple-effect btn-default" Career="button" ng-click="$state.go(\'Career\');">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '    </div>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
   $templateCache.put('./app/GlobalAdmin/CareerForm/templates/CareerForm.html',
     '\n' +
     '<div> \n' +
@@ -980,133 +1107,6 @@ angular.module('home').run(['$templateCache', function($templateCache) {
     '    <div class="pmd-modal-action text-right">\n' +
     '        <button ng-disabled="newCareerFormForm.$invalid" class="btn pmd-ripple-effect btn-primary" CareerForm="button" ng-click="newCareerFormCtrl.AddNewCareerForm()">{{\'saveChangesBtn\' | translate}}</button>\n' +
     '        <button class="btn pmd-ripple-effect btn-default" CareerForm="button" ng-click="$state.go(\'CareerForm\');">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Career/templates/Career.html',
-    '\n' +
-    '<div>\n' +
-    '    <div style="margin-bottom:10px">\n' +
-    '        <button ng-click="$state.go(\'newCareer\');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{\'AddNew\' | translate}}</button>\n' +
-    '\n' +
-    '    </div> \n' +
-    '    {{CareerList.results}}\n' +
-    '    <div ng-if="CareerList.length == 0">\n' +
-    '        <span>{{\'NoCareersAvailable\' | translate}}</span>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="CareerList.length > 0">\n' +
-    '        <div class="table-responsive"></div>\n' +
-    '        <table class="table pmd-table table-hover">\n' +
-    '            <thead>\n' +
-    '                <tr>\n' +
-    '                    <th>{{\'Title\' | translate}}</th>\n' +
-    '                    <th>{{\'Description\' | translate}}</th> \n' +
-    '                    <th></th>\n' +
-    '                </tr>\n' +
-    '            </thead>\n' +
-    '            <tbody>\n' +
-    '                <tr ng-repeat="Career in CareerList">\n' +
-    '                    <td data-title="title">{{Career.title}}</td>\n' +
-    '                    <td data-title="description">{{Career.description}}</td>\n' +
-    '                     \n' +
-    '                   \n' +
-    '                    <td width="30%" >\n' +
-    '                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editCareer\',{careerId: Career.careerId});">mode_edit</i>\n' +
-    '                    </td>\n' +
-    '                </tr>\n' +
-    '                 \n' +
-    '            </tbody>\n' +
-    '        </table>\n' +
-    '    </div>\n' +
-    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
-    '         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Career/templates/edit.html',
-    '<div class="modal-content">\n' +
-    '	<div class="modal-header bordered">\n' +
-    '		<h2 class="pmd-card-title-text">{{\'Career\' | translate}}</h2>  \n' +
-    '	</div>\n' +
-    '	<div class="modal-body">\n' +
-    '		<form class="form-horizontal" name="editTypeForm"> \n' +
-    '           <div> \n' +
-    '                <div class="form-group pmd-textfield pmd-textfield-floating-label-compeleted">\n' +
-    '                    <label for="first-name"> {{  \'Name\' | translate}} </label>\n' +
-    '                    <input required Career="text" class="mat-input form-control" name="title" ng-model="editCareerCtrl.Career.title" ng-minlength="3" ng-maxlength="255">\n' +
-    '                    <div ng-messages="newCareerForm.title.$error" >\n' +
-    '                        \n' +
-    '                        <div ng-show="newCareerForm.title.$error.required && !newCareerForm.title.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                        <div ng-show="(newCareerForm.title.$error.minlength || newCareerForm.title.$error.maxlength) && !newCareerForm.title.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '            <div> \n' +
-    '                <div class="form-group pmd-textfield pmd-textfield-floating-label-compeleted">\n' +
-    '                    <label for="first-name"> {{\' Description\' | translate}} </label>\n' +
-    '                    <textarea required Career="text" class="mat-input form-control" name="description" \n' +
-    '                    ng-model="editCareerCtrl.Career.description" ng-minlength="3" ng-maxlength="255"></textarea>\n' +
-    '                    <div ng-messages="newCareerForm.description.$error" >\n' +
-    '                        \n' +
-    '                        <div ng-show="newCareerForm.description.$error.required && !newCareerForm.description.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                        <div ng-show="(newCareerForm.description.$error.minlength || newCareerForm.description.$error.maxlength) && !newCareerForm.description.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '		</form>\n' +
-    '	</div>\n' +
-    '	<div class="pmd-modal-action text-right">\n' +
-    '		<button ng-disabled="editTypeForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editCareerCtrl.UpdateCareer()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editCareerCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '	</div>\n' +
-    '</div>\n' +
-    '\n' +
-    '	\n' +
-    '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Career/templates/new.html',
-    '<div class="modal-content">\n' +
-    '    <div class="modal-header bordered">\n' +
-    '        <h2 class="pmd-card-title-text">{{\'NewCareer\' | translate}}</h2>\n' +
-    '    </div>\n' +
-    '    <div class="modal-body">\n' +
-    '        <form class="form-horizontal" name="newCareerForm"> \n' +
-    '            <div> \n' +
-    '                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
-    '                    <label for="first-name"> {{  \'Name\' | translate}} </label>\n' +
-    '                    <input required Career="text" class="mat-input form-control" name="title" ng-model="newCareerCtrl.title" ng-minlength="3" ng-maxlength="255">\n' +
-    '                    <div ng-messages="newCareerForm.title.$error" >\n' +
-    '                        \n' +
-    '                        <div ng-show="newCareerForm.title.$error.required && !newCareerForm.title.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                        <div ng-show="(newCareerForm.title.$error.minlength || newCareerForm.title.$error.maxlength) && !newCareerForm.title.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '            <div> \n' +
-    '                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
-    '                    <label for="first-name"> {{\' Description\' | translate}} </label>\n' +
-    '                    <textarea required Career="text" class="mat-input form-control" name="description" \n' +
-    '                    ng-model="newCareerCtrl.description" ng-minlength="3" ng-maxlength="255"></textarea>\n' +
-    '                    <div ng-messages="newCareerForm.description.$error" >\n' +
-    '                        \n' +
-    '                        <div ng-show="newCareerForm.description.$error.required && !newCareerForm.description.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                        <div ng-show="(newCareerForm.description.$error.minlength || newCareerForm.description.$error.maxlength) && !newCareerForm.description.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '        </form>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-modal-action text-right">\n' +
-    '        <button ng-disabled="newCareerForm.$invalid" class="btn pmd-ripple-effect btn-primary" Career="button" ng-click="newCareerCtrl.AddNewCareer()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '        <button class="btn pmd-ripple-effect btn-default" Career="button" ng-click="$state.go(\'Career\');">{{\'DiscardBtn\' | translate}}</button>\n' +
     '    </div>\n' +
     '</div>\n' +
     '');
@@ -1668,147 +1668,6 @@ angular.module('home').run(['$templateCache', function($templateCache) {
 }]);
 
 angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Currency/templates/Currency.html',
-    '\n' +
-    '<div>\n' +
-    '    <div style="margin-bottom:10px">\n' +
-    '        <button ng-click="$state.go(\'newCurrency\');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{\'AddNew\' | translate}}</button>\n' +
-    '\n' +
-    '    </div> \n' +
-    '    <div ng-if="CurrencyList.results.length == 0">\n' +
-    '        <span>{{\'NoCurrencysAvailable\' | translate}}</span>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="CurrencyList.results.length > 0">\n' +
-    '        <div class="table-responsive"></div>\n' +
-    '        <table class="table pmd-table table-hover">\n' +
-    '            <thead>\n' +
-    '                <tr>\n' +
-    '                    <th>{{\'Name\' | translate}}</th>\n' +
-    '                    <!-- <th>{{\'status\' | translate}}</th>  -->\n' +
-    '                    <th></th>\n' +
-    '                </tr>\n' +
-    '            </thead>\n' +
-    '            <tbody>\n' +
-    '                <tr ng-repeat="Currency in CurrencyList.results">\n' +
-    '                    <td data-title="Name">{{Currency.titleDictionary[selectedLanguage]}}</td>\n' +
-    '                    \n' +
-    '                    <!-- <td>\n' +
-    '                        <p ng-show="Currency.isStatic"> Static</p>\n' +
-    '                    </td> --> \n' +
-    '                   \n' +
-    '                    <td width="30%" ng-show="!Currency.isStatic">\n' +
-    '                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editCurrency\',{currencyId: Currency.currencyId});">mode_edit</i>\n' +
-    '                    </td>\n' +
-    '                </tr>\n' +
-    '                \n' +
-    '            </tbody>\n' +
-    '        </table>\n' +
-    '    </div>\n' +
-    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
-    '         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Currency/templates/edit.html',
-    '<div class="modal-content">\n' +
-    '	<div class="modal-header bordered">\n' +
-    '		<h2 class="pmd-card-title-text">{{\'Currency\' | translate}}</h2>\n' +
-    '	</div>\n' +
-    '	<div class="modal-body">\n' +
-    '		<form class="form-horizontal" name="editTypeForm"> \n' +
-    '                <div> \n' +
-    '                    <!-- Nav tabs -->\n' +
-    '                    <ul class="nav nav-tabs" role="tablist">\n' +
-    '                        <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editCurrencyCtrl.language">\n' +
-    '                            <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
-    '                                {{lang.value | translate}}\n' +
-    '                            </a>\n' +
-    '                        </li> \n' +
-    '                    </ul>\n' +
-    '                    <div class="pmd-card">\n' +
-    '                        <div class="pmd-card-body">\n' +
-    '                            <!-- Tab panes -->\n' +
-    '                            <div class="tab-content">\n' +
-    '                                <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editCurrencyCtrl.language" id="{{lang.value}}-form">\n' +
-    '                                    <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
-    '                                        <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
-    '                                        <input required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}" ng-model="editCurrencyCtrl.Currency.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">\n' +
-    '                                        <div ng-messages="editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error" >\n' +
-    '                                            \n' +
-    '                                            <div ng-show="editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error.required && !editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                                            <div ng-show="(editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error.minlength || editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error.maxlength) && !editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                                        </div>\n' +
-    '                                    </div>\n' +
-    '                                </div>\n' +
-    '                            </div> \n' +
-    '                        </div>\n' +
-    '\n' +
-    '                   \n' +
-    '                    </div>\n' +
-    '                </div> \n' +
-    ' \n' +
-    '		</form>\n' +
-    '	</div>\n' +
-    '	<div class="pmd-modal-action text-right">\n' +
-    '		<button ng-disabled="editTypeForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editCurrencyCtrl.UpdateCurrency()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editCurrencyCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '	</div>\n' +
-    '</div>\n' +
-    '\n' +
-    '	\n' +
-    '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Currency/templates/new.html',
-    '<div class="modal-content">\n' +
-    '    <div class="modal-header bordered">\n' +
-    '        <h2 class="pmd-card-title-text">{{\'NewCurrency\' | translate}}</h2>\n' +
-    '    </div>\n' +
-    '    <div class="modal-body">\n' +
-    '        <form class="form-horizontal" name="newCurrencyForm"> \n' +
-    '            <div> \n' +
-    '                <!-- Nav tabs -->\n' +
-    '                <ul class="nav nav-tabs" role="tablist">\n' +
-    '                    <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in newCurrencyCtrl.language">\n' +
-    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
-    '                            {{lang.value | translate}}\n' +
-    '                        </a>\n' +
-    '                    </li> \n' +
-    '                </ul>\n' +
-    '                <div class="pmd-card">\n' +
-    '                    <div class="pmd-card-body">\n' +
-    '                        <!-- Tab panes -->\n' +
-    '                        <div class="tab-content">\n' +
-    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in newCurrencyCtrl.language" id="{{lang.value}}-form">\n' +
-    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
-    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
-    '                                    <input required Currency="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}" ng-model="newCurrencyCtrl.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">\n' +
-    '                                    <div ng-messages="newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error" >\n' +
-    '										\n' +
-    '                                        <div ng-show="newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error.required && !newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                                        <div ng-show="(newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error.minlength || newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error.maxlength) && !newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                                    </div>\n' +
-    '                                </div>\n' +
-    '                            </div>\n' +
-    '                        </div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '        </form>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-modal-action text-right">\n' +
-    '        <button ng-disabled="newCurrencyForm.$invalid" class="btn pmd-ripple-effect btn-primary" Currency="button" ng-click="newCurrencyCtrl.AddNewCurrency()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '        <button class="btn pmd-ripple-effect btn-default" Currency="button" ng-click="$state.go(\'Currency\');">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
   $templateCache.put('./app/GlobalAdmin/Country/templates/Country.html',
     '\n' +
     '<div>\n' +
@@ -1976,6 +1835,353 @@ angular.module('home').run(['$templateCache', function($templateCache) {
     '    </div>\n' +
     '</div>\n' +
     '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Currency/templates/Currency.html',
+    '\n' +
+    '<div>\n' +
+    '    <div style="margin-bottom:10px">\n' +
+    '        <button ng-click="$state.go(\'newCurrency\');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{\'AddNew\' | translate}}</button>\n' +
+    '\n' +
+    '    </div> \n' +
+    '    <div ng-if="CurrencyList.results.length == 0">\n' +
+    '        <span>{{\'NoCurrencysAvailable\' | translate}}</span>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="CurrencyList.results.length > 0">\n' +
+    '        <div class="table-responsive"></div>\n' +
+    '        <table class="table pmd-table table-hover">\n' +
+    '            <thead>\n' +
+    '                <tr>\n' +
+    '                    <th>{{\'Name\' | translate}}</th>\n' +
+    '                    <!-- <th>{{\'status\' | translate}}</th>  -->\n' +
+    '                    <th></th>\n' +
+    '                </tr>\n' +
+    '            </thead>\n' +
+    '            <tbody>\n' +
+    '                <tr ng-repeat="Currency in CurrencyList.results">\n' +
+    '                    <td data-title="Name">{{Currency.titleDictionary[selectedLanguage]}}</td>\n' +
+    '                    \n' +
+    '                    <!-- <td>\n' +
+    '                        <p ng-show="Currency.isStatic"> Static</p>\n' +
+    '                    </td> --> \n' +
+    '                   \n' +
+    '                    <td width="30%" ng-show="!Currency.isStatic">\n' +
+    '                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editCurrency\',{currencyId: Currency.currencyId});">mode_edit</i>\n' +
+    '                    </td>\n' +
+    '                </tr>\n' +
+    '                \n' +
+    '            </tbody>\n' +
+    '        </table>\n' +
+    '    </div>\n' +
+    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
+    '         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
+    '    </div>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Currency/templates/edit.html',
+    '<div class="modal-content">\n' +
+    '	<div class="modal-header bordered">\n' +
+    '		<h2 class="pmd-card-title-text">{{\'Currency\' | translate}}</h2>\n' +
+    '	</div>\n' +
+    '	<div class="modal-body">\n' +
+    '		<form class="form-horizontal" name="editTypeForm"> \n' +
+    '                <div> \n' +
+    '                    <!-- Nav tabs -->\n' +
+    '                    <ul class="nav nav-tabs" role="tablist">\n' +
+    '                        <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editCurrencyCtrl.language">\n' +
+    '                            <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
+    '                                {{lang.value | translate}}\n' +
+    '                            </a>\n' +
+    '                        </li> \n' +
+    '                    </ul>\n' +
+    '                    <div class="pmd-card">\n' +
+    '                        <div class="pmd-card-body">\n' +
+    '                            <!-- Tab panes -->\n' +
+    '                            <div class="tab-content">\n' +
+    '                                <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editCurrencyCtrl.language" id="{{lang.value}}-form">\n' +
+    '                                    <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
+    '                                        <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
+    '                                        <input required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}" ng-model="editCurrencyCtrl.Currency.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">\n' +
+    '                                        <div ng-messages="editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error" >\n' +
+    '                                            \n' +
+    '                                            <div ng-show="editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error.required && !editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                                            <div ng-show="(editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error.minlength || editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error.maxlength) && !editTypeForm.titleDictionary{{lang.value+\'Name\'}}.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                                        </div>\n' +
+    '                                    </div>\n' +
+    '                                </div>\n' +
+    '                            </div> \n' +
+    '                        </div>\n' +
+    '\n' +
+    '                   \n' +
+    '                    </div>\n' +
+    '                </div> \n' +
+    ' \n' +
+    '		</form>\n' +
+    '	</div>\n' +
+    '	<div class="pmd-modal-action text-right">\n' +
+    '		<button ng-disabled="editTypeForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editCurrencyCtrl.UpdateCurrency()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editCurrencyCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '	</div>\n' +
+    '</div>\n' +
+    '\n' +
+    '	\n' +
+    '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Currency/templates/new.html',
+    '<div class="modal-content">\n' +
+    '    <div class="modal-header bordered">\n' +
+    '        <h2 class="pmd-card-title-text">{{\'NewCurrency\' | translate}}</h2>\n' +
+    '    </div>\n' +
+    '    <div class="modal-body">\n' +
+    '        <form class="form-horizontal" name="newCurrencyForm"> \n' +
+    '            <div> \n' +
+    '                <!-- Nav tabs -->\n' +
+    '                <ul class="nav nav-tabs" role="tablist">\n' +
+    '                    <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in newCurrencyCtrl.language">\n' +
+    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
+    '                            {{lang.value | translate}}\n' +
+    '                        </a>\n' +
+    '                    </li> \n' +
+    '                </ul>\n' +
+    '                <div class="pmd-card">\n' +
+    '                    <div class="pmd-card-body">\n' +
+    '                        <!-- Tab panes -->\n' +
+    '                        <div class="tab-content">\n' +
+    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in newCurrencyCtrl.language" id="{{lang.value}}-form">\n' +
+    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
+    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
+    '                                    <input required Currency="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}" ng-model="newCurrencyCtrl.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">\n' +
+    '                                    <div ng-messages="newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error" >\n' +
+    '										\n' +
+    '                                        <div ng-show="newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error.required && !newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                                        <div ng-show="(newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error.minlength || newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error.maxlength) && !newCurrencyForm.titleDictionary{{lang.value+\'Name\'}}.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                                    </div>\n' +
+    '                                </div>\n' +
+    '                            </div>\n' +
+    '                        </div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div> \n' +
+    '        </form>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-modal-action text-right">\n' +
+    '        <button ng-disabled="newCurrencyForm.$invalid" class="btn pmd-ripple-effect btn-primary" Currency="button" ng-click="newCurrencyCtrl.AddNewCurrency()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '        <button class="btn pmd-ripple-effect btn-default" Currency="button" ng-click="$state.go(\'Currency\');">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '    </div>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Feature/templates/Feature.html',
+    '\n' +
+    '<div>\n' +
+    '    <div style="margin-bottom:10px">\n' +
+    '        <button ng-click="$state.go(\'newFeature\');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{\'AddNew\' | translate}}</button>\n' +
+    '\n' +
+    '    </div> \n' +
+    '    <div ng-if="FeatureList.results.length == 0">\n' +
+    '        <span>{{\'NoFeaturesAvailable\' | translate}}</span>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="FeatureList.results.length > 0">\n' +
+    '        <div class="table-responsive"></div>\n' +
+    '        <table class="table pmd-table table-hover">\n' +
+    '            <thead>\n' +
+    '                <tr>\n' +
+    '                        <th>{{\'Image\' | translate}}</th> \n' +
+    '                        <th>{{\'Name\' | translate}}</th> \n' +
+    '                    <th></th>\n' +
+    '                </tr>\n' +
+    '            </thead>\n' +
+    '            <tbody>\n' +
+    '                <tr ng-repeat="Feature in FeatureList.results">\n' +
+    '                        <td data-title="Image" ><img ng-src="{{Feature.icon}}"\n' +
+    '                            ng-alt="{{Feature.titleDictionary[selectedLanguage]}}" style="max-height: 200px;max-width: 200px;"/>\n' +
+    '                        </td>\n' +
+    '\n' +
+    '                            <td data-title="Name">{{Feature.titleDictionary[selectedLanguage]}}   </td>\n' +
+    '                      <td width="30%">\n' +
+    '                      <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editFeature\',{featureId: Feature.featureId});">mode_edit</i>\n' +
+    '                    </td>\n' +
+    '                </tr>\n' +
+    '             </tbody>\n' +
+    '        </table>\n' +
+    '    </div>\n' +
+    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
+    '         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
+    '    </div>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Feature/templates/edit.html',
+    '<div class="modal-content">\n' +
+    '    <div class="modal-header bordered">\n' +
+    '        <h2 class="pmd-card-title-text">{{\'Feature\' | translate}}</h2>\n' +
+    '    </div>\n' +
+    '    <div class="modal-body">\n' +
+    '        <form class="form-horizontal" name="UpdateFeatureForm">\n' +
+    '            <div>\n' +
+    '                <!-- Nav tabs -->\n' +
+    '                <ul class="nav nav-tabs" role="tablist">\n' +
+    '                    <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editFeatureCtrl.language">\n' +
+    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
+    '                            {{lang.value | translate}}\n' +
+    '                        </a>\n' +
+    '                    </li>\n' +
+    '                </ul>\n' +
+    '                <div class="pmd-card">\n' +
+    '                    <div class="pmd-card-body">\n' +
+    '                        <!-- Tab panes -->\n' +
+    '                        <div class="tab-content">\n' +
+    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editFeatureCtrl.language" id="{{lang.value}}-form">\n' +
+    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
+    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
+    '                                    <input required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}" ng-model="editFeatureCtrl.Feature.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">\n' +
+    '                                    <div ng-messages="UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error">\n' +
+    '\n' +
+    '                                        <div ng-show="UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.required && !UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                                        <div ng-show="(UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.minlength || UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.maxlength) && !UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                                    </div>\n' +
+    '                                </div>\n' +
+    '                            </div>\n' +
+    '                        </div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '            <!-- <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '\n' +
+    '                <input id="file" name="file" style="display: none;" onchange="angular.element(this).scope().AddFile(this.files)" type="file">\n' +
+    '                <button class="btn btn-primary editable-table-button btn-xs btn-with-icon" ng-click="editFeatureCtrl.LoadUploadImages()">{{\'AddImageBtn\' |translate}}</button>\n' +
+    '\n' +
+    '                <br>\n' +
+    '                <div> \n' +
+    '                    <img ng-src="{{editFeatureCtrl.Feature.icon}}" style="max-height: 286px;max-width: 286px;">\n' +
+    '\n' +
+    '                      <td>\n' +
+    '                        <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="editFeatureCtrl.removeFeatureFile($index)">delete</i>\n' +
+    '                    </td> \n' +
+    '\n' +
+    '\n' +
+    '                </div>\n' +
+    '                <br> \n' +
+    '                 <div >\n' +
+    '                    <table>\n' +
+    '                        <tbody>\n' +
+    '                            <tr ng-repeat="file in editFeatureCtrl.files">\n' +
+    '                                <td>\n' +
+    '                                    {{file.name}}\n' +
+    '                                </td>\n' +
+    '                                <td>\n' +
+    '                                    <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="editFeatureCtrl.removeFile($index)">delete</i>\n' +
+    '                                </td>\n' +
+    '                            </tr>\n' +
+    '                        </tbody>\n' +
+    '                    </table>\n' +
+    '\n' +
+    '                </div>\n' +
+    '            </div> -->\n' +
+    '        </form>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-modal-action text-right">\n' +
+    '        <button ng-disabled="UpdateFeatureForm.$invalid || editFeatureCtrl.CheckImages.length == 0" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editFeatureCtrl.UpdateFeature()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editFeatureCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '    </div>\n' +
+    '</div>\n' +
+    '\n' +
+    '');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Feature/templates/new.html',
+    '<div class="modal-content">\n' +
+    '    <div class="modal-header bordered">\n' +
+    '        <h2 class="pmd-card-title-text">{{\'NewFeature\' | translate}}</h2>\n' +
+    '    </div>\n' +
+    '    <div class="modal-body">\n' +
+    '        <form class="form-horizontal" name="newFeatureForm">\n' +
+    '            <div>\n' +
+    '                <!-- Nav tabs -->\n' +
+    '                <ul class="nav nav-tabs" role="tablist">\n' +
+    '                    <li role="presentation" ng-class="{\'active\':$index == 0}"\n' +
+    '                        ng-repeat="lang in newFeatureCtrl.language">\n' +
+    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab"\n' +
+    '                            data-toggle="tab">\n' +
+    '                            {{lang.value | translate}}\n' +
+    '                        </a>\n' +
+    '                    </li>\n' +
+    '                </ul>\n' +
+    '                <div class="pmd-card">\n' +
+    '                    <div class="pmd-card-body">\n' +
+    '                        <!-- Tab panes -->\n' +
+    '                        <div class="tab-content">\n' +
+    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}"\n' +
+    '                                ng-repeat="lang in newFeatureCtrl.language" id="{{lang.value}}-form">\n' +
+    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
+    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
+    '                                    <input required type="text" class="mat-input form-control"\n' +
+    '                                        name="titleDictionary{{lang.value+\'Name\'}}"\n' +
+    '                                        ng-model="newFeatureCtrl.titleDictionary[lang.key]" ng-minlength="3"\n' +
+    '                                        ng-maxlength="255">\n' +
+    '                                    <div ng-messages="newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error">\n' +
+    '\n' +
+    '                                        <div\n' +
+    '                                            ng-show="newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.required && !newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$pristine">\n' +
+    '                                            {{\'requiredErr\' | translate}}</div>\n' +
+    '                                        <div\n' +
+    '                                            ng-show="(newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.minlength || newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.maxlength) && !newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.required">\n' +
+    '                                            {{\'NameLengthError255\' | translate}}</div>\n' +
+    '                                    </div>\n' +
+    '                                </div>\n' +
+    '                            </div>\n' +
+    '                        </div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '\n' +
+    '                <input id="file" name="file" style="display: none;"\n' +
+    '                    onchange="angular.element(this).scope().AddFile(this.files)" type="file">\n' +
+    '                <button class="btn btn-primary editable-table-button btn-xs btn-with-icon"\n' +
+    '                    ng-click="newFeatureCtrl.LoadUploadImages()">{{\'AddImageBtn\' |translate}}</button>\n' +
+    '\n' +
+    '                <br>\n' +
+    '                <div>\n' +
+    '                    <table>\n' +
+    '                        <tbody>\n' +
+    '                            <tr ng-repeat="file in newFeatureCtrl.files">\n' +
+    '                                <td>\n' +
+    '                                    {{file.name}}\n' +
+    '                                </td>\n' +
+    '                                <td>\n' +
+    '                                    <i class="material-icons pmd-md deleteButton cursorPointer font25"\n' +
+    '                                        style="font-size: 20px;color: grey;cursor: pointer;"\n' +
+    '                                        ng-click="newFeatureCtrl.removeFile($index)">delete</i>\n' +
+    '                                </td>\n' +
+    '                            </tr>\n' +
+    '                        </tbody>\n' +
+    '                    </table>\n' +
+    '\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '\n' +
+    '        </form>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-modal-action text-right">\n' +
+    '        <button ng-disabled="newFeatureForm.$invalid" class="btn pmd-ripple-effect btn-primary" Feature="button"\n' +
+    '            ng-click="newFeatureCtrl.AddNewFeature()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '        <button class="btn pmd-ripple-effect btn-default" Feature="button"\n' +
+    '            ng-click="$state.go(\'Feature\');">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '    </div>\n' +
+    '</div>');
 }]);
 
 angular.module('home').run(['$templateCache', function($templateCache) {
@@ -2673,209 +2879,138 @@ angular.module('home').run(['$templateCache', function($templateCache) {
 }]);
 
 angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Feature/templates/Feature.html',
-    '\n' +
+  $templateCache.put('./app/GlobalAdmin/Inquery/templates/Inquery.html',
     '<div>\n' +
-    '    <div style="margin-bottom:10px">\n' +
-    '        <button ng-click="$state.go(\'newFeature\');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{\'AddNew\' | translate}}</button>\n' +
-    '\n' +
-    '    </div> \n' +
-    '    <div ng-if="FeatureList.results.length == 0">\n' +
-    '        <span>{{\'NoFeaturesAvailable\' | translate}}</span>\n' +
+    '    <div ng-if="InqueryList.results.length == 0">\n' +
+    '        <span>{{\'NoInquerysAvailable\' | translate}}</span>\n' +
     '    </div>\n' +
-    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="FeatureList.results.length > 0">\n' +
+    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="InqueryList.results.length > 0">\n' +
     '        <div class="table-responsive"></div>\n' +
     '        <table class="table pmd-table table-hover">\n' +
     '            <thead>\n' +
     '                <tr>\n' +
-    '                        <th>{{\'Image\' | translate}}</th> \n' +
-    '                        <th>{{\'Name\' | translate}}</th> \n' +
-    '                    <th></th>\n' +
+    '                    <th>{{\'userName\' | translate}}</th>\n' +
+    '                    <th>{{\'EmailLbl\' | translate}}</th>\n' +
+    '                    <th>{{\'Date\' | translate}}</th>\n' +
+    '                    <th>Message</th>\n' +
+    '                    <!-- <th>Status</th> -->\n' +
     '                </tr>\n' +
     '            </thead>\n' +
     '            <tbody>\n' +
-    '                <tr ng-repeat="Feature in FeatureList.results">\n' +
-    '                        <td data-title="Image" ><img ng-src="{{Feature.icon}}"\n' +
-    '                            ng-alt="{{Feature.titleDictionary[selectedLanguage]}}" style="max-height: 200px;max-width: 200px;"/>\n' +
-    '                        </td>\n' +
+    '                <tr ng-repeat="Inquery in InqueryList.results">\n' +
+    '                    <td data-title="name">{{Inquery.userName}}</td>\n' +
+    '                    <td data-title="email">{{Inquery.email}}</td>\n' +
     '\n' +
-    '                            <td data-title="Name">{{Feature.titleDictionary[selectedLanguage]}}   </td>\n' +
-    '                      <td width="30%">\n' +
-    '                      <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editFeature\',{featureId: Feature.featureId});">mode_edit</i>\n' +
-    '                    </td>\n' +
+    '                    <td width="50%" data-title="date">{{Inquery.creationTime || Date}}</td>\n' +
+    '                    <td width="30%" data-title="message"> <button ng-click="toggleModal(Inquery)" class="btn btn-default">Message</button></td>\n' +
+    '\n' +
+    '                    <!-- <td data-title="name">\n' +
+    '                        <div class="buttons" ng-show="!Inquery.Seen">\n' +
+    '                            <button class="center-block btn btn-default  restore-button btn-xs btn-with-icon" ng-click="Seen(Inquery)"><i class="fa fa-undo" aria-hidden="true"></i> Seen</button>\n' +
+    '                        </div>\n' +
+    '                        <div class="buttons" ng-show="Inquery.Seen">\n' +
+    '                            {{Inquery.SeenBy}}\n' +
+    '                        </div>\n' +
+    '                    </td> -->\n' +
     '                </tr>\n' +
-    '             </tbody>\n' +
+    '\n' +
+    '            </tbody>\n' +
     '        </table>\n' +
     '    </div>\n' +
     '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
-    '         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
+    '        flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
     '    </div>\n' +
     '</div>\n' +
+    '\n' +
+    '<modal title="Display message" visible="showModal">\n' +
+    '\n' +
+    '    {{showmessage}}\n' +
+    '\n' +
+    '</modal>');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/Inquery/templates/edit.html',
+    '<div class="modal-content">\n' +
+    '	<div class="modal-header bordered">\n' +
+    '		<h2 class="pmd-card-title-text">{{\'Inquery\' | translate}}</h2>  \n' +
+    '	</div>\n' +
+    '	<div class="modal-body">\n' +
+    '		<form class="form-horizontal" name="editTypeForm"> \n' +
+    '           <div> \n' +
+    '                <div class="form-group pmd-textfield pmd-textfield-floating-label-compeleted">\n' +
+    '                    <label for="first-name"> {{  \'Name\' | translate}} </label>\n' +
+    '                    <input required Inquery="text" class="mat-input form-control" name="title" ng-model="editInqueryCtrl.Inquery.title" ng-minlength="3" ng-maxlength="255">\n' +
+    '                    <div ng-messages="newInqueryForm.title.$error" >\n' +
+    '                        \n' +
+    '                        <div ng-show="newInqueryForm.title.$error.required && !newInqueryForm.title.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                        <div ng-show="(newInqueryForm.title.$error.minlength || newInqueryForm.title.$error.maxlength) && !newInqueryForm.title.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div> \n' +
+    '            <div> \n' +
+    '                <div class="form-group pmd-textfield pmd-textfield-floating-label-compeleted">\n' +
+    '                    <label for="first-name"> {{\' Description\' | translate}} </label>\n' +
+    '                    <textarea required Inquery="text" class="mat-input form-control" name="description" \n' +
+    '                    ng-model="editInqueryCtrl.Inquery.description" ng-minlength="3" ng-maxlength="255"></textarea>\n' +
+    '                    <div ng-messages="newInqueryForm.description.$error" >\n' +
+    '                        \n' +
+    '                        <div ng-show="newInqueryForm.description.$error.required && !newInqueryForm.description.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                        <div ng-show="(newInqueryForm.description.$error.minlength || newInqueryForm.description.$error.maxlength) && !newInqueryForm.description.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div> \n' +
+    '		</form>\n' +
+    '	</div>\n' +
+    '	<div class="pmd-modal-action text-right">\n' +
+    '		<button ng-disabled="editTypeForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editInqueryCtrl.UpdateInquery()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editInqueryCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '	</div>\n' +
+    '</div>\n' +
+    '\n' +
+    '	\n' +
     '');
 }]);
 
 angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Feature/templates/edit.html',
+  $templateCache.put('./app/GlobalAdmin/Inquery/templates/new.html',
     '<div class="modal-content">\n' +
     '    <div class="modal-header bordered">\n' +
-    '        <h2 class="pmd-card-title-text">{{\'Feature\' | translate}}</h2>\n' +
+    '        <h2 class="pmd-card-title-text">{{\'NewCareerForm\' | translate}}</h2>\n' +
     '    </div>\n' +
     '    <div class="modal-body">\n' +
-    '        <form class="form-horizontal" name="UpdateFeatureForm">\n' +
-    '            <div>\n' +
-    '                <!-- Nav tabs -->\n' +
-    '                <ul class="nav nav-tabs" role="tablist">\n' +
-    '                    <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editFeatureCtrl.language">\n' +
-    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
-    '                            {{lang.value | translate}}\n' +
-    '                        </a>\n' +
-    '                    </li>\n' +
-    '                </ul>\n' +
-    '                <div class="pmd-card">\n' +
-    '                    <div class="pmd-card-body">\n' +
-    '                        <!-- Tab panes -->\n' +
-    '                        <div class="tab-content">\n' +
-    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editFeatureCtrl.language" id="{{lang.value}}-form">\n' +
-    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
-    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
-    '                                    <input required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}" ng-model="editFeatureCtrl.Feature.titleDictionary[lang.key]" ng-minlength="3" ng-maxlength="255">\n' +
-    '                                    <div ng-messages="UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error">\n' +
-    '\n' +
-    '                                        <div ng-show="UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.required && !UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                                        <div ng-show="(UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.minlength || UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.maxlength) && !UpdateFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                                    </div>\n' +
-    '                                </div>\n' +
-    '                            </div>\n' +
-    '                        </div>\n' +
+    '        <form class="form-horizontal" name="newCareerFormForm"> \n' +
+    '            <div> \n' +
+    '                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
+    '                    <label for="first-name"> {{  \'Name\' | translate}} </label>\n' +
+    '                    <input required CareerForm="text" class="mat-input form-control" name="title" ng-model="newCareerFormCtrl.title" ng-minlength="3" ng-maxlength="255">\n' +
+    '                    <div ng-messages="newCareerFormForm.title.$error" >\n' +
+    '                        \n' +
+    '                        <div ng-show="newCareerFormForm.title.$error.required && !newCareerFormForm.title.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                        <div ng-show="(newCareerFormForm.title.$error.minlength || newCareerFormForm.title.$error.maxlength) && !newCareerFormForm.title.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
     '                    </div>\n' +
-    '\n' +
     '                </div>\n' +
-    '            </div>\n' +
-    '            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '\n' +
-    '                <input id="file" name="file" style="display: none;" onchange="angular.element(this).scope().AddFile(this.files)" type="file">\n' +
-    '                <button class="btn btn-primary editable-table-button btn-xs btn-with-icon" ng-click="editFeatureCtrl.LoadUploadImages()">{{\'AddImageBtn\' |translate}}</button>\n' +
-    '\n' +
-    '                <br>\n' +
-    '                <div> \n' +
-    '                    <img ng-src="{{editFeatureCtrl.Feature.icon}}" style="max-height: 286px;max-width: 286px;">\n' +
-    '\n' +
-    '                    <!-- <td>\n' +
-    '                        <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="editFeatureCtrl.removeFeatureFile($index)">delete</i>\n' +
-    '                    </td> -->\n' +
-    '\n' +
-    '\n' +
+    '            </div> \n' +
+    '            <div> \n' +
+    '                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
+    '                    <label for="first-name"> {{\' Description\' | translate}} </label>\n' +
+    '                    <textarea required CareerForm="text" class="mat-input form-control" name="description" \n' +
+    '                    ng-model="newCareerFormCtrl.description" ng-minlength="3" ng-maxlength="255"></textarea>\n' +
+    '                    <div ng-messages="newCareerFormForm.description.$error" >\n' +
+    '                        \n' +
+    '                        <div ng-show="newCareerFormForm.description.$error.required && !newCareerFormForm.description.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
+    '                        <div ng-show="(newCareerFormForm.description.$error.minlength || newCareerFormForm.description.$error.maxlength) && !newCareerFormForm.description.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
+    '                    </div>\n' +
     '                </div>\n' +
-    '                <br> \n' +
-    '                 <div >\n' +
-    '                    <table>\n' +
-    '                        <tbody>\n' +
-    '                            <tr ng-repeat="file in editFeatureCtrl.files">\n' +
-    '                                <td>\n' +
-    '                                    {{file.name}}\n' +
-    '                                </td>\n' +
-    '                                <td>\n' +
-    '                                    <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="editFeatureCtrl.removeFile($index)">delete</i>\n' +
-    '                                </td>\n' +
-    '                            </tr>\n' +
-    '                        </tbody>\n' +
-    '                    </table>\n' +
-    '\n' +
-    '                </div>\n' +
-    '            </div>\n' +
+    '            </div> \n' +
     '        </form>\n' +
     '    </div>\n' +
     '    <div class="pmd-modal-action text-right">\n' +
-    '        <button ng-disabled="UpdateFeatureForm.$invalid || editFeatureCtrl.CheckImages.length == 0" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editFeatureCtrl.UpdateFeature()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editFeatureCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '        <button ng-disabled="newCareerFormForm.$invalid" class="btn pmd-ripple-effect btn-primary" CareerForm="button" ng-click="newCareerFormCtrl.AddNewCareerForm()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '        <button class="btn pmd-ripple-effect btn-default" CareerForm="button" ng-click="$state.go(\'CareerForm\');">{{\'DiscardBtn\' | translate}}</button>\n' +
     '    </div>\n' +
     '</div>\n' +
-    '\n' +
     '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Feature/templates/new.html',
-    '<div class="modal-content">\n' +
-    '    <div class="modal-header bordered">\n' +
-    '        <h2 class="pmd-card-title-text">{{\'NewFeature\' | translate}}</h2>\n' +
-    '    </div>\n' +
-    '    <div class="modal-body">\n' +
-    '        <form class="form-horizontal" name="newFeatureForm">\n' +
-    '            <div>\n' +
-    '                <!-- Nav tabs -->\n' +
-    '                <ul class="nav nav-tabs" role="tablist">\n' +
-    '                    <li role="presentation" ng-class="{\'active\':$index == 0}"\n' +
-    '                        ng-repeat="lang in newFeatureCtrl.language">\n' +
-    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab"\n' +
-    '                            data-toggle="tab">\n' +
-    '                            {{lang.value | translate}}\n' +
-    '                        </a>\n' +
-    '                    </li>\n' +
-    '                </ul>\n' +
-    '                <div class="pmd-card">\n' +
-    '                    <div class="pmd-card-body">\n' +
-    '                        <!-- Tab panes -->\n' +
-    '                        <div class="tab-content">\n' +
-    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}"\n' +
-    '                                ng-repeat="lang in newFeatureCtrl.language" id="{{lang.value}}-form">\n' +
-    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
-    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
-    '                                    <input required type="text" class="mat-input form-control"\n' +
-    '                                        name="titleDictionary{{lang.value+\'Name\'}}"\n' +
-    '                                        ng-model="newFeatureCtrl.titleDictionary[lang.key]" ng-minlength="3"\n' +
-    '                                        ng-maxlength="255">\n' +
-    '                                    <div ng-messages="newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error">\n' +
-    '\n' +
-    '                                        <div\n' +
-    '                                            ng-show="newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.required && !newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$pristine">\n' +
-    '                                            {{\'requiredErr\' | translate}}</div>\n' +
-    '                                        <div\n' +
-    '                                            ng-show="(newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.minlength || newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.maxlength) && !newFeatureForm.titleDictionary{{lang.value+\'Name\'}}.$error.required">\n' +
-    '                                            {{\'NameLengthError255\' | translate}}</div>\n' +
-    '                                    </div>\n' +
-    '                                </div>\n' +
-    '                            </div>\n' +
-    '                        </div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '\n' +
-    '                <input id="file" name="file" style="display: none;"\n' +
-    '                    onchange="angular.element(this).scope().AddFile(this.files)" type="file">\n' +
-    '                <button class="btn btn-primary editable-table-button btn-xs btn-with-icon"\n' +
-    '                    ng-click="newFeatureCtrl.LoadUploadImages()">{{\'AddImageBtn\' |translate}}</button>\n' +
-    '\n' +
-    '                <br>\n' +
-    '                <div>\n' +
-    '                    <table>\n' +
-    '                        <tbody>\n' +
-    '                            <tr ng-repeat="file in newFeatureCtrl.files">\n' +
-    '                                <td>\n' +
-    '                                    {{file.name}}\n' +
-    '                                </td>\n' +
-    '                                <td>\n' +
-    '                                    <i class="material-icons pmd-md deleteButton cursorPointer font25"\n' +
-    '                                        style="font-size: 20px;color: grey;cursor: pointer;"\n' +
-    '                                        ng-click="newFeatureCtrl.removeFile($index)">delete</i>\n' +
-    '                                </td>\n' +
-    '                            </tr>\n' +
-    '                        </tbody>\n' +
-    '                    </table>\n' +
-    '\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '\n' +
-    '        </form>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-modal-action text-right">\n' +
-    '        <button ng-disabled="newFeatureForm.$invalid" class="btn pmd-ripple-effect btn-primary" Feature="button"\n' +
-    '            ng-click="newFeatureCtrl.AddNewFeature()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '        <button class="btn pmd-ripple-effect btn-default" Feature="button"\n' +
-    '            ng-click="$state.go(\'Feature\');">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '    </div>\n' +
-    '</div>');
 }]);
 
 angular.module('home').run(['$templateCache', function($templateCache) {
@@ -3159,336 +3294,6 @@ angular.module('home').run(['$templateCache', function($templateCache) {
     '            ng-click="$state.go(\'News\');">{{\'DiscardBtn\' | translate}}</button>\n' +
     '    </div>\n' +
     '</div>');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Inquery/templates/Inquery.html',
-    '<div>\n' +
-    '    <div ng-if="InqueryList.results.length == 0">\n' +
-    '        <span>{{\'NoInquerysAvailable\' | translate}}</span>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="InqueryList.results.length > 0">\n' +
-    '        <div class="table-responsive"></div>\n' +
-    '        <table class="table pmd-table table-hover">\n' +
-    '            <thead>\n' +
-    '                <tr>\n' +
-    '                    <th>{{\'userName\' | translate}}</th>\n' +
-    '                    <th>{{\'EmailLbl\' | translate}}</th>\n' +
-    '                    <th>{{\'Date\' | translate}}</th>\n' +
-    '                    <th>Message</th>\n' +
-    '                    <!-- <th>Status</th> -->\n' +
-    '                </tr>\n' +
-    '            </thead>\n' +
-    '            <tbody>\n' +
-    '                <tr ng-repeat="Inquery in InqueryList.results">\n' +
-    '                    <td data-title="name">{{Inquery.userName}}</td>\n' +
-    '                    <td data-title="email">{{Inquery.email}}</td>\n' +
-    '\n' +
-    '                    <td width="50%" data-title="date">{{Inquery.creationTime || Date}}</td>\n' +
-    '                    <td width="30%" data-title="message"> <button ng-click="toggleModal(Inquery)" class="btn btn-default">Message</button></td>\n' +
-    '\n' +
-    '                    <!-- <td data-title="name">\n' +
-    '                        <div class="buttons" ng-show="!Inquery.Seen">\n' +
-    '                            <button class="center-block btn btn-default  restore-button btn-xs btn-with-icon" ng-click="Seen(Inquery)"><i class="fa fa-undo" aria-hidden="true"></i> Seen</button>\n' +
-    '                        </div>\n' +
-    '                        <div class="buttons" ng-show="Inquery.Seen">\n' +
-    '                            {{Inquery.SeenBy}}\n' +
-    '                        </div>\n' +
-    '                    </td> -->\n' +
-    '                </tr>\n' +
-    '\n' +
-    '            </tbody>\n' +
-    '        </table>\n' +
-    '    </div>\n' +
-    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
-    '        flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '\n' +
-    '<modal title="Display message" visible="showModal">\n' +
-    '\n' +
-    '    {{showmessage}}\n' +
-    '\n' +
-    '</modal>');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Inquery/templates/edit.html',
-    '<div class="modal-content">\n' +
-    '	<div class="modal-header bordered">\n' +
-    '		<h2 class="pmd-card-title-text">{{\'Inquery\' | translate}}</h2>  \n' +
-    '	</div>\n' +
-    '	<div class="modal-body">\n' +
-    '		<form class="form-horizontal" name="editTypeForm"> \n' +
-    '           <div> \n' +
-    '                <div class="form-group pmd-textfield pmd-textfield-floating-label-compeleted">\n' +
-    '                    <label for="first-name"> {{  \'Name\' | translate}} </label>\n' +
-    '                    <input required Inquery="text" class="mat-input form-control" name="title" ng-model="editInqueryCtrl.Inquery.title" ng-minlength="3" ng-maxlength="255">\n' +
-    '                    <div ng-messages="newInqueryForm.title.$error" >\n' +
-    '                        \n' +
-    '                        <div ng-show="newInqueryForm.title.$error.required && !newInqueryForm.title.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                        <div ng-show="(newInqueryForm.title.$error.minlength || newInqueryForm.title.$error.maxlength) && !newInqueryForm.title.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '            <div> \n' +
-    '                <div class="form-group pmd-textfield pmd-textfield-floating-label-compeleted">\n' +
-    '                    <label for="first-name"> {{\' Description\' | translate}} </label>\n' +
-    '                    <textarea required Inquery="text" class="mat-input form-control" name="description" \n' +
-    '                    ng-model="editInqueryCtrl.Inquery.description" ng-minlength="3" ng-maxlength="255"></textarea>\n' +
-    '                    <div ng-messages="newInqueryForm.description.$error" >\n' +
-    '                        \n' +
-    '                        <div ng-show="newInqueryForm.description.$error.required && !newInqueryForm.description.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                        <div ng-show="(newInqueryForm.description.$error.minlength || newInqueryForm.description.$error.maxlength) && !newInqueryForm.description.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '		</form>\n' +
-    '	</div>\n' +
-    '	<div class="pmd-modal-action text-right">\n' +
-    '		<button ng-disabled="editTypeForm.$invalid" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editInqueryCtrl.UpdateInquery()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '		<button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editInqueryCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '	</div>\n' +
-    '</div>\n' +
-    '\n' +
-    '	\n' +
-    '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/Inquery/templates/new.html',
-    '<div class="modal-content">\n' +
-    '    <div class="modal-header bordered">\n' +
-    '        <h2 class="pmd-card-title-text">{{\'NewCareerForm\' | translate}}</h2>\n' +
-    '    </div>\n' +
-    '    <div class="modal-body">\n' +
-    '        <form class="form-horizontal" name="newCareerFormForm"> \n' +
-    '            <div> \n' +
-    '                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
-    '                    <label for="first-name"> {{  \'Name\' | translate}} </label>\n' +
-    '                    <input required CareerForm="text" class="mat-input form-control" name="title" ng-model="newCareerFormCtrl.title" ng-minlength="3" ng-maxlength="255">\n' +
-    '                    <div ng-messages="newCareerFormForm.title.$error" >\n' +
-    '                        \n' +
-    '                        <div ng-show="newCareerFormForm.title.$error.required && !newCareerFormForm.title.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                        <div ng-show="(newCareerFormForm.title.$error.minlength || newCareerFormForm.title.$error.maxlength) && !newCareerFormForm.title.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '            <div> \n' +
-    '                <div class="form-group pmd-textfield pmd-textfield-floating-label">\n' +
-    '                    <label for="first-name"> {{\' Description\' | translate}} </label>\n' +
-    '                    <textarea required CareerForm="text" class="mat-input form-control" name="description" \n' +
-    '                    ng-model="newCareerFormCtrl.description" ng-minlength="3" ng-maxlength="255"></textarea>\n' +
-    '                    <div ng-messages="newCareerFormForm.description.$error" >\n' +
-    '                        \n' +
-    '                        <div ng-show="newCareerFormForm.description.$error.required && !newCareerFormForm.description.$pristine">{{\'requiredErr\' | translate}}</div>\n' +
-    '                        <div ng-show="(newCareerFormForm.description.$error.minlength || newCareerFormForm.description.$error.maxlength) && !newCareerFormForm.description.$error.required">{{\'NameLengthError255\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div> \n' +
-    '        </form>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-modal-action text-right">\n' +
-    '        <button ng-disabled="newCareerFormForm.$invalid" class="btn pmd-ripple-effect btn-primary" CareerForm="button" ng-click="newCareerFormCtrl.AddNewCareerForm()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '        <button class="btn pmd-ripple-effect btn-default" CareerForm="button" ng-click="$state.go(\'CareerForm\');">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/OfferReservation/templates/OfferReservation.html',
-    '<div>\n' +
-    '    <div ng-if="OfferReservationList.results.length == 0">\n' +
-    '        <span>{{\'NoOfferReservationsAvailable\' | translate}}</span>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="OfferReservationList.results.length > 0">\n' +
-    '        <div class="table-responsive"></div>\n' +
-    '        <table class="table pmd-table table-hover">\n' +
-    '            <thead>\n' +
-    '                <tr>\n' +
-    '                    <th>{{\'Offer\' | translate}}</th>\n' +
-    '                    <th>{{\'Date\' | translate}}</th>\n' +
-    '                    <th>{{\'User\' | translate}}</th>\n' +
-    '                    <th>{{\'Status\' | translate}}</th>\n' +
-    '                    <th>{{\'InCharge\' | translate}}</th>\n' +
-    '                    <th></th>\n' +
-    '                </tr>\n' +
-    '            </thead>\n' +
-    '            <tbody>\n' +
-    '                <tr ng-class="{\'red-text\': OfferReservation.status == 3,\'green-text\': OfferReservation.status == 0}" ng-repeat="OfferReservation in OfferReservationList.results">\n' +
-    '                    <td data-title="Offer">{{OfferReservation.offer.titleDictionary[selectedLanguage]}}</td>\n' +
-    '                    <td data-title="Date">{{OfferReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>\n' +
-    '                    <td data-title="User"> {{OfferReservation.user.fullName}} </td>\n' +
-    '                    <td> {{(StatusList |filter: {id: key})[OfferReservation.status].text | translate}} </td>\n' +
-    '                    <td> {{OfferReservation.seenUser.fullName}}   </td>\n' +
-    '                    <td>\n' +
-    '                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editOfferReservation\',{offerReservationId: OfferReservation.offerReservationId});">mode_edit</i>\n' +
-    '                    </td>\n' +
-    '                </tr>\n' +
-    '            </tbody>\n' +
-    '        </table>\n' +
-    '    </div>\n' +
-    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
-    '        flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
-    '    </div>\n' +
-    '</div>');
-}]);
-
-angular.module('home').run(['$templateCache', function($templateCache) {
-  $templateCache.put('./app/GlobalAdmin/OfferReservation/templates/edit.html',
-    '<div class="modal-content">\n' +
-    '    <div class="modal-header bordered">\n' +
-    '        <h2 class="pmd-card-title-text">{{\'OfferReservation\' | translate}}</h2>\n' +
-    '    </div>\n' +
-    '    <div class="modal-body">\n' +
-    '        <form class="form-horizontal" name="editOfferReservationForm">\n' +
-    '\n' +
-    '            <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
-    '                <label for="first-name">{{\'Tickect No\' | translate}}</label>\n' +
-    '                <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.tickectNo">\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div>\n' +
-    '                <br>\n' +
-    '                <!-- Nav tabs -->\n' +
-    '                <ul class="nav nav-tabs" role="tablist">\n' +
-    '                    <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editOfferReservationCtrl.language">\n' +
-    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
-    '                                {{lang.value | translate}}\n' +
-    '                            </a>\n' +
-    '                    </li>\n' +
-    '                </ul>\n' +
-    '                <div class="pmd-card">\n' +
-    '                    <div class="pmd-card-body">\n' +
-    '                        <!-- Tab panes -->\n' +
-    '                        <div class="tab-content">\n' +
-    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editOfferReservationCtrl.language"\n' +
-    '                                id="{{lang.value}}-form">\n' +
-    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
-    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
-    '                                    <input readonly="readonly" required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}"\n' +
-    '                                        ng-model="editOfferReservationCtrl.OfferReservation.hotel.titleDictionary[lang.key]"\n' +
-    '                                    />\n' +
-    '                                </div>\n' +
-    '                            </div>\n' +
-    '                        </div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '            <div class="row">\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'checkIn\' | translate}}</label>\n' +
-    '                    <input id="checkin" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.checkIn">\n' +
-    '                </div>\n' +
-    '\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'checkOut\' | translate}}</label>\n' +
-    '                    <input id="checkout" type="text" required class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.checkOut">\n' +
-    '                    <!-- <input type="text" id="startdate" class="form-control" required /> -->\n' +
-    '                </div>\n' +
-    '\n' +
-    '\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div class="row">\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'Child\' | translate}}</label>\n' +
-    '                    <input type="text" class="mat-input form-control" numbers-only name="child" ng-minlength="1" ng-maxlength="3" ng-model="editOfferReservationCtrl.OfferReservation.child">\n' +
-    '                    <span class="error" ng-show="editOfferReservationForm.child.$error.pattern">{{\'Not Child Number\' | translate}} </span>\n' +
-    '                    <div ng-messages="editOfferReservationForm.child.$error">\n' +
-    '                        <div ng-if="editOfferReservationForm.child.$error.required && !editOfferReservationForm.child.$pristine">{{\'Child required\' | translate}}</div>\n' +
-    '                        <div ng-if="(editOfferReservationForm.child.$error.minlength || editOfferReservationForm.child.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                </div>\n' +
-    '\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'Adult\' | translate}}</label>\n' +
-    '                    <input type="text" class="mat-input form-control" numbers-only name="adult" ng-minlength="1" ng-maxlength="3" ng-model="editOfferReservationCtrl.OfferReservation.adult">\n' +
-    '                    <span class="error" ng-show="editOfferReservationForm.adult.$error.pattern">{{\'Not Adult Number\' | translate}} </span>\n' +
-    '                    <div ng-messages="editOfferReservationForm.adult.$error">\n' +
-    '                        <div ng-if="editOfferReservationForm.adult.$error.required && !editOfferReservationForm.adult.$pristine">{{\'Adult required\' | translate}}</div>\n' +
-    '                        <div ng-if="(editOfferReservationForm.adult.$error.minlength || editOfferReservationForm.adult.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                </div>\n' +
-    '                <!-- <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'roomCount\' | translate}}</label>\n' +
-    '                    <input type="text" class="mat-input form-control" numbers-only name="roomCount" ng-minlength="1" ng-maxlength="3" ng-model="editOfferReservationCtrl.OfferReservation.roomCount">\n' +
-    '                    <span class="error" ng-show="editOfferReservationForm.roomCount.$error.pattern">{{\'Not roomCount Number\' | translate}} </span>\n' +
-    '                    <div ng-messages="editOfferReservationForm.roomCount.$error">\n' +
-    '                        <div ng-if="editOfferReservationForm.roomCount.$error.required && !editOfferReservationForm.roomCount.$pristine">{{\'roomCount required\' | translate}}</div>\n' +
-    '                        <div ng-if="(editOfferReservationForm.roomCount.$error.minlength || editOfferReservationForm.roomCount.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                </div> -->\n' +
-    '\n' +
-    '            </div>\n' +
-    '            <div class="row">\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'UserName\' | translate}}</label>\n' +
-    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.user.fullName">\n' +
-    '                </div>\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'Email\' | translate}}</label>\n' +
-    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.user.email">\n' +
-    '                </div>\n' +
-    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                    <label for="first-name">{{\'phone\' | translate}}</label>\n' +
-    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.user.phone">\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
-    '                <label for="first-name">{{\'Status\' | translate}}</label>\n' +
-    '                <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags" ng-model="selectedStatus"\n' +
-    '                    ng-options="group as group.text for group in StatusList">\n' +
-    '                \n' +
-    '                        </select>\n' +
-    '                <!-- {{selectedStatus.id}} -->\n' +
-    '            </div>\n' +
-    '\n' +
-    '        </form>\n' +
-    '    </div>\n' +
-    '    <div class="pmd-modal-action text-right">\n' +
-    '        <button ng-disabled="editOfferReservationForm.$invalid || editOfferReservationCtrl.OfferReservation.status != 0" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editOfferReservationCtrl.UpdateOfferReservation()">{{\'saveChangesBtn\' | translate}}</button>\n' +
-    '        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editOfferReservationCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '\n' +
-    '\n' +
-    '<script type="text/javascript">\n' +
-    '    $(document).ready(function () {\n' +
-    '        $(".select-tags").select2({\n' +
-    '            tags: false,\n' +
-    '            theme: "bootstrap",\n' +
-    '        })\n' +
-    '\n' +
-    '        $(".select-with-search").select2({\n' +
-    '            theme: "bootstrap"\n' +
-    '        });\n' +
-    '    });\n' +
-    '\n' +
-    '    $(function () {\n' +
-    '        $(\'#checkin\').datetimepicker(\n' +
-    '            {\n' +
-    '                //   viewMode: \'years\',\n' +
-    '                //  format: \'DD/MM/YYYY\',\n' +
-    '                minDate: new Date()\n' +
-    '            }\n' +
-    '        );\n' +
-    '        $(\'#checkout\').datetimepicker(\n' +
-    '            {\n' +
-    '                //   viewMode: \'years\',\n' +
-    '                //  format: \'DD/MM/YYYY\',\n' +
-    '                minDate: new Date()\n' +
-    '            }\n' +
-    '        );\n' +
-    '    });\n' +
-    '\n' +
-    '</script>');
 }]);
 
 angular.module('home').run(['$templateCache', function($templateCache) {
@@ -4226,6 +4031,201 @@ angular.module('home').run(['$templateCache', function($templateCache) {
     '                debugger;\n' +
     '                angular.element(document.getElementById(\'startTo\')).scope().dateChange();\n' +
     '            });\n' +
+    '    });\n' +
+    '\n' +
+    '</script>');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/OfferReservation/templates/OfferReservation.html',
+    '<div>\n' +
+    '    <div ng-if="OfferReservationList.results.length == 0">\n' +
+    '        <span>{{\'NoOfferReservationsAvailable\' | translate}}</span>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-card pmd-z-depth pmd-card-custom-view" ng-if="OfferReservationList.results.length > 0">\n' +
+    '        <div class="table-responsive"></div>\n' +
+    '        <table class="table pmd-table table-hover">\n' +
+    '            <thead>\n' +
+    '                <tr>\n' +
+    '                    <th>{{\'Offer\' | translate}}</th>\n' +
+    '                    <th>{{\'Date\' | translate}}</th>\n' +
+    '                    <th>{{\'User\' | translate}}</th>\n' +
+    '                    <th>{{\'Status\' | translate}}</th>\n' +
+    '                    <th>{{\'InCharge\' | translate}}</th>\n' +
+    '                    <th></th>\n' +
+    '                </tr>\n' +
+    '            </thead>\n' +
+    '            <tbody>\n' +
+    '                <tr ng-class="{\'red-text\': OfferReservation.status == 3,\'green-text\': OfferReservation.status == 0}" ng-repeat="OfferReservation in OfferReservationList.results">\n' +
+    '                    <td data-title="Offer">{{OfferReservation.offer.titleDictionary[selectedLanguage]}}</td>\n' +
+    '                    <td data-title="Date">{{OfferReservation.creationTime | date : format : "DD/MM/YYYY"}}</td>\n' +
+    '                    <td data-title="User"> {{OfferReservation.user.fullName}} </td>\n' +
+    '                    <td> {{(StatusList |filter: {id: key})[OfferReservation.status].text | translate}} </td>\n' +
+    '                    <td> {{OfferReservation.seenUser.fullName}}   </td>\n' +
+    '                    <td>\n' +
+    '                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go(\'editOfferReservation\',{offerReservationId: OfferReservation.offerReservationId});">mode_edit</i>\n' +
+    '                    </td>\n' +
+    '                </tr>\n' +
+    '            </tbody>\n' +
+    '        </table>\n' +
+    '    </div>\n' +
+    '    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"\n' +
+    '        flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">\n' +
+    '    </div>\n' +
+    '</div>');
+}]);
+
+angular.module('home').run(['$templateCache', function($templateCache) {
+  $templateCache.put('./app/GlobalAdmin/OfferReservation/templates/edit.html',
+    '<div class="modal-content">\n' +
+    '    <div class="modal-header bordered">\n' +
+    '        <h2 class="pmd-card-title-text">{{\'OfferReservation\' | translate}}</h2>\n' +
+    '    </div>\n' +
+    '    <div class="modal-body">\n' +
+    '        <form class="form-horizontal" name="editOfferReservationForm">\n' +
+    '\n' +
+    '            <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
+    '                <label for="first-name">{{\'Tickect No\' | translate}}</label>\n' +
+    '                <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.tickectNo">\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <div>\n' +
+    '                <br>\n' +
+    '                <!-- Nav tabs -->\n' +
+    '                <ul class="nav nav-tabs" role="tablist">\n' +
+    '                    <li role="presentation" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editOfferReservationCtrl.language">\n' +
+    '                        <a href="javascript:void(0);" data-target="#{{lang.value}}-form" aria-controls="home" role="tab" data-toggle="tab">\n' +
+    '                                {{lang.value | translate}}\n' +
+    '                            </a>\n' +
+    '                    </li>\n' +
+    '                </ul>\n' +
+    '                <div class="pmd-card">\n' +
+    '                    <div class="pmd-card-body">\n' +
+    '                        <!-- Tab panes -->\n' +
+    '                        <div class="tab-content">\n' +
+    '                            <div role="tablist" class="tab-pane" ng-class="{\'active\':$index == 0}" ng-repeat="lang in editOfferReservationCtrl.language"\n' +
+    '                                id="{{lang.value}}-form">\n' +
+    '                                <div class="form-group pmd-textfield pmd-textfield-floating-label-completed">\n' +
+    '                                    <label for="first-name"> {{ lang.value+\'Name\' | translate}} </label>\n' +
+    '                                    <input readonly="readonly" required type="text" class="mat-input form-control" name="titleDictionary{{lang.value+\'Name\'}}"\n' +
+    '                                        ng-model="editOfferReservationCtrl.OfferReservation.hotel.titleDictionary[lang.key]"\n' +
+    '                                    />\n' +
+    '                                </div>\n' +
+    '                            </div>\n' +
+    '                        </div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '            <div class="row">\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'checkIn\' | translate}}</label>\n' +
+    '                    <input id="checkin" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.checkIn">\n' +
+    '                </div>\n' +
+    '\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'checkOut\' | translate}}</label>\n' +
+    '                    <input id="checkout" type="text" required class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.checkOut">\n' +
+    '                    <!-- <input type="text" id="startdate" class="form-control" required /> -->\n' +
+    '                </div>\n' +
+    '\n' +
+    '\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <div class="row">\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'Child\' | translate}}</label>\n' +
+    '                    <input type="text" class="mat-input form-control" numbers-only name="child" ng-minlength="1" ng-maxlength="3" ng-model="editOfferReservationCtrl.OfferReservation.child">\n' +
+    '                    <span class="error" ng-show="editOfferReservationForm.child.$error.pattern">{{\'Not Child Number\' | translate}} </span>\n' +
+    '                    <div ng-messages="editOfferReservationForm.child.$error">\n' +
+    '                        <div ng-if="editOfferReservationForm.child.$error.required && !editOfferReservationForm.child.$pristine">{{\'Child required\' | translate}}</div>\n' +
+    '                        <div ng-if="(editOfferReservationForm.child.$error.minlength || editOfferReservationForm.child.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div>\n' +
+    '\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'Adult\' | translate}}</label>\n' +
+    '                    <input type="text" class="mat-input form-control" numbers-only name="adult" ng-minlength="1" ng-maxlength="3" ng-model="editOfferReservationCtrl.OfferReservation.adult">\n' +
+    '                    <span class="error" ng-show="editOfferReservationForm.adult.$error.pattern">{{\'Not Adult Number\' | translate}} </span>\n' +
+    '                    <div ng-messages="editOfferReservationForm.adult.$error">\n' +
+    '                        <div ng-if="editOfferReservationForm.adult.$error.required && !editOfferReservationForm.adult.$pristine">{{\'Adult required\' | translate}}</div>\n' +
+    '                        <div ng-if="(editOfferReservationForm.adult.$error.minlength || editOfferReservationForm.adult.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div>\n' +
+    '                <!-- <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'roomCount\' | translate}}</label>\n' +
+    '                    <input type="text" class="mat-input form-control" numbers-only name="roomCount" ng-minlength="1" ng-maxlength="3" ng-model="editOfferReservationCtrl.OfferReservation.roomCount">\n' +
+    '                    <span class="error" ng-show="editOfferReservationForm.roomCount.$error.pattern">{{\'Not roomCount Number\' | translate}} </span>\n' +
+    '                    <div ng-messages="editOfferReservationForm.roomCount.$error">\n' +
+    '                        <div ng-if="editOfferReservationForm.roomCount.$error.required && !editOfferReservationForm.roomCount.$pristine">{{\'roomCount required\' | translate}}</div>\n' +
+    '                        <div ng-if="(editOfferReservationForm.roomCount.$error.minlength || editOfferReservationForm.roomCount.$error.maxlength)">{{\'PhoneLengthError\' | translate}}</div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                </div> -->\n' +
+    '\n' +
+    '            </div>\n' +
+    '            <div class="row">\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'UserName\' | translate}}</label>\n' +
+    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.user.fullName">\n' +
+    '                </div>\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'Email\' | translate}}</label>\n' +
+    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.user.email">\n' +
+    '                </div>\n' +
+    '                <div class="col-md-4 form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                    <label for="first-name">{{\'phone\' | translate}}</label>\n' +
+    '                    <input readonly="readonly" type="text" class="mat-input form-control" ng-model="editOfferReservationCtrl.OfferReservation.user.phone">\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">\n' +
+    '                <label for="first-name">{{\'Status\' | translate}}</label>\n' +
+    '                <select required style="width:100% !important" class="select-tags form-control pmd-select2-tags" ng-model="selectedStatus"\n' +
+    '                    ng-options="group as group.text for group in StatusList">\n' +
+    '                \n' +
+    '                        </select>\n' +
+    '                <!-- {{selectedStatus.id}} -->\n' +
+    '            </div>\n' +
+    '\n' +
+    '        </form>\n' +
+    '    </div>\n' +
+    '    <div class="pmd-modal-action text-right">\n' +
+    '        <button ng-disabled="editOfferReservationForm.$invalid || editOfferReservationCtrl.OfferReservation.status != 0" class="btn pmd-ripple-effect btn-primary" type="button" ng-click="editOfferReservationCtrl.UpdateOfferReservation()">{{\'saveChangesBtn\' | translate}}</button>\n' +
+    '        <button class="btn pmd-ripple-effect btn-default" type="button" ng-click="editOfferReservationCtrl.Close()">{{\'DiscardBtn\' | translate}}</button>\n' +
+    '    </div>\n' +
+    '</div>\n' +
+    '\n' +
+    '\n' +
+    '<script type="text/javascript">\n' +
+    '    $(document).ready(function () {\n' +
+    '        $(".select-tags").select2({\n' +
+    '            tags: false,\n' +
+    '            theme: "bootstrap",\n' +
+    '        })\n' +
+    '\n' +
+    '        $(".select-with-search").select2({\n' +
+    '            theme: "bootstrap"\n' +
+    '        });\n' +
+    '    });\n' +
+    '\n' +
+    '    $(function () {\n' +
+    '        $(\'#checkin\').datetimepicker(\n' +
+    '            {\n' +
+    '                //   viewMode: \'years\',\n' +
+    '                //  format: \'DD/MM/YYYY\',\n' +
+    '                minDate: new Date()\n' +
+    '            }\n' +
+    '        );\n' +
+    '        $(\'#checkout\').datetimepicker(\n' +
+    '            {\n' +
+    '                //   viewMode: \'years\',\n' +
+    '                //  format: \'DD/MM/YYYY\',\n' +
+    '                minDate: new Date()\n' +
+    '            }\n' +
+    '        );\n' +
     '    });\n' +
     '\n' +
     '</script>');

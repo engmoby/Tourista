@@ -81,3 +81,4 @@ E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\bin\Debug\Rep
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.csproj.CoreCompileInputs.cache
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.dll
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.pdb
+E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Debug\Repository.Pattern.csprojAssemblyReference.cache
