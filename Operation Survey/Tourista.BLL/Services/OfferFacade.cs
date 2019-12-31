@@ -134,7 +134,7 @@ namespace Tourista.BLL.Services
 
             _OfferService.Update(OfferObj);
             SaveChanges();
-            var imageId = imageCounter + 1;
+            var imageId = 1;// imageCounter + 1;
             foreach (var memoryStream in files)
             {
                 _manageStorage.UploadImage(path + "\\" + "Offer-" + OfferObj.OfferId, memoryStream, imageId.ToString());

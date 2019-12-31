@@ -313,7 +313,6 @@ E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Microsoft.Owi
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Microsoft.Owin.Security.Google.xml
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\TouristaFrontEnd.csprojAssemblyReference.cache
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\TouristaFrontEnd.Resources.Global.resources
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\TouristaFrontEnd.Resources.Global.ar.resources
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\TouristaFrontEnd.csproj.GenerateResource.cache
@@ -322,3 +321,4 @@ E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\ar\To
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\TouristaFrontEnd.csproj.CopyComplete
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\TouristaFrontEnd.dll
 E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\TouristaFrontEnd.pdb
+E:\Private\Tourista\FrontEnd\TouristaFrontEnd\TouristaFrontEnd\obj\Release\TouristaFrontEnd.csprojAssemblyReference.cache

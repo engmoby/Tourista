@@ -71,13 +71,13 @@ namespace Tourista.BLL.Services
             hotelObj.CurrencyId = hotelDto.CurrencyId;
 
 
-            foreach (var roleper in hotelDto.HotelFeature)
-            {
-                hotelObj.HotelFeature.Add(new HotelFeature
-                {
-                    FeatureId = roleper.FeatureId
-                });
-            }
+            //foreach (var roleper in hotelDto.HotelFeature)
+            //{
+            //    hotelObj.HotelFeature.Add(new HotelFeature
+            //    {
+            //        FeatureId = roleper.FeatureId
+            //    });
+            //}
             _hotelFeatureService.InsertRange(hotelObj.HotelFeature);
 
             _hotelTranslationService.InsertRange(hotelObj.HotelTranslations);
@@ -128,6 +128,15 @@ namespace Tourista.BLL.Services
             hotelObj.IsDeleted = hotelDto.IsDeleted;
             hotelObj.CurrencyId = hotelDto.CurrencyId;
 
+            var deleteFatures = new HotelFeature[hotelObj.HotelFeature.Count];
+            hotelObj.HotelFeature.CopyTo(deleteFatures, 0);
+
+            foreach (var objRolePermission in deleteFatures)
+            {
+                _hotelFeatureService.Delete(objRolePermission);
+
+            }
+
             foreach (var roleper in hotelDto.HotelFeature)
             {
                 if (hotelObj.HotelFeature.All(x => x.FeatureId != roleper.FeatureId))
@@ -142,7 +151,7 @@ namespace Tourista.BLL.Services
 
             _hotelService.Update(hotelObj);
             SaveChanges();
-            var imageId = imageCounter + 1;
+            var imageId = 1; //imageCounter + 1;
             foreach (var memoryStream in files)
             {
                 _manageStorage.UploadImage(path + "\\" + "Hotel-" + hotelObj.HotelId, memoryStream, imageId.ToString());

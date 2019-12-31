@@ -4396,6 +4396,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin: 0;
   }
   .navbar-nav > li {
+      font-size:20;
     float: right;
   }
   .navbar-nav > li > a {

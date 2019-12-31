@@ -4,9 +4,9 @@
     angular
         .module('home')
         .controller('createTourDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
+            'AllCountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
 
-    function createTourDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function createTourDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
         CurrencyPrepService, FeaturePrepService, TourResource, ToastService, $rootScope) {
 
         blockUI.start("Loading..."); 

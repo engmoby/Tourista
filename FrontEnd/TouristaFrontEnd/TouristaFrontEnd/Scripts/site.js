@@ -7,7 +7,7 @@ $(document).ready(function (e) {
 	
 	// locate each partial section.
 	// if it has a URL set, load the contents into the area.
-    debugger;
+   // debugger;
 	$(".partialContents").each(function(index, item) {
 		var url = site.baseUrl + $(item).data("url");
 		if (url && url.length > 0 ) {

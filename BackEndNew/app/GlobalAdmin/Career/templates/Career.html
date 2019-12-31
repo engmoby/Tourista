@@ -1,9 +1,9 @@
-
 <div>
     <div style="margin-bottom:10px">
-        <button ng-click="$state.go('newCareer');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{'AddNew' | translate}}</button>
+        <button ng-click="$state.go('newCareer');" class="btn pmd-ripple-effect btn-primary pmd-z-depth"
+            type="button">{{'AddNew' | translate}}</button>
 
-    </div> 
+    </div>
     {{CareerList.results}}
     <div ng-if="CareerList.length == 0">
         <span>{{'NoCareersAvailable' | translate}}</span>
@@ -14,7 +14,7 @@
             <thead>
                 <tr>
                     <th>{{'Title' | translate}}</th>
-                    <th>{{'Description' | translate}}</th> 
+                    <th>{{'Description' | translate}}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -22,17 +22,21 @@
                 <tr ng-repeat="Career in CareerList">
                     <td data-title="title">{{Career.title}}</td>
                     <td data-title="description">{{Career.description}}</td>
-                     
-                   
-                    <td width="30%" >
-                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editCareer',{careerId: Career.careerId});">mode_edit</i>
+
+
+                    <td width="30%">
+                        <i class="material-icons md-dark pmd-md cursorPointer font25"
+                            ng-click="$state.go('editCareer',{careerId: Career.careerId});">mode_edit</i>
+                        <i class="material-icons pmd-md deleteButton cursorPointer font25"
+                            ng-click="CareerCtrl.openDeleteDialog(Career,Career.titleDictionary[selectedLanguage],Career.careerId)">delete</i>
                     </td>
                 </tr>
-                 
+
             </tbody>
         </table>
     </div>
-    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
-         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount"
+        paging-action="changePage(page)" flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true"
+        disabled-class="hide">
     </div>
 </div>

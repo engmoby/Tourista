@@ -4,21 +4,21 @@
     angular
         .module('home')
         .controller('editBackageDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'BackageResource', 'ToastService', 'CurrencyPrepService','TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
+            'AllCountryPrepService', 'BackageResource', 'ToastService', 'CurrencyPrepService', 'TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
 
-    function editBackageDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        BackageResource, ToastService, CurrencyPrepService,TypePrepService, BackageByIdPrepService) {
+    function editBackageDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
+        BackageResource, ToastService, CurrencyPrepService, TypePrepService, BackageByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
             $scope.CurrencyList = CurrencyPrepService.results;
             $scope.TypeList = TypePrepService.results;
 
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
         }
-        init(); 
+        init();
 
         var vm = this;
         vm.language = appCONSTANTS.supportedLanguage;
@@ -82,12 +82,12 @@
             updateObj.titleDictionary = vm.Backage.titleDictionary;
             updateObj.descriptionDictionary = vm.Backage.descriptionDictionary;
             //updateObj.star = vm.Backage.star;
-            updateObj.cityId = $scope.selectedCity.cityId; 
-            updateObj.removeImages = vm.RemoveImages; 
+            updateObj.cityId = $scope.selectedCity.cityId;
+            updateObj.removeImages = vm.RemoveImages;
             updateObj.daysCount = vm.Backage.daysCount;
             updateObj.nigthsCount = vm.Backage.nigthsCount;
             updateObj.price = vm.Backage.price;
-             updateObj.currencyId = $scope.selectedCurrency.currencyId;
+            updateObj.currencyId = $scope.selectedCurrency.currencyId;
             updateObj.typeId = $scope.selectedType.typeId;
 
 
@@ -118,7 +118,7 @@
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
                     blockUI.stop();
                 }
-                );
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {
@@ -142,6 +142,7 @@
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -173,14 +174,20 @@
         }
 
         vm.removeFile = function (index) {
+            debugger;
             vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
+            vm.showButton = true;
+            $apply();
         }
 
         vm.removeBackageFile = function (index) {
+            debugger;
             vm.CheckImages.splice(index, 1);
             vm.Backage.imagesURL.splice(index, 1);
+            vm.showButton = true;
+            $apply();
         }
     }
 }());

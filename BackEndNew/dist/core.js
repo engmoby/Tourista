@@ -59,8 +59,8 @@
 	angular
 		.module('core')
 		.constant('appCONSTANTS', {
-		//	 'API_URL': 'http://localhost:50755/api/', 
-			'API_URL': 'http://touristaegy.com/backend/api/',
+			 'API_URL': 'http://localhost:50755/api/', 
+		//	'API_URL': 'http://touristaegy.com/backend/api/',
 			'defaultLanguage': 'en',
 			'supportedLanguage': {
 				'en': { 'key': 'en', 'value': 'english' },
@@ -665,9 +665,9 @@ angular.module('core')
     'use strict';	
     angular
         .module('home')
-        .controller('confirmDeleteDialogController', ['$uibModalInstance', 'itemName','itemId','message', 'callBackFunction',  confirmDeleteDialogController])
+        .controller('confirmDeleteDialogController', ['$uibModalInstance', 'model','itemName','itemId','message', 'callBackFunction',  confirmDeleteDialogController])
 
-	function confirmDeleteDialogController($uibModalInstance, itemName,itemId,message, callBackFunction){
+	function confirmDeleteDialogController($uibModalInstance, model,itemName,itemId,message, callBackFunction){
 		var vm = this;
 		vm.itemName = itemName;
 		vm.message = message;
@@ -676,7 +676,7 @@ angular.module('core')
 		}
 		
 		vm.Confirm = function(){
-			callBackFunction(itemId);
+			callBackFunction(model);
 			$uibModalInstance.dismiss();
         }
 		

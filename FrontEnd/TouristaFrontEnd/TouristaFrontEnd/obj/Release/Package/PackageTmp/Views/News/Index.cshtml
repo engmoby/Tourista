@@ -6,9 +6,9 @@
 
 @{
 
-            ViewBag.Title = "Index";
+    ViewBag.Title = "Index";
 
-            Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div id="wrapper-content">
@@ -44,26 +44,26 @@
                                         @if (newsObj.Image != null)
                                         {
                                             <a href="/News/Details/@newsObj.NewsId" class="link">
-                                                <img src="@newsObj.Image" alt="" class="img-responsive">
+                                                <img src="@newsObj.Image" alt="" class="img-responsive" style="    height: 500px;    max-width: 500px;">
                                             </a>
                                         }
 
                                     </div>
                                     <div class="blog-content">
                                         @*<div class="col-xs-2">
-                                            <div class="row">
-                                                <div class="date">
+                                                <div class="row">
+                                                    <div class="date">
 
-                                                    @if (newsObj.CreationTime != null)
-                                                    {
-                                                        <h1 class="day"> @newsObj.CreationTime.Value.Day</h1>
-                                                        <h1 class="month"> @newsObj.CreationTime.Value.ToString("MMMM").Substring(0, 3)</h1>
-                                                        <h1 class="year"> @newsObj.CreationTime.Value.Year</h1>
+                                                        @if (newsObj.CreationTime != null)
+                                                        {
+                                                            <h1 class="day"> @newsObj.CreationTime.Value.Day</h1>
+                                                            <h1 class="month"> @newsObj.CreationTime.Value.ToString("MMMM").Substring(0, 3)</h1>
+                                                            <h1 class="year"> @newsObj.CreationTime.Value.Year</h1>
 
-                                                    }
+                                                        }
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>*@
+                                            </div>*@
                                         <div class="col-xs-10 content-wrapper">
                                             <a href="/News/Details/@newsObj.NewsId" class="heading">
                                                 @if (@newsObj.TitleDictionary[@Common.CurrentLang].Length >= 50)
@@ -103,9 +103,9 @@
 
                         </div>
                         <div class="col-2">
-                           
-                                @{ Html.RenderAction("RandomRelated"); }
-                            
+
+                            @{ Html.RenderAction("RandomRelated"); }
+
                             @*@{ Html.RenderPartial("RandomRelated");  }*@
 
                         </div>

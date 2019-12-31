@@ -19,7 +19,7 @@ namespace Tourista.BLL.DataServices
 
         public PagedResultsDto GetAllNewss(int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => x.TenantId == tenantId).OrderBy(x => x.NewsId);
+            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId).OrderBy(x => x.NewsId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             // results.TotalCount = _repository.Query(x => !x.IsDeleted).Select().Count(x => !x.IsDeleted);
@@ -33,7 +33,7 @@ namespace Tourista.BLL.DataServices
 
         public PagedResultsDto GetAllOnlineNewss(int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && (x.TenantId == tenantId)).OrderByDescending(x => x.NewsId);
+            var query = Queryable().Where(x => !x.IsDeleted && (x.TenantId == tenantId)).OrderBy(x => x.NewsId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             var modelReturn = query.OrderByDescending(x => x.NewsId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
@@ -43,7 +43,7 @@ namespace Tourista.BLL.DataServices
 
         public PagedResultsDto GetAllOnlineRandomRelatedNews(int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && (x.TenantId == tenantId)).OrderByDescending(r => Guid.NewGuid()).Take(5);
+            var query = Queryable().Where(x => !x.IsDeleted && (x.TenantId == tenantId)).OrderBy(r => Guid.NewGuid()).Take(5);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             var modelReturn = query.OrderByDescending(x => x.NewsId).Skip((page - 1) * pageSize).Take(pageSize).ToList();

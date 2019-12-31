@@ -16,7 +16,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:40</publishTime>
     </File>
     <File Include="bin/ar/TouristaFrontEnd.resources.dll">
-      <publishTime>11/30/2019 23:07:54</publishTime>
+      <publishTime>12/25/2019 12:52:40</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/24/2019 11:46:41</publishTime>
@@ -139,16 +139,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:41</publishTime>
     </File>
     <File Include="bin/TouristaFrontEnd.dll">
-      <publishTime>11/30/2019 23:07:54</publishTime>
+      <publishTime>12/25/2019 12:52:39</publishTime>
     </File>
     <File Include="bin/TouristaFrontEnd.pdb">
-      <publishTime>11/30/2019 23:07:54</publishTime>
+      <publishTime>12/25/2019 12:52:39</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>11/24/2019 11:46:41</publishTime>
     </File>
     <File Include="Content/bootstrap-arabic.css">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/23/2019 14:21:04</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -157,7 +157,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Content/components-ar.css">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/23/2019 15:07:27</publishTime>
     </File>
     <File Include="Content/components-huy.css">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -172,7 +172,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Content/components.css">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/23/2019 15:07:19</publishTime>
     </File>
     <File Include="Content/font/font-icon/font-awesome/css/font-awesome.css">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -913,7 +913,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Content/layout-ar.css">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/28/2019 22:29:22</publishTime>
     </File>
     <File Include="Content/layout.css">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -934,7 +934,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Content/responsive.css">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/23/2019 21:27:59</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1372,7 +1372,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Scripts/site.js">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/24/2019 12:34:20</publishTime>
     </File>
     <File Include="Scripts/_references.js">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1417,10 +1417,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Views/Backage/Details.cshtml">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/20/2019 18:18:54</publishTime>
     </File>
     <File Include="Views/Backage/Index.cshtml">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/20/2019 18:05:04</publishTime>
     </File>
     <File Include="Views/Backage/RelatedBackages.cshtml">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1447,7 +1447,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Views/Home/ContactUsHome.cshtml">
-      <publishTime>11/30/2019 23:02:50</publishTime>
+      <publishTime>12/24/2019 12:34:20</publishTime>
     </File>
     <File Include="Views/Home/flight.html">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1459,7 +1459,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/23/2019 14:02:33</publishTime>
     </File>
     <File Include="Views/Home/NewsHome.cshtml">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1468,7 +1468,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Views/Hotel/Details.cshtml">
-      <publishTime>11/30/2019 23:03:18</publishTime>
+      <publishTime>12/23/2019 12:32:56</publishTime>
     </File>
     <File Include="Views/Hotel/Index.cshtml">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1498,7 +1498,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Views/News/Index.cshtml">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/24/2019 12:34:18</publishTime>
     </File>
     <File Include="Views/News/RandomRelated.cshtml">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1519,7 +1519,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Views/Shared/Footer.cshtml">
-      <publishTime>11/30/2019 23:04:54</publishTime>
+      <publishTime>12/24/2019 12:34:20</publishTime>
     </File>
     <File Include="Views/Shared/Lockout.cshtml">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1528,7 +1528,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/24/2019 11:46:39</publishTime>
+      <publishTime>12/25/2019 12:55:41</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/24/2019 11:46:39</publishTime>
@@ -1549,7 +1549,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2019 11:46:39</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/30/2019 23:07:55</publishTime>
+      <publishTime>12/23/2019 15:52:00</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -37,6 +37,8 @@
                     <td>
                         <i class="material-icons md-dark pmd-md cursorPointer font25"
                             ng-click="$state.go('editOffer',{offerId: Offer.offerId});">mode_edit</i>
+                        <i class="material-icons pmd-md deleteButton cursorPointer font25"
+                            ng-click="OfferCtrl.openDeleteDialog(Offer,Offer.titleDictionary[selectedLanguage],Offer.offerId)">delete</i>
                     </td>
                 </tr>
 

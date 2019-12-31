@@ -3,13 +3,13 @@
 
     angular
         .module('home')
-        .controller('BackageController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+        .controller('BackageController', ['$rootScope', '$http', '$uibModal', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'BackageResource', 'BackagePrepService', '$localStorage',
             'authorizationService', 'appCONSTANTS',
             'ToastService', BackageController]);
 
 
-    function BackageController($rootScope, blockUI, $scope, $filter, $translate,
+    function BackageController($rootScope, $http, $uibModal, blockUI, $scope, $filter, $translate,
         $state, BackageResource, BackagePrepService, $localStorage, authorizationService,
         appCONSTANTS, ToastService) {
 
@@ -46,7 +46,63 @@
             refreshBackages();
         }
         blockUI.stop();
+        vm.openDeleteDialog = function (model, name, id) {
+            debugger;
+            var modalContent = $uibModal.open({
+                templateUrl: './app/core/Delete/templates/ConfirmDeleteDialog.html',
+                controller: 'confirmDeleteDialogController',
+                controllerAs: 'deleteDlCtrl',
+                resolve: {
+                    model: function () { return model },
+                    itemName: function () { return name },
+                    itemId: function () { return id },
+                    message: function () { return null },
+                    callBackFunction: function () { return confirmationDelete }
+                }
 
+            });
+        }
+        function confirmationDelete(obj) {
+
+            debugger;
+            blockUI.start("Loading...");
+            var updateObj = new Object();
+            updateObj.backageId = obj.backageId;
+            updateObj.titleDictionary = obj.titleDictionary;
+            updateObj.descriptionDictionary = obj.descriptionDictionary;
+            updateObj.cityId = obj.cityId;
+            updateObj.daysCount = obj.daysCount;
+            updateObj.nigthsCount = obj.nigthsCount;
+            updateObj.price = obj.price;
+            updateObj.currencyId = obj.currencyId;
+            updateObj.typeId = obj.typeId;
+            updateObj.isDeleted = true;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Backages/EditBackage',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    refreshBackages();
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
     }
 
 })();

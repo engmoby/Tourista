@@ -57,7 +57,6 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Frameworks\Repository.P
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\bin\Release\Repository.Pattern.dll.config
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\bin\Release\Repository.Pattern.dll
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\bin\Release\Repository.Pattern.pdb
-E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.csprojAssemblyReference.cache
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.csproj.CoreCompileInputs.cache
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.dll
 E:\Private\Tourista\Operation Survey\Frameworks\Repository.Pattern\obj\Release\Repository.Pattern.pdb

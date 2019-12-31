@@ -4,14 +4,14 @@
     angular
         .module('home')
         .controller('editOfferDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService','CurrencyPrepService', 'OfferResource', 'ToastService', 'HotelPrepService', 'TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
+            'AllCountryPrepService', 'CurrencyPrepService', 'OfferResource', 'ToastService', 'HotelPrepService', 'TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
 
-    function editOfferDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        CurrencyPrepService,OfferResource, ToastService, HotelPrepService, TypePrepService, OfferByIdPrepService) {
+    function editOfferDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
+        CurrencyPrepService, OfferResource, ToastService, HotelPrepService, TypePrepService, OfferByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
             $scope.HotelList = HotelPrepService.results;
             $scope.TypeList = TypePrepService.results;
             $scope.CurrencyList = CurrencyPrepService.results;
@@ -36,15 +36,15 @@
 
         // }
         vm.Offer.dateFrom = vm.Offer.dateFrom + "Z";
-        vm.Offer.dateFrom = $filter('date')(new Date(vm.Offer.dateFrom), "MM/dd/yyyy hh:mm a"); 
+        vm.Offer.dateFrom = $filter('date')(new Date(vm.Offer.dateFrom), "MM/dd/yyyy hh:mm a");
         vm.Offer.dateTo = vm.Offer.dateTo + "Z";
         vm.Offer.dateTo = $filter('date')(new Date(vm.Offer.dateTo), "MM/dd/yyyy hh:mm a");
-       
+
 
         var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Offer.currency.currencyId }, true)[0]);
         $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
 
-     
+
         var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Offer.hotel.hotelId }, true)[0]);
         $scope.selectedHotel = $scope.HotelList[indexHotel];
 
@@ -83,7 +83,7 @@
             vm.fileExist = false;
 
         }
-        
+
         $scope.dateIsValid = false;
         $scope.dateChange = function () {
             debugger;
@@ -115,7 +115,7 @@
             updateObj.typeId = $scope.selectedType.typeId;
             updateObj.currencyId = $scope.selectedCurrency.currencyId;
 
-            updateObj.dateFrom =$('#dateFrom').val();// vm.dateFrom;
+            updateObj.dateFrom = $('#dateFrom').val();// vm.dateFrom;
             updateObj.dateTo = $('#dateTo').val();//vm.dateTo;
 
             var model = new FormData();
@@ -169,6 +169,7 @@
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -203,11 +204,17 @@
             vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
+
+            vm.showButton = true;
+            $apply();
         }
 
         vm.removeOfferFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Offer.imagesURL.splice(index, 1);
+
+            vm.showButton = true;
+            $apply();
         }
     }
 }());

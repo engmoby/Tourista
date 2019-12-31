@@ -4,10 +4,10 @@
     angular
         .module('home')
         .controller('createOfferDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-          'CurrencyPrepService',  'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
+          'CurrencyPrepService',  'AllCountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
 
     function createOfferDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate,
-        CurrencyPrepService, CountryPrepService,
+        CurrencyPrepService, AllCountryPrepService,
         HotelPrepService, TypePrepService, OfferResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
@@ -15,7 +15,7 @@
             $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
             $scope.CurrencyList = CurrencyPrepService.results;
 
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };

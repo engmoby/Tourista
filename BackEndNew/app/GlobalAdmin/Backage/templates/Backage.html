@@ -37,6 +37,8 @@
                     <td>
                         <i class="material-icons md-dark pmd-md cursorPointer font25"
                             ng-click="$state.go('editBackage',{backageId: Backage.backageId});">mode_edit</i>
+                        <i class="material-icons pmd-md deleteButton cursorPointer font25"
+                            ng-click="BackageCtrl.openDeleteDialog(Backage,Backage.titleDictionary[selectedLanguage],Backage.backageId)">delete</i>
                     </td>
                 </tr>
 

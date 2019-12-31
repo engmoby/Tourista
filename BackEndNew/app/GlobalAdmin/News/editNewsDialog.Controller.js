@@ -1,73 +1,73 @@
 (function () {
     'use strict';
-	
+
     angular
         .module('home')
         .controller('editNewsDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'NewsResource', 'ToastService',
             'NewsByIdPrepService', editNewsDialogController])
 
     function editNewsDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, NewsResource, ToastService, NewsByIdPrepService) {
-        blockUI.start("Loading..."); 
-        
-        var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.News = NewsByIdPrepService; 
-        vm.RemoveImages = []; 
-        vm.CheckImages = []; 
-          console.log(vm.News);
+        blockUI.start("Loading...");
+
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.News = NewsByIdPrepService;
+        vm.RemoveImages = [];
+        vm.CheckImages = [];
+        console.log(vm.News);
         vm.Close = function () {
             $state.go('News');
         }
-       
-           
-            
-            vm.UpdateNews = function () {
-                debugger;
-            blockUI.start("Loading..."); 
+
+
+
+        vm.UpdateNews = function () {
+            debugger;
+            blockUI.start("Loading...");
             vm.isChanged = true;
-                var updateObj = new Object();
-                updateObj.newsId = vm.News.newsId;
-                updateObj.titleDictionary = vm.News.titleDictionary;
-                updateObj.descriptionDictionary = vm.News.descriptionDictionary;  
-            
-                var model = new FormData();
-                model.append('data', JSON.stringify(updateObj));
-                vm.files.forEach(function (element) {
-                    model.append('file', element);
-                }, this);
-    
-                $http({
-                    method: 'POST',
-                    url: appCONSTANTS.API_URL + 'News/EditNews',
-                    useToken: true,
-                    headers: { 'Content-Type': undefined },
-                    transformRequest: angular.identity,
-                    data: model
-                }).then(
-                    function (data, status) {
-                        vm.isChanged = false;
-                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
-                       
-                        blockUI.stop();
-                         $state.go('News')
-    
-                    },
-                    function (data, status) {
-                        vm.isChanged = false;
-                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-            blockUI.stop();
+            var updateObj = new Object();
+            updateObj.newsId = vm.News.newsId;
+            updateObj.titleDictionary = vm.News.titleDictionary;
+            updateObj.descriptionDictionary = vm.News.descriptionDictionary;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
+
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'News/EditNews',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    $state.go('News')
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
         }
-                    );
-            }
         blockUI.stop();
-      
-      
+
+
         vm.LoadUploadImages = function () {
             $("#file").click();
             vm.fileExist = false;
 
         }
-          vm.files = [];
+        vm.files = [];
         $scope.AddFile = function (element) {
             var imageFile = element[0];
 
@@ -89,6 +89,7 @@
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -120,14 +121,17 @@
         }
 
         vm.removeFile = function (index) {
-           vm.RemoveImages.push(index);
-            vm.files.splice(index, 1);
-            vm.CheckImages.splice(index, 1);
+            vm.showButton = true;
+            vm.RemoveImages.push(index);
+            // vm.files.splice(index, 1);
+            // vm.CheckImages.splice(index, 1);
         }
-	
-        vm.removeNewsFile = function (index) { 
-            vm.CheckImages.splice(index, 1);
-            vm.News.imagesURL.splice(index, 1);
-        }}	
-	 	
+
+        vm.removeNewsFile = function (index) {
+            //  vm.CheckImages.splice(index, 1);
+            vm.showButton = true;
+            vm.News.image = '';
+        }
+    }
+
 }());

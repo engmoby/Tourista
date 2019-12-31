@@ -4,14 +4,14 @@
     angular
         .module('home')
         .controller('editHotelDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'CurrencyPrepService', 'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
+            'AllCountryPrepService', 'CurrencyPrepService', 'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
 
-    function editHotelDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function editHotelDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
         CurrencyPrepService, HotelResource, ToastService, FeaturePrepService, HotelByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
             $scope.FeatureList = FeaturePrepService.results;
             $scope.CurrencyList = CurrencyPrepService.results;
 
@@ -143,6 +143,7 @@
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -177,11 +178,15 @@
             vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
+            vm.showButton = true;
+            $apply();
         }
 
         vm.removeHotelFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Hotel.imagesURL.splice(index, 1);
+            vm.showButton = true;
+            $apply();
         }
     }
 }());

@@ -4,22 +4,22 @@
     angular
         .module('home')
         .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
+            'AllCountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
 
-    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
         CurrencyPrepService,FeaturePrepService, HotelResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
         function init() {
+            debugger;
             $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
 
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
-            debugger;
             $scope.CurrencyList = CurrencyPrepService.results;
             $scope.FeatureList = FeaturePrepService.results;
         }

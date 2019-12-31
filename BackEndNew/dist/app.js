@@ -486,7 +486,7 @@
                     'controllerAs': 'HotelCtrl',
                     resolve: {
                         HotelPrepService: HotelPrepService,
-                        CountryPrepService: CountryPrepService
+                        AllCountryPrepService: AllCountryPrepService
                     },
                     data: {
                         permissions: {
@@ -503,7 +503,7 @@
                     'controllerAs': 'newHotelCtrl',
                     resolve: {
                         HotelPrepService: HotelPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
@@ -522,7 +522,7 @@
                     'controllerAs': 'editHotelCtrl',
                     resolve: {
                         HotelByIdPrepService: HotelByIdPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
@@ -542,7 +542,7 @@
                     'controllerAs': 'TourCtrl',
                     resolve: {
                         TourPrepService: TourPrepService,
-                        CountryPrepService: CountryPrepService
+                        AllCountryPrepService: AllCountryPrepService
                     },
                     data: {
                         permissions: {
@@ -559,7 +559,7 @@
                     'controllerAs': 'newTourCtrl',
                     resolve: {
                         TourPrepService: TourPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
@@ -578,7 +578,7 @@
                     'controllerAs': 'editTourCtrl',
                     resolve: {
                         TourByIdPrepService: TourByIdPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
@@ -634,7 +634,7 @@
                     'controllerAs': 'BackageCtrl',
                     resolve: {
                         BackagePrepService: BackagePrepService,
-                        CountryPrepService: CountryPrepService
+                        AllCountryPrepService: AllCountryPrepService
                     },
                     data: {
                         permissions: {
@@ -651,7 +651,7 @@
                     'controllerAs': 'newBackageCtrl',
                     resolve: {
                         BackagePrepService: BackagePrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService,
                     },
@@ -670,7 +670,7 @@
                     'controllerAs': 'editBackageCtrl',
                     resolve: {
                         BackageByIdPrepService: BackageByIdPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService
                     },
@@ -725,7 +725,7 @@
                     'controllerAs': 'OfferCtrl',
                     resolve: {
                         OfferPrepService: OfferPrepService,
-                        CountryPrepService: CountryPrepService
+                        AllCountryPrepService: AllCountryPrepService
                     },
                     data: {
                         permissions: {
@@ -742,7 +742,7 @@
                     'controllerAs': 'newOfferCtrl',
                     resolve: {
                         OfferPrepService: OfferPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         HotelPrepService: HotelPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService,
@@ -762,7 +762,7 @@
                     'controllerAs': 'editOfferCtrl',
                     resolve: {
                         OfferByIdPrepService: OfferByIdPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         HotelPrepService: HotelPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService
@@ -1454,18 +1454,141 @@
 
         	}	
 }());
+
 (function () {
     'use strict';
 
     angular
         .module('home')
-        .controller('BackageController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+        .controller('BackageReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'BackageReservationResource', 'BackageReservationPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', BackageReservationController]);
+
+
+    function BackageReservationController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, BackageReservationResource, BackageReservationPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[2].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.StatusList = appCONSTANTS.Status;
+        $scope.totalCount = BackageReservationPrepService.totalCount;
+        $scope.BackageReservationList = BackageReservationPrepService; 
+      console.log( $scope.BackageReservationList);
+        function refreshBackageReservations() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = BackageReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.BackageReservationList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshBackageReservations();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('BackageReservationResource', ['$resource', 'appCONSTANTS', BackageReservationResource]) 
+
+    function BackageReservationResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'BackageReservations/', {}, {
+            GetAllBackageReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'BackageReservations/GetAllBackageReservations', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'BackageReservations/EditBackageReservation', useToken: true },
+            getBackageReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'BackageReservations/GetBackageReservationById/:BackageReservationId', useToken: true }
+        })
+    } 
+
+}());
+
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editBackageReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'BackageReservationResource', 'ToastService',
+            'BackageReservationByIdPrepService', editBackageReservationDialogController])
+
+    function editBackageReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, BackageReservationResource, ToastService, BackageReservationByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+        $scope.StatusList = appCONSTANTS.Status;
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.BackageReservation = BackageReservationByIdPrepService; 
+        console.log( vm.BackageReservation);
+
+               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.BackageReservation.status }, true)[0]);
+        $scope.selectedStatus=$scope.StatusList[indexStatus];
+
+
+        vm.Close = function () {
+            $state.go('BackageReservation');
+        }
+        vm.UpdateBackageReservation = function () { 
+            blockUI.start("Loading..."); 
+            debugger;
+            var updateObj = new BackageReservationResource();
+            updateObj.backageReservationId = vm.BackageReservation.backageReservationId; 
+            updateObj.adult = vm.BackageReservation.adult; 
+            updateObj.roomCount = vm.BackageReservation.roomCount; 
+            updateObj.child = vm.BackageReservation.child; 
+            updateObj.status = $scope.selectedStatus.id; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('BackageReservation');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('BackageController', ['$rootScope', '$http', '$uibModal', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'BackageResource', 'BackagePrepService', '$localStorage',
             'authorizationService', 'appCONSTANTS',
             'ToastService', BackageController]);
 
 
-    function BackageController($rootScope, blockUI, $scope, $filter, $translate,
+    function BackageController($rootScope, $http, $uibModal, blockUI, $scope, $filter, $translate,
         $state, BackageResource, BackagePrepService, $localStorage, authorizationService,
         appCONSTANTS, ToastService) {
 
@@ -1502,7 +1625,63 @@
             refreshBackages();
         }
         blockUI.stop();
+        vm.openDeleteDialog = function (model, name, id) {
+            debugger;
+            var modalContent = $uibModal.open({
+                templateUrl: './app/core/Delete/templates/ConfirmDeleteDialog.html',
+                controller: 'confirmDeleteDialogController',
+                controllerAs: 'deleteDlCtrl',
+                resolve: {
+                    model: function () { return model },
+                    itemName: function () { return name },
+                    itemId: function () { return id },
+                    message: function () { return null },
+                    callBackFunction: function () { return confirmationDelete }
+                }
 
+            });
+        }
+        function confirmationDelete(obj) {
+
+            debugger;
+            blockUI.start("Loading...");
+            var updateObj = new Object();
+            updateObj.backageId = obj.backageId;
+            updateObj.titleDictionary = obj.titleDictionary;
+            updateObj.descriptionDictionary = obj.descriptionDictionary;
+            updateObj.cityId = obj.cityId;
+            updateObj.daysCount = obj.daysCount;
+            updateObj.nigthsCount = obj.nigthsCount;
+            updateObj.price = obj.price;
+            updateObj.currencyId = obj.currencyId;
+            updateObj.typeId = obj.typeId;
+            updateObj.isDeleted = true;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Backages/EditBackage',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    refreshBackages();
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
     }
 
 })();
@@ -1527,17 +1706,17 @@
     angular
         .module('home')
         .controller('createBackageDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'CurrencyPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
+            'AllCountryPrepService', 'CurrencyPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
 
     function createBackageDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, 
-        CountryPrepService,CurrencyPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
+        AllCountryPrepService,CurrencyPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
         function init() {
             $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
 
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
             $scope.CityList = [];
@@ -1682,21 +1861,21 @@
     angular
         .module('home')
         .controller('editBackageDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'BackageResource', 'ToastService', 'CurrencyPrepService','TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
+            'AllCountryPrepService', 'BackageResource', 'ToastService', 'CurrencyPrepService', 'TypePrepService', 'BackageByIdPrepService', editBackageDialogController])
 
-    function editBackageDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        BackageResource, ToastService, CurrencyPrepService,TypePrepService, BackageByIdPrepService) {
+    function editBackageDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
+        BackageResource, ToastService, CurrencyPrepService, TypePrepService, BackageByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
             $scope.CurrencyList = CurrencyPrepService.results;
             $scope.TypeList = TypePrepService.results;
 
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
         }
-        init(); 
+        init();
 
         var vm = this;
         vm.language = appCONSTANTS.supportedLanguage;
@@ -1753,12 +1932,12 @@
             updateObj.backageId = vm.Backage.backageId;
             updateObj.titleDictionary = vm.Backage.titleDictionary;
             updateObj.descriptionDictionary = vm.Backage.descriptionDictionary;
-            updateObj.cityId = $scope.selectedCity.cityId; 
-            updateObj.removeImages = vm.RemoveImages; 
+            updateObj.cityId = $scope.selectedCity.cityId;
+            updateObj.removeImages = vm.RemoveImages;
             updateObj.daysCount = vm.Backage.daysCount;
             updateObj.nigthsCount = vm.Backage.nigthsCount;
             updateObj.price = vm.Backage.price;
-             updateObj.currencyId = $scope.selectedCurrency.currencyId;
+            updateObj.currencyId = $scope.selectedCurrency.currencyId;
             updateObj.typeId = $scope.selectedType.typeId;
 
 
@@ -1789,7 +1968,7 @@
                     ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
                     blockUI.stop();
                 }
-                );
+            );
         }
         vm.files = [];
         $scope.AddFile = function (element) {
@@ -1813,6 +1992,7 @@
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -1844,178 +2024,61 @@
         }
 
         vm.removeFile = function (index) {
+            debugger;
             vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
+            vm.showButton = true;
+            $apply();
         }
 
         vm.removeBackageFile = function (index) {
+            debugger;
             vm.CheckImages.splice(index, 1);
             vm.Backage.imagesURL.splice(index, 1);
+            vm.showButton = true;
+            $apply();
         }
     }
 }());
-
 (function () {
     'use strict';
 
     angular
         .module('home')
-        .controller('BackageReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'BackageReservationResource', 'BackageReservationPrepService',  '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', BackageReservationController]);
-
-
-    function BackageReservationController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, BackageReservationResource, BackageReservationPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[2].children[0]).addClass("active")
-
-        blockUI.start("Loading..."); 
-
-                    var vm = this;
-        $scope.StatusList = appCONSTANTS.Status;
-        $scope.totalCount = BackageReservationPrepService.totalCount;
-        $scope.BackageReservationList = BackageReservationPrepService; 
-      console.log( $scope.BackageReservationList);
-        function refreshBackageReservations() {
-
-            blockUI.start("Loading..."); 
-
-                        var k = BackageReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.BackageReservationList = results  
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshBackageReservations();
-        }
-        blockUI.stop();
-
-            }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('BackageReservationResource', ['$resource', 'appCONSTANTS', BackageReservationResource]) 
-
-    function BackageReservationResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'BackageReservations/', {}, {
-            GetAllBackageReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'BackageReservations/GetAllBackageReservations', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'BackageReservations/EditBackageReservation', useToken: true },
-            getBackageReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'BackageReservations/GetBackageReservationById/:BackageReservationId', useToken: true }
-        })
-    } 
-
-}());
-
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editBackageReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'BackageReservationResource', 'ToastService',
-            'BackageReservationByIdPrepService', editBackageReservationDialogController])
-
-    function editBackageReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, BackageReservationResource, ToastService, BackageReservationByIdPrepService) {
-        blockUI.start("Loading..."); 
-
-                var vm = this; 
-        $scope.StatusList = appCONSTANTS.Status;
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.BackageReservation = BackageReservationByIdPrepService; 
-        console.log( vm.BackageReservation);
-
-               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.BackageReservation.status }, true)[0]);
-        $scope.selectedStatus=$scope.StatusList[indexStatus];
-
-
-        vm.Close = function () {
-            $state.go('BackageReservation');
-        }
-        vm.UpdateBackageReservation = function () { 
-            blockUI.start("Loading..."); 
-            debugger;
-            var updateObj = new BackageReservationResource();
-            updateObj.backageReservationId = vm.BackageReservation.backageReservationId; 
-            updateObj.adult = vm.BackageReservation.adult; 
-            updateObj.roomCount = vm.BackageReservation.roomCount; 
-            updateObj.child = vm.BackageReservation.child; 
-            updateObj.status = $scope.selectedStatus.id; 
-		    updateObj.$update().then(
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
-
-                     $state.go('BackageReservation');
-
-                },
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-        blockUI.stop();
-
-        	}	
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('CareerController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'CareerResource', 'CareerPrepService',  '$localStorage',
+        .controller('CareerController', ['$rootScope', '$http', '$uibModal', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'CareerResource', 'CareerPrepService', '$localStorage',
             'authorizationService', 'appCONSTANTS',
             'ToastService', CareerController]);
 
 
-    function CareerController($rootScope, blockUI, $scope, $filter, $translate,
+    function CareerController($rootScope, $http, $uibModal, blockUI, $scope, $filter, $translate,
         $state, CareerResource, CareerPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
+        appCONSTANTS, ToastService) {
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
         $($('.pmd-sidebar-nav').children()[10].children[0]).addClass("active")
 
-        blockUI.start("Loading..."); 
+        blockUI.start("Loading...");
 
-                    var vm = this;
+        var vm = this;
         $scope.totalCount = CareerPrepService.totalCount;
         $scope.CareerList = CareerPrepService;
-        console.log(  $scope.CareerList);
+        console.log($scope.CareerList);
         function refreshCareers() {
 
-            blockUI.start("Loading..."); 
+            blockUI.start("Loading...");
 
-                        var k = CareerResource.getAllCareers({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.CareerList = results  
+            var k = CareerResource.getAllCareers({ page: vm.currentPage }).$promise.then(function (results) {
+                $scope.CareerList = results
                 blockUI.stop();
 
-                            },
-            function (data, status) {
-                blockUI.stop();
+            },
+                function (data, status) {
+                    blockUI.stop();
 
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
+                    ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+                });
         }
         vm.showMore = function (element) {
             $(element.currentTarget).toggleClass("child-table-collapse");
@@ -2026,8 +2089,50 @@
             refreshCareers();
         }
         blockUI.stop();
+        vm.openDeleteDialog = function (model, name, id) {
+            debugger;
+            var modalContent = $uibModal.open({
+                templateUrl: './app/core/Delete/templates/ConfirmDeleteDialog.html',
+                controller: 'confirmDeleteDialogController',
+                controllerAs: 'deleteDlCtrl',
+                resolve: {
+                    model: function () { return model },
+                    itemName: function () { return name },
+                    itemId: function () { return id },
+                    message: function () { return null },
+                    callBackFunction: function () { return confirmationDelete }
+                }
 
-            }
+            });
+        }
+        function confirmationDelete(obj) {
+
+            debugger;
+            blockUI.start("Loading...");
+            var updateObj = new CareerResource();
+
+            updateObj.title = obj.title;
+            updateObj.description = obj.description;
+            updateObj.careerId = obj.careerId;
+            updateObj.isDeleted = true;
+            updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+                    refreshCareers();
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+
+
+        }
+    }
 
 })();
 (function () {
@@ -2119,7 +2224,6 @@
                         updateObj.title = vm.Career.title; 
             updateObj.description= vm.Career.description; 
             updateObj.careerId = vm.Career.careerId; 
-		    updateObj.IsDeleted = false; 
 		    updateObj.$update().then(
                 function (data, status) {
                     blockUI.stop();
@@ -2765,6 +2869,160 @@ console.log( $scope.ClientList);
 
     angular
         .module('home')
+        .controller('CurrencyController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'CurrencyResource', 'CurrencyPrepService',  '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', CurrencyController]);
+
+
+    function CurrencyController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, CurrencyResource, CurrencyPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) { 
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[3].children[0]).addClass("active")
+
+        blockUI.start("Loading..."); 
+
+                    var vm = this;
+        $scope.totalCount = CurrencyPrepService.totalCount;
+        $scope.CurrencyList = CurrencyPrepService;
+        function refreshCurrencys() {
+
+            blockUI.start("Loading..."); 
+
+                        var k = CurrencyResource.getAllCurrencies({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.CurrencyList = results  
+                blockUI.stop();
+
+                            },
+            function (data, status) {
+                blockUI.stop();
+
+                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+            });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshCurrencys();
+        }
+        blockUI.stop();
+
+            }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('CurrencyResource', ['$resource', 'appCONSTANTS', CurrencyResource]) 
+
+    function CurrencyResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'Currencies/', {}, {
+            getAllCurrencies: { method: 'GET', url: appCONSTANTS.API_URL + 'Currencies/GetAllCurrencies', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Currencies/EditCurrency', useToken: true },
+            getCurrency: { method: 'GET', url: appCONSTANTS.API_URL + 'Currencies/GetCurrencyById/:CurrencyId', useToken: true }
+        })
+    } 
+
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('createCurrencyDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
+            'CurrencyResource', 'ToastService', '$rootScope', createCurrencyDialogController])
+
+    function createCurrencyDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CurrencyResource,
+        ToastService, $rootScope) {
+
+                blockUI.start("Loading..."); 
+
+            		var vm = this;
+		vm.language = appCONSTANTS.supportedLanguage;
+		vm.close = function(){
+			$state.go('Currency');
+		} 
+
+		 		vm.AddNewCurrency = function () {
+            blockUI.start("Loading..."); 
+
+                        var newObj = new CurrencyResource();
+            newObj.titleDictionary = vm.titleDictionary; 
+            newObj.IsDeleted = false;  
+            newObj.$create().then(
+                function (data, status) { 
+        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
+                    $state.go('Currency');
+                     blockUI.stop();        
+
+
+                },
+                function (data, status) {
+               blockUI.stop();        
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+  	}	
+}());
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editCurrencyDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'CurrencyResource', 'ToastService',
+            'CurrencyByIdPrepService', editCurrencyDialogController])
+
+    function editCurrencyDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CurrencyResource, ToastService, CurrencyByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.Currency = CurrencyByIdPrepService; 
+        vm.Close = function () {
+            $state.go('Currency');
+        }
+        vm.UpdateCurrency = function () { 
+            blockUI.start("Loading..."); 
+
+                        var updateObj = new CurrencyResource();
+            updateObj.currencyId = vm.Currency.currencyId;
+            updateObj.titleDictionary = vm.Currency.titleDictionary;
+		    updateObj.IsDeleted = false; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('Currency');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
         .controller('CountryController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'CountryResource', 'CountryPrepService',  '$localStorage',
             'authorizationService', 'appCONSTANTS',
@@ -2904,160 +3162,6 @@ console.log( $scope.ClientList);
                                         ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
 
                      $state.go('Country');
-
-                },
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-        blockUI.stop();
-
-        	}	
-}());
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('CurrencyController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'CurrencyResource', 'CurrencyPrepService',  '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', CurrencyController]);
-
-
-    function CurrencyController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, CurrencyResource, CurrencyPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[3].children[0]).addClass("active")
-
-        blockUI.start("Loading..."); 
-
-                    var vm = this;
-        $scope.totalCount = CurrencyPrepService.totalCount;
-        $scope.CurrencyList = CurrencyPrepService;
-        function refreshCurrencys() {
-
-            blockUI.start("Loading..."); 
-
-                        var k = CurrencyResource.getAllCurrencies({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.CurrencyList = results  
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshCurrencys();
-        }
-        blockUI.stop();
-
-            }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('CurrencyResource', ['$resource', 'appCONSTANTS', CurrencyResource]) 
-
-    function CurrencyResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'Currencies/', {}, {
-            getAllCurrencies: { method: 'GET', url: appCONSTANTS.API_URL + 'Currencies/GetAllCurrencies', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'Currencies/EditCurrency', useToken: true },
-            getCurrency: { method: 'GET', url: appCONSTANTS.API_URL + 'Currencies/GetCurrencyById/:CurrencyId', useToken: true }
-        })
-    } 
-
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('createCurrencyDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CurrencyResource', 'ToastService', '$rootScope', createCurrencyDialogController])
-
-    function createCurrencyDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CurrencyResource,
-        ToastService, $rootScope) {
-
-                blockUI.start("Loading..."); 
-
-            		var vm = this;
-		vm.language = appCONSTANTS.supportedLanguage;
-		vm.close = function(){
-			$state.go('Currency');
-		} 
-
-		 		vm.AddNewCurrency = function () {
-            blockUI.start("Loading..."); 
-
-                        var newObj = new CurrencyResource();
-            newObj.titleDictionary = vm.titleDictionary; 
-            newObj.IsDeleted = false;  
-            newObj.$create().then(
-                function (data, status) { 
-        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success"); 
-                    $state.go('Currency');
-                     blockUI.stop();        
-
-
-                },
-                function (data, status) {
-               blockUI.stop();        
-
-                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-        blockUI.stop();
-
-  	}	
-}());
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editCurrencyDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'CurrencyResource', 'ToastService',
-            'CurrencyByIdPrepService', editCurrencyDialogController])
-
-    function editCurrencyDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CurrencyResource, ToastService, CurrencyByIdPrepService) {
-        blockUI.start("Loading..."); 
-
-                var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.Currency = CurrencyByIdPrepService; 
-        vm.Close = function () {
-            $state.go('Currency');
-        }
-        vm.UpdateCurrency = function () { 
-            blockUI.start("Loading..."); 
-
-                        var updateObj = new CurrencyResource();
-            updateObj.currencyId = vm.Currency.currencyId;
-            updateObj.titleDictionary = vm.Currency.titleDictionary;
-		    updateObj.IsDeleted = false; 
-		    updateObj.$update().then(
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
-
-                     $state.go('Currency');
 
                 },
                 function (data, status) {
@@ -3420,39 +3524,39 @@ console.log( $scope.ClientList);
 
     angular
         .module('home')
-        .controller('HotelController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'HotelResource', 'HotelPrepService',  '$localStorage',
+        .controller('HotelController', ['$rootScope', '$http', '$uibModal','blockUI', '$scope', '$filter', '$translate',
+            '$state', 'HotelResource', 'HotelPrepService', '$localStorage',
             'authorizationService', 'appCONSTANTS',
             'ToastService', HotelController]);
 
 
-    function HotelController($rootScope, blockUI, $scope, $filter, $translate,
+    function HotelController($rootScope,$http, $uibModal, blockUI, $scope, $filter, $translate,
         $state, HotelResource, HotelPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
+        appCONSTANTS, ToastService) {
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
         $($('.pmd-sidebar-nav').children()[7].children[0]).addClass("active")
 
-        blockUI.start("Loading..."); 
+        blockUI.start("Loading...");
 
-                    var vm = this;
+        var vm = this;
         $scope.totalCount = HotelPrepService.totalCount;
-        $scope.HotelList = HotelPrepService; 
-      console.log( $scope.HotelList);
+        $scope.HotelList = HotelPrepService;
+        console.log($scope.HotelList);
         function refreshHotels() {
 
-            blockUI.start("Loading..."); 
+            blockUI.start("Loading...");
 
-                        var k = HotelResource.GetAllHotels({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.HotelList = results  
+            var k = HotelResource.GetAllHotels({ page: vm.currentPage }).$promise.then(function (results) {
+                $scope.HotelList = results
                 blockUI.stop();
 
-                            },
-            function (data, status) {
-                blockUI.stop();
+            },
+                function (data, status) {
+                    blockUI.stop();
 
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
+                    ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+                });
         }
         vm.showMore = function (element) {
             $(element.currentTarget).toggleClass("child-table-collapse");
@@ -3463,8 +3567,65 @@ console.log( $scope.ClientList);
             refreshHotels();
         }
         blockUI.stop();
+        vm.openDeleteDialog = function (model, name, id) {
+            debugger;
+            var modalContent = $uibModal.open({
+                templateUrl: './app/core/Delete/templates/ConfirmDeleteDialog.html',
+                controller: 'confirmDeleteDialogController',
+                controllerAs: 'deleteDlCtrl',
+                resolve: {
+                    model: function () { return model },
+                    itemName: function () { return name },
+                    itemId: function () { return id },
+                    message: function () { return null },
+                    callBackFunction: function () { return confirmationDelete }
+                }
 
-            }
+            });
+        }
+        function confirmationDelete(obj) {
+
+            debugger;
+            blockUI.start("Loading..."); 
+            var updateObj = new Object();
+            updateObj.hotelId = obj.hotelId;
+            updateObj.titleDictionary = obj.titleDictionary;
+            updateObj.descriptionDictionary = obj.descriptionDictionary;
+            updateObj.star = obj.star;
+            updateObj.cityId = obj.cityId;
+            updateObj.latitude = obj.latitude;
+            updateObj.longitude = obj.longitude;
+            updateObj.removeImages = obj.RemoveImages;
+            updateObj.hotelFeature = obj.selectedHotelFeatures;
+            updateObj.currencyId = obj.currencyId;
+            updateObj.isDeleted = true;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj)); 
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Hotels/EditHotel',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    refreshHotels();
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            ); 
+        }
+    }
 
 })();
 (function () {
@@ -3488,22 +3649,22 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('createHotelDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
+            'AllCountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'HotelResource', 'ToastService', '$rootScope', createHotelDialogController])
 
-    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function createHotelDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
         CurrencyPrepService,FeaturePrepService, HotelResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
         function init() {
+            debugger;
             $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
 
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
             $scope.CityList = [];
             $scope.CityList.push($scope.selectedCity);
-            debugger;
             $scope.CurrencyList = CurrencyPrepService.results;
             $scope.FeatureList = FeaturePrepService.results;
         }
@@ -3648,14 +3809,14 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('editHotelDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'CurrencyPrepService', 'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
+            'AllCountryPrepService', 'CurrencyPrepService', 'HotelResource', 'ToastService', 'FeaturePrepService', 'HotelByIdPrepService', editHotelDialogController])
 
-    function editHotelDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function editHotelDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
         CurrencyPrepService, HotelResource, ToastService, FeaturePrepService, HotelByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
             $scope.FeatureList = FeaturePrepService.results;
             $scope.CurrencyList = CurrencyPrepService.results;
 
@@ -3780,6 +3941,7 @@ console.log( $scope.ClientList);
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -3814,136 +3976,17 @@ console.log( $scope.ClientList);
             vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
+            vm.showButton = true;
+            $apply();
         }
 
         vm.removeHotelFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Hotel.imagesURL.splice(index, 1);
+            vm.showButton = true;
+            $apply();
         }
     }
-}());
-
-(function () {
-    'use strict';
-
-    angular
-        .module('home')
-        .controller('HotelReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'HotelReservationResource', 'HotelReservationPrepService',  '$localStorage',
-            'authorizationService', 'appCONSTANTS',
-            'ToastService', HotelReservationController]);
-
-
-    function HotelReservationController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, HotelReservationResource, HotelReservationPrepService, $localStorage, authorizationService,
-        appCONSTANTS, ToastService) { 
-
-        $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[8].children[0]).addClass("active")
-
-        blockUI.start("Loading..."); 
-
-                    var vm = this;
-        $scope.StatusList = appCONSTANTS.Status;
-        $scope.totalCount = HotelReservationPrepService.totalCount;
-        $scope.HotelReservationList = HotelReservationPrepService; 
-      console.log( $scope.HotelReservationList);
-        function refreshHotelReservations() {
-
-            blockUI.start("Loading..."); 
-
-                        var k = HotelReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.HotelReservationList = results  
-                blockUI.stop();
-
-                            },
-            function (data, status) {
-                blockUI.stop();
-
-                                ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
-            });
-        }
-        vm.showMore = function (element) {
-            $(element.currentTarget).toggleClass("child-table-collapse");
-        }
-        vm.currentPage = 1;
-        $scope.changePage = function (page) {
-            vm.currentPage = page;
-            refreshHotelReservations();
-        }
-        blockUI.stop();
-
-            }
-
-})();
-(function () {
-    angular
-      .module('home')
-        .factory('HotelReservationResource', ['$resource', 'appCONSTANTS', HotelReservationResource]) 
-
-    function HotelReservationResource($resource, appCONSTANTS) {
-        return $resource(appCONSTANTS.API_URL + 'HotelReservations/', {}, {
-            GetAllHotelReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'HotelReservations/GetAllHotelReservations', useToken: true,  params: { lang: '@lang' } },
-            create: { method: 'POST', useToken: true },
-            update: { method: 'POST', url: appCONSTANTS.API_URL + 'HotelReservations/EditHotelReservation', useToken: true },
-            getHotelReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'HotelReservations/GetHotelReservationById/:HotelReservationId', useToken: true }
-        })
-    } 
-
-}());
-
-(function () {
-    'use strict';
-
-	    angular
-        .module('home')
-        .controller('editHotelReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'HotelReservationResource', 'ToastService',
-            'HotelReservationByIdPrepService', editHotelReservationDialogController])
-
-    function editHotelReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, HotelReservationResource, ToastService, HotelReservationByIdPrepService) {
-        blockUI.start("Loading..."); 
-
-                var vm = this; 
-        $scope.StatusList = appCONSTANTS.Status;
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.HotelReservation = HotelReservationByIdPrepService; 
-        console.log( vm.HotelReservation);
-
-               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.HotelReservation.status }, true)[0]);
-        $scope.selectedStatus=$scope.StatusList[indexStatus];
-
-
-        vm.Close = function () {
-            $state.go('HotelReservation');
-        }
-        vm.UpdateHotelReservation = function () { 
-            blockUI.start("Loading..."); 
-            debugger;
-            var updateObj = new HotelReservationResource();
-            updateObj.hotelReservationId = vm.HotelReservation.hotelReservationId; 
-            updateObj.adult = vm.HotelReservation.adult; 
-            updateObj.roomCount = vm.HotelReservation.roomCount; 
-            updateObj.child = vm.HotelReservation.child; 
-            updateObj.status = $scope.selectedStatus.id; 
-		    updateObj.$update().then(
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
-
-                     $state.go('HotelReservation');
-
-                },
-                function (data, status) {
-                    blockUI.stop();
-
-                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-                }
-            );
-        }
-        blockUI.stop();
-
-        	}	
 }());
 (function () {
     'use strict';
@@ -4118,35 +4161,38 @@ console.log( $scope.ClientList);
 
         	}	
 }());
+
 (function () {
     'use strict';
 
     angular
         .module('home')
-        .controller('NewsController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
-            '$state', 'NewsResource', 'NewsPrepService',  '$localStorage',
+        .controller('HotelReservationController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'HotelReservationResource', 'HotelReservationPrepService',  '$localStorage',
             'authorizationService', 'appCONSTANTS',
-            'ToastService', NewsController]);
+            'ToastService', HotelReservationController]);
 
 
-    function NewsController($rootScope, blockUI, $scope, $filter, $translate,
-        $state, NewsResource, NewsPrepService, $localStorage, authorizationService,
+    function HotelReservationController($rootScope, blockUI, $scope, $filter, $translate,
+        $state, HotelReservationResource, HotelReservationPrepService, $localStorage, authorizationService,
         appCONSTANTS, ToastService) { 
 
         $('.pmd-sidebar-nav>li>a').removeClass("active")
-        $($('.pmd-sidebar-nav').children()[14].children[0]).addClass("active")
+        $($('.pmd-sidebar-nav').children()[8].children[0]).addClass("active")
 
         blockUI.start("Loading..."); 
 
                     var vm = this;
-        $scope.totalCount = NewsPrepService.totalCount;
-        $scope.NewsList = NewsPrepService;
-        function refreshNews() {
+        $scope.StatusList = appCONSTANTS.Status;
+        $scope.totalCount = HotelReservationPrepService.totalCount;
+        $scope.HotelReservationList = HotelReservationPrepService; 
+      console.log( $scope.HotelReservationList);
+        function refreshHotelReservations() {
 
             blockUI.start("Loading..."); 
 
-                        var k = NewsResource.getAllNews({page:vm.currentPage}).$promise.then(function (results) { 
-                $scope.NewsList = results  
+                        var k = HotelReservationResource.GetAllCountries({page:vm.currentPage}).$promise.then(function (results) { 
+                $scope.HotelReservationList = results  
                 blockUI.stop();
 
                             },
@@ -4162,11 +4208,184 @@ console.log( $scope.ClientList);
         vm.currentPage = 1;
         $scope.changePage = function (page) {
             vm.currentPage = page;
-            refreshNewss();
+            refreshHotelReservations();
         }
         blockUI.stop();
 
             }
+
+})();
+(function () {
+    angular
+      .module('home')
+        .factory('HotelReservationResource', ['$resource', 'appCONSTANTS', HotelReservationResource]) 
+
+    function HotelReservationResource($resource, appCONSTANTS) {
+        return $resource(appCONSTANTS.API_URL + 'HotelReservations/', {}, {
+            GetAllHotelReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'HotelReservations/GetAllHotelReservations', useToken: true,  params: { lang: '@lang' } },
+            create: { method: 'POST', useToken: true },
+            update: { method: 'POST', url: appCONSTANTS.API_URL + 'HotelReservations/EditHotelReservation', useToken: true },
+            getHotelReservation: { method: 'GET', url: appCONSTANTS.API_URL + 'HotelReservations/GetHotelReservationById/:HotelReservationId', useToken: true }
+        })
+    } 
+
+}());
+
+(function () {
+    'use strict';
+
+	    angular
+        .module('home')
+        .controller('editHotelReservationDialogController', ['$scope','$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'HotelReservationResource', 'ToastService',
+            'HotelReservationByIdPrepService', editHotelReservationDialogController])
+
+    function editHotelReservationDialogController($scope,$filter, blockUI, $http, $state, appCONSTANTS, $translate, HotelReservationResource, ToastService, HotelReservationByIdPrepService) {
+        blockUI.start("Loading..."); 
+
+                var vm = this; 
+        $scope.StatusList = appCONSTANTS.Status;
+		vm.language = appCONSTANTS.supportedLanguage;
+        vm.HotelReservation = HotelReservationByIdPrepService; 
+        console.log( vm.HotelReservation);
+
+               var indexStatus = $scope.StatusList.indexOf($filter('filter')($scope.StatusList, { 'id': vm.HotelReservation.status }, true)[0]);
+        $scope.selectedStatus=$scope.StatusList[indexStatus];
+
+
+        vm.Close = function () {
+            $state.go('HotelReservation');
+        }
+        vm.UpdateHotelReservation = function () { 
+            blockUI.start("Loading..."); 
+            debugger;
+            var updateObj = new HotelReservationResource();
+            updateObj.hotelReservationId = vm.HotelReservation.hotelReservationId; 
+            updateObj.adult = vm.HotelReservation.adult; 
+            updateObj.roomCount = vm.HotelReservation.roomCount; 
+            updateObj.child = vm.HotelReservation.child; 
+            updateObj.status = $scope.selectedStatus.id; 
+		    updateObj.$update().then(
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('Editeduccessfully'), "success");
+
+                     $state.go('HotelReservation');
+
+                },
+                function (data, status) {
+                    blockUI.stop();
+
+                                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                }
+            );
+        }
+        blockUI.stop();
+
+        	}	
+}());
+(function () {
+    'use strict';
+
+    angular
+        .module('home')
+        .controller('NewsController', ['$rootScope', '$http', '$uibModal', 'blockUI', '$scope', '$filter', '$translate',
+            '$state', 'NewsResource', 'NewsPrepService', '$localStorage',
+            'authorizationService', 'appCONSTANTS',
+            'ToastService', NewsController]);
+
+
+    function NewsController($rootScope, $http, $uibModal, blockUI, $scope, $filter, $translate,
+        $state, NewsResource, NewsPrepService, $localStorage, authorizationService,
+        appCONSTANTS, ToastService) {
+
+        $('.pmd-sidebar-nav>li>a').removeClass("active")
+        $($('.pmd-sidebar-nav').children()[14].children[0]).addClass("active")
+
+        blockUI.start("Loading...");
+
+        var vm = this;
+        $scope.totalCount = NewsPrepService.totalCount;
+        $scope.NewsList = NewsPrepService;
+        function refreshNews() {
+
+            blockUI.start("Loading...");
+
+            var k = NewsResource.getAllNews({ page: vm.currentPage }).$promise.then(function (results) {
+                $scope.NewsList = results
+                blockUI.stop();
+
+            },
+                function (data, status) {
+                    blockUI.stop();
+
+                    ToastService.show("right", "bottom", "fadeInUp", data.message, "error");
+                });
+        }
+        vm.showMore = function (element) {
+            $(element.currentTarget).toggleClass("child-table-collapse");
+        }
+        vm.currentPage = 1;
+        $scope.changePage = function (page) {
+            vm.currentPage = page;
+            refreshNews();
+        }
+
+        blockUI.stop();
+        vm.openDeleteDialog = function (model, name, id) {
+            debugger;
+            var modalContent = $uibModal.open({
+                templateUrl: './app/core/Delete/templates/ConfirmDeleteDialog.html',
+                controller: 'confirmDeleteDialogController',
+                controllerAs: 'deleteDlCtrl',
+                resolve: {
+                    model: function () { return model },
+                    itemName: function () { return name },
+                    itemId: function () { return id },
+                    message: function () { return null },
+                    callBackFunction: function () { return confirmationDelete }
+                }
+
+            });
+        }
+        function confirmationDelete(obj) {
+
+            debugger;
+            blockUI.start("Loading...");
+            var updateObj = new Object();
+            updateObj.newsId = obj.newsId;
+            updateObj.titleDictionary = obj.titleDictionary;
+            updateObj.descriptionDictionary = obj.descriptionDictionary;
+
+            updateObj.isDeleted = true;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'News/EditNews',
+
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    refreshNews();
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
+    }
 
 })();
 (function () {
@@ -4309,73 +4528,73 @@ console.log( $scope.ClientList);
 (function () {
     'use strict';
 
-	    angular
+    angular
         .module('home')
         .controller('editNewsDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate', 'NewsResource', 'ToastService',
             'NewsByIdPrepService', editNewsDialogController])
 
     function editNewsDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, NewsResource, ToastService, NewsByIdPrepService) {
-        blockUI.start("Loading..."); 
+        blockUI.start("Loading...");
 
-                var vm = this; 
-		vm.language = appCONSTANTS.supportedLanguage;
-        vm.News = NewsByIdPrepService; 
-        vm.RemoveImages = []; 
-        vm.CheckImages = []; 
-          console.log(vm.News);
+        var vm = this;
+        vm.language = appCONSTANTS.supportedLanguage;
+        vm.News = NewsByIdPrepService;
+        vm.RemoveImages = [];
+        vm.CheckImages = [];
+        console.log(vm.News);
         vm.Close = function () {
             $state.go('News');
         }
 
 
 
-                                          vm.UpdateNews = function () {
-                debugger;
-            blockUI.start("Loading..."); 
+        vm.UpdateNews = function () {
+            debugger;
+            blockUI.start("Loading...");
             vm.isChanged = true;
-                var updateObj = new Object();
-                updateObj.newsId = vm.News.newsId;
-                updateObj.titleDictionary = vm.News.titleDictionary;
-                updateObj.descriptionDictionary = vm.News.descriptionDictionary;  
+            var updateObj = new Object();
+            updateObj.newsId = vm.News.newsId;
+            updateObj.titleDictionary = vm.News.titleDictionary;
+            updateObj.descriptionDictionary = vm.News.descriptionDictionary;
 
-                            var model = new FormData();
-                model.append('data', JSON.stringify(updateObj));
-                vm.files.forEach(function (element) {
-                    model.append('file', element);
-                }, this);
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            vm.files.forEach(function (element) {
+                model.append('file', element);
+            }, this);
 
-                    $http({
-                    method: 'POST',
-                    url: appCONSTANTS.API_URL + 'News/EditNews',
-                    useToken: true,
-                    headers: { 'Content-Type': undefined },
-                    transformRequest: angular.identity,
-                    data: model
-                }).then(
-                    function (data, status) {
-                        vm.isChanged = false;
-                        ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'News/EditNews',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
 
-                                               blockUI.stop();
-                         $state.go('News')
+                    blockUI.stop();
+                    $state.go('News')
 
-                        },
-                    function (data, status) {
-                        vm.isChanged = false;
-                        ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
-            blockUI.stop();
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
         }
-                    );
-            }
         blockUI.stop();
 
 
-                    vm.LoadUploadImages = function () {
+        vm.LoadUploadImages = function () {
             $("#file").click();
             vm.fileExist = false;
 
         }
-          vm.files = [];
+        vm.files = [];
         $scope.AddFile = function (element) {
             var imageFile = element[0];
 
@@ -4397,6 +4616,7 @@ console.log( $scope.ClientList);
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -4428,29 +4648,29 @@ console.log( $scope.ClientList);
         }
 
         vm.removeFile = function (index) {
-           vm.RemoveImages.push(index);
-            vm.files.splice(index, 1);
-            vm.CheckImages.splice(index, 1);
+            vm.showButton = true;
+            vm.RemoveImages.push(index);
         }
 
-	        vm.removeNewsFile = function (index) { 
-            vm.CheckImages.splice(index, 1);
-            vm.News.imagesURL.splice(index, 1);
-        }}	
+        vm.removeNewsFile = function (index) {
+            vm.showButton = true;
+            vm.News.image = '';
+        }
+    }
 
-	 	}());
+}());
 (function () {
     'use strict';
 
     angular
         .module('home')
-        .controller('OfferController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+        .controller('OfferController', ['$rootScope', '$http', '$uibModal', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'OfferResource', 'OfferPrepService', '$localStorage',
             'authorizationService', 'appCONSTANTS',
             'ToastService', OfferController]);
 
 
-    function OfferController($rootScope, blockUI, $scope, $filter, $translate,
+    function OfferController($rootScope, $http, $uibModal, blockUI, $scope, $filter, $translate,
         $state, OfferResource, OfferPrepService, $localStorage, authorizationService,
         appCONSTANTS, ToastService) {
 
@@ -4487,7 +4707,70 @@ console.log( $scope.ClientList);
             refreshOffers();
         }
         blockUI.stop();
+        vm.openDeleteDialog = function (model, name, id) {
+            debugger;
+            var modalContent = $uibModal.open({
+                templateUrl: './app/core/Delete/templates/ConfirmDeleteDialog.html',
+                controller: 'confirmDeleteDialogController',
+                controllerAs: 'deleteDlCtrl',
+                resolve: {
+                    model: function () { return model },
+                    itemName: function () { return name },
+                    itemId: function () { return id },
+                    message: function () { return null },
+                    callBackFunction: function () { return confirmationDelete }
+                }
 
+            });
+        }
+        function confirmationDelete(obj) {
+
+            debugger;
+            blockUI.start("Loading...");
+            var updateObj = new Object();
+            updateObj.offerId = obj.offerId;
+            updateObj.titleDictionary = obj.titleDictionary;
+            updateObj.descriptionDictionary = obj.descriptionDictionary;
+            updateObj.star = obj.star;
+            updateObj.cityId = obj.cityId;
+            updateObj.removeImages = obj.RemoveImages;
+            updateObj.daysCount = obj.daysCount;
+            updateObj.nigthsCount = obj.nigthsCount;
+            updateObj.priceBefore = obj.priceBefore;
+            updateObj.price = obj.price;
+            updateObj.hotelId = obj.hotelId;
+            updateObj.typeId = obj.typeId;
+            updateObj.currencyId = obj.currencyId;
+
+            updateObj.dateFrom = obj.dateFrom;
+            updateObj.dateTo = obj.dateTo;
+            updateObj.isDeleted = true;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Offers/EditOffer',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    refreshOffers();
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
     }
 
 })();
@@ -4512,10 +4795,10 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('createOfferDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-          'CurrencyPrepService',  'CountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
+          'CurrencyPrepService',  'AllCountryPrepService', 'HotelPrepService', 'TypePrepService', 'OfferResource', 'ToastService', '$rootScope', createOfferDialogController])
 
     function createOfferDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate,
-        CurrencyPrepService, CountryPrepService,
+        CurrencyPrepService, AllCountryPrepService,
         HotelPrepService, TypePrepService, OfferResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
@@ -4523,7 +4806,7 @@ console.log( $scope.ClientList);
             $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
             $scope.CurrencyList = CurrencyPrepService.results;
 
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
@@ -4684,14 +4967,14 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('editOfferDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService','CurrencyPrepService', 'OfferResource', 'ToastService', 'HotelPrepService', 'TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
+            'AllCountryPrepService', 'CurrencyPrepService', 'OfferResource', 'ToastService', 'HotelPrepService', 'TypePrepService', 'OfferByIdPrepService', editOfferDialogController])
 
-    function editOfferDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
-        CurrencyPrepService,OfferResource, ToastService, HotelPrepService, TypePrepService, OfferByIdPrepService) {
+    function editOfferDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
+        CurrencyPrepService, OfferResource, ToastService, HotelPrepService, TypePrepService, OfferByIdPrepService) {
         blockUI.start("Loading...");
         function init() {
             $scope.CountryList = [];
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
             $scope.HotelList = HotelPrepService.results;
             $scope.TypeList = TypePrepService.results;
             $scope.CurrencyList = CurrencyPrepService.results;
@@ -4711,16 +4994,16 @@ console.log( $scope.ClientList);
         vm.CheckImages.push(vm.Offer.imagesURL);
 
         vm.Offer.dateFrom = vm.Offer.dateFrom + "Z";
-        vm.Offer.dateFrom = $filter('date')(new Date(vm.Offer.dateFrom), "MM/dd/yyyy hh:mm a"); 
+        vm.Offer.dateFrom = $filter('date')(new Date(vm.Offer.dateFrom), "MM/dd/yyyy hh:mm a");
         vm.Offer.dateTo = vm.Offer.dateTo + "Z";
         vm.Offer.dateTo = $filter('date')(new Date(vm.Offer.dateTo), "MM/dd/yyyy hh:mm a");
 
 
-               var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Offer.currency.currencyId }, true)[0]);
+        var indexCurrency = $scope.CurrencyList.indexOf($filter('filter')($scope.CurrencyList, { 'currencyId': vm.Offer.currency.currencyId }, true)[0]);
         $scope.selectedCurrency = $scope.CurrencyList[indexCurrency];
 
 
-             var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Offer.hotel.hotelId }, true)[0]);
+        var indexHotel = $scope.HotelList.indexOf($filter('filter')($scope.HotelList, { 'hotelId': vm.Offer.hotel.hotelId }, true)[0]);
         $scope.selectedHotel = $scope.HotelList[indexHotel];
 
         var indexType = $scope.TypeList.indexOf($filter('filter')($scope.TypeList, { 'typeId': vm.Offer.type.typeId }, true)[0]);
@@ -4758,7 +5041,7 @@ console.log( $scope.ClientList);
 
         }
 
-                $scope.dateIsValid = false;
+        $scope.dateIsValid = false;
         $scope.dateChange = function () {
             debugger;
             if ($('#dateFrom').data('date') == null || $('#dateFrom').data('date') == "" ||
@@ -4787,7 +5070,7 @@ console.log( $scope.ClientList);
             updateObj.typeId = $scope.selectedType.typeId;
             updateObj.currencyId = $scope.selectedCurrency.currencyId;
 
-            updateObj.dateFrom =$('#dateFrom').val();
+            updateObj.dateFrom = $('#dateFrom').val();
             updateObj.dateTo = $('#dateTo').val();
 
             var model = new FormData();
@@ -4841,6 +5124,7 @@ console.log( $scope.ClientList);
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -4875,11 +5159,17 @@ console.log( $scope.ClientList);
             vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
+
+            vm.showButton = true;
+            $apply();
         }
 
         vm.removeOfferFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Offer.imagesURL.splice(index, 1);
+
+            vm.showButton = true;
+            $apply();
         }
     }
 }());
@@ -5170,13 +5460,13 @@ console.log( $scope.ClientList);
 
     angular
         .module('home')
-        .controller('TourController', ['$rootScope', 'blockUI', '$scope', '$filter', '$translate',
+        .controller('TourController', ['$rootScope',  '$http', '$uibModal', 'blockUI', '$scope', '$filter', '$translate',
             '$state', 'TourResource', 'TourPrepService', '$localStorage',
             'authorizationService', 'appCONSTANTS',
             'ToastService', TourController]);
 
 
-    function TourController($rootScope, blockUI, $scope, $filter, $translate,
+    function TourController($rootScope,  $http, $uibModal,blockUI, $scope, $filter, $translate,
         $state, TourResource, TourPrepService, $localStorage, authorizationService,
         appCONSTANTS, ToastService) {
 
@@ -5213,7 +5503,66 @@ console.log( $scope.ClientList);
             refreshTours();
         }
         blockUI.stop();
+        vm.openDeleteDialog = function (model, name, id) {
+            debugger;
+            var modalContent = $uibModal.open({
+                templateUrl: './app/core/Delete/templates/ConfirmDeleteDialog.html',
+                controller: 'confirmDeleteDialogController',
+                controllerAs: 'deleteDlCtrl',
+                resolve: {
+                    model: function () { return model },
+                    itemName: function () { return name },
+                    itemId: function () { return id },
+                    message: function () { return null },
+                    callBackFunction: function () { return confirmationDelete }
+                }
 
+            });
+        }
+        function confirmationDelete(obj) {
+
+            debugger;
+            blockUI.start("Loading...");
+            var updateObj = new Object();
+            updateObj.tourId = obj.tourId;
+            updateObj.titleDictionary = obj.titleDictionary;
+            updateObj.descriptionDictionary = obj.descriptionDictionary;
+            updateObj.star = obj.star;
+            updateObj.mekkaDays = obj.mekkaDays; 
+            updateObj.madinaDays = obj.madinaDays; 
+            updateObj.duration = obj.duration; 
+            updateObj.price = obj.price; 
+            updateObj.startFrom =  obj.startFrom;
+            updateObj.startTo =  obj.startTo;
+            updateObj.hotelTitle = obj.hotelTitle;
+            updateObj.currencyId = obj.currencyId; 
+            updateObj.isDeleted = true;
+
+            var model = new FormData();
+            model.append('data', JSON.stringify(updateObj));
+            $http({
+                method: 'POST',
+                url: appCONSTANTS.API_URL + 'Tours/EditTour',
+                useToken: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity,
+                data: model
+            }).then(
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", $translate.instant('AddedSuccessfully'), "success");
+
+                    blockUI.stop();
+                    refreshTours();
+
+                },
+                function (data, status) {
+                    vm.isChanged = false;
+                    ToastService.show("right", "bottom", "fadeInUp", data.data.message, "error");
+                    blockUI.stop();
+                }
+            );
+        }
     }
 
 })();
@@ -5238,9 +5587,9 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('createTourDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
+            'AllCountryPrepService','CurrencyPrepService', 'FeaturePrepService', 'TourResource', 'ToastService', '$rootScope', createTourDialogController])
 
-    function createTourDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function createTourDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
         CurrencyPrepService, FeaturePrepService, TourResource, ToastService, $rootScope) {
 
         blockUI.start("Loading..."); 
@@ -5379,9 +5728,9 @@ console.log( $scope.ClientList);
     angular
         .module('home')
         .controller('editTourDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService','CurrencyPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
+            'AllCountryPrepService','CurrencyPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
 
-    function editTourDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function editTourDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
         CurrencyPrepService,   TourResource, ToastService, TourByIdPrepService) {
         blockUI.start("Loading...");
 
@@ -5494,6 +5843,7 @@ console.log( $scope.ClientList);
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -5528,12 +5878,18 @@ console.log( $scope.ClientList);
             vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
+
+                    vm.showButton = true;
+            $apply();
         }
 
         vm.removeTourFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Tour.imagesURL.splice(index, 1);
-        }
+
+                   vm.showButton = true;
+            $apply();
+         }
     }
 }());
 

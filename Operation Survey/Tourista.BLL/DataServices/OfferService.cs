@@ -28,7 +28,7 @@ namespace Tourista.BLL.DataServices
         }
         public PagedResultsDto GetAllOffers(int page, int pageSize, int tenantId)
         { 
-            var query = Queryable().Where(x => x.TenantId == tenantId  ).OrderBy(x => x.OfferId);
+            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId  ).OrderBy(x => x.OfferId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count(); 
             var modelReturn =  query.OrderBy(x => x.OfferId).Skip((page - 1) * pageSize).Take(pageSize).ToList()
@@ -38,7 +38,7 @@ namespace Tourista.BLL.DataServices
         }
         public PagedResultsDto GetAllOnlineOffers(int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId).OrderByDescending(x => x.OfferId);
+            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId).OrderBy(x => x.OfferId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             var modelReturn = query.OrderByDescending(x => x.OfferId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
@@ -47,7 +47,7 @@ namespace Tourista.BLL.DataServices
         }
         public PagedResultsDto GetAllOnlineRelatedOffersById(long OfferId,int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && x.OfferId != OfferId && (x.TenantId == tenantId)).OrderByDescending(x => Guid.NewGuid()).Take(10);
+            var query = Queryable().Where(x => !x.IsDeleted && x.OfferId != OfferId && (x.TenantId == tenantId)).OrderBy(x => Guid.NewGuid()).Take(10);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             var modelReturn = query.OrderBy(x => x.OfferId).Skip((page - 1) * pageSize).Take(pageSize).ToList();

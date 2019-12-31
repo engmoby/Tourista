@@ -298,6 +298,7 @@
     <Compile Include="Infrastructure\Filters\CustomExceptionFilter.cs" />
     <Compile Include="Infrastructure\ImageConvert.cs" />
     <Compile Include="Infrastructure\LanguageMessageHandler.cs" />
+    <Compile Include="MailHelper.cs" />
     <Compile Include="Models\TourReservationModel.cs" />
     <Compile Include="Models\OfferModel.cs" />
     <Compile Include="Models\OfferReservationModel.cs" />

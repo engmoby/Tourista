@@ -157,8 +157,8 @@
 
                 <input id="file" name="file" style="display: none;"
                     onchange="angular.element(this).scope().AddFile(this.files)" type="file">
-                <!-- <button class="btn btn-primary editable-table-button btn-xs btn-with-icon"
-                    ng-click="editHotelCtrl.LoadUploadImages()">{{'AddImageBtn' |translate}}</button> -->
+                <button ng-show="editHotelCtrl.showButton" class="btn btn-primary editable-table-button btn-xs btn-with-icon"
+                    ng-click="editHotelCtrl.LoadUploadImages()">{{'AddImageBtn' |translate}}</button>
 
                 <br>
                 <div>
@@ -168,9 +168,9 @@
                                 <td>
                                     <img ng-src="{{file}}" style="max-height: 286px;max-width: 477px;">
                                 </td>
-                                <!-- <td>
+                                <td>
                                         <i class="material-icons pmd-md deleteButton cursorPointer font25" style="font-size: 20px;color: grey;cursor: pointer;" ng-click="editHotelCtrl.removeHotelFile($index)">delete</i>
-                                    </td> -->
+                                    </td>
                             </tr>
                         </tbody>
                     </table>

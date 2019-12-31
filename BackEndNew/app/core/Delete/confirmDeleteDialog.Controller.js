@@ -2,9 +2,9 @@
     'use strict';	
     angular
         .module('home')
-        .controller('confirmDeleteDialogController', ['$uibModalInstance', 'itemName','itemId','message', 'callBackFunction',  confirmDeleteDialogController])
+        .controller('confirmDeleteDialogController', ['$uibModalInstance', 'model','itemName','itemId','message', 'callBackFunction',  confirmDeleteDialogController])
 
-	function confirmDeleteDialogController($uibModalInstance, itemName,itemId,message, callBackFunction){
+	function confirmDeleteDialogController($uibModalInstance, model,itemName,itemId,message, callBackFunction){
 		var vm = this;
 		vm.itemName = itemName;
 		vm.message = message;
@@ -13,7 +13,7 @@
 		}
 		
 		vm.Confirm = function(){
-			callBackFunction(itemId);
+			callBackFunction(model);
 			$uibModalInstance.dismiss();
         }
 		

@@ -120,7 +120,6 @@ E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\Tourista.Resources.p
 E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\ar-EG\Tourista.Resources.resources.dll
 E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 E:\Private\Tourista\Operation Survey\Tourista.Resources\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\Tourista.Resources.csprojAssemblyReference.cache
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\Tourista.Resources.Resource.resources
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\Tourista.Resources.Resource.ar-EG.resources
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\Tourista.Resources.csproj.GenerateResource.cache
@@ -129,3 +128,4 @@ E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\ar-EG\Touris
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\Tourista.Resources.csproj.CopyComplete
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\Tourista.Resources.dll
 E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\Tourista.Resources.pdb
+E:\Private\Tourista\Operation Survey\Tourista.Resources\obj\Release\Tourista.Resources.csprojAssemblyReference.cache

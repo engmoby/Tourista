@@ -18,7 +18,7 @@ namespace Tourista.BLL.DataServices
         
         public PagedResultsDto GetAllCareers(int page, int pageSize, int tenantId)
         { 
-            var query = Queryable().Where(x =>   (x.TenantId == tenantId || x.TenantId == null)).OrderBy(x => x.CareerId);
+            var query = Queryable().Where(x => !x.IsDeleted && (x.TenantId == tenantId || x.TenantId == null)).OrderBy(x => x.CareerId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count(); 
             var modelReturn =   query.OrderBy(x => x.CareerId).Skip((page - 1) * pageSize).Take(pageSize).ToList() ;

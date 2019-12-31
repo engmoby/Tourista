@@ -29,7 +29,7 @@ namespace Tourista.BLL.DataServices
         //}
         public PagedResultsDto GetAllTours(int page, int pageSize, int tenantId)
         { 
-            var query = Queryable().Where(x => x.TenantId == tenantId  ).OrderBy(x => x.TourId);
+            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId  ).OrderBy(x => x.TourId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count(); 
             var modelReturn =  query.OrderBy(x => x.TourId).Skip((page - 1) * pageSize).Take(pageSize).ToList()
@@ -39,7 +39,8 @@ namespace Tourista.BLL.DataServices
         }
         public PagedResultsDto GetAllOnlineTours(int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId && x.StartTo >= Strings.CurrentDateTime).OrderByDescending(x => x.TourId);
+            //var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId && x.StartTo >= Strings.CurrentDateTime).OrderByDescending(x => x.TourId);
+            var query = Queryable().Where(x => !x.IsDeleted && x.TenantId == tenantId).OrderBy(x => x.TourId);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             var modelReturn = query.OrderByDescending(x => x.TourId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
@@ -48,7 +49,7 @@ namespace Tourista.BLL.DataServices
         }
         public PagedResultsDto GetAllOnlineRelatedToursById(long TourId,int page, int pageSize, int tenantId)
         {
-            var query = Queryable().Where(x => !x.IsDeleted && x.TourId != TourId && (x.TenantId == tenantId)).OrderByDescending(x => Guid.NewGuid()).Take(10);
+            var query = Queryable().Where(x => !x.IsDeleted && x.TourId != TourId && (x.TenantId == tenantId)).OrderBy(x => Guid.NewGuid()).Take(10);
             PagedResultsDto results = new PagedResultsDto();
             results.TotalCount = query.Select(x => x).Count();
             var modelReturn = query.OrderBy(x => x.TourId).Skip((page - 1) * pageSize).Take(pageSize).ToList();

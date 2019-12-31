@@ -1,9 +1,9 @@
-
 <div>
     <div style="margin-bottom:10px">
-        <button ng-click="$state.go('newHotel');" class="btn pmd-ripple-effect btn-primary pmd-z-depth" type="button">{{'AddNew' | translate}}</button>
+        <button ng-click="$state.go('newHotel');" class="btn pmd-ripple-effect btn-primary pmd-z-depth"
+            type="button">{{'AddNew' | translate}}</button>
 
-    </div> 
+    </div>
     <div ng-if="HotelList.results.length == 0">
         <span>{{'NoHotelsAvailable' | translate}}</span>
     </div>
@@ -12,9 +12,9 @@
         <table class="table pmd-table table-hover">
             <thead>
                 <tr>
-                    <th>{{'Image' | translate}}</th> 
-                    <th>{{'Name' | translate}}</th> 
-                    <th>{{'Star' | translate}}</th> 
+                    <th>{{'Image' | translate}}</th>
+                    <th>{{'Name' | translate}}</th>
+                    <th>{{'Star' | translate}}</th>
                     <th>{{'City' | translate}}</th>
                     <th></th>
                 </tr>
@@ -25,23 +25,28 @@
 					<img ng-src='{{Hotel.imagesURL[0]}}' style="    width: 77px;" />
 
                    </td> -->
-                   <td data-title="Image" ><img ng-src="{{Hotel.imagesURL[0]}}"
-                     ng-alt="{{Hotel.titleDictionary[selectedLanguage]}}" style="max-height: 200px;max-width: 200px;"/></td>
+                    <td data-title="Image"><img ng-src="{{Hotel.imagesURL[0]}}"
+                            ng-alt="{{Hotel.titleDictionary[selectedLanguage]}}"
+                            style="max-height: 200px;max-width: 200px;" /></td>
 
-                   <td data-title="Name">{{Hotel.titleDictionary[selectedLanguage]}}</td>
-                   <td data-title="star">{{Hotel.star}}</td>
+                    <td data-title="Name">{{Hotel.titleDictionary[selectedLanguage]}}</td>
+                    <td data-title="star">{{Hotel.star}}</td>
                     <td data-title="city">{{Hotel.city.titleDictionary[selectedLanguage]}}</td>
-               
-                   
-                    <td  >
-                        <i class="material-icons md-dark pmd-md cursorPointer font25" ng-click="$state.go('editHotel',{hotelId: Hotel.hotelId});">mode_edit</i>
+
+
+                    <td>
+                        <i class="material-icons md-dark pmd-md cursorPointer font25"
+                            ng-click="$state.go('editHotel',{hotelId: Hotel.hotelId});">mode_edit</i>
+                            <i class="material-icons pmd-md deleteButton cursorPointer font25"
+                            ng-click="HotelCtrl.openDeleteDialog(Hotel,Hotel.titleDictionary[selectedLanguage],Hotel.hotelId)">delete</i>
                     </td>
                 </tr>
-                
+
             </tbody>
         </table>
     </div>
-    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount" paging-action="changePage(page)"
-         flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true" disabled-class="hide">
+    <div style="text-align:center;direction: ltr" paging page="1" page-size="10" total="totalCount"
+        paging-action="changePage(page)" flex="nogrow" show-prev-next="true" show-first-last="true" hide-if-empty="true"
+        disabled-class="hide">
     </div>
 </div>

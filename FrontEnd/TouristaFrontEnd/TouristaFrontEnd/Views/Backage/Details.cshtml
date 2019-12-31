@@ -107,9 +107,10 @@
                                 <div class="car-rent-layout">
                                     <div class="content-wrapper">
                                         <h3 class="title-style-2 title">@TouristaFrontEnd.Resources.Global.Aboutthebackage </h3>
-                                        @*<div class="car-meta-info star-ratings">
-                                            <div class="guest-rating">@TouristaFrontEnd.Resources.Global.Stars: @Model.Star</div>
-                                        </div>*@
+                                     
+                                        <div class="car-meta-info star-ratings">
+                                            @*<div class="guest-rating">@TouristaFrontEnd.Resources.Global.Stars: @Model.Star</div>*@
+                                        </div>
                                         <!-- content -->
                                         <div class="entry-content description">
                                             <div class="vc_row wpb_row vc_row-fluid">
@@ -254,7 +255,7 @@
 
             };
             $.ajax({
-                url: "http://touristaegy.com/backend/API/BackageReservations",
+                url: "http://localhost:50755/API/BackageReservations",
                 type: 'post',
                 dataType: 'json',
                 success: function (data) {
@@ -276,7 +277,8 @@
                     alert("Thanks, we will contact with soon ");
                 },
                 error: function (result) {
-                    alert("Failed");
+                    console.log(result);
+                    alert(result);
                 }
             });
             @*$.ajax({

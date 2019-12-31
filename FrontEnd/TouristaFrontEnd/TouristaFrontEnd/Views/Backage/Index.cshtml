@@ -81,7 +81,7 @@
                                                                         @backageObj.TitleDictionary[@Common.CurrentLang]
                                                                     }
                                                                 </a>
-                                                                @{var star = @backageObj.Star;}
+                                                                @*@{var star = @backageObj.Star;}
                                                                 @switch (@backageObj.Star)
                                                                 {
                                                                     case 1:
@@ -101,7 +101,8 @@
                                                                         break;
 
                                                                 }
-                                                                <div title="Rated 5.00 out of 5" class="star-rating"><span class="width-@star"><strong class="rating">@backageObj.Star</strong> out of 5</span></div>
+                                                                <div title="Rated 5.00 out of 5" class="star-rating"><span class="width-@star"><strong class="rating">@backageObj.Star</strong> out of 5</span></div>*@
+                                                            
                                                             </div>
                                                         </div>
                                                         <div class="content-wrapper">

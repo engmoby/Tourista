@@ -25,7 +25,7 @@
             updateObj.title = vm.Career.title; 
             updateObj.description= vm.Career.description; 
             updateObj.careerId = vm.Career.careerId; 
-		    updateObj.IsDeleted = false; 
+		   // updateObj.IsDeleted = false; 
 		    updateObj.$update().then(
                 function (data, status) {
                     blockUI.stop();

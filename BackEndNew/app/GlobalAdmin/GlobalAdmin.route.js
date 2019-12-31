@@ -486,7 +486,7 @@
                     'controllerAs': 'HotelCtrl',
                     resolve: {
                         HotelPrepService: HotelPrepService,
-                        CountryPrepService: CountryPrepService
+                        AllCountryPrepService: AllCountryPrepService
                     },
                     data: {
                         permissions: {
@@ -503,7 +503,7 @@
                     'controllerAs': 'newHotelCtrl',
                     resolve: {
                         HotelPrepService: HotelPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
@@ -522,7 +522,7 @@
                     'controllerAs': 'editHotelCtrl',
                     resolve: {
                         HotelByIdPrepService: HotelByIdPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
@@ -542,7 +542,7 @@
                     'controllerAs': 'TourCtrl',
                     resolve: {
                         TourPrepService: TourPrepService,
-                        CountryPrepService: CountryPrepService
+                        AllCountryPrepService: AllCountryPrepService
                     },
                     data: {
                         permissions: {
@@ -559,7 +559,7 @@
                     'controllerAs': 'newTourCtrl',
                     resolve: {
                         TourPrepService: TourPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService,
                     },
@@ -578,7 +578,7 @@
                     'controllerAs': 'editTourCtrl',
                     resolve: {
                         TourByIdPrepService: TourByIdPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         FeaturePrepService: FeaturePrepService
                     },
@@ -634,7 +634,7 @@
                     'controllerAs': 'BackageCtrl',
                     resolve: {
                         BackagePrepService: BackagePrepService,
-                        CountryPrepService: CountryPrepService
+                        AllCountryPrepService: AllCountryPrepService
                     },
                     data: {
                         permissions: {
@@ -651,7 +651,7 @@
                     'controllerAs': 'newBackageCtrl',
                     resolve: {
                         BackagePrepService: BackagePrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService,
                     },
@@ -670,7 +670,7 @@
                     'controllerAs': 'editBackageCtrl',
                     resolve: {
                         BackageByIdPrepService: BackageByIdPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService
                     },
@@ -725,7 +725,7 @@
                     'controllerAs': 'OfferCtrl',
                     resolve: {
                         OfferPrepService: OfferPrepService,
-                        CountryPrepService: CountryPrepService
+                        AllCountryPrepService: AllCountryPrepService
                     },
                     data: {
                         permissions: {
@@ -742,7 +742,7 @@
                     'controllerAs': 'newOfferCtrl',
                     resolve: {
                         OfferPrepService: OfferPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         HotelPrepService: HotelPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService,
@@ -762,7 +762,7 @@
                     'controllerAs': 'editOfferCtrl',
                     resolve: {
                         OfferByIdPrepService: OfferByIdPrepService,
-                        CountryPrepService: CountryPrepService,
+                        AllCountryPrepService: AllCountryPrepService,
                         HotelPrepService: HotelPrepService,
                         CurrencyPrepService: CurrencyPrepService,
                         TypePrepService: TypePrepService

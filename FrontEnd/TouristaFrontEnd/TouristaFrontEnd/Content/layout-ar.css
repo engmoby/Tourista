@@ -545,10 +545,11 @@ a:hover {
     float: none;
     margin: 0 auto;
 }
-.header-01 .navigation .nav-links .main-menu {
-    line-height: 24px;
-    padding-bottom: 10px;
-}
+    .header-01 .navigation .nav-links .main-menu {
+        font-size: 20;
+        line-height: 24px;
+        padding-bottom: 10px;
+    }
 .header-01 .navigation .nav-links li .main-menu:before {
     bottom: 1px;
 }
@@ -1138,9 +1139,9 @@ a:hover {
     color: #555e69;
     position: absolute;
     display: none;
-    right: 0;
+    right: 70px;
     top: 0;
-    z-index: 1;
+    /*z-index: 1;*/
     height: 100%;
     width: 85%;
     transform: translate3d(-101%, 0, 0);
@@ -1710,7 +1711,7 @@ a:hover {
 }
 .find-widget .text-box-wrapper {
     text-align: right;
-    margin-top: 20px;
+    margin: 2px;
     float: right;
     vertical-align: bottom;
 }

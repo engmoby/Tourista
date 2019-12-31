@@ -478,6 +478,10 @@ G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.API\bin\ar-EG\
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.API\obj\Release\Tourista.API.csprojResolveAssemblyReference.cache
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.API\obj\Release\Tourista.API.dll
 G:\hamada\private work\Toursita\Project\Operation Survey\Tourista.API\obj\Release\Tourista.API.pdb
+E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.csprojAssemblyReference.cache
+E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.csproj.CoreCompileInputs.cache
+E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.dll
+E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.pdb
 E:\Private\Tourista\Operation Survey\Tourista.API\bin\roslyn\csc.exe
 E:\Private\Tourista\Operation Survey\Tourista.API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 E:\Private\Tourista\Operation Survey\Tourista.API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -597,8 +601,4 @@ E:\Private\Tourista\Operation Survey\Tourista.API\bin\LinqKit.pdb
 E:\Private\Tourista\Operation Survey\Tourista.API\bin\LinqKit.xml
 E:\Private\Tourista\Operation Survey\Tourista.API\bin\LinqKit.dll.config
 E:\Private\Tourista\Operation Survey\Tourista.API\bin\ar-EG\Tourista.Resources.resources.dll
-E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.csprojAssemblyReference.cache
-E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.csproj.CoreCompileInputs.cache
 E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.csproj.CopyComplete
-E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.dll
-E:\Private\Tourista\Operation Survey\Tourista.API\obj\Release\Tourista.API.pdb

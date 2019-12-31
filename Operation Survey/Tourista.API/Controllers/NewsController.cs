@@ -70,22 +70,22 @@ namespace Tourista.API.Controllers
             {
                 news.Image = Url.Link("NewsImage", new { NewsId = news.NewsId, imageId = news.NewsId });
             }
-            return Ok(data); 
+            return Ok(data);
         }
 
 
         [Route("api/News/GetAllOnlineRelatedNewsById", Name = "GetAllOnlineRelatedNewsById")]
         [HttpGet]
-        public IHttpActionResult GetAllOnlineRelatedNewsById(long newsId,int page = Page, int pagesize = PageSize)
+        public IHttpActionResult GetAllOnlineRelatedNewsById(long newsId, int page = Page, int pagesize = PageSize)
         {
-            PagedResultsDto NewsObj = _newsFacade.GetAllOnlineRelatedNewsById(newsId,page, pagesize, TenantId);
+            PagedResultsDto NewsObj = _newsFacade.GetAllOnlineRelatedNewsById(newsId, page, pagesize, TenantId);
             var data = Mapper.Map<List<NewsModel>>(NewsObj.Data);
 
             foreach (var news in data)
             {
                 news.Image = Url.Link("NewsImage", new { NewsId = news.NewsId, imageId = news.NewsId });
             }
-            return Ok(data); 
+            return Ok(data);
         }
 
         [Route("api/News/{NewsId:long}/Image/{imageId:int}", Name = "NewsImage")]
@@ -178,10 +178,10 @@ namespace Tourista.API.Controllers
         [Route("api/News/GetNewsById", Name = "GetNewsById")]
         [HttpGet]
         public IHttpActionResult GetNewsById(long newsId)
-        { 
+        {
             var reurnNews = _newsFacade.GetNews(newsId, TenantId);
             reurnNews.Image = String.Empty;
-          
+
             string path = HostingEnvironment.MapPath("~/Images/") + "\\" + "News-" + reurnNews.NewsId;
             var imageCounter = Directory.Exists(path) ? Directory
                 .GetFiles(path)

@@ -147,7 +147,8 @@
         function validateEmail(email) { 
             var pattern = new RegExp("[-0-9a-zA-Z.+_]+@@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}");
             return pattern.test(email);
-        } debugger;
+        }
+    //debugger;
 
         $('#btnSubmitNewslatter').attr('disabled', true);
         $('#Mail').keyup(function () {
@@ -180,7 +181,7 @@
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-                        debugger;
+                      //  debugger;
                         if (data.email != "") {
                             $('#MSG').html(" NewsletterSubmitMsg");
                             $('#btnSubmitNewslatter').attr('disabled', false);

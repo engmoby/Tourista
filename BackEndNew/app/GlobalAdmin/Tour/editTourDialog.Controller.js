@@ -4,9 +4,9 @@
     angular
         .module('home')
         .controller('editTourDialogController', ['$scope', '$filter', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService','CurrencyPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
+            'AllCountryPrepService','CurrencyPrepService', 'TourResource', 'ToastService', 'TourByIdPrepService', editTourDialogController])
 
-    function editTourDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, CountryPrepService,
+    function editTourDialogController($scope, $filter, blockUI, $http, $state, appCONSTANTS, $translate, AllCountryPrepService,
         CurrencyPrepService,   TourResource, ToastService, TourByIdPrepService) {
         blockUI.start("Loading...");
 
@@ -122,6 +122,7 @@
 
                             vm.files.push(imageFile);
                             vm.CheckImages.push(imageFile);
+                            vm.showButton = false;
                             var reader = new FileReader();
 
                             reader.onloadend = function () {
@@ -156,11 +157,17 @@
             vm.RemoveImages.push(index);
             vm.files.splice(index, 1);
             vm.CheckImages.splice(index, 1);
+        
+            vm.showButton = true;
+            $apply();
         }
 
         vm.removeTourFile = function (index) {
             vm.CheckImages.splice(index, 1);
             vm.Tour.imagesURL.splice(index, 1);
-        }
+       
+            vm.showButton = true;
+            $apply();
+         }
     }
 }());

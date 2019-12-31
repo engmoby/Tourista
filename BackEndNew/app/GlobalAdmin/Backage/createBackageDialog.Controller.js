@@ -4,17 +4,17 @@
     angular
         .module('home')
         .controller('createBackageDialogController', ['$scope', 'blockUI', '$http', '$state', 'appCONSTANTS', '$translate',
-            'CountryPrepService', 'CurrencyPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
+            'AllCountryPrepService', 'CurrencyPrepService', 'TypePrepService', 'BackageResource', 'ToastService', '$rootScope', createBackageDialogController])
 
     function createBackageDialogController($scope, blockUI, $http, $state, appCONSTANTS, $translate, 
-        CountryPrepService,CurrencyPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
+        AllCountryPrepService,CurrencyPrepService, TypePrepService, BackageResource, ToastService, $rootScope) {
 
         blockUI.start("Loading...");
         function init() {
             $scope.selectedCountry = { CountryId: 0, titleDictionary: { "en": "Select Country", "ar": "اختار منطقه" } };
             $scope.CountryList = [];
             $scope.CountryList.push($scope.selectedCountry);
-            $scope.CountryList = $scope.CountryList.concat(CountryPrepService.results)
+            $scope.CountryList = $scope.CountryList.concat(AllCountryPrepService.results)
 
             $scope.selectedCity = { CityId: 0, titleDictionary: { "en": "Select City", "ar": "اختار فرع" } };
             $scope.CityList = [];

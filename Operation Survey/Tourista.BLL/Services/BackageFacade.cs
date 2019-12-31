@@ -128,7 +128,7 @@ namespace Tourista.BLL.Services
 
             _BackageService.Update(BackageObj);
             SaveChanges();
-            var imageId = imageCounter + 1;
+            var imageId = 1;// imageCounter + 1;
             foreach (var memoryStream in files)
             {
                 _manageStorage.UploadImage(path + "\\" + "Backage-" + BackageObj.BackageId, memoryStream, imageId.ToString());
