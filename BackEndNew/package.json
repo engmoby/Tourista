@@ -26,7 +26,7 @@
     "angular-utils-ui-breadcrumbs": "^0.2.2-1",
     "bootstrap": "^3.4.1",
     "bootstrap-toggle": "^2.2.2",
-    "canvg": "^1.5.3",
+    "canvg": "^4.0.1",
     "gulp-install": "^1.1.0",
     "html2canvas": "^1.0.0-alpha.12",
     "lodash": "4.6.1",
